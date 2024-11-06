@@ -7,7 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>一杯为品</copyright>
-        <lastBuildDate>Wed, 09 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://INKEM.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 06 Nov 2024 23:13:26 +0800</lastBuildDate><atom:link href="https://INKEM.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Test</title>
+        <link>https://INKEM.github.io/p/test/</link>
+        <pubDate>Wed, 06 Nov 2024 23:13:26 +0800</pubDate>
+        
+        <guid>https://INKEM.github.io/p/test/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Chinese Test</title>
         <link>https://INKEM.github.io/p/test-chinese/</link>
         <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
