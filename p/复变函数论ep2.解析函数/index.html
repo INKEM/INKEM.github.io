@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="解析函数；柯西-黎曼方程；初等解析函数；初等多值函数">
+<title>【复变函数论】Ep2.解析函数</title>
+
+<link rel='canonical' href='https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【复变函数论】Ep2.解析函数">
+<meta property='og:description' content="解析函数；柯西-黎曼方程；初等解析函数；初等多值函数">
+<meta property='og:url' content='https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/'>
+<meta property='og:site_name' content='一杯为品'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-10-27T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-10-27T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="【复变函数论】Ep2.解析函数">
+<meta name="twitter:description" content="解析函数；柯西-黎曼方程；初等解析函数；初等多值函数">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu16835031703737007367.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🐦</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一杯为品</a></h1>
+            <h2 class="site-description">哈工大2023届智能机器人班在读，在努力成为机器人、人工智能、硬件工程多面手的路上</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://blog.csdn.net/mojin2005?spm=1010.2135.3001.5343'
+                        target="_blank"
+                        title="CSDN"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M48 0H0V48H48V0ZM25.9509 14.1922C27.8907 14.578 29.6725 15.5304 31.0711 16.9289C31.8521 17.71 33.1184 17.71 33.8995 16.9289C34.6805 16.1479 34.6805 14.8816 33.8995 14.1005C31.9416 12.1426 29.447 10.8092 26.7313 10.269C24.0155 9.72882 21.2006 10.0061 18.6424 11.0657C16.0843 12.1253 13.8978 13.9197 12.3594 16.222C10.8211 18.5243 10 21.2311 10 24C10 26.7689 10.8211 29.4757 12.3594 31.778C13.8978 34.0803 16.0843 35.8747 18.6424 36.9343C21.2006 37.9939 24.0155 38.2712 26.7313 37.731C29.447 37.1908 31.9416 35.8574 33.8995 33.8995C34.6805 33.1185 34.6805 31.8521 33.8995 31.0711C33.1184 30.29 31.8521 30.29 31.0711 31.0711C29.6725 32.4696 27.8907 33.422 25.9509 33.8079C24.0111 34.1937 22.0004 33.9957 20.1732 33.2388C18.3459 32.4819 16.7841 31.2002 15.6853 29.5557C14.5865 27.9112 14 25.9778 14 24C14 22.0222 14.5865 20.0888 15.6853 18.4443C16.7841 16.7998 18.3459 15.5181 20.1732 14.7612C22.0004 14.0043 24.0111 13.8063 25.9509 14.1922Z" fill="#333333"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/INKEM'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#1-解析函数的概念与柯西-黎曼方程">§1 解析函数的概念与柯西-黎曼方程</a>
+      <ol>
+        <li><a href="#1复变函数的导数与微分">1.复变函数的导数与微分</a></li>
+        <li><a href="#2解析函数及其简单性质">2.解析函数及其简单性质</a></li>
+        <li><a href="#3柯西-黎曼方程">3.柯西-黎曼方程</a></li>
+      </ol>
+    </li>
+    <li><a href="#2-初等解析函数">§2 初等解析函数</a>
+      <ol>
+        <li><a href="#1指数函数">1.指数函数</a></li>
+        <li><a href="#2三角函数与双曲函数">2.三角函数与双曲函数</a></li>
+      </ol>
+    </li>
+    <li><a href="#3-初等多值函数">§3 初等多值函数</a>
+      <ol>
+        <li><a href="#1辐角函数">1.辐角函数</a></li>
+        <li><a href="#2根式函数">2.根式函数</a></li>
+        <li><a href="#3对数函数">3.对数函数</a></li>
+        <li><a href="#4一般幂函数与一般指数函数">4.一般幂函数与一般指数函数</a></li>
+        <li><a href="#5具有多个有限支点的情形">5.具有多个有限支点的情形</a></li>
+        <li><a href="#6反三角函数与反双曲函数">6.反三角函数与反双曲函数</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" >
+                学习笔记
+            </a>
+        
+            <a href="/categories/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BA/" >
+                复变函数论
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/">【复变函数论】Ep2.解析函数</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            解析函数；柯西-黎曼方程；初等解析函数；初等多值函数
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 27, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 15 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p>本学习笔记主要是为了拓展工程实践可能会应用到的相关知识，帮助了解和查阅知识体系、相关概念和基本思想，非以数学专业方向为主，因此不会探讨进一步的数学问题，甚至文中涉及到的部分知识也无需完全掌握，用抽象而严谨的数学语言表达的内容我会尽可能用自然语言（文中斜体字）或绘图辅助理解（本章多值函数部分教材讲解篇幅较长且理解耗时，文中该内容有大量精简消化，未用斜体字标明）</p>
+<p>前置课程：微积分（高等数学/数学分析）</p>
+<p>自学教材：《复变函数论（第五版）》钟玉泉 编</p>
+</blockquote>
+<h1 id="解析函数">解析函数
+</h1><h2 id="1-解析函数的概念与柯西-黎曼方程">§1 解析函数的概念与柯西-黎曼方程
+</h2><h3 id="1复变函数的导数与微分">1.复变函数的导数与微分
+</h3><p><strong>复变函数的导数</strong></p>
+<p>设函数$\varpi=f(z)$在点$z_0$的邻域内或包含$z_0$的区域$D$内有定义，如果当$z$按任意方式趋于$z_0$，即当$\Delta z$按任意方式趋于零时，比值$\frac{\Delta\varpi}{\Delta z}$的极限都存在，且其值有限，则称此极限为函数$f(z)$在点$z_0$的<strong>导数</strong>，并记为$f&rsquo;(z_0)$，即</p>
+$$f'(z_0)=\lim_{\Delta z\rightarrow 0}\frac{\Delta\varpi}{\Delta z}=\lim_{z\rightarrow z_0}\frac{f(z)-f(z_0)}{z-z_0}$$<p>这时称函数$f(z)$于点$z_0$<strong>可导</strong></p>
+<hr>
+<p><strong>复变函数的微分</strong></p>
+<p>设函数$\varpi=f(z)$在点$z$可导，于是</p>
+<p>$\lim_{\Delta z\rightarrow 0}\frac{\Delta\varpi}{\Delta z}=f&rsquo;(z)$</p>
+<p>$\frac{\Delta\varpi}{\Delta z}=f&rsquo;(z)+\eta,;\lim_{\Delta z\rightarrow 0}\eta=0$</p>
+<p>$\Delta\varpi=f&rsquo;(z)\Delta z+\varepsilon$</p>
+<p>其中$|\varepsilon\cdot\Delta z|$为比$|\Delta z|$高阶的无穷小</p>
+<p>称$f&rsquo;(z)\Delta z$为$\varpi=f(z)$在点$z$的<strong>微分</strong>，记为$d\varpi$或$df(z)$，此时也称$f(z)$在点$z$<strong>可微</strong>，即$d\varpi=f&rsquo;(z)\Delta z$</p>
+<p>可导$\Leftrightarrow$可微$\Rightarrow$连续</p>
+<hr>
+<h3 id="2解析函数及其简单性质">2.解析函数及其简单性质
+</h3><p><strong>解析函数</strong></p>
+<p>如果函数$\varpi=f(z)$在区域$D$内可微，则称$f(z)$为区域$D$内的<strong>解析函数</strong></p>
+<p>区域$D$内的解析函数也称为$D$内的<strong>全纯函数</strong>或<strong>正则函数</strong></p>
+<p>若函数$f(z)$在点$z_0$不解析，但在$z_0$的任一邻域内总有$f(z)$的解析点，则称$z_0$为函数$f(z)$的<strong>奇点</strong></p>
+<hr>
+<p><strong>解析函数的性质</strong></p>
+<p>$(1)$函数在一点解析，则其各阶导数也在该点解析</p>
+<p>$(2)$如函数$f_1(z),,f_2(z)$在区域$D$内解析，则其和、差、积、商（商要求分母在$D$内不为零）在$D$内解析，<em>并且求导公式和一元实函数一致</em></p>
+<p>$(3)$<strong>复合函数的求导法则</strong>：设函数$\xi=f(z)$在区域$D$内解析，函数$\varpi=g(\xi)$在区域$G$内解析，若对于$D$内每一点$z$，函数$f(z)$的值$\xi$均属于$G$，则$\varpi=g[f(z)]$在$D$内解析，且$\frac{dg[f(z)]}{dz}=\frac{dg(\xi)}{d\xi}\cdot\frac{df(z)}{dz}$</p>
+<hr>
+<h3 id="3柯西-黎曼方程">3.柯西-黎曼方程
+</h3><p><strong>柯西-黎曼方程</strong></p>
+<p>假设$\varpi=f(z)=u(x,,y)+iv(x,,y)$是复变元$z=x+iy$的一个定义在区域$D$内的函数</p>
+<p>函数$f(z)$可微的条件$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y},;\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}$是关于$u$及$v$的偏微分方程组，称为<strong>柯西-黎曼方程</strong>（简称$C.-,R.$方程）</p>
+<p><em>证明思路：设$\Delta z=\Delta x+i\Delta y$，变点$z+\Delta z$分别沿平行于实轴和虚轴的方向趋于点$z$的方向导数相等</em></p>
+<hr>
+<p><strong>可微的充要条件</strong></p>
+<p>设函数$f(z)=u(x,,y)+iv(x,,y)$在区域$D$内有定义，$f(x,,y)$在$D$内一点$z=x+iy$可微的充要条件是</p>
+<p>$(1)$二元函数$u(x,,y),;v(x,,y)$在点$(x,,y)$可微</p>
+<p>$(2)$$u(x,,y),;v(x,,y)$在点$(x,,y)$满足$C.-,R.$方程</p>
+<p>上述条件满足时，$f&rsquo;(x)=\frac{\partial u}{\partial x}+i\frac{\partial v}{\partial x}$（<em>可利用$C.-,R.$方程代换其中的偏导数</em>）</p>
+<p><em>在区域$D$内解析的充要条件将上述条件中点$(x,,y)$改为区域$D$即可</em></p>
+<hr>
+<p><strong>指数形式可微的充要条件</strong></p>
+<p>若将复数$z$表示成指数形式$z=re^{i\theta}$，则函数$\varpi=f(z)$又可表示为$\varpi=u(r,,\theta)+iv(r,,\theta)$</p>
+<p>若$u(r,,\theta),,v(r,,\theta)$可微，且$u_r=\frac{1}{r}v_\theta,;u_\theta=-rv_r$，则$f(z)=f(r,\theta)$可微</p>
+<hr>
+<h2 id="2-初等解析函数">§2 初等解析函数
+</h2><h3 id="1指数函数">1.指数函数
+</h3><p>对于任何复数$z=x+iy$，我们用关系式$e^z=e^{x+iy}=e^x(\cos y+i\sin y)$来定义指数函数$e^z$</p>
+<blockquote>
+<p>性质</p>
+<p>$(1)|e^z|=e^x&gt;0,,arg,e^z=y$</p>
+<p>$(2)e^z$在$z$平面上解析，且$(e^z)&rsquo;=e^z$</p>
+<p>$(3)e^z$是以$2\pi i$为基本周期的周期函数（$e^{2k\pi i}=1$）</p>
+</blockquote>
+<hr>
+<h3 id="2三角函数与双曲函数">2.三角函数与双曲函数
+</h3><p>由指数函数定义，当$x=0$时推得$e^{iy}=\cos y+i\sin y,;e^{-iy}=\cos y-i\sin y$</p>
+<p>从而得到$\sin y=\frac{e^{iy}-e^{-iy}}{2i},;\cos y=\frac{e^{iy}+e^{-iy}}{2}$</p>
+<p>因而用$\sin z=\frac{e^{iz}-e^{-iz}}{2i},;\cos z=\frac{e^{iz}+e^{-iz}}{2}$分别定义为$z$的<strong>正弦函数</strong>和<strong>余弦函数</strong></p>
+<blockquote>
+<p>性质</p>
+<p>$(1)$在$z$平面上解析，且$(\sin z)&rsquo;=\cos z,;(\cos z)&rsquo;=-\sin z$</p>
+<p>$(2)\sin z$是奇函数，$\cos z$是偶函数，并遵从三角恒等式：</p>
+<p>$\sin^2z+\cos^2z=1$</p>
+<p>$\sin(z_1+z_2)=\sin z_1\cdot\cos z_2+\cos z_1\cdot\sin z_2$</p>
+<p>$\cos(z_1+z_2)=\cos z_1\cdot\cos z_2-\sin z_1\cdot\sin z_2$</p>
+<p>$(3)$是以$2\pi$为周期的周期函数</p>
+<p>$(4)\sin z$的零点为$z=n\pi,(n∈\mathbb{z})$</p>
+<p>$\cos z$的零点为$z=(n+\frac{1}{2}\pi,(n∈\mathbb{z})$</p>
+<p>$(5)$在复数域内$|\sin z|\leq1,;|\cos z|\leq1$不成立</p>
+</blockquote>
+<hr>
+<p>定义$\tan z=\frac{\sin z}{\cos z},;\cot z=\frac{\cos z}{\sin z},;\sec z=\frac{1}{\cos z},;\csc z=\frac{1}{\sin z}$分别称为$z$的<strong>正切函数</strong>、<strong>余切函数</strong>、<strong>正割函数</strong>及<strong>余割函数</strong></p>
+<blockquote>
+<p>性质</p>
+<p>$(1)$在$z$平面上使分母不为零的点处解析，且</p>
+<p>$(\tan z)&rsquo;=\sec^2z,;(\cot z)&rsquo;=-\csc^2z,;(\sec z)&rsquo;=\sec z\cdot\tan z,;(\csc z)&rsquo;=-\csc z\cdot\cot z$</p>
+<p>$(2)$正切函数和余切函数的周期为$\pi$，正割函数和余割函数的周期为$2\pi$</p>
+</blockquote>
+<hr>
+<p>定义$\sinh z=\frac{e^z-e^{-z}}{2},;\cosh z=\frac{e^z+e^{-z}}{2},;\tanh z=\frac{\sinh z}{\cosh z},;\coth z=\frac{1}{\tanh z},;sech,z=\frac{1}{\cosh z},;csch,z=\frac{1}{\sinh z}$</p>
+<p>分别称为$z$的<strong>双曲正弦函数</strong>、<strong>双曲余弦函数</strong>、<strong>双曲正切函数</strong>、<strong>双曲余切函数</strong>、<strong>双曲正割函数</strong>及<strong>双曲余割函数</strong></p>
+<hr>
+<h2 id="3-初等多值函数">§3 初等多值函数
+</h2><p>设函数$f(z)$在区域$D$内有定义，且对$D$内任意不同的两点$z_1$及$z_2$，都有$f(z_1)\neq f(z_2)$，则称函数$f(z)$在$D$内是<strong>单叶的</strong>，并且称区域$D$为$f(z)$的<strong>单叶性区域</strong></p>
+<p>区域$D$到区域$G$的单叶满变换$\varpi=f(z)$就是$D$到$G$的一一变换</p>
+<hr>
+<h3 id="1辐角函数">1.辐角函数
+</h3><p><strong>辐角函数与辐角改变量</strong></p>
+<p>函数的多值性源于辐角的多值性</p>
+<p>任意一个复数$z(z\neq0)$有无穷多个辐角，<strong>辐角函数</strong>$\varpi=Arg,z$是一个多值函数，定义域是$C$\${0}$</p>
+<p>设$L$是$C$\${0}$内一条简单曲线，$z_0$是$L$的起点，$z_1$是$L$的终点，当$z$沿$L$从$z_0$连续变动到$z_1$时，$\overrightarrow{Oz}$所旋转的角称作$Arg,z$在$L$上的改变量，简称<strong>辐角改变量</strong>，记作$\Delta_LArg,z$</p>
+<p>从$z_0$到$z_1$由于$L$绕原点的方向和圈数不一样，$\Delta_LArg,z$也不一样
+<img src="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E8%BE%90%E8%A7%92.png"
+	width="1033"
+	height="339"
+	srcset="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E8%BE%90%E8%A7%92_hu4080325011624877543.png 480w, /p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E8%BE%90%E8%A7%92_hu7925896123693141686.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="304"
+		data-flex-basis="731px"
+	
+></p>
+<p>在$z_0$取定$Arg,z$的一个值记为$arg,z$，称为$Arg,z$在$z_0$的初值，将$arg,z_0+\Delta_LArg,z$称作$Arg,z$在$z_0$的终值，记作$arg,z$，则$arg,z$依赖于起点的初值和辐角改变量</p>
+<hr>
+<p><strong>单值连续函数</strong></p>
+<p>由于多值函数不方便应用，我们希望将$Arg,z$分解为若干单值连续函数</p>
+<p>由$arg,z=arg,z_0+\Delta_LArg,z$可知，对取定的初值$arg,z_0$，由于$\Delta_LArg,z$在区域$C$\${0}$内不唯一，$arg,z$也不唯一。所以需要寻找使$\Delta_LArg,z$唯一的区域（辐角改变量只与起点、终点位置有关而与曲线形状无关）</p>
+<p>该区域性质与保守场有异曲同工之处，可移用保守场的判定（沿着任何闭合环路积分均为$0$），因此研究简单闭曲线$L\subset$ $C$\${0}$，有</p>
+<blockquote>
+<p>$\Delta_LArg,z=0$，$0$在$L$外部</p>
+<p>$\Delta_LArg,z=2\pi$，$0$在$L$内部</p>
+</blockquote>
+<p>因此，只要能使区域内任一简单闭曲线都不围绕原点$z=0$即可，若将复平面$C$沿负实轴剪开成一单连通开区域记为$G$，则$\Delta_LArg,z$只与$L$的起点和终点有关，而与曲线的形状无关</p>
+<p>在$G$内固定起点$z_0$，取定初值$arg,z_0$，则$arg,z_0+\Delta_LArg,z$就是<strong>单值连续函数</strong>；取定初值$arg,z_0+2\pi$，得另一个单值连续函数；以此类推，取定初值$arg,z_0+2k\pi$，就在$G$内把$Arg,z$分成无穷多个单值连续函数$arg,z+2k\pi,;z\in G,,k\in \mathbb{Z}$</p>
+<hr>
+<h3 id="2根式函数">2.根式函数
+</h3><p><strong>根式函数及其变换</strong></p>
+<p>规定<strong>根式函数</strong>$\varpi=\sqrt[n]{z}$为<strong>幂函数</strong>$z=\varpi^n$的反函数</p>
+<p>如果令$z=re^{i\theta},;\varpi=\rho e^{i\varphi}$，可知$\rho=\sqrt[n]{r},;\varphi=\frac{\theta}{n}$</p>
+<p>即$z$平面到$\varpi$平面的变换为模长开$n$次方根、辐角除以$n$的变换
+<img src="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%8F%98%E6%8D%A2.png"
+	width="1035"
+	height="466"
+	srcset="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%8F%98%E6%8D%A2_hu4824651378274821165.png 480w, /p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%8F%98%E6%8D%A2_hu2152240629617583190.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="222"
+		data-flex-basis="533px"
+	
+></p>
+<hr>
+<p><strong>根式函数的单叶性区域</strong></p>
+<p>为了寻找其单叶性区域，先限定$Arg,z$取$(-\pi,,\pi)$，则该变化使$z$平面压缩到了$-\frac{\pi}{n} &lt; \varphi &lt; \frac{\pi}{n}$的角形区域内，该区域为$\varpi=\sqrt[n]{z}$的一个单叶性区域</p>
+<p>同理，当$Arg,z$取$(\pi,3\pi)$，可划分出第二个单叶性区域$\frac{\pi}{n}&lt;\varphi&lt;\frac{3\pi}{n}$，以此类推，当$Arg,z$取$(-\pi+2k\pi,,\pi+2k\pi)$时，对应的单叶性区域为$(\frac{2k\pi}{n}-\frac{\pi}{n})&lt;\varphi&lt;(\frac{2k\pi}{n}+\frac{\pi}{n})$，当$k$从$0$取到$n-1$时，得到的所有单叶性区域将$\varpi$平面填满，此为函数$\varpi=\sqrt[n]{z}$单叶性区域的一种分法。总之，幂函数$\varpi=\sqrt[n]{z}$的单叶性区域是顶点在原点$z=0$，张度不超过$\frac{2\pi}{n}$的角形区域
+<img src="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%88%86%E6%94%AF.png"
+	width="615"
+	height="273"
+	srcset="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%88%86%E6%94%AF_hu9454672404763855296.png 480w, /p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%88%86%E6%94%AF_hu5359481392221967531.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="225"
+		data-flex-basis="540px"
+	
+></p>
+<hr>
+<p><strong>指数函数的单值解析分支</strong></p>
+<p>只要将$Arg,z$的取值区间范围限定在$2\pi$，所得即为单叶性区域，由前文辐角函数可知，在$z$平面上从原点$O$到点$\infty$任意引一条射线（或一条通向无穷远点的广义简单曲线）将$z$平面割破，构成一个以此<strong>割线</strong>为边界的区域，记为$G$，在此区域上指定一点$z_0$取不同的初值$arg,z_0$，就能各自得到区域内任意的点$z$唯一的辐角，从而得到</p>
+$$\varpi_k=(\sqrt[n]{z})_k=\sqrt[n]{r(z)}e^{i\frac{\theta(z)+2k\pi}{n}}\;(z\in G,\,k=0,\,1,\,…,\,n-1)$$<p>称为$\sqrt[n]{z}$的$n$个<strong>单值连续分支函数</strong>。而分出$\sqrt[n]{z}$的单值解析分支的割线称为$\sqrt[n]{z}$的<strong>支割线</strong>。支割线两侧称为<strong>两岸</strong>，如果支割线接近于平行$x$轴方向就分成<strong>上岸</strong>和<strong>下岸</strong>，如果接近于平行$y$轴方向就分成<strong>左岸</strong>和<strong>右岸</strong>
+<img src="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%88%86%E6%94%AF%E4%BE%8B.png"
+	width="1040"
+	height="491"
+	srcset="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%88%86%E6%94%AF%E4%BE%8B_hu1387105367054908801.png 480w, /p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%88%86%E6%94%AF%E4%BE%8B_hu13903390055364720175.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="211"
+		data-flex-basis="508px"
+	
+></p>
+<p>对于$\varpi_k=(\sqrt[n]{z})_k$的单值解析分支，有</p>
+<p>$\frac{\mathrm{d} }{\mathrm{d} z}(\sqrt[n]{z})_k=\frac{1}{n}\frac{(\sqrt[n]{z})_k}{z};(z\in G,,k=0,,1,,…,,n-1)$</p>
+<hr>
+<p><strong>支点</strong></p>
+<p>假设有一点，在此点的充分小邻域内，作一个包围此点的圆周$\Gamma$，当变点$z$从$\Gamma$上一点除法，绕$\Gamma$连续变动一周而回到其出发点时，多值函数从其一支变到另外一支，则该点称为此多值函数的<strong>支点</strong>（可以理解为该圆周$\Gamma$跨过了划分单值连续分支函数的支割线），$\sqrt[n]{z}$以$z=0$和$z=\infty$为支点，推广到$\sqrt[n]{z-a}$则以$z=a$和$z=\infty$为支点</p>
+<hr>
+<h3 id="3对数函数">3.对数函数
+</h3><p>规定<strong>对数函数</strong>$\varpi=Ln,z$为<strong>指数函数</strong>$e^{\varpi}=z$的反函数</p>
+<p>如果令${z=re^{i\theta}},;\varpi=u+iv$，可得$u=\ln,r,,v=\theta+2k\pi,(k\in\mathbb{Z})$</p>
+<p>故方程的全部根是$Ln,z=\ln,r+i(\theta+2k\pi)=\ln,|z|+i(arg,z+2k\pi),(k\in\mathbb{Z})$</p>
+<p>当$k$取确定值时，$Ln,z$的对应值记为$(\ln,z)_k$</p>
+<p><strong>基本性质</strong></p>
+<p>$Ln(z_1z_2)=Ln,z_1+Ln,z_2$</p>
+<p>$Ln(\frac{z_1}{z_2})=Ln,z_1-Ln,z_2$</p>
+<p>$(z_1,,z_2\neq0,,\infty)$</p>
+<hr>
+<p><strong>对数函数的单值解析分支</strong></p>
+<p>由定义可知$z$的辐角决定$\varpi$在平面上的纵坐标，$z$平面中取负实轴为割线限定辐角在$(-\pi,,\pi)$的区域变换为$\varpi$平面上纵坐标在$(-\pi,,\pi)$的带形区域，该区域为$\varpi=Ln,z$的一个单叶性区域。总之，对数函数$\varpi=Ln,z$的单叶性区域是宽为$2\pi$的带形区域
+<img src="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E5%AF%B9%E6%95%B0%E5%8F%98%E6%8D%A2.png"
+	width="1056"
+	height="425"
+	srcset="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E5%AF%B9%E6%95%B0%E5%8F%98%E6%8D%A2_hu8677967949519445960.png 480w, /p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E5%AF%B9%E6%95%B0%E5%8F%98%E6%8D%A2_hu13564889891551505543.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="248"
+		data-flex-basis="596px"
+	
+></p>
+<p>$\varpi=Ln,z$的无穷多个单值连续分支函数为</p>
+$$\varpi_k=(\ln\,z)_k=\ln\,r(z)+i[\theta(z)+2k\pi]\;(z\in G,\,k\in\mathbb{z})$$<p>支点为$z=0$和$z=\infty$，支割线为连接$z=0$和$z=\infty$的广义简单曲线，且有</p>
+<p>$\frac{\mathrm{d}}{\mathrm{d}z}(\ln,z)_k=\frac{1}{z};(z\in G,,k\in\mathbb{z})$
+<img src="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E5%AF%B9%E6%95%B0%E5%88%86%E6%94%AF.png"
+	width="1025"
+	height="476"
+	srcset="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E5%AF%B9%E6%95%B0%E5%88%86%E6%94%AF_hu17547834237059550805.png 480w, /p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E5%AF%B9%E6%95%B0%E5%88%86%E6%94%AF_hu7340905266411123409.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="215"
+		data-flex-basis="516px"
+	
+>
+<img src="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E5%AF%B9%E6%95%B0%E5%88%86%E6%94%AF%E4%BE%8B.png"
+	width="1019"
+	height="610"
+	srcset="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E5%AF%B9%E6%95%B0%E5%88%86%E6%94%AF%E4%BE%8B_hu16409839793379116110.png 480w, /p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E5%AF%B9%E6%95%B0%E5%88%86%E6%94%AF%E4%BE%8B_hu7329111693013934763.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="167"
+		data-flex-basis="400px"
+	
+></p>
+<hr>
+<h3 id="4一般幂函数与一般指数函数">4.一般幂函数与一般指数函数
+</h3><p><strong>一般幂函数</strong></p>
+<p>$\varpi=z^\alpha=e^{\alpha Ln,z}(z\ne0,,\infty;,\alpha\in\mathbb{R})$称为$z$的<strong>一般幂函数</strong></p>
+<p>设$(\ln,z)_0$表示$Ln,z$中的任意一个确定的值，则</p>
+$$z^\alpha=e^{\alpha Ln\,z}=e^{\alpha[(\ln z)_0+2k\pi i]}=\varpi_0e^{2k\pi i\alpha}\;(k\in\mathbb{Z})$$<p>其中$\varpi_0=e^{\alpha(\ln z)_0}$表示$z^{\alpha}$所有的值中的一个</p>
+<blockquote>
+<p>讨论$\alpha$的如下三种情形：</p>
+<p>$(1)\alpha$是一整数$n$，此时$e^{2k\pi in}=1$，$z^\alpha$是$z$的单值函数</p>
+<p>$(2)\alpha$是一有理数$\frac{q}{p}$，此时$e^{2k\pi i\frac{q}{p}}$只能取$k=0,,1,,2,,…,,p-1$总共$p$个不同的值（参考根式函数），$z^{\frac{q}{p}}=\varpi_0e^{2k\pi i\frac{q}{p}},;k=0,,1,,2,,…,,p-1$</p>
+<p>$(3)\alpha$是一无理数或虚数，此时$e^{2k\pi i\alpha}$有无限个值，$z^\alpha$是无限多值的</p>
+</blockquote>
+<p>对$\varpi=z^\alpha$的每一分支，有$\frac{\mathrm{d}}{\mathrm{d}z}z^\alpha=\alpha z^{\alpha-1}$</p>
+<hr>
+<p><strong>一般指数函数</strong></p>
+<p>$\varpi=\alpha^z=e^{zLn,\alpha}(\alpha\ne0,\infty,为一复常数)$称为<strong>一般指数函数</strong>，是无穷多个独立的、在$z$平面上单值解析的函数（取决于$Ln,\alpha$的取值）</p>
+<hr>
+<h3 id="5具有多个有限支点的情形">5.具有多个有限支点的情形
+</h3><p>讨论函数$\varpi=f(z)=\sqrt[n]{P(z)}$的支点，其中$P(z)$是任意的$N$次多项式$A(z-a_1)^{\alpha_1}…(z-a_m)^{\alpha_m}$</p>
+<p>$a_1,,a_2,,…,,a_m$是$P(z)$的一切<strong>相异零点</strong>，$\alpha_1,,\alpha_2,,…,,\alpha_m$分别是它们的<strong>重数</strong>，满足$\alpha_1+\alpha_2+…+\alpha_m=N$</p>
+<p>根据根式函数和复数乘法对复数辐角的改变法则，可知沿一简单闭曲线$C$，$f(z)$的辐角改变量$\Delta_carg,f(z)=\frac{1}{n}(\alpha_1\Delta_carg,(z-a_1)+…+\alpha_m\Delta_carg,(z-a_m))$</p>
+<blockquote>
+<p>研究简单闭曲线$C$包围相异零点所有组合的情况，可以得到下列结论：</p>
+<p>$(1)f(z)$可能的支点是所有相异零点和$\infty$</p>
+<p>$(2)$当且仅当$n$不能整除$\alpha_i$时，$a_i$是$f(z)$的支点</p>
+<p>$(3)$当且仅当$n$不能整除$N$时，$\infty$是$f(z)$的支点</p>
+<p>$(4)$如果$n$能整除所有重数中若干个之和，则相异零点中对应的那几个就可以连接成割线抱成团，即变点$z$沿只包含这些相异零点在其内部的简单闭曲线转一周后函数值不变。抱团的点可能不止一个，其余不入团的点则与点$\infty$连接成一条割线</p>
+</blockquote>
+<hr>
+<p>由已给单值解析分支$f(z)$的初值$f(z_1)$计算终值$f(z_2)$，先计算当$z$从$z_1$沿曲线$C$（不穿过支割线）到终点$z_2$时，$f(z)$的辐角连续改变量$\Delta_carg,f(z)$，再计算终值</p>
+$$f(z_2)=|f(z_2)|e^{i\Delta_carg\,f(z)}\cdot e^{iarg\,f(z_1)}$$<hr>
+<h3 id="6反三角函数与反双曲函数">6.反三角函数与反双曲函数
+</h3><p><strong>反正切函数</strong>$Arctan,z=\frac{1}{2i}Ln\frac{1+iz}{1-iz}$</p>
+<p><strong>反正弦函数</strong>$Arcsin,z=\frac{1}{i}Ln(iz+\sqrt{1-z^2})$</p>
+<p><strong>反余弦函数</strong>$Arccos,z=\frac{1}{i}Ln(z+i\sqrt{1-z^2})$</p>
+<p><strong>反双曲余弦函数</strong>$Arcosh,z=Ln(z+\sqrt{z^2-1})$</p>
+<p><strong>反双曲正弦函数</strong>$Arsinh,z=Ln(z+\sqrt{z^2+1})$</p>
+<p><strong>反双曲正切函数</strong>$Artanh,z=\frac{1}{2}Ln\frac{1+z}{1-z}$</p>
+<p>其中对数是无穷多值的，根式是二值的，因此反三角函数和反双曲函数是无穷多值的，其分成单值解析分支的方法与前文讨论方法类似</p>
+<hr>
+<p><strong>本章完</strong></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【复变函数论】Ep1.复数与复变函数</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep3.操作臂（正向）运动学</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep2.2.空间描述和变换-2</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep2.1.空间描述和变换-1</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep1.概述</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 一杯为品
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

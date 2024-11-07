@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="在机器人领域，机械臂（操作臂）是起步最早、现今最成熟的技术，而机器人学知识也跟随此路线发展而来，因此对机器人知识的学习从机械臂开始">
+<title>【机器人学导论】Ep1.概述</title>
+
+<link rel='canonical' href='https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【机器人学导论】Ep1.概述">
+<meta property='og:description' content="在机器人领域，机械臂（操作臂）是起步最早、现今最成熟的技术，而机器人学知识也跟随此路线发展而来，因此对机器人知识的学习从机械臂开始">
+<meta property='og:url' content='https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/'>
+<meta property='og:site_name' content='一杯为品'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-10-30T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-10-30T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="【机器人学导论】Ep1.概述">
+<meta name="twitter:description" content="在机器人领域，机械臂（操作臂）是起步最早、现今最成熟的技术，而机器人学知识也跟随此路线发展而来，因此对机器人知识的学习从机械臂开始">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu16835031703737007367.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🐦</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一杯为品</a></h1>
+            <h2 class="site-description">哈工大2023届智能机器人班在读，在努力成为机器人、人工智能、硬件工程多面手的路上</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://blog.csdn.net/mojin2005?spm=1010.2135.3001.5343'
+                        target="_blank"
+                        title="CSDN"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M48 0H0V48H48V0ZM25.9509 14.1922C27.8907 14.578 29.6725 15.5304 31.0711 16.9289C31.8521 17.71 33.1184 17.71 33.8995 16.9289C34.6805 16.1479 34.6805 14.8816 33.8995 14.1005C31.9416 12.1426 29.447 10.8092 26.7313 10.269C24.0155 9.72882 21.2006 10.0061 18.6424 11.0657C16.0843 12.1253 13.8978 13.9197 12.3594 16.222C10.8211 18.5243 10 21.2311 10 24C10 26.7689 10.8211 29.4757 12.3594 31.778C13.8978 34.0803 16.0843 35.8747 18.6424 36.9343C21.2006 37.9939 24.0155 38.2712 26.7313 37.731C29.447 37.1908 31.9416 35.8574 33.8995 33.8995C34.6805 33.1185 34.6805 31.8521 33.8995 31.0711C33.1184 30.29 31.8521 30.29 31.0711 31.0711C29.6725 32.4696 27.8907 33.422 25.9509 33.8079C24.0111 34.1937 22.0004 33.9957 20.1732 33.2388C18.3459 32.4819 16.7841 31.2002 15.6853 29.5557C14.5865 27.9112 14 25.9778 14 24C14 22.0222 14.5865 20.0888 15.6853 18.4443C16.7841 16.7998 18.3459 15.5181 20.1732 14.7612C22.0004 14.0043 24.0111 13.8063 25.9509 14.1922Z" fill="#333333"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/INKEM'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#知识体系">知识体系</a></li>
+    <li><a href="#操作臂的力学与控制">操作臂的力学与控制</a>
+      <ol>
+        <li><a href="#位置和姿态的描述">位置和姿态的描述</a></li>
+        <li><a href="#操作臂正运动学">操作臂正运动学</a></li>
+        <li><a href="#操作臂逆运动学">操作臂逆运动学</a></li>
+        <li><a href="#速度静力奇异点">速度，静力，奇异点</a></li>
+        <li><a href="#动力学">动力学</a></li>
+        <li><a href="#轨迹生成">轨迹生成</a></li>
+        <li><a href="#操作臂设计与传感器">操作臂设计与传感器</a></li>
+        <li><a href="#线性位置控制">线性位置控制</a></li>
+        <li><a href="#非线性位置控制">非线性位置控制</a></li>
+        <li><a href="#力控制">力控制</a></li>
+        <li><a href="#机器人编程">机器人编程</a></li>
+        <li><a href="#离线编程与仿真">离线编程与仿真</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" >
+                学习笔记
+            </a>
+        
+            <a href="/categories/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BA/" >
+                机器人学导论
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/">【机器人学导论】Ep1.概述</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            在机器人领域，机械臂（操作臂）是起步最早、现今最成熟的技术，而机器人学知识也跟随此路线发展而来，因此对机器人知识的学习从机械臂开始
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 30, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 5 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p>主要参考学习资料：</p>
+<p>《机器人学导论（第4版）》John J.Craig著</p>
+<p>台大机器人学之运动学——林沛群</p>
+<p>前置课程：博主目前只对线性代数和理论力学方面有一定基础，学习过程中遇到额外必要的前置知识我会做补充或者开辟新的知识笔记专栏</p>
+</blockquote>
+<hr>
+<h1 id="概述">概述
+</h1><p>本章简要介绍机器人学导论中的基础名词和学习内容，具体内容将在后续展开</p>
+<hr>
+<h2 id="知识体系">知识体系
+</h2><p>本知识笔记以《机器人学导论》一书为主，书中内容结构如下：</p>
+<p>第1章 概述</p>
+<p>第2章 空间描述和变换</p>
+<p>第3章 操作臂运动学</p>
+<p>第4章 操作臂逆运动学</p>
+<p>第5章 雅可比：速度和静力</p>
+<p>第6章 操作臂动力学</p>
+<p>第7章 轨迹生成</p>
+<p>第8章 操作臂的机构设计</p>
+<p>第9章 操作臂的线性控制</p>
+<p>第10章 操作臂的非线性控制</p>
+<p>第11章 操作臂的力控制</p>
+<p>第12章 机器人编程语言及编程系统</p>
+<p>第13章 离线编程系统</p>
+<hr>
+<h2 id="操作臂的力学与控制">操作臂的力学与控制
+</h2><p>在机器人领域，<strong>机械臂</strong>（<strong>操作臂</strong>）是起步最早、现今最成熟的技术，而机器人学知识也跟随此路线发展而来，因此对机器人知识的学习从机械臂开始</p>
+<p>以下内容将按顺序在书中后面12个章节一一讨论</p>
+<hr>
+<h3 id="位置和姿态的描述">位置和姿态的描述
+</h3><p>研究机器人学需要考虑三维空间中物体的空间状态，可以用两个重要特性描述：<strong>位置</strong>和<strong>姿态</strong></p>
+<p>为了用数学方法表示和计算这些参量，我们一般在物体上设置一个<strong>坐标系（位姿）</strong>，然后在某个参考坐标系中描述该位姿的位置和姿态</p>
+<p>任意位姿都能用作参考坐标系，因此我们经常将物体空间属性的描述从一个位姿<strong>变换</strong>到另一个位姿
+<img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E4%BD%8D%E5%A7%BF.png"
+	width="515"
+	height="476"
+	srcset="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E4%BD%8D%E5%A7%BF_hu15512684215587645714.png 480w, /p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E4%BD%8D%E5%A7%BF_hu8356007772408231576.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="108"
+		data-flex-basis="259px"
+	
+></p>
+<hr>
+<h3 id="操作臂正运动学">操作臂正运动学
+</h3><p><strong>运动学</strong>研究物体的运动而不考虑引起这种运动的力，操作臂运动学的研究对象为运动的全部几何和时间特性（位置、速度、加速度和位置变量对于其他变量的高阶微分）</p>
+<p>大部分操作臂由刚性<strong>连杆</strong>组成，相邻连杆由<strong>关节</strong>连接，允许相对转动</p>
+<p>如果是<strong>转动关节</strong>，两个相邻连杆的相对位移被称为关节角；如果是<strong>滑（移）动关节</strong>，位移被称为<strong>关节偏移量</strong></p>
+<p>操作臂<strong>自由度</strong>的个数是使操作臂具有确定运动时必须给出的独立运动的数目，或操作臂独立驱动的关节数</p>
+<p>组成操作臂运动链的自由端称为<strong>末端执行器</strong>，通常采用末端执行器上的<strong>工具坐标系</strong>相对于操作臂固定底座的<strong>基坐标系</strong>来描述操作臂的位置</p>
+<p><strong>正运动学</strong>根据已知的各个关节的关节角计算末端执行器的位置和姿态，这个过程被称为从<strong>关节空间</strong>描述到<strong>笛卡尔空间</strong>描述的操作臂位置表示</p>
+<p><em>笛卡尔空间：用三个变量描述空间一点的位置，用另外三个变量描述物体的姿态</em></p>
+<hr>
+<h3 id="操作臂逆运动学">操作臂逆运动学
+</h3><p><strong>逆运动学</strong>根据给定的末端执行器的位置和姿态计算所有关节可达到给定位置和姿态的关节角</p>
+<p>逆运动学计算涉及的运动学方程的解的存在性定义了操作臂的<strong>工作空间</strong> <em>（末端执行器活动范围）</em>
+<img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E8%BF%90%E5%8A%A8%E5%AD%A6.png"
+	width="745"
+	height="452"
+	srcset="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E8%BF%90%E5%8A%A8%E5%AD%A6_hu9116584054419310379.png 480w, /p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E8%BF%90%E5%8A%A8%E5%AD%A6_hu6164801150757213213.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="164"
+		data-flex-basis="395px"
+	
+></p>
+<hr>
+<h3 id="速度静力奇异点">速度，静力，奇异点
+</h3><p>除了静态定位问题，对于运动中的操作臂，我们定义<strong>雅可比矩阵</strong>来方便地进行机构的速度分析</p>
+<p>雅可比矩阵定义了从关节空间速度向笛卡尔空间速度的<strong>映射</strong></p>
+<p>在<strong>奇异点</strong>，这种映射不可逆（给定的末端执行器的运动状态超出了关节运动能力的限制），同时某些关节的运动可能无法引起末端执行器的有效运动，称为<strong>局部退化</strong></p>
+<p>当操作臂接触工件或工作面，并施加一个静力，需要解决如何设定<strong>关节力矩</strong>来产生要求的接触力和力矩</p>
+<hr>
+<h3 id="动力学">动力学
+</h3><p><strong>动力学</strong>研究产生运动所需要的力</p>
+<p>控制操作臂末端执行器的运动速度需要关节驱动器产生一组复杂的<strong>扭矩函数</strong>来实现，取决于末端执行器的运动路径和速度、连杆的质量特性和负载、关节摩擦等，扭矩函数通过操作臂动力学方程来求解，用于操作臂的控制和仿真</p>
+<hr>
+<h3 id="轨迹生成">轨迹生成
+</h3><p>计算每个关节运动的连续函数来平稳控制操作臂从一点运动到另外一点的过程为<strong>轨迹生成</strong></p>
+<p>操作臂从起点到目标点需要确定一些中间<strong>路径点</strong>，通过一系列路径点的连续函数被称为<strong>样条函数</strong></p>
+<p><strong>笛卡尔轨迹生成</strong>将末端执行器的期望运动转化为一系列等效的关节运动
+<img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E8%BF%90%E5%8A%A8%E5%AD%A62.png"
+	width="761"
+	height="387"
+	srcset="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E8%BF%90%E5%8A%A8%E5%AD%A62_hu13699410036776569814.png 480w, /p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E8%BF%90%E5%8A%A8%E5%AD%A62_hu12128017618298807650.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="196"
+		data-flex-basis="471px"
+	
+></p>
+<hr>
+<h3 id="操作臂设计与传感器">操作臂设计与传感器
+</h3><p>为特定任务设计的机器人为专用机器人，能够完成各种任务的为通用机器人。从经济角度考虑，操作臂的机械设计由期望执行的任务决定，设计者需考虑几何尺寸、速度、承载能力、关节的数量与几何布局等因素，这些因素影响了操作臂工作空间的大小和性质、操作臂结构的刚度以及其他属性</p>
+<p>完整的操作臂设计还包括：驱动器的选择和位置、传动系统以及内部位置传感器（有时是力传感器）</p>
+<hr>
+<h3 id="线性位置控制">线性位置控制
+</h3><p><strong>位置控制系统</strong>不仅包括理想状态下产生期望运动的力矩的计算，更要考虑自动补偿由于系统参数引起的误差以及抑制引起系统偏离期望轨迹的扰动。为此，通过<strong>控制算法</strong>对位置和速度<strong>传感器</strong>进行检测，计算出驱动器的扭矩指令。第9章讨论基于操作臂动力学的线性近似得出的控制算法</p>
+<hr>
+<h3 id="非线性位置控制">非线性位置控制
+</h3><p>考虑操作臂完整的非线性动力学的<strong>非线性控制</strong>算法，比简单的线性控制方法性能更好</p>
+<hr>
+<h3 id="力控制">力控制
+</h3><p>当操作臂在自由空间中运动时，只有位置控制有意义</p>
+<p>当接触零件、工具或工作表面时，操作臂控制力的能力极其重要</p>
+<p>当操作臂在部分方向受到作用表面约束时，需要采用<strong>混合</strong>控制方式，在某些方向用<strong>位置控制规律</strong>来控制，而其余方向用<strong>力控制规律</strong>来控制</p>
+<hr>
+<h3 id="机器人编程">机器人编程
+</h3><p><strong>机器人编程语言</strong>是用户和工业机器人交互的接口</p>
+<p>操作者指定操作臂末端执行器的一个特殊点为<strong>操作点</strong>，也叫<strong>TCP（工具中心点）</strong></p>
+<p>通过一系列路径点确定路径，同时确定不同路径段上TCP的速度，依据这些输入，轨迹生成算法规划处机器人运动的所有细节。轨迹生成的输入问题由机器人编程语言的指令来给出</p>
+<hr>
+<h3 id="离线编程与仿真">离线编程与仿真
+</h3><p><strong>离线编程系统</strong>是一种机器人编程环境，可以在不需要机器人停机的状态下对机器人进行编程，也可以在没有做出机器人实物的情况下对机器人设计进行<strong>仿真</strong></p>
+<hr>
+<p><strong>本章完</strong></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep3.操作臂（正向）运动学</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep2.2.空间描述和变换-2</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep2.1.空间描述和变换-1</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【复变函数论】Ep2.解析函数</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【复变函数论】Ep1.复数与复变函数</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 一杯为品
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

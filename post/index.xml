@@ -7,436 +7,1201 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>一杯为品</copyright>
-        <lastBuildDate>Wed, 06 Nov 2024 23:20:50 +0800</lastBuildDate><atom:link href="https://INKEM.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Update0</title>
-        <link>https://INKEM.github.io/p/update0/</link>
-        <pubDate>Wed, 06 Nov 2024 23:20:50 +0800</pubDate>
+        <lastBuildDate>Wed, 06 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://INKEM.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【机器人学导论】Ep3.操作臂（正向）运动学</title>
+        <link>https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/</link>
+        <pubDate>Wed, 06 Nov 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://INKEM.github.io/p/update0/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Chinese Test</title>
-        <link>https://INKEM.github.io/p/test-chinese/</link>
-        <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
-        
-        <guid>https://INKEM.github.io/p/test-chinese/</guid>
-        <description>&lt;img src="https://INKEM.github.io/p/test-chinese/helena-hertz-wWZzXlDpMog-unsplash.jpg" alt="Featured image of post Chinese Test" /&gt;&lt;h2 id=&#34;正文测试&#34;&gt;正文测试
-&lt;/h2&gt;&lt;p&gt;而这些并不是完全重要，更加重要的问题是， 带着这些问题，我们来审视一下学生会退会。 既然如何， 对我个人而言，学生会退会不仅仅是一个重大的事件，还可能会改变我的人生。 我们不得不面对一个非常尴尬的事实，那就是， 可是，即使是这样，学生会退会的出现仍然代表了一定的意义。 学生会退会，发生了会如何，不发生又会如何。 经过上述讨论， 生活中，若学生会退会出现了，我们就不得不考虑它出现了的事实。 学生会退会，到底应该如何实现。 这样看来， 在这种困难的抉择下，本人思来想去，寝食难安。 对我个人而言，学生会退会不仅仅是一个重大的事件，还可能会改变我的人生。 就我个人来说，学生会退会对我的意义，不能不说非常重大。 莎士比亚曾经提到过，人的一生是短的，但如果卑劣地过这一生，就太长了。这似乎解答了我的疑惑。 莫扎特说过一句富有哲理的话，谁和我一样用功，谁就会和我一样成功。这启发了我， 对我个人而言，学生会退会不仅仅是一个重大的事件，还可能会改变我的人生。 学生会退会，到底应该如何实现。 一般来说， 从这个角度来看， 这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。 在这种困难的抉择下，本人思来想去，寝食难安。 了解清楚学生会退会到底是一种怎么样的存在，是解决一切问题的关键。 一般来说， 生活中，若学生会退会出现了，我们就不得不考虑它出现了的事实。 问题的关键究竟为何？ 而这些并不是完全重要，更加重要的问题是。&lt;/p&gt;
-&lt;p&gt;奥斯特洛夫斯基曾经说过，共同的事业，共同的斗争，可以使人们产生忍受一切的力量。　带着这句话，我们还要更加慎重的审视这个问题： 一般来讲，我们都必须务必慎重的考虑考虑。 既然如此， 这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。 带着这些问题，我们来审视一下学生会退会。 我认为， 我认为， 在这种困难的抉择下，本人思来想去，寝食难安。 问题的关键究竟为何？ 每个人都不得不面对这些问题。 在面对这种问题时， 要想清楚，学生会退会，到底是一种怎么样的存在。 我认为， 既然如此， 每个人都不得不面对这些问题。 在面对这种问题时， 那么， 我认为， 学生会退会因何而发生。&lt;/p&gt;
-&lt;h2 id=&#34;引用&#34;&gt;引用
-&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;思念是最暖的忧伤像一双翅膀&lt;br&gt;
-让我停不了飞不远在过往游荡&lt;br&gt;
-不告而别的你 就算为了我着想&lt;br&gt;
-这么沉痛的呵护 我怎么能翱翔&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=3aypp_YlBzI&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;最暖的憂傷 - 田馥甄&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+        <guid>https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;主要参考学习资料及插图来源：&lt;/p&gt;
+&lt;p&gt;《机器人学导论（第4版）》John J.Craig著&lt;/p&gt;
+&lt;p&gt;台大机器人学之运动学——林沛群&lt;/p&gt;
+&lt;p&gt;本章数理基础：矩阵的四则运算&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;图片&#34;&gt;图片
-&lt;/h2&gt;&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/test-chinese/florian-klauer-nptLmg6jqDo-unsplash.jpg&#34;
-	width=&#34;667&#34;
-	height=&#34;1000&#34;
-	srcset=&#34;https://INKEM.github.io/p/test-chinese/florian-klauer-nptLmg6jqDo-unsplash_hu13768363498926278726.jpg 480w, https://INKEM.github.io/p/test-chinese/florian-klauer-nptLmg6jqDo-unsplash_hu13380208884366868750.jpg 1024w&#34;
+&lt;h1 id=&#34;操作臂正向运动学&#34;&gt;操作臂（正向）运动学
+&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;运动学&lt;/strong&gt;讨论运动状态本身，不涉及产生运动的力&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;连杆的描述&#34;&gt;连杆的描述
+&lt;/h2&gt;&lt;hr&gt;
+&lt;h3 id=&#34;连杆参数&#34;&gt;连杆参数
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;关节&lt;/strong&gt;（Joint）分为移动关节和旋转关节，每个关节有一个自由度，对一个特定的轴移动或转动&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;连杆&lt;/strong&gt;（Link）为连接关节的杆件，视作刚体&lt;/p&gt;
+&lt;p&gt;连杆的编号从固定基座开始，称固定基座为连杆0，第一个可动连杆为连杆1，以此类推，操作臂最末端的连杆为连杆n&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;单个连杆：连杆长度和连杆扭转角&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;连杆$i-1$连接了关节轴$i-1$和关节轴$i$，关节轴$i-1$和关节轴$i$之间公垂线长度$a_{i-1}$为&lt;strong&gt;连杆长度&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;作一平面与两关节轴公垂线垂直，关节轴$i-1$和关节轴$i$在该平面上投影的夹角$\alpha_{i-1}$为&lt;strong&gt;连杆扭转角&lt;/strong&gt;（即空间中两直线夹角的定义）
+&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/1.png&#34;
+	width=&#34;750&#34;
+	height=&#34;577&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/1_hu10898899399360834005.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/1_hu12650047876164823889.png 1024w&#34;
 	loading=&#34;lazy&#34;
-	
-		alt=&#34;Photo by Florian Klauer on Unsplash&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;66&#34;
-		data-flex-basis=&#34;160px&#34;
+		data-flex-grow=&#34;129&#34;
+		data-flex-basis=&#34;311px&#34;
 	
-&gt;  &lt;img src=&#34;https://INKEM.github.io/p/test-chinese/luca-bravo-alS7ewQ41M8-unsplash.jpg&#34;
-	width=&#34;1000&#34;
-	height=&#34;667&#34;
-	srcset=&#34;https://INKEM.github.io/p/test-chinese/luca-bravo-alS7ewQ41M8-unsplash_hu1712544344331247820.jpg 480w, https://INKEM.github.io/p/test-chinese/luca-bravo-alS7ewQ41M8-unsplash_hu12475395149584884402.jpg 1024w&#34;
+&gt;
+&lt;em&gt;平面图像表达空间关系可能存在视错觉，需结合文字描述来分析&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;多杆串连：连杆偏距和关节角&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;关节轴$i$上的两个相邻连杆沿公共轴线方向的距离$d_i$为&lt;strong&gt;连杆偏距&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;两个相邻连杆绕公共轴线旋转的夹角$\theta_i$为&lt;strong&gt;关节角&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;对于首端连杆（固定基座）和末端连杆（末端执行器），习惯设定$a_0=a_n=0$，$\alpha_0=\alpha_n=0$&lt;/p&gt;
+&lt;p&gt;对于关节$1$，若为转动关节，$\theta_1$任取，$d_1=0$；若为移动关节，$d_1$任取，$\theta_1=0$。关节$n$同理
+&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/2.png&#34;
+	width=&#34;860&#34;
+	height=&#34;589&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/2_hu4006809544826190360.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/2_hu17983708968411505105.png 1024w&#34;
 	loading=&#34;lazy&#34;
-	
-		alt=&#34;Photo by Luca Bravo on Unsplash&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;149&#34;
-		data-flex-basis=&#34;359px&#34;
+		data-flex-grow=&#34;146&#34;
+		data-flex-basis=&#34;350px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/test-chinese/helena-hertz-wWZzXlDpMog-unsplash.jpg&#34;
-	width=&#34;1000&#34;
-	height=&#34;750&#34;
-	srcset=&#34;https://INKEM.github.io/p/test-chinese/helena-hertz-wWZzXlDpMog-unsplash_hu8363585391189779282.jpg 480w, https://INKEM.github.io/p/test-chinese/helena-hertz-wWZzXlDpMog-unsplash_hu15102473124145023839.jpg 1024w&#34;
+&lt;p&gt;&lt;strong&gt;连杆参数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;由此，机器人的每个连杆都可以用上述四个运动学参数来描述&lt;/p&gt;
+&lt;p&gt;对于转动关节，$\theta_i$为关节变量，其他三个连杆参数固定不变；对于移动关节，$d_i$为关节变量，其他三个连杆参数固定不变。这种用连杆参数描述机构运动关系的规则称为&lt;strong&gt;Denavit-Hartenberg方法（简称D-H表示法）&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;连杆坐标系&#34;&gt;连杆坐标系
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;中间连杆坐标系&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;按以下方法确定连杆上的固连坐标系${i}$：&lt;/p&gt;
+&lt;p&gt;原点位于公垂线$a_i$与关节轴$i$的交点处&lt;/p&gt;
+&lt;p&gt;$\hat{Z}_i$轴与关节轴$i$重合&lt;/p&gt;
+&lt;p&gt;$\hat{X}_i$轴：当$a_i\ne0$，沿$a_i$方向由关节$i$指向关节$i+1$；当$a_i=0$，垂直于$\hat{Z}&lt;em&gt;i$和$\hat{Z}&lt;/em&gt;{i+1}$所在的平面&lt;/p&gt;
+&lt;p&gt;$\hat{Y}_i$轴由右手定则确定&lt;/p&gt;
+&lt;p&gt;由于$\hat{Z}_i$轴可选取两个方向，且当关节轴$i$与$i+1$相交时$\hat{X}_i$轴可选取两个方向，建立的坐标系并不唯一
+&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/3.png&#34;
+	width=&#34;875&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/3_hu9998783910083502393.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/3_hu7351596980606407478.png 1024w&#34;
 	loading=&#34;lazy&#34;
-	
-		alt=&#34;Photo by Helena Hertz on Unsplash&#34;
 	
 	
 		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;133&#34;
-		data-flex-basis=&#34;320px&#34;
-	
-&gt;  &lt;img src=&#34;https://INKEM.github.io/p/test-chinese/hudai-gayiran-3Od_VKcDEAA-unsplash.jpg&#34;
-	width=&#34;667&#34;
-	height=&#34;1000&#34;
-	srcset=&#34;https://INKEM.github.io/p/test-chinese/hudai-gayiran-3Od_VKcDEAA-unsplash_hu15886963791847885497.jpg 480w, https://INKEM.github.io/p/test-chinese/hudai-gayiran-3Od_VKcDEAA-unsplash_hu11726476772237334826.jpg 1024w&#34;
-	loading=&#34;lazy&#34;
-	
-		alt=&#34;Photo by Hudai Gayiran on Unsplash&#34;
-	
-	
-		class=&#34;gallery-image&#34; 
-		data-flex-grow=&#34;66&#34;
-		data-flex-basis=&#34;160px&#34;
+		data-flex-grow=&#34;145&#34;
+		data-flex-basis=&#34;350px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-markdown&#34; data-lang=&#34;markdown&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;![&lt;span class=&#34;nt&#34;&gt;Photo by Florian Klauer on Unsplash&lt;/span&gt;](&lt;span class=&#34;na&#34;&gt;florian-klauer-nptLmg6jqDo-unsplash.jpg&lt;/span&gt;)  ![&lt;span class=&#34;nt&#34;&gt;Photo by Luca Bravo on Unsplash&lt;/span&gt;](&lt;span class=&#34;na&#34;&gt;luca-bravo-alS7ewQ41M8-unsplash.jpg&lt;/span&gt;) 
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;![&lt;span class=&#34;nt&#34;&gt;Photo by Helena Hertz on Unsplash&lt;/span&gt;](&lt;span class=&#34;na&#34;&gt;helena-hertz-wWZzXlDpMog-unsplash.jpg&lt;/span&gt;)  ![&lt;span class=&#34;nt&#34;&gt;Photo by Hudai Gayiran on Unsplash&lt;/span&gt;](&lt;span class=&#34;na&#34;&gt;hudai-gayiran-3Od_VKcDEAA-unsplash.jpg&lt;/span&gt;)
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;相册语法来自 &lt;a class=&#34;link&#34; href=&#34;https://typlog.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Typlog&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;首末端连杆坐标系&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;首端连杆坐标系${0}$与关节$1$初始姿态时（关节变量为$0$）的坐标系${1}$重合&lt;/p&gt;
+&lt;p&gt;末端连杆坐标系${N}$原点位于公垂线$a_{N-1}$与关节轴${N}$交点处，$\hat{X}&lt;em&gt;N$轴与$\hat{X}&lt;/em&gt;{N-1}$轴同向&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;连杆坐标系中的D-H表示法&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$a_i=$沿$\hat{X}_i$轴从$\hat{Z}&lt;em&gt;i$移动到$\hat{Z}&lt;/em&gt;{i+1}$的距离&lt;/p&gt;
+&lt;p&gt;$\alpha_i=$绕$\hat{X}_i$轴从$\hat{Z}&lt;em&gt;i$旋转到$\hat{Z}&lt;/em&gt;{i+1}$的角度&lt;/p&gt;
+&lt;p&gt;$d_i=$沿$\hat{Z}&lt;em&gt;i$轴从$\hat{X}&lt;/em&gt;{i-1}$移动到$\hat{X}_i$的距离&lt;/p&gt;
+&lt;p&gt;$\theta_i=$绕$\hat{Z}&lt;em&gt;i$轴从$\hat{X}&lt;/em&gt;{i-1}$旋转到$\hat{X}_i$的角度&lt;/p&gt;
+&lt;p&gt;$a_i&amp;gt;0$，$\alpha_i$、$d_i$和$\theta_i$的值相对于坐标系主轴方向有正负&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;建立连杆坐标系的步骤&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1.画出各关节轴的延长线&lt;/p&gt;
+&lt;p&gt;2.找出相邻关节轴$i$和$i+1$的公垂线或交点，以关节轴$i$和$i+1$的交点或公垂线与关节轴$i$的交点作为连杆坐标系${i}$的原点&lt;/p&gt;
+&lt;p&gt;3.规定$\hat{Z}_i$轴沿关节轴$i$的指向&lt;/p&gt;
+&lt;p&gt;4.规定$\hat{X}_i$轴沿公垂线的指向，若关节轴$i$与$i+1$相交则垂直于关节轴$i$与$i+1$所在的平面&lt;/p&gt;
+&lt;p&gt;5.按右手定则确定$\hat{Y}_i$轴&lt;/p&gt;
+&lt;p&gt;6.补充首末端连杆坐标系&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;坐标系的标准命名&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;基（Base）坐标系${B}$位于操作臂的基座上&lt;/p&gt;
+&lt;p&gt;固定（Settle）坐标系${S}$位置与任务相关，比如工作台的一个角上&lt;/p&gt;
+&lt;p&gt;腕部（Wrist）坐标系${W}$位于操作臂的末端连杆&lt;/p&gt;
+&lt;p&gt;工具（Tool）坐标系${T}$位于机器人所夹持工具的末端&lt;/p&gt;
+&lt;p&gt;目标（Goal）坐标系${G}$是对机器人移动工具到达的位置描述
+&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/5.png&#34;
+	width=&#34;700&#34;
+	height=&#34;607&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/5_hu9534990982299824121.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/5_hu14512689326280933705.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;115&#34;
+		data-flex-basis=&#34;276px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;操作臂运动学&#34;&gt;操作臂运动学
+&lt;/h2&gt;&lt;hr&gt;
+&lt;h3 id=&#34;连杆变换link-transformation&#34;&gt;连杆变换（Link Transformation）
+&lt;/h3&gt;&lt;p&gt;我们希望用四个连杆参数建立起相邻连杆坐标系${i}$和${i-1}$之间的变换关系，即$^{i-1}P=^{i-1}_{i}T^iP$
+&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/4.png&#34;
+	width=&#34;865&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/4_hu17257934097531589896.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/4_hu1217825879124094349.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;144&#34;
+		data-flex-basis=&#34;346px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;我们考虑借由图中标出的四个连杆参数将${i-1}$一步步变换为${i}$&lt;/p&gt;
+&lt;p&gt;将${i-1}$绕$\hat{X}&lt;em&gt;{i-1}$旋转$\alpha&lt;/em&gt;{i-1}$得到${R}$&lt;/p&gt;
+&lt;p&gt;将${R}$沿$\hat{X}&lt;em&gt;R$平移$a&lt;/em&gt;{i-1}$得到${Q}$&lt;/p&gt;
+&lt;p&gt;将${Q}$绕$\hat{Z}_Q$旋转$\theta_i$得到${P}$&lt;/p&gt;
+&lt;p&gt;将${P}$沿$\hat{Z}_P$平移$d_i$得到${i}$&lt;/p&gt;
+&lt;p&gt;于是变换矩阵可写成：&lt;/p&gt;
+&lt;p&gt;$^{i-1}P=^{i-1}_{i}T^iP=^{i-1}_RT^R_QT^Q_PT^P_iT^iP$&lt;/p&gt;
+&lt;p&gt;$^{i-1}&lt;em&gt;{i}T=^{i-1}&lt;em&gt;RT^R_QT^Q_PT^P_iT=R_X(\alpha&lt;/em&gt;{i-1})D_X(a&lt;/em&gt;{i-1})R_Z(\theta_i)D_Z(d_i)$&lt;/p&gt;
+&lt;p&gt;最终计算得到：&lt;/p&gt;
+&lt;p&gt;$^{i-1}&lt;em&gt;{i}T=\begin{bmatrix}c\theta_i&amp;amp;-s\theta_i&amp;amp;0&amp;amp;a&lt;/em&gt;{i-1}\s\theta_ic\alpha_{i-1}&amp;amp;c\theta_ic\alpha_{i-1}&amp;amp;-s\alpha_{i-1}&amp;amp;-s\alpha_{i-1}d_i\s\theta_is\alpha_{i-1}&amp;amp;c\theta_is\alpha_{i-1}&amp;amp;c\alpha_{i-1}&amp;amp;c\alpha_{i-1}d_i\0&amp;amp;0&amp;amp;0&amp;amp;1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;左上角$3\times3$为旋转矩阵，最右列为${i}$的原点相对于${i-1}$的原点的位置矢量&lt;/p&gt;
+&lt;p&gt;计算出各个连杆变换矩阵，将其连乘就能得到${N}$相对于${0}$的变换矩阵：&lt;/p&gt;
+&lt;p&gt;$^0_NT=^0_1T^1_2T^2_3T…^{N-1}_NT$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;驱动器空间关节空间和笛卡尔空间&#34;&gt;驱动器空间、关节空间和笛卡尔空间
+&lt;/h3&gt;&lt;p&gt;对一个具有$n$个自由度的操作臂来说，它的所有连杆位置可由一组$n$个关节变量确定，这样的一组变量被称为$n\times1$的关节向量，所有关节向量组成的空间称为&lt;strong&gt;关节空间（Joint Space）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;至此，我们研究的是如何将已知的关节空间描述转化为在&lt;strong&gt;笛卡尔空间（Cartesian Space）&lt;strong&gt;中的描述，称为&lt;/strong&gt;正向运动学（Forward Kinematics）&lt;/strong&gt;，反之则为&lt;strong&gt;逆运动学（Inverse Kinematics）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;我们一直假设每个运动关节都是直接由某种驱动器驱动，但许多机器人有时用两个驱动器以差动的方式驱动一个关节，有时用直线驱动器通过四连杆机构来驱动旋转关节，而测量操作臂位置的传感器常常安装在驱动器上，因此进行控制器运算时必须把关节向量表示成一组驱动器变量方程，即驱动向量，组成的空间称为&lt;strong&gt;驱动器空间（Actuator Space）&lt;/strong&gt;
+&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/6.png&#34;
+	width=&#34;639&#34;
+	height=&#34;441&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/6_hu17352662843190276247.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/6_hu8158132323483451866.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;144&#34;
+		data-flex-basis=&#34;347px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;本章完&lt;/strong&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
-        <title>Markdown Syntax Guide</title>
-        <link>https://INKEM.github.io/p/markdown-syntax-guide/</link>
-        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+        <title>【机器人学导论】Ep2.2.空间描述和变换-2</title>
+        <link>https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/</link>
+        <pubDate>Sun, 03 Nov 2024 00:00:00 +0000</pubDate>
         
-        <guid>https://INKEM.github.io/p/markdown-syntax-guide/</guid>
-        <description>&lt;img src="https://INKEM.github.io/p/markdown-syntax-guide/pawel-czerwinski-8uZPynIu-rQ-unsplash.jpg" alt="Featured image of post Markdown Syntax Guide" /&gt;&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;
-&lt;h2 id=&#34;headings&#34;&gt;Headings
-&lt;/h2&gt;&lt;p&gt;The following HTML &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt;—&lt;code&gt;&amp;lt;h6&amp;gt;&lt;/code&gt; elements represent six levels of section headings. &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; is the highest section level while &lt;code&gt;&amp;lt;h6&amp;gt;&lt;/code&gt; is the lowest.&lt;/p&gt;
-&lt;h1 id=&#34;h1&#34;&gt;H1
-&lt;/h1&gt;&lt;h2 id=&#34;h2&#34;&gt;H2
-&lt;/h2&gt;&lt;h3 id=&#34;h3&#34;&gt;H3
-&lt;/h3&gt;&lt;h4 id=&#34;h4&#34;&gt;H4
-&lt;/h4&gt;&lt;h5 id=&#34;h5&#34;&gt;H5
-&lt;/h5&gt;&lt;h6 id=&#34;h6&#34;&gt;H6
-&lt;/h6&gt;&lt;h2 id=&#34;paragraph&#34;&gt;Paragraph
-&lt;/h2&gt;&lt;p&gt;Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.&lt;/p&gt;
-&lt;p&gt;Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.&lt;/p&gt;
-&lt;h2 id=&#34;blockquotes&#34;&gt;Blockquotes
-&lt;/h2&gt;&lt;p&gt;The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a &lt;code&gt;footer&lt;/code&gt; or &lt;code&gt;cite&lt;/code&gt; element, and optionally with in-line changes such as annotations and abbreviations.&lt;/p&gt;
-&lt;h4 id=&#34;blockquote-without-attribution&#34;&gt;Blockquote without attribution
-&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;Tiam, ad mint andaepu dandae nostion secatur sequo quae.
-&lt;strong&gt;Note&lt;/strong&gt; that you can use &lt;em&gt;Markdown syntax&lt;/em&gt; within a blockquote.&lt;/p&gt;
+        <guid>https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;主要参考学习资料及插图来源：&lt;/p&gt;
+&lt;p&gt;《机器人学导论（第4版）》John J.Craig著&lt;/p&gt;
+&lt;p&gt;台大机器人学之运动学——林沛群&lt;/p&gt;
+&lt;p&gt;本章前置知识：矢量和矩阵的四则运算-单位矩阵-转置矩阵-逆矩阵-分块矩阵&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&#34;blockquote-with-attribution&#34;&gt;Blockquote with attribution
-&lt;/h4&gt;&lt;blockquote&gt;
-&lt;p&gt;Don&amp;rsquo;t communicate by sharing memory, share memory by communicating.&lt;br&gt;
-— &lt;cite&gt;Rob Pike&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;h1 id=&#34;空间描述和变换2&#34;&gt;空间描述和变换2
+&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&#34;复杂姿态描述&#34;&gt;复杂姿态描述
+&lt;/h2&gt;&lt;p&gt;上一节我们用旋转矩阵来描述姿态，但仅限于绕其中一个主轴的单自由度旋转，且我们得知姿态描述中包含三个独立变量，接下来我们讨论如何用三个参数描述空间中的任意姿态&lt;/p&gt;
+&lt;p&gt;任何三自由度的旋转都可以拆解成三个单自由度的旋转，由于旋转不满足交换律，所以多次旋转的先后顺序需要明确定义。而旋转转轴也需要明确定义，围绕方向固定不动的参考坐标系主轴旋转的拆解方式称为&lt;strong&gt;固定角（Fixed Angles）&lt;/strong&gt;，围绕转动坐标系当下的主轴旋转的拆解方式称为&lt;strong&gt;欧拉角（Euler Angles）&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;x-y-z固定角&#34;&gt;X-Y-Z固定角
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/fixed.png&#34;
+	width=&#34;1346&#34;
+	height=&#34;371&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/fixed_hu5066952770129481013.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/fixed_hu7233878778870655797.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;362&#34;
+		data-flex-basis=&#34;870px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;给定参考坐标系${A}$和我们要描述姿态的坐标系${B}$，从固定角的视角来看，任意姿态的${B}$都可以由以下过程表示：将${B}$与${A}$重合，先绕$\hat{X}_A$旋转$\gamma$角，再绕$\hat{Y}_A$旋转$\beta$角，最后绕$\hat{Z}&lt;em&gt;A$旋转$\alpha$角得到最终的${B}$，因而可以推导${B}$到${A}$的等价旋转矩阵：$^A_BR&lt;/em&gt;{XYZ}(\gamma,\beta,\alpha)=R_Z(\alpha)R_Y(\beta)R_X(\gamma)=\begin{bmatrix}c\alpha&amp;amp;-s\alpha&amp;amp;0\s\alpha&amp;amp;c\alpha&amp;amp;0\0&amp;amp;0&amp;amp;1\end{bmatrix}\begin{bmatrix}c\beta&amp;amp;0&amp;amp;s\beta\0&amp;amp;1&amp;amp;0\-s\beta&amp;amp;0&amp;amp;c\beta\end{bmatrix}\begin{bmatrix}1&amp;amp;0&amp;amp;0\0&amp;amp;c\gamma&amp;amp;-s\gamma\0&amp;amp;s\gamma&amp;amp;c\gamma\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;（矩阵书写顺序与实际旋转操作顺序相反，从旋转一个矢量的角度来看，是因为旋转矩阵乘在矢量的左边，所以右侧的矩阵会先与矢量相乘）&lt;/p&gt;
+&lt;p&gt;(等价旋转矩阵下标表示绕主轴旋转的操作顺序，可以根据实际情况调换)&lt;/p&gt;
+&lt;p&gt;最终得到：&lt;/p&gt;
+&lt;p&gt;$^A_BR_{XYZ}(\gamma,\beta,\alpha)=\begin{bmatrix}c\alpha c\beta&amp;amp;c\alpha c\beta s\gamma-s\alpha c\gamma&amp;amp;c\alpha s\beta c\gamma+s\alpha s\gamma\s\alpha c\beta&amp;amp;s\alpha s\beta s\gamma+c\alpha c\gamma&amp;amp;s\alpha s\beta c\gamma-c\alpha s\gamma\-s\beta&amp;amp;c\beta s\gamma&amp;amp;c\beta c\gamma\end{bmatrix}$①&lt;/p&gt;
+&lt;p&gt;反过来，如果已知旋转矩阵各个元素的数值，逆求三个固定角，令&lt;/p&gt;
+&lt;p&gt;$^A_BR_{XYZ}(\gamma,\beta,\alpha)=\begin{bmatrix}r_{11}&amp;amp;r_{12}&amp;amp;r_{13}\r_{21}&amp;amp;r_{22}&amp;amp;r_{23}\r_{31}&amp;amp;r_{32}&amp;amp;r_{33}\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;则&lt;/p&gt;
+&lt;p&gt;$\left{\begin{matrix}\beta=\mathrm{Atan2}(-r_{31},\sqrt{r_{11}^2+r_{21}^2})\ \alpha=\mathrm{Atan2}(\frac{r_{21}}{c\beta},\frac{r_{11}}{c\beta})\ \gamma=\mathrm{Atan2}(\frac{r_{31}}{c\beta},\frac{r_{33}}{c\beta})\end{matrix}\right.$&lt;/p&gt;
+&lt;p&gt;$(\beta\neq 90^{\circ})$&lt;/p&gt;
+&lt;p&gt;（式中$\mathrm{Atan2}(y,x)=arctan\frac{y}{x}$，即反正切函数的双参量表示法，可以根据$x$和$y$的符号判别角的象限，而单输入值的反正切函数无法区分）&lt;/p&gt;
+&lt;p&gt;上式中$\cos\beta$只考虑正根以得到单解来建立各种姿态表示法之间一一对应的映射函数，但在某些情况下有必要求出所有的解，会在第四章说明&lt;/p&gt;
+&lt;p&gt;如果$\beta=90^{\circ}$，则只能求出$\alpha$和$\gamma$的和或差，在这种情况下一般取$\alpha=0$，$\gamma=\left{\begin{matrix}\mathrm{Atan2}(r_{12},r_{22})(\beta=90^{\circ})\-\mathrm{Atan2}(r_{12},r_{22})(\beta=-90^{\circ})\end{matrix}\right.$&lt;/p&gt;
+&lt;p&gt;结合式①即可理解求解公式的推导&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;z-y-x欧拉角&#34;&gt;Z-Y-X欧拉角
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/euler.png&#34;
+	width=&#34;1201&#34;
+	height=&#34;329&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/euler_hu3914909503840590620.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/euler_hu11500101461501987300.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;365&#34;
+		data-flex-basis=&#34;876px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;给定参考坐标系${A}$和我们要描述姿态的坐标系${B}$，从欧拉角的视角来看，任意姿态的${B}$都可以由以下过程表示：将${B}$与${A}$重合，先绕$\hat{Z}&lt;em&gt;B$转$\alpha$角得到${B&amp;rsquo;}$，再绕$\hat{Y}&lt;/em&gt;{B&amp;rsquo;}$转$\beta$角得到${B&amp;rsquo;&amp;rsquo;}$，最后绕$\hat{X}_{B&amp;rsquo;&amp;rsquo;}$转$\gamma$角得到最终的${B}$（欧拉角选取转轴的顺序与固定角相反，原因会在下面解释）&lt;/p&gt;
+&lt;p&gt;借由${B}$的中间状态${B&amp;rsquo;}$和${B&amp;rsquo;&amp;rsquo;}$和欧拉角的定义表达$^A_BR$，我们可以写出：&lt;/p&gt;
+&lt;p&gt;$^A_BR=^A_{B&amp;rsquo;}R^{B&amp;rsquo;}&lt;em&gt;{B&amp;rsquo;&amp;rsquo;}R^{B&amp;rsquo;&amp;rsquo;}&lt;/em&gt;{B}R$&lt;/p&gt;
+&lt;p&gt;即：&lt;/p&gt;
+&lt;p&gt;$^A_BR_{X&amp;rsquo;Y&amp;rsquo;Z&amp;rsquo;}(\gamma,\beta,\alpha)=R_{Z&amp;rsquo;}(\alpha)R_{Y&amp;rsquo;}(\beta)R_{X&amp;rsquo;}(\gamma)=\begin{bmatrix}c\alpha&amp;amp;-s\alpha&amp;amp;0\s\alpha&amp;amp;c\alpha&amp;amp;0\0&amp;amp;0&amp;amp;1\end{bmatrix}\begin{bmatrix}c\beta&amp;amp;0&amp;amp;s\beta\0&amp;amp;1&amp;amp;0\-s\beta&amp;amp;0&amp;amp;c\beta\end{bmatrix}\begin{bmatrix}1&amp;amp;0&amp;amp;0\0&amp;amp;c\gamma&amp;amp;-s\gamma\0&amp;amp;s\gamma&amp;amp;c\gamma\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;相乘后得：&lt;/p&gt;
+&lt;p&gt;$^A_BR_{X&amp;rsquo;Y&amp;rsquo;Z&amp;rsquo;}(\gamma,\beta,\alpha)=\begin{bmatrix}c\alpha c\beta&amp;amp;c\alpha c\beta s\gamma-s\alpha c\gamma&amp;amp;c\alpha s\beta c\gamma+s\alpha s\gamma\s\alpha c\beta&amp;amp;s\alpha s\beta s\gamma+c\alpha c\gamma&amp;amp;s\alpha s\beta c\gamma-c\alpha s\gamma\-s\beta&amp;amp;c\beta s\gamma&amp;amp;c\beta c\gamma\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;我们发现，这个结果与以相反顺序绕固定轴旋转三次得到的结果完全相同，因而逆求解公式也相同&lt;/p&gt;
+&lt;p&gt;可以这样更深地理解固定角与欧拉角之间的关系：两种姿态描述方法不同的解释在于运用了旋转矩阵两种不同的作用，一是在同一个坐标系下旋转矢量，二是将矢量的坐标在不同坐标系之间变换。固定角是用前者描述${A}$的三个主轴矢量旋转到${B}$的过程，而欧拉角是用后者将在${B}$下的主轴矢量坐标一步步借由中间坐标系变换到${A}$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;其他转角组合&#34;&gt;其他转角组合
+&lt;/h3&gt;&lt;p&gt;在实际情况我们会遇到更多按不同顺序进行绕主轴的三个旋转，所有排列总共24种，固定角12种，欧拉角12种，都被称为&lt;strong&gt;转交排列设定法&lt;/strong&gt;（需要注意第一次转动和最后一次转动绕同一个主轴也是一种排列，只要保证相邻两次切换围绕的主轴即可）&lt;/p&gt;
+&lt;p&gt;除此之外，姿态描述还有&lt;strong&gt;轴角表示法&lt;/strong&gt;和&lt;strong&gt;四元数表示法&lt;/strong&gt;，完全解释篇幅较长，若有余力我会写拓展专题&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;映射mapping&#34;&gt;映射（Mapping）
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;映射&lt;/strong&gt;是将矢量从一个坐标系投影到另一个坐标系的变换&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;坐标平移&#34;&gt;坐标平移
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%B9%B3%E7%A7%BB%E6%98%A0%E5%B0%84.png&#34;
+	width=&#34;991&#34;
+	height=&#34;684&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%B9%B3%E7%A7%BB%E6%98%A0%E5%B0%84_hu7910244405458201898.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%B9%B3%E7%A7%BB%E6%98%A0%E5%B0%84_hu701767560489917930.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;144&#34;
+		data-flex-basis=&#34;347px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;我们用矢量$^AP_{BORG}$表示${B}$的原点相对于${A}$的位置&lt;/p&gt;
+&lt;p&gt;当${A}$与${B}$姿态相同，位置不同时，由矢量加法的几何意义：&lt;/p&gt;
+&lt;p&gt;$^AP=^BP+^AP_{BORG}$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;坐标旋转&#34;&gt;坐标旋转
+&lt;/h3&gt;&lt;p&gt;当${A}$与${B}$位置相同，姿态不同时，由上一篇所介绍的旋转矩阵转换矢量坐标的作用：&lt;/p&gt;
+&lt;p&gt;$^AP=^A_BR^BP$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;一般变换&#34;&gt;一般变换
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E4%B8%80%E8%88%AC%E5%8F%98%E6%8D%A2.png&#34;
+	width=&#34;998&#34;
+	height=&#34;701&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E4%B8%80%E8%88%AC%E5%8F%98%E6%8D%A2_hu3058388109767332253.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E4%B8%80%E8%88%AC%E5%8F%98%E6%8D%A2_hu12487837547359664853.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;142&#34;
+		data-flex-basis=&#34;341px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;当${A}$与${B}$位置和姿态都不同时，可以先将${B}$旋转到和${A}$相同的姿态得到${B&amp;rsquo;}$，以${B&amp;rsquo;}$为中间坐标系对$^BP$进行旋转变换，再作${B&amp;rsquo;}$到${A}$的平移变换：&lt;/p&gt;
+&lt;p&gt;$^AP=^A_BR^BP+^AP_{BORG}$②&lt;/p&gt;
+&lt;p&gt;为了简化算式，我们将平移和旋转整合起来，定义&lt;strong&gt;齐次变换矩阵&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;$^A_BT=\begin{bmatrix}^A_BR&amp;amp;^AP_{BORG}\\mathbf{0}^T&amp;amp;1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;其中$\mathbf{0}^T$表示三维零向量的转置&lt;/p&gt;
+&lt;p&gt;这样式②可写为：&lt;/p&gt;
+&lt;p&gt;$\begin{bmatrix}^AP\1\end{bmatrix}=\begin{bmatrix}^A_BR&amp;amp;^AP_{BORG}\\mathbf{0}^T&amp;amp;1\end{bmatrix}\begin{bmatrix}^BP\1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;这样我们就以一个简单的矩阵形式表示了一般变换的旋转和平移&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;复合变换&#34;&gt;复合变换
+&lt;/h3&gt;&lt;p&gt;复合变换借用中间坐标系求解两坐标系的相对关系&lt;/p&gt;
+&lt;p&gt;例如已知${C}$相对于${B}$，并且已知${B}$相对于${A}$，已知$^CP$求$^AP$，可先将$^CP$变换成$^BP$再变换成$^AP$：&lt;/p&gt;
+&lt;p&gt;$^BP=^B_CT^CP$&lt;/p&gt;
+&lt;p&gt;$^AP=^A_BT^BP=^A_BT^B_CT^CP$&lt;/p&gt;
+&lt;p&gt;由此定义$^A_CP=^A_BT^B_CT$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;逆变换&#34;&gt;逆变换
+&lt;/h3&gt;&lt;p&gt;已知$^A_BT$求$^B_AT$可以直接对$^A_BT$求逆矩阵，但还可以利用变换的性质&lt;/p&gt;
+&lt;p&gt;关于$^B_AT$的旋转变换，由旋转矩阵的性质可知$^B_AR=^A_BR^T$&lt;/p&gt;
+&lt;p&gt;关于$^B_AT$的平移变换，将$^AP_{BORG}$变换成${B}$中的描述：$^B(^AP_{BORG})=^B_AT^AP_{BORG}=^B_AR^AP_{BORG}+^BP_{AORG}$&lt;/p&gt;
+&lt;p&gt;上式左侧为零，可得：$^BP_{AORG}=-^B_AR^AP_{BORG}=-^A_BR^T{}^AP_{BORG}$&lt;/p&gt;
+&lt;p&gt;由此$^B_AT=\begin{bmatrix}^B_AR^T&amp;amp;-^A_BR^T{}^AP_{BORG}\\mathbf{0}^T&amp;amp;1\end{bmatrix}=^A_BT^{-1}$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;变换方程&#34;&gt;变换方程
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%8F%98%E6%8D%A2%E6%96%B9%E7%A8%8B.png&#34;
+	width=&#34;785&#34;
+	height=&#34;700&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%8F%98%E6%8D%A2%E6%96%B9%E7%A8%8B_hu13418319046409233328.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%8F%98%E6%8D%A2%E6%96%B9%E7%A8%8B_hu5399116838821268337.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;112&#34;
+		data-flex-basis=&#34;269px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;图中${D}$可以用两种不同的方式表达成变换相乘的方式：&lt;/p&gt;
+&lt;p&gt;$^U_DT=^U_AT^A_DT$&lt;/p&gt;
+&lt;p&gt;$^U_DT=^U_BT^B_CT^C_DT$&lt;/p&gt;
+&lt;p&gt;两个表达式构造成一个变换方程：&lt;/p&gt;
+&lt;p&gt;$^U_AT^A_DT=^U_BT^B_CT^C_DT$&lt;/p&gt;
+&lt;p&gt;如有$n$个未知变换和$n$个变换方程，变换可由变换方程解出。设上式中所有变换除了$^B_CT$外均已知，可解出：&lt;/p&gt;
+&lt;p&gt;$^B_CT=^U_BT^{-1}{}^U_AT^A_DT^C_DT^{-1}$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;算子operator&#34;&gt;算子（Operator）
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;算子&lt;/strong&gt;是对矢量进行平移和旋转操作的变换&lt;/p&gt;
+&lt;p&gt;$^A_BT$除了变换以外，也可以充当算子对矢量或点进行平移或转动&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;平移算子&#34;&gt;平移算子
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%B9%B3%E7%A7%BB%E7%AE%97%E5%AD%90.png&#34;
+	width=&#34;828&#34;
+	height=&#34;701&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%B9%B3%E7%A7%BB%E7%AE%97%E5%AD%90_hu15523400037111155551.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%B9%B3%E7%A7%BB%E7%AE%97%E5%AD%90_hu18026311177663640301.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;118&#34;
+		data-flex-basis=&#34;283px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;将$^AP_1$指向的点沿$^AQ$进行平移得到一个新的矢量$^AP_2$，计算如下：&lt;/p&gt;
+&lt;p&gt;$^AP_2=^AP_1+^AQ$&lt;/p&gt;
+&lt;p&gt;用矩阵算子写出平移变换，有：&lt;/p&gt;
+&lt;p&gt;$^AP_2=D(Q)^AP_1$&lt;/p&gt;
+&lt;p&gt;算子$D_Q$可以被看成是一个特殊形式的齐次变换：&lt;/p&gt;
+&lt;p&gt;$D(Q)=\begin{bmatrix}I&amp;amp;^AQ\\mathbf{0}^T&amp;amp;1\end{bmatrix}$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;旋转算子&#34;&gt;旋转算子
+&lt;/h3&gt;&lt;p&gt;由上一篇所介绍的旋转矩阵描述刚体转动状态的作用，可以得到旋转算子的定义：将矢量$^AP_1$用旋转$R$变换成一个新的矢量$^AP_2$&lt;/p&gt;
+&lt;p&gt;当一个旋转矩阵作为算子时无需写出上下标，因为不涉及两个坐标系，但我们将用另一个符号说明是绕哪个轴旋转的，写成：&lt;/p&gt;
+&lt;p&gt;$^AP_2=R_K(\theta)^AP_1$&lt;/p&gt;
+&lt;p&gt;符号$R_K(\theta)$是一个旋转算子，表示绕$\hat{K}$轴旋转$\theta$角度，例如绕$\hat{Z}$轴旋转$\theta$的算子：&lt;/p&gt;
+&lt;p&gt;$R_z(\theta)=\begin{bmatrix}c\theta&amp;amp;-s\theta&amp;amp;0&amp;amp;0\s\theta&amp;amp;c\theta&amp;amp;0&amp;amp;0\0&amp;amp;0&amp;amp;1&amp;amp;0\0&amp;amp;0&amp;amp;0&amp;amp;1\end{bmatrix}$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;变换算子&#34;&gt;变换算子
+&lt;/h3&gt;&lt;p&gt;与一般变换一样，将平移和旋转整合起来我们得到通用的变换算子。因为只涉及一个坐标系，所以没有上下标。算子$T$将矢量$^AP_1$平移并旋转得到一个新矢量：$^AP_2=T^AP_1$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;齐次变换矩阵&#34;&gt;齐次变换矩阵
+&lt;/h2&gt;&lt;p&gt;源于旋转矩阵在上一篇所讲的三个作用，在这一篇我们也探索出了齐次变换矩阵的三个作用：&lt;/p&gt;
+&lt;p&gt;1.描述位姿：$^A_BT$表示${B}$相对于${A}$，其中$^A_BR$的各列是定义${B}$主轴方向的单位矢量，$^AP_{BORG}$确定了${B}$的原点&lt;/p&gt;
+&lt;p&gt;2.变换映射：$^A_BT$是映射$^BP\rightarrow^AP$&lt;/p&gt;
+&lt;p&gt;3.变换算子：$^A_BT$将$^AP_1$变换为$^AP_2$&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;本章我们只考虑了位置矢量的变换，而速度矢量和力矢量由于类型不同，它们的变换形式也不同，将在第五章讨论&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;本章完&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>【机器人学导论】Ep2.1.空间描述和变换-1</title>
+        <link>https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/</link>
+        <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;主要参考学习资料：&lt;/p&gt;
+&lt;p&gt;《机器人学导论（第4版）》John J.Craig著&lt;/p&gt;
+&lt;p&gt;台大机器人学之运动学——林沛群（本文插图来自该课程课件）&lt;/p&gt;
+&lt;p&gt;本章前置知识：矢量和矩阵的四则运算-单位矩阵-转置矩阵-逆矩阵-正交矩阵&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;tables&#34;&gt;Tables
-&lt;/h2&gt;&lt;p&gt;Tables aren&amp;rsquo;t part of the core Markdown spec, but Hugo supports supports them out-of-the-box.&lt;/p&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Name&lt;/th&gt;
-          &lt;th&gt;Age&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Bob&lt;/td&gt;
-          &lt;td&gt;27&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Alice&lt;/td&gt;
-          &lt;td&gt;23&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h4 id=&#34;inline-markdown-within-tables&#34;&gt;Inline Markdown within tables
-&lt;/h4&gt;&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;Italics&lt;/th&gt;
-          &lt;th&gt;Bold&lt;/th&gt;
-          &lt;th&gt;Code&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;em&gt;italics&lt;/em&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;strong&gt;bold&lt;/strong&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;code&lt;/code&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;A&lt;/th&gt;
-          &lt;th&gt;B&lt;/th&gt;
-          &lt;th&gt;C&lt;/th&gt;
-          &lt;th&gt;D&lt;/th&gt;
-          &lt;th&gt;E&lt;/th&gt;
-          &lt;th&gt;F&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/td&gt;
-          &lt;td&gt;Phasellus ultricies, sapien non euismod aliquam, dui ligula tincidunt odio, at accumsan nulla sapien eget ex.&lt;/td&gt;
-          &lt;td&gt;Proin eleifend dictum ipsum, non euismod ipsum pulvinar et. Vivamus sollicitudin, quam in pulvinar aliquam, metus elit pretium purus&lt;/td&gt;
-          &lt;td&gt;Proin sit amet velit nec enim imperdiet vehicula.&lt;/td&gt;
-          &lt;td&gt;Ut bibendum vestibulum quam, eu egestas turpis gravida nec&lt;/td&gt;
-          &lt;td&gt;Sed scelerisque nec turpis vel viverra. Vivamus vitae pretium sapien&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2 id=&#34;code-blocks&#34;&gt;Code Blocks
-&lt;/h2&gt;&lt;h4 id=&#34;code-block-with-backticks&#34;&gt;Code block with backticks
-&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;!doctype html&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;lang&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;en&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;charset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;utf-8&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Example HTML5 Document&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Test&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h4 id=&#34;code-block-indented-with-four-spaces&#34;&gt;Code block indented with four spaces
-&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;!doctype html&amp;gt;
-&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
-&amp;lt;head&amp;gt;
-  &amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
-  &amp;lt;title&amp;gt;Example HTML5 Document&amp;lt;/title&amp;gt;
-&amp;lt;/head&amp;gt;
-&amp;lt;body&amp;gt;
-  &amp;lt;p&amp;gt;Test&amp;lt;/p&amp;gt;
-&amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h4 id=&#34;code-block-with-hugos-internal-highlight-shortcode&#34;&gt;Code block with Hugo&amp;rsquo;s internal highlight shortcode
-&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;cp&#34;&gt;&amp;lt;!doctype html&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;lang&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;en&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;charset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;utf-8&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Example HTML5 Document&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;head&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;Test&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;body&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;html&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;h4 id=&#34;diff-code-block&#34;&gt;Diff code block
-&lt;/h4&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;[dependencies.bevy]
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git = &amp;#34;https://github.com/bevyengine/bevy&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;rev = &amp;#34;11f52b8c72fc3a568e8bb4a4cd1f3eb025ac2e13&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gd&#34;&gt;- features = [&amp;#34;dynamic&amp;#34;]
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;gd&#34;&gt;&lt;/span&gt;&lt;span class=&#34;gi&#34;&gt;+ features = [&amp;#34;jpeg&amp;#34;, &amp;#34;dynamic&amp;#34;]
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;h2 id=&#34;list-types&#34;&gt;List Types
-&lt;/h2&gt;&lt;h4 id=&#34;ordered-list&#34;&gt;Ordered List
-&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;First item&lt;/li&gt;
-&lt;li&gt;Second item&lt;/li&gt;
-&lt;li&gt;Third item&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h4 id=&#34;unordered-list&#34;&gt;Unordered List
-&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;List item&lt;/li&gt;
-&lt;li&gt;Another item&lt;/li&gt;
-&lt;li&gt;And another item&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;nested-list&#34;&gt;Nested list
-&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;Fruit
-&lt;ul&gt;
-&lt;li&gt;Apple&lt;/li&gt;
-&lt;li&gt;Orange&lt;/li&gt;
-&lt;li&gt;Banana&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Dairy
-&lt;ul&gt;
-&lt;li&gt;Milk&lt;/li&gt;
-&lt;li&gt;Cheese&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;other-elements--abbr-sub-sup-kbd-mark&#34;&gt;Other Elements — abbr, sub, sup, kbd, mark
-&lt;/h2&gt;&lt;p&gt;&lt;abbr title=&#34;Graphics Interchange Format&#34;&gt;GIF&lt;/abbr&gt; is a bitmap image format.&lt;/p&gt;
-&lt;p&gt;H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;
-&lt;p&gt;X&lt;sup&gt;n&lt;/sup&gt; + Y&lt;sup&gt;n&lt;/sup&gt; = Z&lt;sup&gt;n&lt;/sup&gt;&lt;/p&gt;
-&lt;p&gt;Press &lt;kbd&gt;CTRL&lt;/kbd&gt; + &lt;kbd&gt;ALT&lt;/kbd&gt; + &lt;kbd&gt;Delete&lt;/kbd&gt; to end the session.&lt;/p&gt;
-&lt;p&gt;Most &lt;mark&gt;salamanders&lt;/mark&gt; are nocturnal, and hunt for insects, worms, and other small creatures.&lt;/p&gt;
-&lt;h2 id=&#34;hyperlinked-image&#34;&gt;Hyperlinked image
-&lt;/h2&gt;&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://google.com&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;&lt;img src=&#34;https://www.google.com/images/branding/googlelogo/1x/googlelogo_light_color_272x92dp.png&#34;
+&lt;h1 id=&#34;空间描述和变换&#34;&gt;空间描述和变换
+&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&#34;描述&#34;&gt;描述
+&lt;/h2&gt;&lt;p&gt;我们用${A}$来表示一个&lt;strong&gt;坐标系(Frame)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;讨论问题之前，我们需要建立一个&lt;strong&gt;世界坐标系(World Frame)&lt;/strong&gt;，之后定义的位置和姿态都是参照世界坐标系定义的笛卡尔坐标系&lt;/p&gt;
+&lt;p&gt;一个平面中的物体拥有沿$x$轴、$y$轴两个方向移动的自由度和绕垂直于平面的轴转动的&lt;strong&gt;自由度（Degree Of Freedom，可简记为DOF）&lt;/strong&gt;，即两个移动自由度和一个转动自由度，共三个自由度&lt;/p&gt;
+&lt;p&gt;同理，一个空间中的物体拥有沿$x$轴、$y$轴、$z$轴三个方向移动的自由度和绕这三个轴转动的自由度，即三个移动自由度和三个转动自由度，共六个自由度&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;位置描述&#34;&gt;位置描述
+&lt;/h3&gt;&lt;p&gt;位置描述涵盖刚体在三个方向上的移动自由度&lt;/p&gt;
+&lt;p&gt;一旦建立了坐标系，我们可以用一个$3\times 1$的&lt;strong&gt;位置矢量&lt;/strong&gt;给世界坐标系中的任何点定位&lt;/p&gt;
+&lt;p&gt;矢量用一个左上标来表明其定义在哪个坐标系，例如$^AP$的元素数值是沿坐标系${A}$三个主轴方向上的投影，矢量的各个元素用下标$x$、$y$和$z$来标明：&lt;/p&gt;
+&lt;p&gt;$^AP=^A\begin{bmatrix}p_x\p_y\p_z\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;（其中矩阵左上标表示矩阵中坐标都是相对于该坐标系而言，由于格式输入限制位置偏下）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E4%BD%8D%E7%BD%AE.png&#34;
+	width=&#34;1220&#34;
+	height=&#34;696&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E4%BD%8D%E7%BD%AE_hu10055723063743765319.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E4%BD%8D%E7%BD%AE_hu12760768912805978274.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;175&#34;
+		data-flex-basis=&#34;420px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;姿态描述&#34;&gt;姿态描述
+&lt;/h3&gt;&lt;p&gt;姿态描述涵盖刚体三个方向上的转动自由度&lt;/p&gt;
+&lt;p&gt;我们可以在刚体上固定一个坐标系${B}$，用${B}$相对于${A}$的描述来表示物体的姿态，而${B}$可以用该坐标系三个主轴方向的单位矢量来确定&lt;/p&gt;
+&lt;p&gt;我们用$\hat{X}_B$、$\hat{Y}_B$和$\hat{Z}_B$来表示${B}$主轴方向的单位矢量，当${A}$作为参考坐标系时，它们被写为$^A\hat{X}_B$、$^A\hat{Y}_B$和$^A\hat{Z}_B$&lt;/p&gt;
+&lt;p&gt;将这三个单位矢量按照$^A\hat{X}_B$、$^A\hat{Y}_B$和$^A\hat{Z}_B$的顺序排列组成一个$3\times3$的矩阵，称为&lt;strong&gt;旋转矩阵(Rotation Matrix)&lt;/strong&gt;。表达${B}$相对于${A}$的旋转矩阵记为$_B^AR$&lt;/p&gt;
+&lt;p&gt;$_B^AR$=$\begin{pmatrix}^A\hat{X}_B&amp;amp;^A\hat{Y}_B&amp;amp;^A\hat{Z}_B\end{pmatrix}$&lt;/p&gt;
+&lt;p&gt;又$^A\hat{X}_B$、$^A\hat{Y}_B$和$^A\hat{Z}_B$是以${A}$为参考，所以矢量中各个元素的数值为$\hat{X}_B$、$\hat{Y}_B$和$\hat{Z}_B$分别在${A}$三个主轴方向上的投影长度，因而上式可以进一步写为&lt;/p&gt;
+&lt;p&gt;$_B^AR=\begin{pmatrix}^A\hat{X}_B&amp;amp;^A\hat{Y}_B&amp;amp;^A\hat{Z}_B\end{pmatrix}=\begin{bmatrix}\hat{X}_B\cdot\hat{X}_A&amp;amp;\hat{Y}_B\cdot\hat{X}_A&amp;amp;\hat{Z}_B\cdot\hat{X}_A\\hat{X}_B\cdot\hat{Y}_A&amp;amp;\hat{Y}_B\cdot\hat{Y}_A&amp;amp;\hat{Z}_B\cdot\hat{Y}_A\\hat{X}_B\cdot\hat{Z}_A&amp;amp;\hat{Y}_B\cdot\hat{Z}_A&amp;amp;\hat{Z}_B\cdot\hat{Z}_A\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;又矩阵中各个矢量均为单位矢量，点积之值也是$\hat{X}_B$、$\hat{Y}_B$和$\hat{Z}_B$对于${A}$的方向余弦，该矩阵又称为&lt;strong&gt;方向余弦矩阵(Direction Cosine Matrix)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;综上，我们用旋转矩阵描述了刚体的姿态&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;旋转矩阵&#34;&gt;旋转矩阵
+&lt;/h4&gt;&lt;p&gt;接下来重点介绍旋转矩阵的性质与作用&lt;/p&gt;
+&lt;h5 id=&#34;性质&#34;&gt;性质
+&lt;/h5&gt;&lt;p&gt;将旋转矩阵中各个点积前后矢量互换，我们有如下推导（其中右上标T为转置符号）：&lt;/p&gt;
+&lt;p&gt;$_B^AR=\begin{pmatrix}^A\hat{X}_B&amp;amp;^A\hat{Y}_B&amp;amp;^A\hat{Z}_B\end{pmatrix}=\begin{bmatrix}\hat{X}_B\cdot\hat{X}_A&amp;amp;\hat{Y}_B\cdot\hat{X}_A&amp;amp;\hat{Z}_B\cdot\hat{X}_A\\hat{X}_B\cdot\hat{Y}_A&amp;amp;\hat{Y}_B\cdot\hat{Y}_A&amp;amp;\hat{Z}_B\cdot\hat{Y}_A\\hat{X}_B\cdot\hat{Z}_A&amp;amp;\hat{Y}_B\cdot\hat{Z}_A&amp;amp;\hat{Z}_B\cdot\hat{Z}_A\end{bmatrix}$
+$=\begin{bmatrix}\hat{X}_A\cdot\hat{X}_B&amp;amp;\hat{X}_A\cdot\hat{Y}_B&amp;amp;\hat{X}_A\cdot\hat{Z}_B\\hat{Y}_A\cdot\hat{X}_B&amp;amp;\hat{Y}_A\cdot\hat{Y}_B&amp;amp;\hat{Y}_A\cdot\hat{Z}_B\\hat{Z}_A\cdot\hat{X}_B&amp;amp;\hat{Z}_A\cdot\hat{Y}_B&amp;amp;\hat{Z}_A\cdot\hat{Z}_B\end{bmatrix}=\begin{bmatrix}\hat{X}_A{^T}\\hat{Y}_A{^T}\\hat{Z}_A{^T}\end{bmatrix}$$=\begin{pmatrix}^A\hat{X}_B&amp;amp;^A\hat{Y}_B&amp;amp;^A\hat{Z}_B\end{pmatrix}^T=^B_AR^T$&lt;/p&gt;
+&lt;p&gt;由此$^A_BR=^B_AR^T$&lt;/p&gt;
+&lt;p&gt;又由：&lt;/p&gt;
+&lt;p&gt;$^A_BR{^T}^A_BR=\begin{bmatrix}\hat{X}_A{^T}\\hat{Y}_A{^T}\\hat{Z}_A{^T}\end{bmatrix}\begin{pmatrix}^A\hat{X}_B&amp;amp;^A\hat{Y}_B&amp;amp;^A\hat{Z}_B\end{pmatrix}=I_3$&lt;/p&gt;
+&lt;p&gt;其中$I_3$是$3\times3$的单位矩阵，因此：&lt;/p&gt;
+&lt;p&gt;$^A_BR=^B_AR^{-1}=^B_AR{^T}$&lt;/p&gt;
+&lt;p&gt;即$^B_AR$的转置矩阵等于它的逆矩阵，又同时等于$^A_BR$。由线性代数可知，前者是正交矩阵的性质&lt;/p&gt;
+&lt;p&gt;旋转矩阵有九个数字，但只有三个矢量两两垂直、均为单位矢量总共六个条件约束，因此只有三个数字是独立变量，与空间中转动具有三个自由度相符&lt;/p&gt;
+&lt;hr&gt;
+&lt;h5 id=&#34;作用&#34;&gt;作用
+&lt;/h5&gt;&lt;p&gt;除了前文所讲的描述一个刚体的姿态外，旋转矩阵还有两个作用&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1.转换矢量的坐标&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;矢量$P$相对于${B}$的坐标表示：$^BP=^Bp_x\hat{X}_B+^Bp_y\hat{Y}_B+^Bp_z\hat{Z}_B$&lt;/p&gt;
+&lt;p&gt;矢量$P$相对于${A}$的坐标表示：$^AP=^Ap_x\hat{X}_A+^Ap_y\hat{Y}_A+^Ap_z\hat{Z}_A$&lt;/p&gt;
+&lt;p&gt;$^BP$和$^AP$只是坐标表示不同，本质上是同一个矢量，由此矢量$P$相对于${A}$的坐标也可以用$^BP$在${A}$三个主轴上的投影计算：&lt;/p&gt;
+&lt;p&gt;$^Ap_x=^BP\hat{X}_A=^Bp_x\hat{X}_B\hat{X}_A+^Bp_y\hat{Y}_B\hat{X}_A+^Bp_z\hat{Z}_B\hat{X}_A$&lt;/p&gt;
+&lt;p&gt;$^Ap_y=^BP\hat{Y}_A=^Bp_x\hat{X}_B\hat{Y}_A+^Bp_y\hat{Y}_B\hat{Y}_A+^Bp_z\hat{Z}_B\hat{Y}_A$&lt;/p&gt;
+&lt;p&gt;$^Ap_z=^BP\hat{X}_A=^Bp_x\hat{X}_B\hat{Z}_A+^Bp_y\hat{Y}_B\hat{Z}_A+^Bp_z\hat{Z}_B\hat{Z}_A$&lt;/p&gt;
+&lt;p&gt;用矩阵表示则为：&lt;/p&gt;
+&lt;p&gt;$^AP=^A\begin{bmatrix}p_x\p_y\p_z\end{bmatrix}=\begin{bmatrix}\hat{X}_B\cdot\hat{X}_A&amp;amp;\hat{Y}_B\cdot\hat{X}_A&amp;amp;\hat{Z}_B\cdot\hat{X}_A\\hat{X}_B\cdot\hat{Y}_A&amp;amp;\hat{Y}_B\cdot\hat{Y}_A&amp;amp;\hat{Z}_B\cdot\hat{Y}_A\\hat{X}_B\cdot\hat{Z}_A&amp;amp;\hat{Y}_B\cdot\hat{Z}_A&amp;amp;\hat{Z}_B\cdot\hat{Z}_A\end{bmatrix}^B\begin{bmatrix}p_x\p_y\p_z\end{bmatrix}=^A_BR^BP$&lt;/p&gt;
+&lt;p&gt;由此得到${B}$相对于${A}$的旋转矩阵可以将$P$的表示由相对于${B}$转换为相对于${A}$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2.描述刚体转动的状态&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;分别研究坐标系绕三个主轴旋转的状态&lt;/p&gt;
+&lt;p&gt;以${A}$绕$\hat{Z}_A$逆时针旋转$\theta$（以后不标明旋转方向默认为逆时针旋转）得到${B}$为例，计算此时${B}$相对于${A}$的旋转矩阵得：&lt;/p&gt;
+&lt;p&gt;$^A_BR=\begin{bmatrix}\cos\theta&amp;amp;-\sin\theta&amp;amp;0\\sin\theta&amp;amp;\cos\theta&amp;amp;0\0&amp;amp;0&amp;amp;1\end{bmatrix}=\begin{bmatrix}c\theta&amp;amp;-s\theta&amp;amp;0\s\theta&amp;amp;c\theta&amp;amp;0\0&amp;amp;0&amp;amp;1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;（由于我们将在计算中用到许多三角函数，因此三角函数用对应首字母简记）&lt;/p&gt;
+&lt;p&gt;由此，我们将绕$\hat{Z}&lt;em&gt;A$旋转$\theta$以这种方式计算出来的旋转矩阵记为$R&lt;/em&gt;{\hat{Z}_A}(\theta)$，则：&lt;/p&gt;
+&lt;p&gt;$R_{\hat{Z}_A}(\theta)=\begin{bmatrix}c\theta&amp;amp;-s\theta&amp;amp;0\s\theta&amp;amp;c\theta&amp;amp;0\0&amp;amp;0&amp;amp;1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E6%97%8B%E8%BD%AC.png&#34;
+	width=&#34;985&#34;
+	height=&#34;617&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E6%97%8B%E8%BD%AC_hu17404435337557359247.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E6%97%8B%E8%BD%AC_hu16928834168348170938.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;383px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;同理得到：&lt;/p&gt;
+&lt;p&gt;$R_{\hat{X}_A}(\theta)=\begin{bmatrix}1&amp;amp;0&amp;amp;0\0&amp;amp;c\theta&amp;amp;-s\theta\0&amp;amp;s\theta&amp;amp;c\theta\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;$R_{\hat{Y}_A}(\theta)=\begin{bmatrix}c\theta&amp;amp;0&amp;amp;s\theta\0&amp;amp;1&amp;amp;0\-s\theta&amp;amp;0&amp;amp;c\theta\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;通过接下来的例子我们来理解这类旋转矩阵如何描述刚体转动的状态&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/%e8%bd%ac%e5%8a%a8&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;Google&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;$^AP=^A(p_x;p_y;p_z)^T$对$\hat{X}_A$旋转$\theta$得到$^AP&amp;rsquo;$，$^AP&amp;rsquo;=?$&lt;/p&gt;
+&lt;p&gt;不妨让${A}$跟着$^AP$同步旋转，得到${A&amp;rsquo;}$，那么$^AP&amp;rsquo;$相对于${A&amp;rsquo;}$的坐标跟$^AP$相对于${A}$的坐标相等，而后者已知&lt;/p&gt;
+&lt;p&gt;又通过题目条件和前文定义我们知道$^A_{A&amp;rsquo;}R=R_{\hat{X}_A}(\theta)=\begin{bmatrix}1&amp;amp;0&amp;amp;0\0&amp;amp;c\theta&amp;amp;-s\theta\0&amp;amp;s\theta&amp;amp;c\theta\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;利用旋转矩阵转换矢量坐标的作用，我们可以把$^AP&amp;rsquo;$相对于${A&amp;rsquo;}$的坐标转换为相对于原坐标系${A}$的坐标，即：&lt;/p&gt;
+&lt;p&gt;$^AP&amp;rsquo;=^A_{A&amp;rsquo;}R^AP=R_{\hat{X}_A}(\theta)^AP$&lt;/p&gt;
+&lt;p&gt;所以旋转矩阵$R(\theta)$可以计算矢量在同一坐标系下旋转后的坐标&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;位姿描述&#34;&gt;位姿描述
+&lt;/h3&gt;&lt;p&gt;位置和姿态的组合称为&lt;strong&gt;位姿&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;我们同样用${A}$来表示一个位姿&lt;/p&gt;
+&lt;p&gt;以${A}$为参考描述位姿${B}$，结合前文的位置描述和姿态描述，我们用$^A_BR$表示${B}$的姿态，用$^AP_{BORG}$表示${B}$的原点的位置矢量（下标ORG意为原点origin），于是位姿描述记为：&lt;/p&gt;
+&lt;p&gt;${B}={^A_BR,{,}^AP_{BORG}}$&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;下一篇文章将讲述本章后半部分空间中的变换内容&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>【机器人学导论】Ep1.概述</title>
+        <link>https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/</link>
+        <pubDate>Wed, 30 Oct 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;主要参考学习资料：&lt;/p&gt;
+&lt;p&gt;《机器人学导论（第4版）》John J.Craig著&lt;/p&gt;
+&lt;p&gt;台大机器人学之运动学——林沛群&lt;/p&gt;
+&lt;p&gt;前置课程：博主目前只对线性代数和理论力学方面有一定基础，学习过程中遇到额外必要的前置知识我会做补充或者开辟新的知识笔记专栏&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;概述&#34;&gt;概述
+&lt;/h1&gt;&lt;p&gt;本章简要介绍机器人学导论中的基础名词和学习内容，具体内容将在后续展开&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;知识体系&#34;&gt;知识体系
+&lt;/h2&gt;&lt;p&gt;本知识笔记以《机器人学导论》一书为主，书中内容结构如下：&lt;/p&gt;
+&lt;p&gt;第1章 概述&lt;/p&gt;
+&lt;p&gt;第2章 空间描述和变换&lt;/p&gt;
+&lt;p&gt;第3章 操作臂运动学&lt;/p&gt;
+&lt;p&gt;第4章 操作臂逆运动学&lt;/p&gt;
+&lt;p&gt;第5章 雅可比：速度和静力&lt;/p&gt;
+&lt;p&gt;第6章 操作臂动力学&lt;/p&gt;
+&lt;p&gt;第7章 轨迹生成&lt;/p&gt;
+&lt;p&gt;第8章 操作臂的机构设计&lt;/p&gt;
+&lt;p&gt;第9章 操作臂的线性控制&lt;/p&gt;
+&lt;p&gt;第10章 操作臂的非线性控制&lt;/p&gt;
+&lt;p&gt;第11章 操作臂的力控制&lt;/p&gt;
+&lt;p&gt;第12章 机器人编程语言及编程系统&lt;/p&gt;
+&lt;p&gt;第13章 离线编程系统&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;操作臂的力学与控制&#34;&gt;操作臂的力学与控制
+&lt;/h2&gt;&lt;p&gt;在机器人领域，&lt;strong&gt;机械臂&lt;/strong&gt;（&lt;strong&gt;操作臂&lt;/strong&gt;）是起步最早、现今最成熟的技术，而机器人学知识也跟随此路线发展而来，因此对机器人知识的学习从机械臂开始&lt;/p&gt;
+&lt;p&gt;以下内容将按顺序在书中后面12个章节一一讨论&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;位置和姿态的描述&#34;&gt;位置和姿态的描述
+&lt;/h3&gt;&lt;p&gt;研究机器人学需要考虑三维空间中物体的空间状态，可以用两个重要特性描述：&lt;strong&gt;位置&lt;/strong&gt;和&lt;strong&gt;姿态&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;为了用数学方法表示和计算这些参量，我们一般在物体上设置一个&lt;strong&gt;坐标系（位姿）&lt;/strong&gt;，然后在某个参考坐标系中描述该位姿的位置和姿态&lt;/p&gt;
+&lt;p&gt;任意位姿都能用作参考坐标系，因此我们经常将物体空间属性的描述从一个位姿&lt;strong&gt;变换&lt;/strong&gt;到另一个位姿
+&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E4%BD%8D%E5%A7%BF.png&#34;
+	width=&#34;515&#34;
+	height=&#34;476&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E4%BD%8D%E5%A7%BF_hu15512684215587645714.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E4%BD%8D%E5%A7%BF_hu8356007772408231576.png 1024w&#34;
+	loading=&#34;lazy&#34;
 	
 	
-&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;108&#34;
+		data-flex-basis=&#34;259px&#34;
+	
+&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;ol&gt;
-&lt;li id=&#34;fn:1&#34;&gt;
-&lt;p&gt;The above quote is excerpted from Rob Pike&amp;rsquo;s &lt;a class=&#34;link&#34; href=&#34;https://www.youtube.com/watch?v=PAAkCSZUG1c&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;talk&lt;/a&gt; during Gopherfest, November 18, 2015.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;</description>
-        </item>
-        <item>
-        <title>Placeholder Text</title>
-        <link>https://INKEM.github.io/p/placeholder-text/</link>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://INKEM.github.io/p/placeholder-text/</guid>
-        <description>&lt;img src="https://INKEM.github.io/p/placeholder-text/matt-le-SJSpo9hQf7s-unsplash.jpg" alt="Featured image of post Placeholder Text" /&gt;&lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;
-&lt;p&gt;Redit teque digerit hominumque toris verebor lumina non cervice subde tollit usus habet Arctonque, furores quas nec ferunt. Quoque montibus nunc caluere tempus inhospita parcite confusaque translucet patri vestro qui optatis lumine cognoscere flos nubis! Fronde ipsamque patulos Dryopen deorum.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Exierant elisi ambit vivere dedere&lt;/li&gt;
-&lt;li&gt;Duce pollice&lt;/li&gt;
-&lt;li&gt;Eris modo&lt;/li&gt;
-&lt;li&gt;Spargitque ferrea quos palude&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Rursus nulli murmur; hastile inridet ut ab gravi sententia! Nomine potitus silentia flumen, sustinet placuit petis in dilapsa erat sunt. Atria tractus malis.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Comas hunc haec pietate fetum procerum dixit&lt;/li&gt;
-&lt;li&gt;Post torum vates letum Tiresia&lt;/li&gt;
-&lt;li&gt;Flumen querellas&lt;/li&gt;
-&lt;li&gt;Arcanaque montibus omnes&lt;/li&gt;
-&lt;li&gt;Quidem et&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;vagus-elidunt&#34;&gt;Vagus elidunt
-&lt;/h1&gt;&lt;p&gt;&lt;svg class=&#34;canon&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; overflow=&#34;visible&#34; viewBox=&#34;0 0 496 373&#34; height=&#34;373&#34; width=&#34;496&#34;&gt;&lt;g fill=&#34;none&#34;&gt;&lt;path stroke=&#34;#000&#34; stroke-width=&#34;.75&#34; d=&#34;M.599 372.348L495.263 1.206M.312.633l494.95 370.853M.312 372.633L247.643.92M248.502.92l246.76 370.566M330.828 123.869V1.134M330.396 1.134L165.104 124.515&#34;&gt;&lt;/path&gt;&lt;path stroke=&#34;#ED1C24&#34; stroke-width=&#34;.75&#34; d=&#34;M275.73 41.616h166.224v249.05H275.73zM54.478 41.616h166.225v249.052H54.478z&#34;&gt;&lt;/path&gt;&lt;path stroke=&#34;#000&#34; stroke-width=&#34;.75&#34; d=&#34;M.479.375h495v372h-495zM247.979.875v372&#34;&gt;&lt;/path&gt;&lt;ellipse cx=&#34;498.729&#34; cy=&#34;177.625&#34; rx=&#34;.75&#34; ry=&#34;1.25&#34;&gt;&lt;/ellipse&gt;&lt;ellipse cx=&#34;247.229&#34; cy=&#34;377.375&#34; rx=&#34;.75&#34; ry=&#34;1.25&#34;&gt;&lt;/ellipse&gt;&lt;/g&gt;&lt;/svg&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Canons_of_page_construction#Van_de_Graaf_canon&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;The Van de Graaf Canon&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;mane-refeci-capiebant-unda-mulcebat&#34;&gt;Mane refeci capiebant unda mulcebat
-&lt;/h2&gt;&lt;p&gt;Victa caducifer, malo vulnere contra dicere aurato, ludit regale, voca! Retorsit colit est profanae esse virescere furit nec; iaculi matertera et visa est, viribus. Divesque creatis, tecta novat collumque vulnus est, parvas. &lt;strong&gt;Faces illo pepulere&lt;/strong&gt; tempus adest. Tendit flamma, ab opes virum sustinet, sidus sequendo urbis.&lt;/p&gt;
-&lt;p&gt;Iubar proles corpore raptos vero auctor imperium; sed et huic: manus caeli Lelegas tu lux. Verbis obstitit intus oblectamina fixis linguisque ausus sperare Echionides cornuaque tenent clausit possit. Omnia putatur. Praeteritae refert ausus; ferebant e primus lora nutat, vici quae mea ipse. Et iter nil spectatae vulnus haerentia iuste et exercebat, sui et.&lt;/p&gt;
-&lt;p&gt;Eurytus Hector, materna ipsumque ut Politen, nec, nate, ignari, vernum cohaesit sequitur. Vel &lt;strong&gt;mitis temploque&lt;/strong&gt; vocatus, inque alis, &lt;em&gt;oculos nomen&lt;/em&gt; non silvis corpore coniunx ne displicet illa. Crescunt non unus, vidit visa quantum inmiti flumina mortis facto sic: undique a alios vincula sunt iactata abdita! Suspenderat ego fuit tendit: luna, ante urbem Propoetides &lt;strong&gt;parte&lt;/strong&gt;.&lt;/p&gt;</description>
-        </item>
-        <item>
-        <title>Math Typesetting</title>
-        <link>https://INKEM.github.io/p/math-typesetting/</link>
-        <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://INKEM.github.io/p/math-typesetting/</guid>
-        <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;
-&lt;p&gt;In this example we will be using &lt;a class=&#34;link&#34; href=&#34;https://katex.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;KaTeX&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Create a partial under &lt;code&gt;/layouts/partials/math.html&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Within this partial reference the &lt;a class=&#34;link&#34; href=&#34;https://katex.org/docs/autorender.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Auto-render Extension&lt;/a&gt; or host these scripts locally.&lt;/li&gt;
-&lt;li&gt;Include the partial in your templates like so:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;{{&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; or .Params.math .Site.Params.math &lt;span class=&#34;o&#34;&gt;}}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;{{&lt;/span&gt; partial &lt;span class=&#34;s2&#34;&gt;&amp;#34;math.html&amp;#34;&lt;/span&gt; . &lt;span class=&#34;o&#34;&gt;}}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;{{&lt;/span&gt; end &lt;span class=&#34;o&#34;&gt;}}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;To enable KaTeX globally set the parameter &lt;code&gt;math&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; in a project&amp;rsquo;s configuration&lt;/li&gt;
-&lt;li&gt;To enable KaTeX on a per page basis include the parameter &lt;code&gt;math: true&lt;/code&gt; in content files&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Use the online reference of &lt;a class=&#34;link&#34; href=&#34;https://katex.org/docs/supported.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Supported TeX Functions&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;examples&#34;&gt;Examples
-&lt;/h3&gt;&lt;p&gt;Inline math: $\varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887…$&lt;/p&gt;
-&lt;p&gt;Block math:
-&lt;/p&gt;
-$$
- \varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } } 
-$$</description>
-        </item>
-        <item>
-        <title>Emoji Support</title>
-        <link>https://INKEM.github.io/p/emoji-support/</link>
-        <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://INKEM.github.io/p/emoji-support/</guid>
-        <description>&lt;img src="https://INKEM.github.io/p/emoji-support/the-creative-exchange-d2zvqp3fpro-unsplash.jpg" alt="Featured image of post Emoji Support" /&gt;&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;
-&lt;p&gt;The &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/functions/emojify/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;&lt;code&gt;emojify&lt;/code&gt;&lt;/a&gt; function can be called directly in templates or &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/templates/shortcode-templates/#inline-shortcodes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Inline Shortcodes&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;To enable emoji globally, set &lt;code&gt;enableEmoji&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; in your site&amp;rsquo;s &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/getting-started/configuration/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;configuration&lt;/a&gt; and then you can type emoji shorthand codes directly in content files; e.g.&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;nowrap&#34;&gt;&lt;span class=&#34;emojify&#34;&gt;🙈&lt;/span&gt; &lt;code&gt;:see_no_evil:&lt;/code&gt;&lt;/span&gt;  &lt;span class=&#34;nowrap&#34;&gt;&lt;span class=&#34;emojify&#34;&gt;🙉&lt;/span&gt; &lt;code&gt;:hear_no_evil:&lt;/code&gt;&lt;/span&gt;  &lt;span class=&#34;nowrap&#34;&gt;&lt;span class=&#34;emojify&#34;&gt;🙊&lt;/span&gt; &lt;code&gt;:speak_no_evil:&lt;/code&gt;&lt;/span&gt;&lt;/p&gt;
-&lt;br&gt;
-&lt;p&gt;The &lt;a class=&#34;link&#34; href=&#34;http://www.emoji-cheat-sheet.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Emoji cheat sheet&lt;/a&gt; is a useful reference for emoji shorthand codes.&lt;/p&gt;
+&lt;h3 id=&#34;操作臂正运动学&#34;&gt;操作臂正运动学
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;运动学&lt;/strong&gt;研究物体的运动而不考虑引起这种运动的力，操作臂运动学的研究对象为运动的全部几何和时间特性（位置、速度、加速度和位置变量对于其他变量的高阶微分）&lt;/p&gt;
+&lt;p&gt;大部分操作臂由刚性&lt;strong&gt;连杆&lt;/strong&gt;组成，相邻连杆由&lt;strong&gt;关节&lt;/strong&gt;连接，允许相对转动&lt;/p&gt;
+&lt;p&gt;如果是&lt;strong&gt;转动关节&lt;/strong&gt;，两个相邻连杆的相对位移被称为关节角；如果是&lt;strong&gt;滑（移）动关节&lt;/strong&gt;，位移被称为&lt;strong&gt;关节偏移量&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;操作臂&lt;strong&gt;自由度&lt;/strong&gt;的个数是使操作臂具有确定运动时必须给出的独立运动的数目，或操作臂独立驱动的关节数&lt;/p&gt;
+&lt;p&gt;组成操作臂运动链的自由端称为&lt;strong&gt;末端执行器&lt;/strong&gt;，通常采用末端执行器上的&lt;strong&gt;工具坐标系&lt;/strong&gt;相对于操作臂固定底座的&lt;strong&gt;基坐标系&lt;/strong&gt;来描述操作臂的位置&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;正运动学&lt;/strong&gt;根据已知的各个关节的关节角计算末端执行器的位置和姿态，这个过程被称为从&lt;strong&gt;关节空间&lt;/strong&gt;描述到&lt;strong&gt;笛卡尔空间&lt;/strong&gt;描述的操作臂位置表示&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;笛卡尔空间：用三个变量描述空间一点的位置，用另外三个变量描述物体的姿态&lt;/em&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;N.B.&lt;/strong&gt; The above steps enable Unicode Standard emoji characters and sequences in Hugo, however the rendering of these glyphs depends on the browser and the platform. To style the emoji you can either use a third party emoji font or a font stack; e.g.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
-&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
-&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
-&lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;.emoji {
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  font-family: Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Segoe UI Symbol, Android Emoji, EmojiSymbols;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;</description>
+&lt;h3 id=&#34;操作臂逆运动学&#34;&gt;操作臂逆运动学
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;逆运动学&lt;/strong&gt;根据给定的末端执行器的位置和姿态计算所有关节可达到给定位置和姿态的关节角&lt;/p&gt;
+&lt;p&gt;逆运动学计算涉及的运动学方程的解的存在性定义了操作臂的&lt;strong&gt;工作空间&lt;/strong&gt; &lt;em&gt;（末端执行器活动范围）&lt;/em&gt;
+&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E8%BF%90%E5%8A%A8%E5%AD%A6.png&#34;
+	width=&#34;745&#34;
+	height=&#34;452&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E8%BF%90%E5%8A%A8%E5%AD%A6_hu9116584054419310379.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E8%BF%90%E5%8A%A8%E5%AD%A6_hu6164801150757213213.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;164&#34;
+		data-flex-basis=&#34;395px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;速度静力奇异点&#34;&gt;速度，静力，奇异点
+&lt;/h3&gt;&lt;p&gt;除了静态定位问题，对于运动中的操作臂，我们定义&lt;strong&gt;雅可比矩阵&lt;/strong&gt;来方便地进行机构的速度分析&lt;/p&gt;
+&lt;p&gt;雅可比矩阵定义了从关节空间速度向笛卡尔空间速度的&lt;strong&gt;映射&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在&lt;strong&gt;奇异点&lt;/strong&gt;，这种映射不可逆（给定的末端执行器的运动状态超出了关节运动能力的限制），同时某些关节的运动可能无法引起末端执行器的有效运动，称为&lt;strong&gt;局部退化&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;当操作臂接触工件或工作面，并施加一个静力，需要解决如何设定&lt;strong&gt;关节力矩&lt;/strong&gt;来产生要求的接触力和力矩&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;动力学&#34;&gt;动力学
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;动力学&lt;/strong&gt;研究产生运动所需要的力&lt;/p&gt;
+&lt;p&gt;控制操作臂末端执行器的运动速度需要关节驱动器产生一组复杂的&lt;strong&gt;扭矩函数&lt;/strong&gt;来实现，取决于末端执行器的运动路径和速度、连杆的质量特性和负载、关节摩擦等，扭矩函数通过操作臂动力学方程来求解，用于操作臂的控制和仿真&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;轨迹生成&#34;&gt;轨迹生成
+&lt;/h3&gt;&lt;p&gt;计算每个关节运动的连续函数来平稳控制操作臂从一点运动到另外一点的过程为&lt;strong&gt;轨迹生成&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;操作臂从起点到目标点需要确定一些中间&lt;strong&gt;路径点&lt;/strong&gt;，通过一系列路径点的连续函数被称为&lt;strong&gt;样条函数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;笛卡尔轨迹生成&lt;/strong&gt;将末端执行器的期望运动转化为一系列等效的关节运动
+&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E8%BF%90%E5%8A%A8%E5%AD%A62.png&#34;
+	width=&#34;761&#34;
+	height=&#34;387&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E8%BF%90%E5%8A%A8%E5%AD%A62_hu13699410036776569814.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E8%BF%90%E5%8A%A8%E5%AD%A62_hu12128017618298807650.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;196&#34;
+		data-flex-basis=&#34;471px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;操作臂设计与传感器&#34;&gt;操作臂设计与传感器
+&lt;/h3&gt;&lt;p&gt;为特定任务设计的机器人为专用机器人，能够完成各种任务的为通用机器人。从经济角度考虑，操作臂的机械设计由期望执行的任务决定，设计者需考虑几何尺寸、速度、承载能力、关节的数量与几何布局等因素，这些因素影响了操作臂工作空间的大小和性质、操作臂结构的刚度以及其他属性&lt;/p&gt;
+&lt;p&gt;完整的操作臂设计还包括：驱动器的选择和位置、传动系统以及内部位置传感器（有时是力传感器）&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;线性位置控制&#34;&gt;线性位置控制
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;位置控制系统&lt;/strong&gt;不仅包括理想状态下产生期望运动的力矩的计算，更要考虑自动补偿由于系统参数引起的误差以及抑制引起系统偏离期望轨迹的扰动。为此，通过&lt;strong&gt;控制算法&lt;/strong&gt;对位置和速度&lt;strong&gt;传感器&lt;/strong&gt;进行检测，计算出驱动器的扭矩指令。第9章讨论基于操作臂动力学的线性近似得出的控制算法&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;非线性位置控制&#34;&gt;非线性位置控制
+&lt;/h3&gt;&lt;p&gt;考虑操作臂完整的非线性动力学的&lt;strong&gt;非线性控制&lt;/strong&gt;算法，比简单的线性控制方法性能更好&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;力控制&#34;&gt;力控制
+&lt;/h3&gt;&lt;p&gt;当操作臂在自由空间中运动时，只有位置控制有意义&lt;/p&gt;
+&lt;p&gt;当接触零件、工具或工作表面时，操作臂控制力的能力极其重要&lt;/p&gt;
+&lt;p&gt;当操作臂在部分方向受到作用表面约束时，需要采用&lt;strong&gt;混合&lt;/strong&gt;控制方式，在某些方向用&lt;strong&gt;位置控制规律&lt;/strong&gt;来控制，而其余方向用&lt;strong&gt;力控制规律&lt;/strong&gt;来控制&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;机器人编程&#34;&gt;机器人编程
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;机器人编程语言&lt;/strong&gt;是用户和工业机器人交互的接口&lt;/p&gt;
+&lt;p&gt;操作者指定操作臂末端执行器的一个特殊点为&lt;strong&gt;操作点&lt;/strong&gt;，也叫&lt;strong&gt;TCP（工具中心点）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;通过一系列路径点确定路径，同时确定不同路径段上TCP的速度，依据这些输入，轨迹生成算法规划处机器人运动的所有细节。轨迹生成的输入问题由机器人编程语言的指令来给出&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;离线编程与仿真&#34;&gt;离线编程与仿真
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;离线编程系统&lt;/strong&gt;是一种机器人编程环境，可以在不需要机器人停机的状态下对机器人进行编程，也可以在没有做出机器人实物的情况下对机器人设计进行&lt;strong&gt;仿真&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;本章完&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>【复变函数论】Ep2.解析函数</title>
+        <link>https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/</link>
+        <pubDate>Sun, 27 Oct 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;本学习笔记主要是为了拓展工程实践可能会应用到的相关知识，帮助了解和查阅知识体系、相关概念和基本思想，非以数学专业方向为主，因此不会探讨进一步的数学问题，甚至文中涉及到的部分知识也无需完全掌握，用抽象而严谨的数学语言表达的内容我会尽可能用自然语言（文中斜体字）或绘图辅助理解（本章多值函数部分教材讲解篇幅较长且理解耗时，文中该内容有大量精简消化，未用斜体字标明）&lt;/p&gt;
+&lt;p&gt;前置课程：微积分（高等数学/数学分析）&lt;/p&gt;
+&lt;p&gt;自学教材：《复变函数论（第五版）》钟玉泉 编&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;解析函数&#34;&gt;解析函数
+&lt;/h1&gt;&lt;h2 id=&#34;1-解析函数的概念与柯西-黎曼方程&#34;&gt;§1 解析函数的概念与柯西-黎曼方程
+&lt;/h2&gt;&lt;h3 id=&#34;1复变函数的导数与微分&#34;&gt;1.复变函数的导数与微分
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;复变函数的导数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设函数$\varpi=f(z)$在点$z_0$的邻域内或包含$z_0$的区域$D$内有定义，如果当$z$按任意方式趋于$z_0$，即当$\Delta z$按任意方式趋于零时，比值$\frac{\Delta\varpi}{\Delta z}$的极限都存在，且其值有限，则称此极限为函数$f(z)$在点$z_0$的&lt;strong&gt;导数&lt;/strong&gt;，并记为$f&amp;rsquo;(z_0)$，即&lt;/p&gt;
+$$f&#39;(z_0)=\lim_{\Delta z\rightarrow 0}\frac{\Delta\varpi}{\Delta z}=\lim_{z\rightarrow z_0}\frac{f(z)-f(z_0)}{z-z_0}$$&lt;p&gt;这时称函数$f(z)$于点$z_0$&lt;strong&gt;可导&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;复变函数的微分&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设函数$\varpi=f(z)$在点$z$可导，于是&lt;/p&gt;
+&lt;p&gt;$\lim_{\Delta z\rightarrow 0}\frac{\Delta\varpi}{\Delta z}=f&amp;rsquo;(z)$&lt;/p&gt;
+&lt;p&gt;$\frac{\Delta\varpi}{\Delta z}=f&amp;rsquo;(z)+\eta,;\lim_{\Delta z\rightarrow 0}\eta=0$&lt;/p&gt;
+&lt;p&gt;$\Delta\varpi=f&amp;rsquo;(z)\Delta z+\varepsilon$&lt;/p&gt;
+&lt;p&gt;其中$|\varepsilon\cdot\Delta z|$为比$|\Delta z|$高阶的无穷小&lt;/p&gt;
+&lt;p&gt;称$f&amp;rsquo;(z)\Delta z$为$\varpi=f(z)$在点$z$的&lt;strong&gt;微分&lt;/strong&gt;，记为$d\varpi$或$df(z)$，此时也称$f(z)$在点$z$&lt;strong&gt;可微&lt;/strong&gt;，即$d\varpi=f&amp;rsquo;(z)\Delta z$&lt;/p&gt;
+&lt;p&gt;可导$\Leftrightarrow$可微$\Rightarrow$连续&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;2解析函数及其简单性质&#34;&gt;2.解析函数及其简单性质
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;解析函数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如果函数$\varpi=f(z)$在区域$D$内可微，则称$f(z)$为区域$D$内的&lt;strong&gt;解析函数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;区域$D$内的解析函数也称为$D$内的&lt;strong&gt;全纯函数&lt;/strong&gt;或&lt;strong&gt;正则函数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;若函数$f(z)$在点$z_0$不解析，但在$z_0$的任一邻域内总有$f(z)$的解析点，则称$z_0$为函数$f(z)$的&lt;strong&gt;奇点&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;解析函数的性质&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$(1)$函数在一点解析，则其各阶导数也在该点解析&lt;/p&gt;
+&lt;p&gt;$(2)$如函数$f_1(z),,f_2(z)$在区域$D$内解析，则其和、差、积、商（商要求分母在$D$内不为零）在$D$内解析，&lt;em&gt;并且求导公式和一元实函数一致&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;$(3)$&lt;strong&gt;复合函数的求导法则&lt;/strong&gt;：设函数$\xi=f(z)$在区域$D$内解析，函数$\varpi=g(\xi)$在区域$G$内解析，若对于$D$内每一点$z$，函数$f(z)$的值$\xi$均属于$G$，则$\varpi=g[f(z)]$在$D$内解析，且$\frac{dg[f(z)]}{dz}=\frac{dg(\xi)}{d\xi}\cdot\frac{df(z)}{dz}$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;3柯西-黎曼方程&#34;&gt;3.柯西-黎曼方程
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;柯西-黎曼方程&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;假设$\varpi=f(z)=u(x,,y)+iv(x,,y)$是复变元$z=x+iy$的一个定义在区域$D$内的函数&lt;/p&gt;
+&lt;p&gt;函数$f(z)$可微的条件$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y},;\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}$是关于$u$及$v$的偏微分方程组，称为&lt;strong&gt;柯西-黎曼方程&lt;/strong&gt;（简称$C.-,R.$方程）&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;证明思路：设$\Delta z=\Delta x+i\Delta y$，变点$z+\Delta z$分别沿平行于实轴和虚轴的方向趋于点$z$的方向导数相等&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;可微的充要条件&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设函数$f(z)=u(x,,y)+iv(x,,y)$在区域$D$内有定义，$f(x,,y)$在$D$内一点$z=x+iy$可微的充要条件是&lt;/p&gt;
+&lt;p&gt;$(1)$二元函数$u(x,,y),;v(x,,y)$在点$(x,,y)$可微&lt;/p&gt;
+&lt;p&gt;$(2)$$u(x,,y),;v(x,,y)$在点$(x,,y)$满足$C.-,R.$方程&lt;/p&gt;
+&lt;p&gt;上述条件满足时，$f&amp;rsquo;(x)=\frac{\partial u}{\partial x}+i\frac{\partial v}{\partial x}$（&lt;em&gt;可利用$C.-,R.$方程代换其中的偏导数&lt;/em&gt;）&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;在区域$D$内解析的充要条件将上述条件中点$(x,,y)$改为区域$D$即可&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;指数形式可微的充要条件&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;若将复数$z$表示成指数形式$z=re^{i\theta}$，则函数$\varpi=f(z)$又可表示为$\varpi=u(r,,\theta)+iv(r,,\theta)$&lt;/p&gt;
+&lt;p&gt;若$u(r,,\theta),,v(r,,\theta)$可微，且$u_r=\frac{1}{r}v_\theta,;u_\theta=-rv_r$，则$f(z)=f(r,\theta)$可微&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;2-初等解析函数&#34;&gt;§2 初等解析函数
+&lt;/h2&gt;&lt;h3 id=&#34;1指数函数&#34;&gt;1.指数函数
+&lt;/h3&gt;&lt;p&gt;对于任何复数$z=x+iy$，我们用关系式$e^z=e^{x+iy}=e^x(\cos y+i\sin y)$来定义指数函数$e^z$&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;性质&lt;/p&gt;
+&lt;p&gt;$(1)|e^z|=e^x&amp;gt;0,,arg,e^z=y$&lt;/p&gt;
+&lt;p&gt;$(2)e^z$在$z$平面上解析，且$(e^z)&amp;rsquo;=e^z$&lt;/p&gt;
+&lt;p&gt;$(3)e^z$是以$2\pi i$为基本周期的周期函数（$e^{2k\pi i}=1$）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;2三角函数与双曲函数&#34;&gt;2.三角函数与双曲函数
+&lt;/h3&gt;&lt;p&gt;由指数函数定义，当$x=0$时推得$e^{iy}=\cos y+i\sin y,;e^{-iy}=\cos y-i\sin y$&lt;/p&gt;
+&lt;p&gt;从而得到$\sin y=\frac{e^{iy}-e^{-iy}}{2i},;\cos y=\frac{e^{iy}+e^{-iy}}{2}$&lt;/p&gt;
+&lt;p&gt;因而用$\sin z=\frac{e^{iz}-e^{-iz}}{2i},;\cos z=\frac{e^{iz}+e^{-iz}}{2}$分别定义为$z$的&lt;strong&gt;正弦函数&lt;/strong&gt;和&lt;strong&gt;余弦函数&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;性质&lt;/p&gt;
+&lt;p&gt;$(1)$在$z$平面上解析，且$(\sin z)&amp;rsquo;=\cos z,;(\cos z)&amp;rsquo;=-\sin z$&lt;/p&gt;
+&lt;p&gt;$(2)\sin z$是奇函数，$\cos z$是偶函数，并遵从三角恒等式：&lt;/p&gt;
+&lt;p&gt;$\sin^2z+\cos^2z=1$&lt;/p&gt;
+&lt;p&gt;$\sin(z_1+z_2)=\sin z_1\cdot\cos z_2+\cos z_1\cdot\sin z_2$&lt;/p&gt;
+&lt;p&gt;$\cos(z_1+z_2)=\cos z_1\cdot\cos z_2-\sin z_1\cdot\sin z_2$&lt;/p&gt;
+&lt;p&gt;$(3)$是以$2\pi$为周期的周期函数&lt;/p&gt;
+&lt;p&gt;$(4)\sin z$的零点为$z=n\pi,(n∈\mathbb{z})$&lt;/p&gt;
+&lt;p&gt;$\cos z$的零点为$z=(n+\frac{1}{2}\pi,(n∈\mathbb{z})$&lt;/p&gt;
+&lt;p&gt;$(5)$在复数域内$|\sin z|\leq1,;|\cos z|\leq1$不成立&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;定义$\tan z=\frac{\sin z}{\cos z},;\cot z=\frac{\cos z}{\sin z},;\sec z=\frac{1}{\cos z},;\csc z=\frac{1}{\sin z}$分别称为$z$的&lt;strong&gt;正切函数&lt;/strong&gt;、&lt;strong&gt;余切函数&lt;/strong&gt;、&lt;strong&gt;正割函数&lt;/strong&gt;及&lt;strong&gt;余割函数&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;性质&lt;/p&gt;
+&lt;p&gt;$(1)$在$z$平面上使分母不为零的点处解析，且&lt;/p&gt;
+&lt;p&gt;$(\tan z)&amp;rsquo;=\sec^2z,;(\cot z)&amp;rsquo;=-\csc^2z,;(\sec z)&amp;rsquo;=\sec z\cdot\tan z,;(\csc z)&amp;rsquo;=-\csc z\cdot\cot z$&lt;/p&gt;
+&lt;p&gt;$(2)$正切函数和余切函数的周期为$\pi$，正割函数和余割函数的周期为$2\pi$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;定义$\sinh z=\frac{e^z-e^{-z}}{2},;\cosh z=\frac{e^z+e^{-z}}{2},;\tanh z=\frac{\sinh z}{\cosh z},;\coth z=\frac{1}{\tanh z},;sech,z=\frac{1}{\cosh z},;csch,z=\frac{1}{\sinh z}$&lt;/p&gt;
+&lt;p&gt;分别称为$z$的&lt;strong&gt;双曲正弦函数&lt;/strong&gt;、&lt;strong&gt;双曲余弦函数&lt;/strong&gt;、&lt;strong&gt;双曲正切函数&lt;/strong&gt;、&lt;strong&gt;双曲余切函数&lt;/strong&gt;、&lt;strong&gt;双曲正割函数&lt;/strong&gt;及&lt;strong&gt;双曲余割函数&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;3-初等多值函数&#34;&gt;§3 初等多值函数
+&lt;/h2&gt;&lt;p&gt;设函数$f(z)$在区域$D$内有定义，且对$D$内任意不同的两点$z_1$及$z_2$，都有$f(z_1)\neq f(z_2)$，则称函数$f(z)$在$D$内是&lt;strong&gt;单叶的&lt;/strong&gt;，并且称区域$D$为$f(z)$的&lt;strong&gt;单叶性区域&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;区域$D$到区域$G$的单叶满变换$\varpi=f(z)$就是$D$到$G$的一一变换&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;1辐角函数&#34;&gt;1.辐角函数
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;辐角函数与辐角改变量&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;函数的多值性源于辐角的多值性&lt;/p&gt;
+&lt;p&gt;任意一个复数$z(z\neq0)$有无穷多个辐角，&lt;strong&gt;辐角函数&lt;/strong&gt;$\varpi=Arg,z$是一个多值函数，定义域是$C$\${0}$&lt;/p&gt;
+&lt;p&gt;设$L$是$C$\${0}$内一条简单曲线，$z_0$是$L$的起点，$z_1$是$L$的终点，当$z$沿$L$从$z_0$连续变动到$z_1$时，$\overrightarrow{Oz}$所旋转的角称作$Arg,z$在$L$上的改变量，简称&lt;strong&gt;辐角改变量&lt;/strong&gt;，记作$\Delta_LArg,z$&lt;/p&gt;
+&lt;p&gt;从$z_0$到$z_1$由于$L$绕原点的方向和圈数不一样，$\Delta_LArg,z$也不一样
+&lt;img src=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E8%BE%90%E8%A7%92.png&#34;
+	width=&#34;1033&#34;
+	height=&#34;339&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E8%BE%90%E8%A7%92_hu4080325011624877543.png 480w, https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E8%BE%90%E8%A7%92_hu7925896123693141686.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;304&#34;
+		data-flex-basis=&#34;731px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;在$z_0$取定$Arg,z$的一个值记为$arg,z$，称为$Arg,z$在$z_0$的初值，将$arg,z_0+\Delta_LArg,z$称作$Arg,z$在$z_0$的终值，记作$arg,z$，则$arg,z$依赖于起点的初值和辐角改变量&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;单值连续函数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;由于多值函数不方便应用，我们希望将$Arg,z$分解为若干单值连续函数&lt;/p&gt;
+&lt;p&gt;由$arg,z=arg,z_0+\Delta_LArg,z$可知，对取定的初值$arg,z_0$，由于$\Delta_LArg,z$在区域$C$\${0}$内不唯一，$arg,z$也不唯一。所以需要寻找使$\Delta_LArg,z$唯一的区域（辐角改变量只与起点、终点位置有关而与曲线形状无关）&lt;/p&gt;
+&lt;p&gt;该区域性质与保守场有异曲同工之处，可移用保守场的判定（沿着任何闭合环路积分均为$0$），因此研究简单闭曲线$L\subset$ $C$\${0}$，有&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;$\Delta_LArg,z=0$，$0$在$L$外部&lt;/p&gt;
+&lt;p&gt;$\Delta_LArg,z=2\pi$，$0$在$L$内部&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;因此，只要能使区域内任一简单闭曲线都不围绕原点$z=0$即可，若将复平面$C$沿负实轴剪开成一单连通开区域记为$G$，则$\Delta_LArg,z$只与$L$的起点和终点有关，而与曲线的形状无关&lt;/p&gt;
+&lt;p&gt;在$G$内固定起点$z_0$，取定初值$arg,z_0$，则$arg,z_0+\Delta_LArg,z$就是&lt;strong&gt;单值连续函数&lt;/strong&gt;；取定初值$arg,z_0+2\pi$，得另一个单值连续函数；以此类推，取定初值$arg,z_0+2k\pi$，就在$G$内把$Arg,z$分成无穷多个单值连续函数$arg,z+2k\pi,;z\in G,,k\in \mathbb{Z}$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;2根式函数&#34;&gt;2.根式函数
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;根式函数及其变换&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;规定&lt;strong&gt;根式函数&lt;/strong&gt;$\varpi=\sqrt[n]{z}$为&lt;strong&gt;幂函数&lt;/strong&gt;$z=\varpi^n$的反函数&lt;/p&gt;
+&lt;p&gt;如果令$z=re^{i\theta},;\varpi=\rho e^{i\varphi}$，可知$\rho=\sqrt[n]{r},;\varphi=\frac{\theta}{n}$&lt;/p&gt;
+&lt;p&gt;即$z$平面到$\varpi$平面的变换为模长开$n$次方根、辐角除以$n$的变换
+&lt;img src=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%8F%98%E6%8D%A2.png&#34;
+	width=&#34;1035&#34;
+	height=&#34;466&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%8F%98%E6%8D%A2_hu4824651378274821165.png 480w, https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%8F%98%E6%8D%A2_hu2152240629617583190.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;222&#34;
+		data-flex-basis=&#34;533px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;根式函数的单叶性区域&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;为了寻找其单叶性区域，先限定$Arg,z$取$(-\pi,,\pi)$，则该变化使$z$平面压缩到了$-\frac{\pi}{n} &amp;lt; \varphi &amp;lt; \frac{\pi}{n}$的角形区域内，该区域为$\varpi=\sqrt[n]{z}$的一个单叶性区域&lt;/p&gt;
+&lt;p&gt;同理，当$Arg,z$取$(\pi,3\pi)$，可划分出第二个单叶性区域$\frac{\pi}{n}&amp;lt;\varphi&amp;lt;\frac{3\pi}{n}$，以此类推，当$Arg,z$取$(-\pi+2k\pi,,\pi+2k\pi)$时，对应的单叶性区域为$(\frac{2k\pi}{n}-\frac{\pi}{n})&amp;lt;\varphi&amp;lt;(\frac{2k\pi}{n}+\frac{\pi}{n})$，当$k$从$0$取到$n-1$时，得到的所有单叶性区域将$\varpi$平面填满，此为函数$\varpi=\sqrt[n]{z}$单叶性区域的一种分法。总之，幂函数$\varpi=\sqrt[n]{z}$的单叶性区域是顶点在原点$z=0$，张度不超过$\frac{2\pi}{n}$的角形区域
+&lt;img src=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%88%86%E6%94%AF.png&#34;
+	width=&#34;615&#34;
+	height=&#34;273&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%88%86%E6%94%AF_hu9454672404763855296.png 480w, https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%88%86%E6%94%AF_hu5359481392221967531.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;225&#34;
+		data-flex-basis=&#34;540px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;指数函数的单值解析分支&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;只要将$Arg,z$的取值区间范围限定在$2\pi$，所得即为单叶性区域，由前文辐角函数可知，在$z$平面上从原点$O$到点$\infty$任意引一条射线（或一条通向无穷远点的广义简单曲线）将$z$平面割破，构成一个以此&lt;strong&gt;割线&lt;/strong&gt;为边界的区域，记为$G$，在此区域上指定一点$z_0$取不同的初值$arg,z_0$，就能各自得到区域内任意的点$z$唯一的辐角，从而得到&lt;/p&gt;
+$$\varpi_k=(\sqrt[n]{z})_k=\sqrt[n]{r(z)}e^{i\frac{\theta(z)+2k\pi}{n}}\;(z\in G,\,k=0,\,1,\,…,\,n-1)$$&lt;p&gt;称为$\sqrt[n]{z}$的$n$个&lt;strong&gt;单值连续分支函数&lt;/strong&gt;。而分出$\sqrt[n]{z}$的单值解析分支的割线称为$\sqrt[n]{z}$的&lt;strong&gt;支割线&lt;/strong&gt;。支割线两侧称为&lt;strong&gt;两岸&lt;/strong&gt;，如果支割线接近于平行$x$轴方向就分成&lt;strong&gt;上岸&lt;/strong&gt;和&lt;strong&gt;下岸&lt;/strong&gt;，如果接近于平行$y$轴方向就分成&lt;strong&gt;左岸&lt;/strong&gt;和&lt;strong&gt;右岸&lt;/strong&gt;
+&lt;img src=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%88%86%E6%94%AF%E4%BE%8B.png&#34;
+	width=&#34;1040&#34;
+	height=&#34;491&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%88%86%E6%94%AF%E4%BE%8B_hu1387105367054908801.png 480w, https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%88%86%E6%94%AF%E4%BE%8B_hu13903390055364720175.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;211&#34;
+		data-flex-basis=&#34;508px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;对于$\varpi_k=(\sqrt[n]{z})_k$的单值解析分支，有&lt;/p&gt;
+&lt;p&gt;$\frac{\mathrm{d} }{\mathrm{d} z}(\sqrt[n]{z})_k=\frac{1}{n}\frac{(\sqrt[n]{z})_k}{z};(z\in G,,k=0,,1,,…,,n-1)$&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;支点&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;假设有一点，在此点的充分小邻域内，作一个包围此点的圆周$\Gamma$，当变点$z$从$\Gamma$上一点除法，绕$\Gamma$连续变动一周而回到其出发点时，多值函数从其一支变到另外一支，则该点称为此多值函数的&lt;strong&gt;支点&lt;/strong&gt;（可以理解为该圆周$\Gamma$跨过了划分单值连续分支函数的支割线），$\sqrt[n]{z}$以$z=0$和$z=\infty$为支点，推广到$\sqrt[n]{z-a}$则以$z=a$和$z=\infty$为支点&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;3对数函数&#34;&gt;3.对数函数
+&lt;/h3&gt;&lt;p&gt;规定&lt;strong&gt;对数函数&lt;/strong&gt;$\varpi=Ln,z$为&lt;strong&gt;指数函数&lt;/strong&gt;$e^{\varpi}=z$的反函数&lt;/p&gt;
+&lt;p&gt;如果令${z=re^{i\theta}},;\varpi=u+iv$，可得$u=\ln,r,,v=\theta+2k\pi,(k\in\mathbb{Z})$&lt;/p&gt;
+&lt;p&gt;故方程的全部根是$Ln,z=\ln,r+i(\theta+2k\pi)=\ln,|z|+i(arg,z+2k\pi),(k\in\mathbb{Z})$&lt;/p&gt;
+&lt;p&gt;当$k$取确定值时，$Ln,z$的对应值记为$(\ln,z)_k$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;基本性质&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$Ln(z_1z_2)=Ln,z_1+Ln,z_2$&lt;/p&gt;
+&lt;p&gt;$Ln(\frac{z_1}{z_2})=Ln,z_1-Ln,z_2$&lt;/p&gt;
+&lt;p&gt;$(z_1,,z_2\neq0,,\infty)$&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;对数函数的单值解析分支&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;由定义可知$z$的辐角决定$\varpi$在平面上的纵坐标，$z$平面中取负实轴为割线限定辐角在$(-\pi,,\pi)$的区域变换为$\varpi$平面上纵坐标在$(-\pi,,\pi)$的带形区域，该区域为$\varpi=Ln,z$的一个单叶性区域。总之，对数函数$\varpi=Ln,z$的单叶性区域是宽为$2\pi$的带形区域
+&lt;img src=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E5%AF%B9%E6%95%B0%E5%8F%98%E6%8D%A2.png&#34;
+	width=&#34;1056&#34;
+	height=&#34;425&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E5%AF%B9%E6%95%B0%E5%8F%98%E6%8D%A2_hu8677967949519445960.png 480w, https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E5%AF%B9%E6%95%B0%E5%8F%98%E6%8D%A2_hu13564889891551505543.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;248&#34;
+		data-flex-basis=&#34;596px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;$\varpi=Ln,z$的无穷多个单值连续分支函数为&lt;/p&gt;
+$$\varpi_k=(\ln\,z)_k=\ln\,r(z)+i[\theta(z)+2k\pi]\;(z\in G,\,k\in\mathbb{z})$$&lt;p&gt;支点为$z=0$和$z=\infty$，支割线为连接$z=0$和$z=\infty$的广义简单曲线，且有&lt;/p&gt;
+&lt;p&gt;$\frac{\mathrm{d}}{\mathrm{d}z}(\ln,z)_k=\frac{1}{z};(z\in G,,k\in\mathbb{z})$
+&lt;img src=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E5%AF%B9%E6%95%B0%E5%88%86%E6%94%AF.png&#34;
+	width=&#34;1025&#34;
+	height=&#34;476&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E5%AF%B9%E6%95%B0%E5%88%86%E6%94%AF_hu17547834237059550805.png 480w, https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E5%AF%B9%E6%95%B0%E5%88%86%E6%94%AF_hu7340905266411123409.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;215&#34;
+		data-flex-basis=&#34;516px&#34;
+	
+&gt;
+&lt;img src=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E5%AF%B9%E6%95%B0%E5%88%86%E6%94%AF%E4%BE%8B.png&#34;
+	width=&#34;1019&#34;
+	height=&#34;610&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E5%AF%B9%E6%95%B0%E5%88%86%E6%94%AF%E4%BE%8B_hu16409839793379116110.png 480w, https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E5%AF%B9%E6%95%B0%E5%88%86%E6%94%AF%E4%BE%8B_hu7329111693013934763.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;167&#34;
+		data-flex-basis=&#34;400px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;4一般幂函数与一般指数函数&#34;&gt;4.一般幂函数与一般指数函数
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;一般幂函数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$\varpi=z^\alpha=e^{\alpha Ln,z}(z\ne0,,\infty;,\alpha\in\mathbb{R})$称为$z$的&lt;strong&gt;一般幂函数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设$(\ln,z)_0$表示$Ln,z$中的任意一个确定的值，则&lt;/p&gt;
+$$z^\alpha=e^{\alpha Ln\,z}=e^{\alpha[(\ln z)_0+2k\pi i]}=\varpi_0e^{2k\pi i\alpha}\;(k\in\mathbb{Z})$$&lt;p&gt;其中$\varpi_0=e^{\alpha(\ln z)_0}$表示$z^{\alpha}$所有的值中的一个&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;讨论$\alpha$的如下三种情形：&lt;/p&gt;
+&lt;p&gt;$(1)\alpha$是一整数$n$，此时$e^{2k\pi in}=1$，$z^\alpha$是$z$的单值函数&lt;/p&gt;
+&lt;p&gt;$(2)\alpha$是一有理数$\frac{q}{p}$，此时$e^{2k\pi i\frac{q}{p}}$只能取$k=0,,1,,2,,…,,p-1$总共$p$个不同的值（参考根式函数），$z^{\frac{q}{p}}=\varpi_0e^{2k\pi i\frac{q}{p}},;k=0,,1,,2,,…,,p-1$&lt;/p&gt;
+&lt;p&gt;$(3)\alpha$是一无理数或虚数，此时$e^{2k\pi i\alpha}$有无限个值，$z^\alpha$是无限多值的&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;对$\varpi=z^\alpha$的每一分支，有$\frac{\mathrm{d}}{\mathrm{d}z}z^\alpha=\alpha z^{\alpha-1}$&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;一般指数函数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$\varpi=\alpha^z=e^{zLn,\alpha}(\alpha\ne0,\infty,为一复常数)$称为&lt;strong&gt;一般指数函数&lt;/strong&gt;，是无穷多个独立的、在$z$平面上单值解析的函数（取决于$Ln,\alpha$的取值）&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;5具有多个有限支点的情形&#34;&gt;5.具有多个有限支点的情形
+&lt;/h3&gt;&lt;p&gt;讨论函数$\varpi=f(z)=\sqrt[n]{P(z)}$的支点，其中$P(z)$是任意的$N$次多项式$A(z-a_1)^{\alpha_1}…(z-a_m)^{\alpha_m}$&lt;/p&gt;
+&lt;p&gt;$a_1,,a_2,,…,,a_m$是$P(z)$的一切&lt;strong&gt;相异零点&lt;/strong&gt;，$\alpha_1,,\alpha_2,,…,,\alpha_m$分别是它们的&lt;strong&gt;重数&lt;/strong&gt;，满足$\alpha_1+\alpha_2+…+\alpha_m=N$&lt;/p&gt;
+&lt;p&gt;根据根式函数和复数乘法对复数辐角的改变法则，可知沿一简单闭曲线$C$，$f(z)$的辐角改变量$\Delta_carg,f(z)=\frac{1}{n}(\alpha_1\Delta_carg,(z-a_1)+…+\alpha_m\Delta_carg,(z-a_m))$&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;研究简单闭曲线$C$包围相异零点所有组合的情况，可以得到下列结论：&lt;/p&gt;
+&lt;p&gt;$(1)f(z)$可能的支点是所有相异零点和$\infty$&lt;/p&gt;
+&lt;p&gt;$(2)$当且仅当$n$不能整除$\alpha_i$时，$a_i$是$f(z)$的支点&lt;/p&gt;
+&lt;p&gt;$(3)$当且仅当$n$不能整除$N$时，$\infty$是$f(z)$的支点&lt;/p&gt;
+&lt;p&gt;$(4)$如果$n$能整除所有重数中若干个之和，则相异零点中对应的那几个就可以连接成割线抱成团，即变点$z$沿只包含这些相异零点在其内部的简单闭曲线转一周后函数值不变。抱团的点可能不止一个，其余不入团的点则与点$\infty$连接成一条割线&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;由已给单值解析分支$f(z)$的初值$f(z_1)$计算终值$f(z_2)$，先计算当$z$从$z_1$沿曲线$C$（不穿过支割线）到终点$z_2$时，$f(z)$的辐角连续改变量$\Delta_carg,f(z)$，再计算终值&lt;/p&gt;
+$$f(z_2)=|f(z_2)|e^{i\Delta_carg\,f(z)}\cdot e^{iarg\,f(z_1)}$$&lt;hr&gt;
+&lt;h3 id=&#34;6反三角函数与反双曲函数&#34;&gt;6.反三角函数与反双曲函数
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;反正切函数&lt;/strong&gt;$Arctan,z=\frac{1}{2i}Ln\frac{1+iz}{1-iz}$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;反正弦函数&lt;/strong&gt;$Arcsin,z=\frac{1}{i}Ln(iz+\sqrt{1-z^2})$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;反余弦函数&lt;/strong&gt;$Arccos,z=\frac{1}{i}Ln(z+i\sqrt{1-z^2})$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;反双曲余弦函数&lt;/strong&gt;$Arcosh,z=Ln(z+\sqrt{z^2-1})$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;反双曲正弦函数&lt;/strong&gt;$Arsinh,z=Ln(z+\sqrt{z^2+1})$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;反双曲正切函数&lt;/strong&gt;$Artanh,z=\frac{1}{2}Ln\frac{1+z}{1-z}$&lt;/p&gt;
+&lt;p&gt;其中对数是无穷多值的，根式是二值的，因此反三角函数和反双曲函数是无穷多值的，其分成单值解析分支的方法与前文讨论方法类似&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;本章完&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>【复变函数论】Ep1.复数与复变函数</title>
+        <link>https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/</link>
+        <pubDate>Wed, 23 Oct 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;本学习笔记主要是为了拓展工程实践可能会应用到的相关知识，帮助了解和查阅知识体系、相关概念和基本思想，非以数学专业方向为主，因此不会探讨进一步的数学问题，甚至文中涉及到的部分知识也无需完全掌握，用抽象而严谨的数学语言表达的内容我会尽可能用自然语言（文中斜体字）或绘图辅助理解&lt;/p&gt;
+&lt;p&gt;前置课程：微积分（高等数学/数学分析）&lt;/p&gt;
+&lt;p&gt;自学教材：《复变函数论（第五版）》钟玉泉 编&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;`​&lt;/p&gt;
+&lt;h1 id=&#34;引言&#34;&gt;引言
+&lt;/h1&gt;&lt;p&gt;复变函数论研究自变量为复数的函数，复变函数有时能比实变函数更能反映和描述自然现象和物理规律，为解决问题提供新思想的模型，在物理学、工程学、计算机科学等方面有广泛应用。&lt;/p&gt;
+&lt;h1 id=&#34;复数与复变函数&#34;&gt;复数与复变函数
+&lt;/h1&gt;&lt;h2 id=&#34;1-复数&#34;&gt;§1 复数
+&lt;/h2&gt;&lt;h3 id=&#34;1复数域&#34;&gt;1.复数域
+&lt;/h3&gt;&lt;p&gt;形如$z=x+iy$的数称为&lt;strong&gt;复数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$i$满足$i^2=-1$，称为&lt;strong&gt;虚数单位&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;实数$x$和$y$分别称为复数$z$的&lt;strong&gt;实部&lt;/strong&gt;和&lt;strong&gt;虚部&lt;/strong&gt;，记为$x=Re,z, y=Im,z$&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;虚部不为零的复数称为&lt;strong&gt;虚数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;实部为零且虚部不为零的复数称为&lt;strong&gt;纯虚数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;复数$x+iy$和$x-iy$称为互为&lt;strong&gt;共轭复数&lt;/strong&gt;，复数$z$的共轭复数记为$\bar{z}$，于是$x-iy=\overline{x+iy}$&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;复数的加（减）法&lt;/strong&gt;按实部与实部相加（减），虚部与虚部相加（减）&lt;/p&gt;
+&lt;p&gt;$z_1\pm z_2=(x_1\pm x_2)+i(y_1\pm y_2)$&lt;/p&gt;
+&lt;p&gt;加法遵守交换律与结合律
+&lt;strong&gt;复数的乘法&lt;/strong&gt;按多项式乘法法则，将结果中的$i^2$换成$-1$&lt;/p&gt;
+&lt;p&gt;$z_1z_2=(x_1x_2-y_1y_2)+i(x_1y_2+y_1x_2)$&lt;/p&gt;
+&lt;p&gt;乘法遵守交换律与结合律和乘法对于加法的分配律&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;复数的除法&lt;/strong&gt;先写成分式的形式，然后分子分母同乘分母的共轭复数，再进行简化，即&lt;/p&gt;
+&lt;p&gt;$\frac{z_{1}}{z_{2}}=\frac{x_{1}x_{2}+y_{1}y_{2}}{x_{2}^{2}+y_{2}^{2}}+i\frac{y_{1}x_{2}+x_{1}y_{2}}{x_{2}^{2}+y_{2}^{2}}(z_2\neq 0)$&lt;/p&gt;
+&lt;p&gt;引进上述运算后的全体复数称为&lt;strong&gt;复数域&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;2复平面&#34;&gt;2.复平面
+&lt;/h3&gt;&lt;p&gt;$(x, y)$称为复数$z=x+iy$的&lt;strong&gt;实数对形式&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;可以借助于坐标为$(x, y)$的点来表示复数$z=x+yi$&lt;/p&gt;
+&lt;p&gt;$x$轴称为&lt;strong&gt;实轴&lt;/strong&gt;，$y$轴称为&lt;strong&gt;虚轴&lt;/strong&gt;，表示复数$z$的平面称为&lt;strong&gt;复平面&lt;/strong&gt;或$z$&lt;strong&gt;平面&lt;/strong&gt;
+&lt;img src=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/%E5%A4%8D%E5%B9%B3%E9%9D%A2.jpg&#34;
+	width=&#34;3000&#34;
+	height=&#34;2683&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/%E5%A4%8D%E5%B9%B3%E9%9D%A2_hu12183088528706802865.jpg 480w, https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/%E5%A4%8D%E5%B9%B3%E9%9D%A2_hu1041781786264633110.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;111&#34;
+		data-flex-basis=&#34;268px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;3复数的模与辐角&#34;&gt;3.复数的模与辐角
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;模与辐角&lt;/strong&gt;
+用向量$\overrightarrow{Oz}$表示复数$z=x+iy$，向量的长度称为复数$z$的&lt;strong&gt;模&lt;/strong&gt;或&lt;strong&gt;绝对值&lt;/strong&gt;，以符号$\left | z \right |$或$r$表示，因而有$r=\left | z \right |=\sqrt{x^2+y^2}\geqslant 0$&lt;/p&gt;
+&lt;p&gt;实轴正向到非零复数的向量$\overrightarrow{Oz}$间的夹角$θ$满足$\tan \theta =\frac{y}{x}$，称为复数$z$的&lt;strong&gt;辐角&lt;/strong&gt;，记为$θ=Arg z$&lt;/p&gt;
+&lt;p&gt;任一非零复数$z$有无穷多个辐角，以$arg,z$表示其中一个特定值，且满足$-π&amp;lt;arg,z≤π$的一个为$Arg,z$的&lt;strong&gt;主值&lt;/strong&gt;或$z$的&lt;strong&gt;主辐角&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;复数的表达形式&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;从直角坐标与极坐标的关系，可以用复数的模$r$与辐角$θ$表示非零复数$z$，即&lt;/p&gt;
+&lt;p&gt;$z = r(\cos θ + i \sin θ)$&lt;/p&gt;
+&lt;p&gt;称为非零复数$z$的&lt;strong&gt;三角形式&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;当$r=1$，称$z$为&lt;strong&gt;单位复数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;由欧拉公式$e^{i\theta }=\cos \theta +i\sin\theta$可以把三角形式改写成$z=re^{i\theta }$或$z=|z|e^{iarg, z}$，&lt;/p&gt;
+&lt;p&gt;为非零复数$z$的&lt;strong&gt;指数形式&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;称$z=x+iy$为复数$z$的&lt;strong&gt;代数形式&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;三种表示法可以互相转换，各有其便&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;指数形式乘除法及其几何意义&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;复数的指数形式适用于乘除法&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;由&lt;/p&gt;
+&lt;p&gt;$z_1z_2=r_1r_2e^{i(\theta _1+\theta _2)}$ ①&lt;/p&gt;
+&lt;p&gt;$\frac{z_1}{z_2}=\frac{r_1}{r_2}e^{i(\theta_1-\theta_2)}$&lt;/p&gt;
+&lt;p&gt;得&lt;/p&gt;
+&lt;p&gt;$|z_1z_2|=|z_1||z_2|,; |\frac{z_1}{z_2}|=\frac{|z_1|}{|z_2|}(z_2\neq 0)$&lt;/p&gt;
+&lt;p&gt;$Arg(z_1z_2)=Arg, z_1+Arg, z_2,;Arg(\frac{z_1}{z_2})=Arg, z_1-Arg, z_2$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;式①说明，$z_1z_2$所对应的向量是把$z_1$所对应的向量的长度伸缩$r_2$倍，然后再逆时针旋转$\theta$得到的&lt;/p&gt;
+&lt;p&gt;特别地，$iz$相当于将$z$所对应的向量沿逆时针方向旋转$\frac{\pi }{2}$，这里$i$称为&lt;strong&gt;旋转乘数&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;4复数的乘幂与方根&#34;&gt;4.复数的乘幂与方根
+&lt;/h3&gt;&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;复数的乘幂&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设$z=re^{i\theta }$ ，则$z^n=r^ne^{in\theta}=r^n(\cos n\theta+i\sin n\theta)$&lt;/p&gt;
+&lt;p&gt;从而有$|z^n| = |z|^n,;Arg,z^n=nArg,z$&lt;/p&gt;
+&lt;p&gt;当$r=1$，得&lt;strong&gt;棣莫弗（De Moivre）公式&lt;/strong&gt;&lt;/p&gt;
+$$(\cos\theta+i\sin\theta)^n=(\cos n\theta+i\sin n\theta)$$&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;复数的方根&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;求非零复数$z$的$n$次方根，相当于解方程&lt;/p&gt;
+$$\varpi ^n=z(n≥2,\,n∈Z)$$&lt;blockquote&gt;
+&lt;p&gt;设$z=re^{i\theta}$, $\varpi=\rho e^{i\varphi}$&lt;/p&gt;
+&lt;p&gt;则$\rho ^ne^{in\varphi}=re^{i\theta}$&lt;/p&gt;
+&lt;p&gt;解出$\rho=\sqrt[n]{r},;\varphi=\frac{\theta+2k\pi}{n}$&lt;/p&gt;
+&lt;p&gt;从而有$|\sqrt[n]{z}|=\sqrt[n]{|z|},; Arg,\sqrt[n]{z}=\frac{Arg, z}{n}$&lt;/p&gt;
+&lt;p&gt;因此$z$的$n$次方根为&lt;/p&gt;
+$$\varpi_k=(\sqrt[n]{z})_k=\sqrt[n]{r}e^{i\frac{\theta+2k\pi}{n}}$$&lt;p&gt;$k$取$0,,1,,2,,…,, n-1$即可得出$n$个根&lt;/p&gt;
+&lt;p&gt;其中$e^{i\frac{2k\pi}{n}}$为$1$的$n$个$n$次方根，记为$1,,\omega,,\omega^2,,…,,\omega ^{n-1}(\omega=e ^{i\frac{2\pi}{n}})$&lt;/p&gt;
+&lt;p&gt;从而非零复数$z$的$n$个$n$次方根为$\varpi_0,,\omega\varpi_0,,\omega^2\varpi_0,,…,,\omega ^{n-1}\varpi_0$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;5共轭复数&#34;&gt;5.共轭复数
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;共轭复数一些性质如下：&lt;/p&gt;
+&lt;p&gt;$(1)\overline{(\bar{z})}=z,;\overline{z_1\pm z_2}=\bar{z_1}+\bar{z_2}$&lt;/p&gt;
+&lt;p&gt;$(2)\overline{z_1z_2}=\bar{z_1}\bar{z_2},,\overline{(\frac{z_1}{z_2})}=\frac{\bar{z_1}}{\bar{z_2}}(z_2\neq 0)$&lt;/p&gt;
+&lt;p&gt;$(3)|z|^2=z\bar{z},;Re, z=\frac{z+\bar{z}}{2},; Im, z=\frac{z-\bar{z}}{2i}$&lt;/p&gt;
+&lt;p&gt;$(4)$设$R(a,,b,,c,,…)$表示对于复数$a,,b,,c,,…$的任一有理运算，则&lt;/p&gt;
+$$\overline{R(a,\,b,\,c,\,…)}=R(\bar{a},\,\bar{b},\,\bar{c},\,…)$$&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;6复数在几何上的应用&#34;&gt;6.复数在几何上的应用
+&lt;/h3&gt;&lt;p&gt;&lt;em&gt;核心思想：从向量的角度运用复数&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;举例：&lt;/p&gt;
+&lt;p&gt;1.过$z_1$及$z_2$两点的直线的参数方程：&lt;/p&gt;
+$$z=z_1+t(z_2-z_1)$$&lt;p&gt;2.以$z_0$为圆心，$R$为半径的圆周的方程：&lt;/p&gt;
+$$|z-z_0|=R$$&lt;p&gt;3.直线$z_1z_2$与直线$z_1z_3$的夹角：&lt;/p&gt;
+$$\alpha =arg\frac{z_2-z_1}{z_3-z_1}$$&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;2-复平面上的点集&#34;&gt;§2 复平面上的点集
+&lt;/h2&gt;&lt;h3 id=&#34;1平面点集的几个基本概念&#34;&gt;1.平面点集的几个基本概念
+&lt;/h3&gt;&lt;p&gt;由不等式$|z-z_0|&amp;lt;\rho$所确定的&lt;strong&gt;平面点集&lt;/strong&gt;，称为点$z_0$的$\rho$&lt;strong&gt;邻域&lt;/strong&gt;，记为$N_\rho(z_0)$&lt;/p&gt;
+&lt;p&gt;$0&amp;lt;|z-z_0|&amp;lt;\rho$为点$z_0$的&lt;strong&gt;去心&lt;/strong&gt;$\rho$&lt;strong&gt;邻域&lt;/strong&gt;，记为$N_\rho(z_0)$ \ ${z_0}$&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;点与集的分类&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;对点集$E$，若平面上一点$z_0$（不必属于$E$）的任意邻域都有$E$的无穷多个点，则称$z_0$为$E$的&lt;strong&gt;聚点&lt;/strong&gt;或&lt;strong&gt;极限点&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;若$z_0$属于$E$，但非$E$的聚点，则称$z_0$为$E$的&lt;strong&gt;孤立点&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;若$z_0$不属于$E$，又非$E$的聚点，则称$z_0$为$E$的&lt;strong&gt;外点&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;点$E$的全部聚点所成集用$E&amp;rsquo;$表示&lt;/p&gt;
+&lt;p&gt;若$E&amp;rsquo;\subseteq E$，则称$E$为&lt;strong&gt;闭集&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;若点集$E$的点$z_0$有一邻域全含于$E$内，则称$z_0$为$E$的&lt;strong&gt;内点&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;若点集$E$的点皆为内点，则称$E$为&lt;strong&gt;开集&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;若在点$z_0$的任意邻域内，同时有属于点集$E$和不属于$E$的点，则称$z_0$为$E$的&lt;strong&gt;边界点&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;点集$E$的全部边界点所组成的点集称为$E$的&lt;strong&gt;边界&lt;/strong&gt;，记成$\partial E$&lt;/p&gt;
+&lt;p&gt;点集$E$的孤立点必是$E$的边界点&lt;/p&gt;
+&lt;p&gt;若点集$E$全含于一圆之内，则称$E$为&lt;strong&gt;有界集&lt;/strong&gt;，否则称$E$为&lt;strong&gt;无界集&lt;/strong&gt;
+&lt;img src=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/%E7%82%B9%E4%B8%8E%E9%9B%86.png&#34;
+	width=&#34;2109&#34;
+	height=&#34;1059&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/%E7%82%B9%E4%B8%8E%E9%9B%86_hu7866024405530529067.png 480w, https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/%E7%82%B9%E4%B8%8E%E9%9B%86_hu10385648017440045783.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;199&#34;
+		data-flex-basis=&#34;477px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;2区域与若尔当jordan曲线&#34;&gt;2.区域与若尔当（Jordan）曲线
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;区域和闭域&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;具备下列性质的非空点集$D$称为&lt;strong&gt;区域&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;$(1)D$为开集&lt;/p&gt;
+&lt;p&gt;$(2)D$中任意两点可用全在D中的折线连接（&lt;em&gt;即$D$的图形为一个整体&lt;/em&gt;）&lt;/p&gt;
+&lt;p&gt;区域$D$加上它的边界$C$称为&lt;strong&gt;闭域&lt;/strong&gt;，记为$\bar{D}=D+C$&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;连续曲线&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设$x(t)$及$y(t)$是实变数$t$的两个实函数，它们在闭区间$[\alpha,,\beta]$上连续，则由复数方程$z=x(t)+iy(t);(\alpha≤t≤\beta)$所决定的点集$C$，称为平面上的一条&lt;strong&gt;连续曲线&lt;/strong&gt;，该复数方程称为$C$的&lt;strong&gt;参数方程&lt;/strong&gt;，$z(\alpha)$和$z(\beta)$分别称为$C$的&lt;strong&gt;起点&lt;/strong&gt;和&lt;strong&gt;终点&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;对满足$\alpha&amp;lt;t_1&amp;lt;\beta,;\alpha≤t_2≤\beta,;t_1\neq t_2$的$t_1$及$t_2$，当$z(t_1)=z(t_2)$成立时，点$z(t_1)$称为此曲线$C$的&lt;strong&gt;重点&lt;/strong&gt;（&lt;em&gt;即曲线除了首尾相接的情况外有交点&lt;/em&gt;）&lt;/p&gt;
+&lt;p&gt;凡无重点的连续曲线，称为&lt;strong&gt;简单曲线&lt;/strong&gt;或&lt;strong&gt;若尔当曲线&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$z(\alpha)=z(\beta)$的简单曲线称为&lt;strong&gt;简单闭曲线&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;可求长&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设连续弧$AB$的参数方程为$z=z(t);(\alpha≤t≤\beta)$，任取实数列${t_n}：\alpha=t_0&amp;lt;t_1&amp;lt;t_2&amp;lt;…&amp;lt;t_{n-1}&amp;lt;t_n=\beta$，并且考虑$AB$弧上对应的点列：$z_j=z(t_j);(j=0,,1,,2,,…,,n)$，将它们用一折线$Q_n$连接起来，$Q_n$的长度$I_n=\sum\limits_{j=1}^n|z(t_j)-z(t_{j-1})|$，如果对于所有的数列${t_n}$，$I_n$有上界，则$AB$弧称为&lt;strong&gt;可求长的&lt;/strong&gt;，上确界$L=sup,I_n$称为$AB$弧的&lt;strong&gt;长度&lt;/strong&gt;（&lt;em&gt;类比割圆法求圆的周长&lt;/em&gt;）&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;光滑曲线&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设简单（或简单闭）曲线$C$的参数方程为$z=x(t)+iy(t);(\alpha≤t≤\beta)$，又在$\alpha≤t≤\beta$上，$x&amp;rsquo;(t)$及$y&amp;rsquo;(t)$存在、连续且不全为零，则$C$称为&lt;strong&gt;光滑（闭）曲线&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;光滑（闭）曲线$C$具有连续转动的切线（&lt;em&gt;斜率不会突变&lt;/em&gt;）&lt;/p&gt;
+&lt;p&gt;由有限条光滑曲线衔接而成的连续曲线称为&lt;strong&gt;逐段光滑曲线&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;特别，&lt;strong&gt;简单折线&lt;/strong&gt;是逐段光滑曲线&lt;/p&gt;
+&lt;p&gt;逐段光滑曲线是可求长曲线，但简单曲线（或简单闭曲线）不一定可求长&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;若尔当定理：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;任一简单闭曲线$C$将$z$平面唯一地分成$C$，$I(C)$及$E(C)$三个点集，它们具有如下性质：&lt;/p&gt;
+&lt;p&gt;$(1)$彼此不交&lt;/p&gt;
+&lt;p&gt;$(2)I(C)$是一个有界区域（称为$C$的内部）&lt;/p&gt;
+&lt;p&gt;$(3)E(C)$是一个无界区域（称为$C$的外部）&lt;/p&gt;
+&lt;p&gt;$(4)$若简单折线$P$的一个端点属于$I(C)$，另一个端点属于$E(C)$，则$P$必与$C$有交点
+&lt;img src=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/%E8%8B%A5%E5%B0%94%E5%BD%93%E5%AE%9A%E7%90%86.png&#34;
+	width=&#34;1008&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/%E8%8B%A5%E5%B0%94%E5%BD%93%E5%AE%9A%E7%90%86_hu7854314371865556780.png 480w, https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/%E8%8B%A5%E5%B0%94%E5%BD%93%E5%AE%9A%E7%90%86_hu9092648772233189074.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;168&#34;
+		data-flex-basis=&#34;403px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;曲线的方向&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;沿着一条简单闭曲线$C$逆时针方向为&lt;strong&gt;正方向&lt;/strong&gt;，顺时针方向为&lt;strong&gt;负方向&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;区域的分类&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设$D$为复平面上区域，若在$D$内无论怎样画简单闭曲线，其内部仍全含于$D$，则称$D$为&lt;strong&gt;单连通区域&lt;/strong&gt;，否则为&lt;strong&gt;多连通区域&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;所含不止一个点的闭集$E$，如果不能划分为两个无公共点的非空闭集，则称$E$为&lt;strong&gt;连续点集&lt;/strong&gt;（&lt;em&gt;形状为一整块的闭集&lt;/em&gt;）&lt;/p&gt;
+&lt;p&gt;空集与所含只有一个点的集，称为&lt;strong&gt;退化连续点集&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;若区域$D$的边界为一个连续点集（包括退化情形），则称$D$为&lt;strong&gt;单连通区域&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;若区域$D$的边界是互不相交的两个、三个……$n$个连续点集，则分别称$D$为&lt;strong&gt;二连通、三连通……&lt;/strong&gt;$n$&lt;strong&gt;连通的区域&lt;/strong&gt;
+&lt;img src=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/%E8%BF%9E%E9%80%9A%E5%8C%BA%E5%9F%9F.png&#34;
+	width=&#34;1709&#34;
+	height=&#34;335&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/%E8%BF%9E%E9%80%9A%E5%8C%BA%E5%9F%9F_hu10464473969793779101.png 480w, https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/%E8%BF%9E%E9%80%9A%E5%8C%BA%E5%9F%9F_hu6307961340081314874.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;510&#34;
+		data-flex-basis=&#34;1224px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;3-复变函数&#34;&gt;§3 复变函数
+&lt;/h2&gt;&lt;h3 id=&#34;1复变函数的概念&#34;&gt;1.复变函数的概念
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;复变函数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设$E$为一复数集，若对$E$内每一复数$z$，有唯一确定的复数$\varpi$与之对应，则称在$E$上确定了一个&lt;strong&gt;单值函数&lt;/strong&gt;$\varpi=f(z)(z∈E)$&lt;/p&gt;
+&lt;p&gt;如对$E$内每一复数$z$，有几个或无穷多个$\varpi$与之对应，则称在$E$上确定了一个&lt;strong&gt;多值函数&lt;/strong&gt;$\varpi=f(z)(z∈E)$
+$E$称为函数$\varpi=f(z)$的&lt;strong&gt;定义域&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;对于$E$，$\varpi$值的全体所成集$M$称为函数$\varpi=f(z)$的&lt;strong&gt;值域&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;复变函数的理解&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设$\varpi=f(z)$是定义于点集$E$上的单值或多值函数，并令$z=x+iy,;\varpi=u+iv$&lt;/p&gt;
+&lt;p&gt;则$u,,v$皆随$x,,y$而确定，因而$\varpi=f(z)$又写成$\varpi=u(x,,y)+iv(x,,y)$&lt;/p&gt;
+&lt;p&gt;其中$u(x,,y)$及$v(x,,y)$是二元实变函数&lt;/p&gt;
+&lt;p&gt;如将$z$表示为指数形式$z=re^{i\theta}$，函数$\varpi=f(z)$又可表示为$\varpi=P(r,,\theta)+iQ(r,,\theta)$&lt;/p&gt;
+&lt;p&gt;可见复函数$\varpi=f(z)$等价于两个相应的二元实函数$u=\varphi(x,,y),;v=\psi(x,,y)$&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;对应/映射/变换&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;由$f(x+iy)=u+iv$，描出$f(z)$的图形必须采用$(u,,v,,x,,y)$空间&lt;/p&gt;
+&lt;p&gt;为简化，采用两张复平面$z$平面和$\varpi$平面，把复变函数理解为两个复平面上的点集间的&lt;strong&gt;对应&lt;/strong&gt;（&lt;strong&gt;映射&lt;/strong&gt;或&lt;strong&gt;变换&lt;/strong&gt;），即复变函数$\varpi=f(z)$给出了从$z$平面上的点集$E$到$\varpi$平面上的点集$F$间的一个&lt;strong&gt;对应关系&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;与点$z∈E$对应的点$\varpi=f(z)$称为点$z$的&lt;strong&gt;像点&lt;/strong&gt;，同时点$z$就称为点$\varpi=f(z)$的&lt;strong&gt;原像&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;变换的分类&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;如对$z$平面上点集$E$的任一点$z$，有$\varpi$平面上点集$F$的点$\varpi$，使得$\varpi=f(z)$，则称$\varpi=f(z)$是$E$到$F$的&lt;strong&gt;入变换&lt;/strong&gt;（记为$f(E)\subseteq F$）&lt;/p&gt;
+&lt;p&gt;如果$f(E)\subseteq F$，且对$F$的任一点$\varpi$，有$E$的点$z$，使得$\varpi=f(z)$，则称$\varpi=f(z)$是$E$到$F$的&lt;strong&gt;满变换&lt;/strong&gt;（记为$f(E)=F$）&lt;/p&gt;
+&lt;p&gt;若$\varpi=f(z)$是点集$E$到$F$的满变换，且对$F$中的每一点$\varpi$，在$E$中至少有一个点与之相对应，则在$F$上确定了一个单值（或多值）函数，记作$z=f^{-1}(\varpi)$，它就称为函数$\varpi=f(z)$的反函数或称为变换$\varpi=f(z)$的&lt;strong&gt;逆变换&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;若$z=f^{-1}(\varpi)$也是$F$到$E$的单值变换，则称$\varpi=f(z)$是$E$到$F$的&lt;strong&gt;双方单值变换&lt;/strong&gt;或&lt;strong&gt;一一变换&lt;/strong&gt;
+&lt;img src=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/%E5%8F%98%E6%8D%A2.png&#34;
+	width=&#34;1809&#34;
+	height=&#34;701&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/%E5%8F%98%E6%8D%A2_hu17189444863245222212.png 480w, https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/%E5%8F%98%E6%8D%A2_hu7861913695708941094.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;258&#34;
+		data-flex-basis=&#34;619px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;2复变函数的极限与连续性&#34;&gt;2.复变函数的极限与连续性
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;极限&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设函数$\varpi=f(z)$于点集$E$上有定义，$z_0$为$E$的聚点，如存在一复数$\varpi_0$，使对任给的$\varepsilon&amp;gt;0$，有$\delta&amp;gt;0$，只要$0&amp;lt;|z-z_0|&amp;lt;\delta$，$z∈E$，就有$|f(z)-\varpi_0|&amp;lt;\varepsilon$，则称函数$f(z)$沿$E$于$z_0$有极限$\varpi_0$，并记为$\lim_{z\rightarrow z_0}f(z)=\varpi_0$&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;极限的充要条件&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设函数$f(z)=u(x,,y)+iv(x,,y)$于点集$E$上有定义，$z_0=x_0+iy_0$为$E$的聚点，则$\lim_{z\rightarrow z_0}f(z)=\eta=a+ib$的充要条件是$\lim_{(x,,y)\rightarrow (x_0,,y_0)}u(x,,y)=a,;\lim_{(x,,y)\rightarrow (x_0,,y_0)}v(x,,y)=b$&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;连续&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设函数$\varpi=f(z)$于点集$E$上有定义，$z_0$为$E$的聚点，且$z_0∈E$，若$\lim_{z\rightarrow z_0}f(z)=f(z_0)$，则称$f(z)$沿$E$于$z_0$连续&lt;/p&gt;
+&lt;p&gt;设函数$f(z)=u(x,,y)+iv(x,,y)$于点集$E$上有定义，$z_0∈E$，则$f(z)$沿$E$于$z_0$连续的充要条件是：二元实变函数$u(x,,y)$，$v(x,,y)$沿$E$于$(x_0,,y_0)$连续&lt;/p&gt;
+&lt;p&gt;如函数$f(z)$在点集$E$上各点均连续，则称$f(z)$在$E$上连续&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;波尔查诺-威尔斯特拉斯定理&lt;/strong&gt;：每一个有界无穷点集，至少有一个聚点&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;闭集套定理&lt;/strong&gt;：设无穷闭集列${\bar{F_n}}$，至少有一个为有界且$\bar{F_n}\supset\bar{F_{n+1}}$，$\lim_{n\rightarrow ∞}d(\bar{F_n})=0$（$d(\bar{F_n})$是$\bar{F_n}$的直径），则必有唯一的一点$z_0∈\bar{F_n}(n=1,,2,,…)$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;海涅-博雷尔覆盖定理&lt;/strong&gt;：设有界闭集$E$的每一点$z$都是圆$K_z$的圆心，则这些圆${K_z}$中必有有限个圆把$E$盖住&lt;/p&gt;
+&lt;p&gt;（&lt;em&gt;类比一元数集相关定理&lt;/em&gt;）&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;在有界闭集$E$上连续的函数$f(z)$，具有下列三个性质：&lt;/p&gt;
+&lt;p&gt;$(1)$在$E$上$f(z)$有界&lt;/p&gt;
+&lt;p&gt;$(2)|f(z)|$在$E$上有最大值与最小值&lt;/p&gt;
+&lt;p&gt;$(3)f(z)$在$E$上一致连续&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;4-复球面与无穷远点&#34;&gt;§4 复球面与无穷远点
+&lt;/h2&gt;&lt;h3 id=&#34;1复球面&#34;&gt;1.复球面
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;复球面&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;取一个在原点$O$与$z$平面相切的球面，通过点$O$作一垂直于$z$平面的直线与球面交于点$N$，$N$称为&lt;strong&gt;北极点&lt;/strong&gt;，$O$称为&lt;strong&gt;南极点&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;现用直线段将$N$与$z$平面上一点$z$相连，此线段交球面于一点$P(z)$，这样就建立起球面上的点（不包括北极点$N$）与复平面上的点间的一一对应
+&lt;img src=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/%E5%A4%8D%E7%90%83%E9%9D%A2.jpg&#34;
+	width=&#34;3000&#34;
+	height=&#34;2204&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/%E5%A4%8D%E7%90%83%E9%9D%A2_hu13444344430695509523.jpg 480w, https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/%E5%A4%8D%E7%90%83%E9%9D%A2_hu4114263352027373995.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;136&#34;
+		data-flex-basis=&#34;326px&#34;
+	
+&gt;
+&lt;strong&gt;无穷远点&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;考虑$z$平面上一个以原点为圆心的圆周$C$，在球面上对应的也是一个圆周$\Gamma$，当圆周$C$的半径越大时，圆周$\Gamma$就越趋于北极点$N$&lt;/p&gt;
+&lt;p&gt;因此，北极点$N$可以看成是与$z$平面上的一个模为无穷大的假想点相对应，这个假想点称为&lt;strong&gt;无穷远点&lt;/strong&gt;，并记为$∞$
+复平面加上点$∞$后称为&lt;strong&gt;扩充复平面&lt;/strong&gt;，记作$C_∞=C+{∞}$​，与它对应的就是整个球面，称为&lt;strong&gt;复球面&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;2扩充复平面上的几个概念&#34;&gt;2.扩充复平面上的几个概念
+&lt;/h3&gt;&lt;p&gt;$(1)$扩充复平面上，$∞$的$\varepsilon$邻域$N_\varepsilon(\infty)$是指满足条件$|z|&amp;gt;\frac{1}{\varepsilon}$的点集，对应复球面上以北极点$N$为心的一个球盖，去心邻域则去掉北极点$N$；复平面以$\infty$为其唯一的边界点；扩充复平面以$\infty$为内点，且是唯一的无边界的区域&lt;/p&gt;
+&lt;p&gt;$(2)$&lt;strong&gt;单连通区域&lt;/strong&gt;推广到扩充复平面上的区域与复平面相同&lt;/p&gt;
+&lt;p&gt;$(3)$在扩充复平面上，在关系式$\lim_{z\rightarrow z_0}f(z)=f(z_0)$中，如果$z_0$及$f(z_0)$之一或同时取$\infty$，就称$f(z)$在点$z_0$是&lt;strong&gt;广义连续&lt;/strong&gt;的，极限就称为&lt;strong&gt;广义极限&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;本章完&lt;/strong&gt;&lt;/p&gt;
+</description>
         </item>
         
     </channel>

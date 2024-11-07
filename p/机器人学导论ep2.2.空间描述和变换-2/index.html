@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="固定角；欧拉角；映射；算子；齐次变换矩阵">
+<title>【机器人学导论】Ep2.2.空间描述和变换-2</title>
+
+<link rel='canonical' href='https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【机器人学导论】Ep2.2.空间描述和变换-2">
+<meta property='og:description' content="固定角；欧拉角；映射；算子；齐次变换矩阵">
+<meta property='og:url' content='https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/'>
+<meta property='og:site_name' content='一杯为品'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-11-03T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-11-03T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="【机器人学导论】Ep2.2.空间描述和变换-2">
+<meta name="twitter:description" content="固定角；欧拉角；映射；算子；齐次变换矩阵">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu16835031703737007367.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🐦</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一杯为品</a></h1>
+            <h2 class="site-description">哈工大2023届智能机器人班在读，在努力成为机器人、人工智能、硬件工程多面手的路上</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://blog.csdn.net/mojin2005?spm=1010.2135.3001.5343'
+                        target="_blank"
+                        title="CSDN"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M48 0H0V48H48V0ZM25.9509 14.1922C27.8907 14.578 29.6725 15.5304 31.0711 16.9289C31.8521 17.71 33.1184 17.71 33.8995 16.9289C34.6805 16.1479 34.6805 14.8816 33.8995 14.1005C31.9416 12.1426 29.447 10.8092 26.7313 10.269C24.0155 9.72882 21.2006 10.0061 18.6424 11.0657C16.0843 12.1253 13.8978 13.9197 12.3594 16.222C10.8211 18.5243 10 21.2311 10 24C10 26.7689 10.8211 29.4757 12.3594 31.778C13.8978 34.0803 16.0843 35.8747 18.6424 36.9343C21.2006 37.9939 24.0155 38.2712 26.7313 37.731C29.447 37.1908 31.9416 35.8574 33.8995 33.8995C34.6805 33.1185 34.6805 31.8521 33.8995 31.0711C33.1184 30.29 31.8521 30.29 31.0711 31.0711C29.6725 32.4696 27.8907 33.422 25.9509 33.8079C24.0111 34.1937 22.0004 33.9957 20.1732 33.2388C18.3459 32.4819 16.7841 31.2002 15.6853 29.5557C14.5865 27.9112 14 25.9778 14 24C14 22.0222 14.5865 20.0888 15.6853 18.4443C16.7841 16.7998 18.3459 15.5181 20.1732 14.7612C22.0004 14.0043 24.0111 13.8063 25.9509 14.1922Z" fill="#333333"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/INKEM'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#复杂姿态描述">复杂姿态描述</a>
+      <ol>
+        <li><a href="#x-y-z固定角">X-Y-Z固定角</a></li>
+        <li><a href="#z-y-x欧拉角">Z-Y-X欧拉角</a></li>
+        <li><a href="#其他转角组合">其他转角组合</a></li>
+      </ol>
+    </li>
+    <li><a href="#映射mapping">映射（Mapping）</a>
+      <ol>
+        <li><a href="#坐标平移">坐标平移</a></li>
+        <li><a href="#坐标旋转">坐标旋转</a></li>
+        <li><a href="#一般变换">一般变换</a></li>
+        <li><a href="#复合变换">复合变换</a></li>
+        <li><a href="#逆变换">逆变换</a></li>
+        <li><a href="#变换方程">变换方程</a></li>
+      </ol>
+    </li>
+    <li><a href="#算子operator">算子（Operator）</a>
+      <ol>
+        <li><a href="#平移算子">平移算子</a></li>
+        <li><a href="#旋转算子">旋转算子</a></li>
+        <li><a href="#变换算子">变换算子</a></li>
+      </ol>
+    </li>
+    <li><a href="#齐次变换矩阵">齐次变换矩阵</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" >
+                学习笔记
+            </a>
+        
+            <a href="/categories/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BA/" >
+                机器人学导论
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/">【机器人学导论】Ep2.2.空间描述和变换-2</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            固定角；欧拉角；映射；算子；齐次变换矩阵
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 03, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 8 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p>主要参考学习资料及插图来源：</p>
+<p>《机器人学导论（第4版）》John J.Craig著</p>
+<p>台大机器人学之运动学——林沛群</p>
+<p>本章前置知识：矢量和矩阵的四则运算-单位矩阵-转置矩阵-逆矩阵-分块矩阵</p>
+</blockquote>
+<h1 id="空间描述和变换2">空间描述和变换2
+</h1><hr>
+<h2 id="复杂姿态描述">复杂姿态描述
+</h2><p>上一节我们用旋转矩阵来描述姿态，但仅限于绕其中一个主轴的单自由度旋转，且我们得知姿态描述中包含三个独立变量，接下来我们讨论如何用三个参数描述空间中的任意姿态</p>
+<p>任何三自由度的旋转都可以拆解成三个单自由度的旋转，由于旋转不满足交换律，所以多次旋转的先后顺序需要明确定义。而旋转转轴也需要明确定义，围绕方向固定不动的参考坐标系主轴旋转的拆解方式称为<strong>固定角（Fixed Angles）</strong>，围绕转动坐标系当下的主轴旋转的拆解方式称为<strong>欧拉角（Euler Angles）</strong></p>
+<hr>
+<h3 id="x-y-z固定角">X-Y-Z固定角
+</h3><p><img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/fixed.png"
+	width="1346"
+	height="371"
+	srcset="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/fixed_hu5066952770129481013.png 480w, /p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/fixed_hu7233878778870655797.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="362"
+		data-flex-basis="870px"
+	
+></p>
+<p>给定参考坐标系${A}$和我们要描述姿态的坐标系${B}$，从固定角的视角来看，任意姿态的${B}$都可以由以下过程表示：将${B}$与${A}$重合，先绕$\hat{X}_A$旋转$\gamma$角，再绕$\hat{Y}_A$旋转$\beta$角，最后绕$\hat{Z}<em>A$旋转$\alpha$角得到最终的${B}$，因而可以推导${B}$到${A}$的等价旋转矩阵：$^A_BR</em>{XYZ}(\gamma,\beta,\alpha)=R_Z(\alpha)R_Y(\beta)R_X(\gamma)=\begin{bmatrix}c\alpha&amp;-s\alpha&amp;0\s\alpha&amp;c\alpha&amp;0\0&amp;0&amp;1\end{bmatrix}\begin{bmatrix}c\beta&amp;0&amp;s\beta\0&amp;1&amp;0\-s\beta&amp;0&amp;c\beta\end{bmatrix}\begin{bmatrix}1&amp;0&amp;0\0&amp;c\gamma&amp;-s\gamma\0&amp;s\gamma&amp;c\gamma\end{bmatrix}$</p>
+<p>（矩阵书写顺序与实际旋转操作顺序相反，从旋转一个矢量的角度来看，是因为旋转矩阵乘在矢量的左边，所以右侧的矩阵会先与矢量相乘）</p>
+<p>(等价旋转矩阵下标表示绕主轴旋转的操作顺序，可以根据实际情况调换)</p>
+<p>最终得到：</p>
+<p>$^A_BR_{XYZ}(\gamma,\beta,\alpha)=\begin{bmatrix}c\alpha c\beta&amp;c\alpha c\beta s\gamma-s\alpha c\gamma&amp;c\alpha s\beta c\gamma+s\alpha s\gamma\s\alpha c\beta&amp;s\alpha s\beta s\gamma+c\alpha c\gamma&amp;s\alpha s\beta c\gamma-c\alpha s\gamma\-s\beta&amp;c\beta s\gamma&amp;c\beta c\gamma\end{bmatrix}$①</p>
+<p>反过来，如果已知旋转矩阵各个元素的数值，逆求三个固定角，令</p>
+<p>$^A_BR_{XYZ}(\gamma,\beta,\alpha)=\begin{bmatrix}r_{11}&amp;r_{12}&amp;r_{13}\r_{21}&amp;r_{22}&amp;r_{23}\r_{31}&amp;r_{32}&amp;r_{33}\end{bmatrix}$</p>
+<p>则</p>
+<p>$\left{\begin{matrix}\beta=\mathrm{Atan2}(-r_{31},\sqrt{r_{11}^2+r_{21}^2})\ \alpha=\mathrm{Atan2}(\frac{r_{21}}{c\beta},\frac{r_{11}}{c\beta})\ \gamma=\mathrm{Atan2}(\frac{r_{31}}{c\beta},\frac{r_{33}}{c\beta})\end{matrix}\right.$</p>
+<p>$(\beta\neq 90^{\circ})$</p>
+<p>（式中$\mathrm{Atan2}(y,x)=arctan\frac{y}{x}$，即反正切函数的双参量表示法，可以根据$x$和$y$的符号判别角的象限，而单输入值的反正切函数无法区分）</p>
+<p>上式中$\cos\beta$只考虑正根以得到单解来建立各种姿态表示法之间一一对应的映射函数，但在某些情况下有必要求出所有的解，会在第四章说明</p>
+<p>如果$\beta=90^{\circ}$，则只能求出$\alpha$和$\gamma$的和或差，在这种情况下一般取$\alpha=0$，$\gamma=\left{\begin{matrix}\mathrm{Atan2}(r_{12},r_{22})(\beta=90^{\circ})\-\mathrm{Atan2}(r_{12},r_{22})(\beta=-90^{\circ})\end{matrix}\right.$</p>
+<p>结合式①即可理解求解公式的推导</p>
+<hr>
+<h3 id="z-y-x欧拉角">Z-Y-X欧拉角
+</h3><p><img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/euler.png"
+	width="1201"
+	height="329"
+	srcset="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/euler_hu3914909503840590620.png 480w, /p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/euler_hu11500101461501987300.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="365"
+		data-flex-basis="876px"
+	
+></p>
+<p>给定参考坐标系${A}$和我们要描述姿态的坐标系${B}$，从欧拉角的视角来看，任意姿态的${B}$都可以由以下过程表示：将${B}$与${A}$重合，先绕$\hat{Z}<em>B$转$\alpha$角得到${B&rsquo;}$，再绕$\hat{Y}</em>{B&rsquo;}$转$\beta$角得到${B&rsquo;&rsquo;}$，最后绕$\hat{X}_{B&rsquo;&rsquo;}$转$\gamma$角得到最终的${B}$（欧拉角选取转轴的顺序与固定角相反，原因会在下面解释）</p>
+<p>借由${B}$的中间状态${B&rsquo;}$和${B&rsquo;&rsquo;}$和欧拉角的定义表达$^A_BR$，我们可以写出：</p>
+<p>$^A_BR=^A_{B&rsquo;}R^{B&rsquo;}<em>{B&rsquo;&rsquo;}R^{B&rsquo;&rsquo;}</em>{B}R$</p>
+<p>即：</p>
+<p>$^A_BR_{X&rsquo;Y&rsquo;Z&rsquo;}(\gamma,\beta,\alpha)=R_{Z&rsquo;}(\alpha)R_{Y&rsquo;}(\beta)R_{X&rsquo;}(\gamma)=\begin{bmatrix}c\alpha&amp;-s\alpha&amp;0\s\alpha&amp;c\alpha&amp;0\0&amp;0&amp;1\end{bmatrix}\begin{bmatrix}c\beta&amp;0&amp;s\beta\0&amp;1&amp;0\-s\beta&amp;0&amp;c\beta\end{bmatrix}\begin{bmatrix}1&amp;0&amp;0\0&amp;c\gamma&amp;-s\gamma\0&amp;s\gamma&amp;c\gamma\end{bmatrix}$</p>
+<p>相乘后得：</p>
+<p>$^A_BR_{X&rsquo;Y&rsquo;Z&rsquo;}(\gamma,\beta,\alpha)=\begin{bmatrix}c\alpha c\beta&amp;c\alpha c\beta s\gamma-s\alpha c\gamma&amp;c\alpha s\beta c\gamma+s\alpha s\gamma\s\alpha c\beta&amp;s\alpha s\beta s\gamma+c\alpha c\gamma&amp;s\alpha s\beta c\gamma-c\alpha s\gamma\-s\beta&amp;c\beta s\gamma&amp;c\beta c\gamma\end{bmatrix}$</p>
+<p>我们发现，这个结果与以相反顺序绕固定轴旋转三次得到的结果完全相同，因而逆求解公式也相同</p>
+<p>可以这样更深地理解固定角与欧拉角之间的关系：两种姿态描述方法不同的解释在于运用了旋转矩阵两种不同的作用，一是在同一个坐标系下旋转矢量，二是将矢量的坐标在不同坐标系之间变换。固定角是用前者描述${A}$的三个主轴矢量旋转到${B}$的过程，而欧拉角是用后者将在${B}$下的主轴矢量坐标一步步借由中间坐标系变换到${A}$</p>
+<hr>
+<h3 id="其他转角组合">其他转角组合
+</h3><p>在实际情况我们会遇到更多按不同顺序进行绕主轴的三个旋转，所有排列总共24种，固定角12种，欧拉角12种，都被称为<strong>转交排列设定法</strong>（需要注意第一次转动和最后一次转动绕同一个主轴也是一种排列，只要保证相邻两次切换围绕的主轴即可）</p>
+<p>除此之外，姿态描述还有<strong>轴角表示法</strong>和<strong>四元数表示法</strong>，完全解释篇幅较长，若有余力我会写拓展专题</p>
+<hr>
+<h2 id="映射mapping">映射（Mapping）
+</h2><p><strong>映射</strong>是将矢量从一个坐标系投影到另一个坐标系的变换</p>
+<hr>
+<h3 id="坐标平移">坐标平移
+</h3><p><img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%B9%B3%E7%A7%BB%E6%98%A0%E5%B0%84.png"
+	width="991"
+	height="684"
+	srcset="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%B9%B3%E7%A7%BB%E6%98%A0%E5%B0%84_hu7910244405458201898.png 480w, /p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%B9%B3%E7%A7%BB%E6%98%A0%E5%B0%84_hu701767560489917930.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="144"
+		data-flex-basis="347px"
+	
+></p>
+<p>我们用矢量$^AP_{BORG}$表示${B}$的原点相对于${A}$的位置</p>
+<p>当${A}$与${B}$姿态相同，位置不同时，由矢量加法的几何意义：</p>
+<p>$^AP=^BP+^AP_{BORG}$</p>
+<hr>
+<h3 id="坐标旋转">坐标旋转
+</h3><p>当${A}$与${B}$位置相同，姿态不同时，由上一篇所介绍的旋转矩阵转换矢量坐标的作用：</p>
+<p>$^AP=^A_BR^BP$</p>
+<hr>
+<h3 id="一般变换">一般变换
+</h3><p><img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E4%B8%80%E8%88%AC%E5%8F%98%E6%8D%A2.png"
+	width="998"
+	height="701"
+	srcset="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E4%B8%80%E8%88%AC%E5%8F%98%E6%8D%A2_hu3058388109767332253.png 480w, /p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E4%B8%80%E8%88%AC%E5%8F%98%E6%8D%A2_hu12487837547359664853.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="142"
+		data-flex-basis="341px"
+	
+></p>
+<p>当${A}$与${B}$位置和姿态都不同时，可以先将${B}$旋转到和${A}$相同的姿态得到${B&rsquo;}$，以${B&rsquo;}$为中间坐标系对$^BP$进行旋转变换，再作${B&rsquo;}$到${A}$的平移变换：</p>
+<p>$^AP=^A_BR^BP+^AP_{BORG}$②</p>
+<p>为了简化算式，我们将平移和旋转整合起来，定义<strong>齐次变换矩阵</strong>：</p>
+<p>$^A_BT=\begin{bmatrix}^A_BR&amp;^AP_{BORG}\\mathbf{0}^T&amp;1\end{bmatrix}$</p>
+<p>其中$\mathbf{0}^T$表示三维零向量的转置</p>
+<p>这样式②可写为：</p>
+<p>$\begin{bmatrix}^AP\1\end{bmatrix}=\begin{bmatrix}^A_BR&amp;^AP_{BORG}\\mathbf{0}^T&amp;1\end{bmatrix}\begin{bmatrix}^BP\1\end{bmatrix}$</p>
+<p>这样我们就以一个简单的矩阵形式表示了一般变换的旋转和平移</p>
+<hr>
+<h3 id="复合变换">复合变换
+</h3><p>复合变换借用中间坐标系求解两坐标系的相对关系</p>
+<p>例如已知${C}$相对于${B}$，并且已知${B}$相对于${A}$，已知$^CP$求$^AP$，可先将$^CP$变换成$^BP$再变换成$^AP$：</p>
+<p>$^BP=^B_CT^CP$</p>
+<p>$^AP=^A_BT^BP=^A_BT^B_CT^CP$</p>
+<p>由此定义$^A_CP=^A_BT^B_CT$</p>
+<hr>
+<h3 id="逆变换">逆变换
+</h3><p>已知$^A_BT$求$^B_AT$可以直接对$^A_BT$求逆矩阵，但还可以利用变换的性质</p>
+<p>关于$^B_AT$的旋转变换，由旋转矩阵的性质可知$^B_AR=^A_BR^T$</p>
+<p>关于$^B_AT$的平移变换，将$^AP_{BORG}$变换成${B}$中的描述：$^B(^AP_{BORG})=^B_AT^AP_{BORG}=^B_AR^AP_{BORG}+^BP_{AORG}$</p>
+<p>上式左侧为零，可得：$^BP_{AORG}=-^B_AR^AP_{BORG}=-^A_BR^T{}^AP_{BORG}$</p>
+<p>由此$^B_AT=\begin{bmatrix}^B_AR^T&amp;-^A_BR^T{}^AP_{BORG}\\mathbf{0}^T&amp;1\end{bmatrix}=^A_BT^{-1}$</p>
+<hr>
+<h3 id="变换方程">变换方程
+</h3><p><img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%8F%98%E6%8D%A2%E6%96%B9%E7%A8%8B.png"
+	width="785"
+	height="700"
+	srcset="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%8F%98%E6%8D%A2%E6%96%B9%E7%A8%8B_hu13418319046409233328.png 480w, /p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%8F%98%E6%8D%A2%E6%96%B9%E7%A8%8B_hu5399116838821268337.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="112"
+		data-flex-basis="269px"
+	
+></p>
+<p>图中${D}$可以用两种不同的方式表达成变换相乘的方式：</p>
+<p>$^U_DT=^U_AT^A_DT$</p>
+<p>$^U_DT=^U_BT^B_CT^C_DT$</p>
+<p>两个表达式构造成一个变换方程：</p>
+<p>$^U_AT^A_DT=^U_BT^B_CT^C_DT$</p>
+<p>如有$n$个未知变换和$n$个变换方程，变换可由变换方程解出。设上式中所有变换除了$^B_CT$外均已知，可解出：</p>
+<p>$^B_CT=^U_BT^{-1}{}^U_AT^A_DT^C_DT^{-1}$</p>
+<hr>
+<h2 id="算子operator">算子（Operator）
+</h2><p><strong>算子</strong>是对矢量进行平移和旋转操作的变换</p>
+<p>$^A_BT$除了变换以外，也可以充当算子对矢量或点进行平移或转动</p>
+<hr>
+<h3 id="平移算子">平移算子
+</h3><p><img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%B9%B3%E7%A7%BB%E7%AE%97%E5%AD%90.png"
+	width="828"
+	height="701"
+	srcset="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%B9%B3%E7%A7%BB%E7%AE%97%E5%AD%90_hu15523400037111155551.png 480w, /p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%B9%B3%E7%A7%BB%E7%AE%97%E5%AD%90_hu18026311177663640301.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="118"
+		data-flex-basis="283px"
+	
+></p>
+<p>将$^AP_1$指向的点沿$^AQ$进行平移得到一个新的矢量$^AP_2$，计算如下：</p>
+<p>$^AP_2=^AP_1+^AQ$</p>
+<p>用矩阵算子写出平移变换，有：</p>
+<p>$^AP_2=D(Q)^AP_1$</p>
+<p>算子$D_Q$可以被看成是一个特殊形式的齐次变换：</p>
+<p>$D(Q)=\begin{bmatrix}I&amp;^AQ\\mathbf{0}^T&amp;1\end{bmatrix}$</p>
+<hr>
+<h3 id="旋转算子">旋转算子
+</h3><p>由上一篇所介绍的旋转矩阵描述刚体转动状态的作用，可以得到旋转算子的定义：将矢量$^AP_1$用旋转$R$变换成一个新的矢量$^AP_2$</p>
+<p>当一个旋转矩阵作为算子时无需写出上下标，因为不涉及两个坐标系，但我们将用另一个符号说明是绕哪个轴旋转的，写成：</p>
+<p>$^AP_2=R_K(\theta)^AP_1$</p>
+<p>符号$R_K(\theta)$是一个旋转算子，表示绕$\hat{K}$轴旋转$\theta$角度，例如绕$\hat{Z}$轴旋转$\theta$的算子：</p>
+<p>$R_z(\theta)=\begin{bmatrix}c\theta&amp;-s\theta&amp;0&amp;0\s\theta&amp;c\theta&amp;0&amp;0\0&amp;0&amp;1&amp;0\0&amp;0&amp;0&amp;1\end{bmatrix}$</p>
+<hr>
+<h3 id="变换算子">变换算子
+</h3><p>与一般变换一样，将平移和旋转整合起来我们得到通用的变换算子。因为只涉及一个坐标系，所以没有上下标。算子$T$将矢量$^AP_1$平移并旋转得到一个新矢量：$^AP_2=T^AP_1$</p>
+<hr>
+<h2 id="齐次变换矩阵">齐次变换矩阵
+</h2><p>源于旋转矩阵在上一篇所讲的三个作用，在这一篇我们也探索出了齐次变换矩阵的三个作用：</p>
+<p>1.描述位姿：$^A_BT$表示${B}$相对于${A}$，其中$^A_BR$的各列是定义${B}$主轴方向的单位矢量，$^AP_{BORG}$确定了${B}$的原点</p>
+<p>2.变换映射：$^A_BT$是映射$^BP\rightarrow^AP$</p>
+<p>3.变换算子：$^A_BT$将$^AP_1$变换为$^AP_2$</p>
+<hr>
+<p>本章我们只考虑了位置矢量的变换，而速度矢量和力矢量由于类型不同，它们的变换形式也不同，将在第五章讨论</p>
+<hr>
+<p><strong>本章完</strong></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep3.操作臂（正向）运动学</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep2.1.空间描述和变换-1</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep1.概述</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【复变函数论】Ep2.解析函数</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【复变函数论】Ep1.复数与复变函数</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 一杯为品
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

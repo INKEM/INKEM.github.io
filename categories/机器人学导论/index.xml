@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>机器人学导论 on 一杯为品</title>
+        <link>https://INKEM.github.io/categories/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BA/</link>
+        <description>Recent content in 机器人学导论 on 一杯为品</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-cn</language>
+        <copyright>一杯为品</copyright>
+        <lastBuildDate>Wed, 06 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://INKEM.github.io/categories/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BA/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【机器人学导论】Ep3.操作臂（正向）运动学</title>
+        <link>https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/</link>
+        <pubDate>Wed, 06 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;主要参考学习资料及插图来源：&lt;/p&gt;
+&lt;p&gt;《机器人学导论（第4版）》John J.Craig著&lt;/p&gt;
+&lt;p&gt;台大机器人学之运动学——林沛群&lt;/p&gt;
+&lt;p&gt;本章数理基础：矩阵的四则运算&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;操作臂正向运动学&#34;&gt;操作臂（正向）运动学
+&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;运动学&lt;/strong&gt;讨论运动状态本身，不涉及产生运动的力&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;连杆的描述&#34;&gt;连杆的描述
+&lt;/h2&gt;&lt;hr&gt;
+&lt;h3 id=&#34;连杆参数&#34;&gt;连杆参数
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;关节&lt;/strong&gt;（Joint）分为移动关节和旋转关节，每个关节有一个自由度，对一个特定的轴移动或转动&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;连杆&lt;/strong&gt;（Link）为连接关节的杆件，视作刚体&lt;/p&gt;
+&lt;p&gt;连杆的编号从固定基座开始，称固定基座为连杆0，第一个可动连杆为连杆1，以此类推，操作臂最末端的连杆为连杆n&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;单个连杆：连杆长度和连杆扭转角&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;连杆$i-1$连接了关节轴$i-1$和关节轴$i$，关节轴$i-1$和关节轴$i$之间公垂线长度$a_{i-1}$为&lt;strong&gt;连杆长度&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;作一平面与两关节轴公垂线垂直，关节轴$i-1$和关节轴$i$在该平面上投影的夹角$\alpha_{i-1}$为&lt;strong&gt;连杆扭转角&lt;/strong&gt;（即空间中两直线夹角的定义）
+&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/1.png&#34;
+	width=&#34;750&#34;
+	height=&#34;577&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/1_hu10898899399360834005.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/1_hu12650047876164823889.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;129&#34;
+		data-flex-basis=&#34;311px&#34;
+	
+&gt;
+&lt;em&gt;平面图像表达空间关系可能存在视错觉，需结合文字描述来分析&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;多杆串连：连杆偏距和关节角&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;关节轴$i$上的两个相邻连杆沿公共轴线方向的距离$d_i$为&lt;strong&gt;连杆偏距&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;两个相邻连杆绕公共轴线旋转的夹角$\theta_i$为&lt;strong&gt;关节角&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;对于首端连杆（固定基座）和末端连杆（末端执行器），习惯设定$a_0=a_n=0$，$\alpha_0=\alpha_n=0$&lt;/p&gt;
+&lt;p&gt;对于关节$1$，若为转动关节，$\theta_1$任取，$d_1=0$；若为移动关节，$d_1$任取，$\theta_1=0$。关节$n$同理
+&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/2.png&#34;
+	width=&#34;860&#34;
+	height=&#34;589&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/2_hu4006809544826190360.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/2_hu17983708968411505105.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;146&#34;
+		data-flex-basis=&#34;350px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;连杆参数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;由此，机器人的每个连杆都可以用上述四个运动学参数来描述&lt;/p&gt;
+&lt;p&gt;对于转动关节，$\theta_i$为关节变量，其他三个连杆参数固定不变；对于移动关节，$d_i$为关节变量，其他三个连杆参数固定不变。这种用连杆参数描述机构运动关系的规则称为&lt;strong&gt;Denavit-Hartenberg方法（简称D-H表示法）&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;连杆坐标系&#34;&gt;连杆坐标系
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;中间连杆坐标系&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;按以下方法确定连杆上的固连坐标系${i}$：&lt;/p&gt;
+&lt;p&gt;原点位于公垂线$a_i$与关节轴$i$的交点处&lt;/p&gt;
+&lt;p&gt;$\hat{Z}_i$轴与关节轴$i$重合&lt;/p&gt;
+&lt;p&gt;$\hat{X}_i$轴：当$a_i\ne0$，沿$a_i$方向由关节$i$指向关节$i+1$；当$a_i=0$，垂直于$\hat{Z}&lt;em&gt;i$和$\hat{Z}&lt;/em&gt;{i+1}$所在的平面&lt;/p&gt;
+&lt;p&gt;$\hat{Y}_i$轴由右手定则确定&lt;/p&gt;
+&lt;p&gt;由于$\hat{Z}_i$轴可选取两个方向，且当关节轴$i$与$i+1$相交时$\hat{X}_i$轴可选取两个方向，建立的坐标系并不唯一
+&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/3.png&#34;
+	width=&#34;875&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/3_hu9998783910083502393.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/3_hu7351596980606407478.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;145&#34;
+		data-flex-basis=&#34;350px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;首末端连杆坐标系&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;首端连杆坐标系${0}$与关节$1$初始姿态时（关节变量为$0$）的坐标系${1}$重合&lt;/p&gt;
+&lt;p&gt;末端连杆坐标系${N}$原点位于公垂线$a_{N-1}$与关节轴${N}$交点处，$\hat{X}&lt;em&gt;N$轴与$\hat{X}&lt;/em&gt;{N-1}$轴同向&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;连杆坐标系中的D-H表示法&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;$a_i=$沿$\hat{X}_i$轴从$\hat{Z}&lt;em&gt;i$移动到$\hat{Z}&lt;/em&gt;{i+1}$的距离&lt;/p&gt;
+&lt;p&gt;$\alpha_i=$绕$\hat{X}_i$轴从$\hat{Z}&lt;em&gt;i$旋转到$\hat{Z}&lt;/em&gt;{i+1}$的角度&lt;/p&gt;
+&lt;p&gt;$d_i=$沿$\hat{Z}&lt;em&gt;i$轴从$\hat{X}&lt;/em&gt;{i-1}$移动到$\hat{X}_i$的距离&lt;/p&gt;
+&lt;p&gt;$\theta_i=$绕$\hat{Z}&lt;em&gt;i$轴从$\hat{X}&lt;/em&gt;{i-1}$旋转到$\hat{X}_i$的角度&lt;/p&gt;
+&lt;p&gt;$a_i&amp;gt;0$，$\alpha_i$、$d_i$和$\theta_i$的值相对于坐标系主轴方向有正负&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;建立连杆坐标系的步骤&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;1.画出各关节轴的延长线&lt;/p&gt;
+&lt;p&gt;2.找出相邻关节轴$i$和$i+1$的公垂线或交点，以关节轴$i$和$i+1$的交点或公垂线与关节轴$i$的交点作为连杆坐标系${i}$的原点&lt;/p&gt;
+&lt;p&gt;3.规定$\hat{Z}_i$轴沿关节轴$i$的指向&lt;/p&gt;
+&lt;p&gt;4.规定$\hat{X}_i$轴沿公垂线的指向，若关节轴$i$与$i+1$相交则垂直于关节轴$i$与$i+1$所在的平面&lt;/p&gt;
+&lt;p&gt;5.按右手定则确定$\hat{Y}_i$轴&lt;/p&gt;
+&lt;p&gt;6.补充首末端连杆坐标系&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;坐标系的标准命名&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;基（Base）坐标系${B}$位于操作臂的基座上&lt;/p&gt;
+&lt;p&gt;固定（Settle）坐标系${S}$位置与任务相关，比如工作台的一个角上&lt;/p&gt;
+&lt;p&gt;腕部（Wrist）坐标系${W}$位于操作臂的末端连杆&lt;/p&gt;
+&lt;p&gt;工具（Tool）坐标系${T}$位于机器人所夹持工具的末端&lt;/p&gt;
+&lt;p&gt;目标（Goal）坐标系${G}$是对机器人移动工具到达的位置描述
+&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/5.png&#34;
+	width=&#34;700&#34;
+	height=&#34;607&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/5_hu9534990982299824121.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/5_hu14512689326280933705.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;115&#34;
+		data-flex-basis=&#34;276px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;操作臂运动学&#34;&gt;操作臂运动学
+&lt;/h2&gt;&lt;hr&gt;
+&lt;h3 id=&#34;连杆变换link-transformation&#34;&gt;连杆变换（Link Transformation）
+&lt;/h3&gt;&lt;p&gt;我们希望用四个连杆参数建立起相邻连杆坐标系${i}$和${i-1}$之间的变换关系，即$^{i-1}P=^{i-1}_{i}T^iP$
+&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/4.png&#34;
+	width=&#34;865&#34;
+	height=&#34;600&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/4_hu17257934097531589896.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/4_hu1217825879124094349.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;144&#34;
+		data-flex-basis=&#34;346px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;我们考虑借由图中标出的四个连杆参数将${i-1}$一步步变换为${i}$&lt;/p&gt;
+&lt;p&gt;将${i-1}$绕$\hat{X}&lt;em&gt;{i-1}$旋转$\alpha&lt;/em&gt;{i-1}$得到${R}$&lt;/p&gt;
+&lt;p&gt;将${R}$沿$\hat{X}&lt;em&gt;R$平移$a&lt;/em&gt;{i-1}$得到${Q}$&lt;/p&gt;
+&lt;p&gt;将${Q}$绕$\hat{Z}_Q$旋转$\theta_i$得到${P}$&lt;/p&gt;
+&lt;p&gt;将${P}$沿$\hat{Z}_P$平移$d_i$得到${i}$&lt;/p&gt;
+&lt;p&gt;于是变换矩阵可写成：&lt;/p&gt;
+&lt;p&gt;$^{i-1}P=^{i-1}_{i}T^iP=^{i-1}_RT^R_QT^Q_PT^P_iT^iP$&lt;/p&gt;
+&lt;p&gt;$^{i-1}&lt;em&gt;{i}T=^{i-1}&lt;em&gt;RT^R_QT^Q_PT^P_iT=R_X(\alpha&lt;/em&gt;{i-1})D_X(a&lt;/em&gt;{i-1})R_Z(\theta_i)D_Z(d_i)$&lt;/p&gt;
+&lt;p&gt;最终计算得到：&lt;/p&gt;
+&lt;p&gt;$^{i-1}&lt;em&gt;{i}T=\begin{bmatrix}c\theta_i&amp;amp;-s\theta_i&amp;amp;0&amp;amp;a&lt;/em&gt;{i-1}\s\theta_ic\alpha_{i-1}&amp;amp;c\theta_ic\alpha_{i-1}&amp;amp;-s\alpha_{i-1}&amp;amp;-s\alpha_{i-1}d_i\s\theta_is\alpha_{i-1}&amp;amp;c\theta_is\alpha_{i-1}&amp;amp;c\alpha_{i-1}&amp;amp;c\alpha_{i-1}d_i\0&amp;amp;0&amp;amp;0&amp;amp;1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;左上角$3\times3$为旋转矩阵，最右列为${i}$的原点相对于${i-1}$的原点的位置矢量&lt;/p&gt;
+&lt;p&gt;计算出各个连杆变换矩阵，将其连乘就能得到${N}$相对于${0}$的变换矩阵：&lt;/p&gt;
+&lt;p&gt;$^0_NT=^0_1T^1_2T^2_3T…^{N-1}_NT$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;驱动器空间关节空间和笛卡尔空间&#34;&gt;驱动器空间、关节空间和笛卡尔空间
+&lt;/h3&gt;&lt;p&gt;对一个具有$n$个自由度的操作臂来说，它的所有连杆位置可由一组$n$个关节变量确定，这样的一组变量被称为$n\times1$的关节向量，所有关节向量组成的空间称为&lt;strong&gt;关节空间（Joint Space）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;至此，我们研究的是如何将已知的关节空间描述转化为在&lt;strong&gt;笛卡尔空间（Cartesian Space）&lt;strong&gt;中的描述，称为&lt;/strong&gt;正向运动学（Forward Kinematics）&lt;/strong&gt;，反之则为&lt;strong&gt;逆运动学（Inverse Kinematics）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;我们一直假设每个运动关节都是直接由某种驱动器驱动，但许多机器人有时用两个驱动器以差动的方式驱动一个关节，有时用直线驱动器通过四连杆机构来驱动旋转关节，而测量操作臂位置的传感器常常安装在驱动器上，因此进行控制器运算时必须把关节向量表示成一组驱动器变量方程，即驱动向量，组成的空间称为&lt;strong&gt;驱动器空间（Actuator Space）&lt;/strong&gt;
+&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/6.png&#34;
+	width=&#34;639&#34;
+	height=&#34;441&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/6_hu17352662843190276247.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/6_hu8158132323483451866.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;144&#34;
+		data-flex-basis=&#34;347px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;本章完&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>【机器人学导论】Ep2.2.空间描述和变换-2</title>
+        <link>https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/</link>
+        <pubDate>Sun, 03 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;主要参考学习资料及插图来源：&lt;/p&gt;
+&lt;p&gt;《机器人学导论（第4版）》John J.Craig著&lt;/p&gt;
+&lt;p&gt;台大机器人学之运动学——林沛群&lt;/p&gt;
+&lt;p&gt;本章前置知识：矢量和矩阵的四则运算-单位矩阵-转置矩阵-逆矩阵-分块矩阵&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;空间描述和变换2&#34;&gt;空间描述和变换2
+&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&#34;复杂姿态描述&#34;&gt;复杂姿态描述
+&lt;/h2&gt;&lt;p&gt;上一节我们用旋转矩阵来描述姿态，但仅限于绕其中一个主轴的单自由度旋转，且我们得知姿态描述中包含三个独立变量，接下来我们讨论如何用三个参数描述空间中的任意姿态&lt;/p&gt;
+&lt;p&gt;任何三自由度的旋转都可以拆解成三个单自由度的旋转，由于旋转不满足交换律，所以多次旋转的先后顺序需要明确定义。而旋转转轴也需要明确定义，围绕方向固定不动的参考坐标系主轴旋转的拆解方式称为&lt;strong&gt;固定角（Fixed Angles）&lt;/strong&gt;，围绕转动坐标系当下的主轴旋转的拆解方式称为&lt;strong&gt;欧拉角（Euler Angles）&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;x-y-z固定角&#34;&gt;X-Y-Z固定角
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/fixed.png&#34;
+	width=&#34;1346&#34;
+	height=&#34;371&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/fixed_hu5066952770129481013.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/fixed_hu7233878778870655797.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;362&#34;
+		data-flex-basis=&#34;870px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;给定参考坐标系${A}$和我们要描述姿态的坐标系${B}$，从固定角的视角来看，任意姿态的${B}$都可以由以下过程表示：将${B}$与${A}$重合，先绕$\hat{X}_A$旋转$\gamma$角，再绕$\hat{Y}_A$旋转$\beta$角，最后绕$\hat{Z}&lt;em&gt;A$旋转$\alpha$角得到最终的${B}$，因而可以推导${B}$到${A}$的等价旋转矩阵：$^A_BR&lt;/em&gt;{XYZ}(\gamma,\beta,\alpha)=R_Z(\alpha)R_Y(\beta)R_X(\gamma)=\begin{bmatrix}c\alpha&amp;amp;-s\alpha&amp;amp;0\s\alpha&amp;amp;c\alpha&amp;amp;0\0&amp;amp;0&amp;amp;1\end{bmatrix}\begin{bmatrix}c\beta&amp;amp;0&amp;amp;s\beta\0&amp;amp;1&amp;amp;0\-s\beta&amp;amp;0&amp;amp;c\beta\end{bmatrix}\begin{bmatrix}1&amp;amp;0&amp;amp;0\0&amp;amp;c\gamma&amp;amp;-s\gamma\0&amp;amp;s\gamma&amp;amp;c\gamma\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;（矩阵书写顺序与实际旋转操作顺序相反，从旋转一个矢量的角度来看，是因为旋转矩阵乘在矢量的左边，所以右侧的矩阵会先与矢量相乘）&lt;/p&gt;
+&lt;p&gt;(等价旋转矩阵下标表示绕主轴旋转的操作顺序，可以根据实际情况调换)&lt;/p&gt;
+&lt;p&gt;最终得到：&lt;/p&gt;
+&lt;p&gt;$^A_BR_{XYZ}(\gamma,\beta,\alpha)=\begin{bmatrix}c\alpha c\beta&amp;amp;c\alpha c\beta s\gamma-s\alpha c\gamma&amp;amp;c\alpha s\beta c\gamma+s\alpha s\gamma\s\alpha c\beta&amp;amp;s\alpha s\beta s\gamma+c\alpha c\gamma&amp;amp;s\alpha s\beta c\gamma-c\alpha s\gamma\-s\beta&amp;amp;c\beta s\gamma&amp;amp;c\beta c\gamma\end{bmatrix}$①&lt;/p&gt;
+&lt;p&gt;反过来，如果已知旋转矩阵各个元素的数值，逆求三个固定角，令&lt;/p&gt;
+&lt;p&gt;$^A_BR_{XYZ}(\gamma,\beta,\alpha)=\begin{bmatrix}r_{11}&amp;amp;r_{12}&amp;amp;r_{13}\r_{21}&amp;amp;r_{22}&amp;amp;r_{23}\r_{31}&amp;amp;r_{32}&amp;amp;r_{33}\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;则&lt;/p&gt;
+&lt;p&gt;$\left{\begin{matrix}\beta=\mathrm{Atan2}(-r_{31},\sqrt{r_{11}^2+r_{21}^2})\ \alpha=\mathrm{Atan2}(\frac{r_{21}}{c\beta},\frac{r_{11}}{c\beta})\ \gamma=\mathrm{Atan2}(\frac{r_{31}}{c\beta},\frac{r_{33}}{c\beta})\end{matrix}\right.$&lt;/p&gt;
+&lt;p&gt;$(\beta\neq 90^{\circ})$&lt;/p&gt;
+&lt;p&gt;（式中$\mathrm{Atan2}(y,x)=arctan\frac{y}{x}$，即反正切函数的双参量表示法，可以根据$x$和$y$的符号判别角的象限，而单输入值的反正切函数无法区分）&lt;/p&gt;
+&lt;p&gt;上式中$\cos\beta$只考虑正根以得到单解来建立各种姿态表示法之间一一对应的映射函数，但在某些情况下有必要求出所有的解，会在第四章说明&lt;/p&gt;
+&lt;p&gt;如果$\beta=90^{\circ}$，则只能求出$\alpha$和$\gamma$的和或差，在这种情况下一般取$\alpha=0$，$\gamma=\left{\begin{matrix}\mathrm{Atan2}(r_{12},r_{22})(\beta=90^{\circ})\-\mathrm{Atan2}(r_{12},r_{22})(\beta=-90^{\circ})\end{matrix}\right.$&lt;/p&gt;
+&lt;p&gt;结合式①即可理解求解公式的推导&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;z-y-x欧拉角&#34;&gt;Z-Y-X欧拉角
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/euler.png&#34;
+	width=&#34;1201&#34;
+	height=&#34;329&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/euler_hu3914909503840590620.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/euler_hu11500101461501987300.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;365&#34;
+		data-flex-basis=&#34;876px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;给定参考坐标系${A}$和我们要描述姿态的坐标系${B}$，从欧拉角的视角来看，任意姿态的${B}$都可以由以下过程表示：将${B}$与${A}$重合，先绕$\hat{Z}&lt;em&gt;B$转$\alpha$角得到${B&amp;rsquo;}$，再绕$\hat{Y}&lt;/em&gt;{B&amp;rsquo;}$转$\beta$角得到${B&amp;rsquo;&amp;rsquo;}$，最后绕$\hat{X}_{B&amp;rsquo;&amp;rsquo;}$转$\gamma$角得到最终的${B}$（欧拉角选取转轴的顺序与固定角相反，原因会在下面解释）&lt;/p&gt;
+&lt;p&gt;借由${B}$的中间状态${B&amp;rsquo;}$和${B&amp;rsquo;&amp;rsquo;}$和欧拉角的定义表达$^A_BR$，我们可以写出：&lt;/p&gt;
+&lt;p&gt;$^A_BR=^A_{B&amp;rsquo;}R^{B&amp;rsquo;}&lt;em&gt;{B&amp;rsquo;&amp;rsquo;}R^{B&amp;rsquo;&amp;rsquo;}&lt;/em&gt;{B}R$&lt;/p&gt;
+&lt;p&gt;即：&lt;/p&gt;
+&lt;p&gt;$^A_BR_{X&amp;rsquo;Y&amp;rsquo;Z&amp;rsquo;}(\gamma,\beta,\alpha)=R_{Z&amp;rsquo;}(\alpha)R_{Y&amp;rsquo;}(\beta)R_{X&amp;rsquo;}(\gamma)=\begin{bmatrix}c\alpha&amp;amp;-s\alpha&amp;amp;0\s\alpha&amp;amp;c\alpha&amp;amp;0\0&amp;amp;0&amp;amp;1\end{bmatrix}\begin{bmatrix}c\beta&amp;amp;0&amp;amp;s\beta\0&amp;amp;1&amp;amp;0\-s\beta&amp;amp;0&amp;amp;c\beta\end{bmatrix}\begin{bmatrix}1&amp;amp;0&amp;amp;0\0&amp;amp;c\gamma&amp;amp;-s\gamma\0&amp;amp;s\gamma&amp;amp;c\gamma\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;相乘后得：&lt;/p&gt;
+&lt;p&gt;$^A_BR_{X&amp;rsquo;Y&amp;rsquo;Z&amp;rsquo;}(\gamma,\beta,\alpha)=\begin{bmatrix}c\alpha c\beta&amp;amp;c\alpha c\beta s\gamma-s\alpha c\gamma&amp;amp;c\alpha s\beta c\gamma+s\alpha s\gamma\s\alpha c\beta&amp;amp;s\alpha s\beta s\gamma+c\alpha c\gamma&amp;amp;s\alpha s\beta c\gamma-c\alpha s\gamma\-s\beta&amp;amp;c\beta s\gamma&amp;amp;c\beta c\gamma\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;我们发现，这个结果与以相反顺序绕固定轴旋转三次得到的结果完全相同，因而逆求解公式也相同&lt;/p&gt;
+&lt;p&gt;可以这样更深地理解固定角与欧拉角之间的关系：两种姿态描述方法不同的解释在于运用了旋转矩阵两种不同的作用，一是在同一个坐标系下旋转矢量，二是将矢量的坐标在不同坐标系之间变换。固定角是用前者描述${A}$的三个主轴矢量旋转到${B}$的过程，而欧拉角是用后者将在${B}$下的主轴矢量坐标一步步借由中间坐标系变换到${A}$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;其他转角组合&#34;&gt;其他转角组合
+&lt;/h3&gt;&lt;p&gt;在实际情况我们会遇到更多按不同顺序进行绕主轴的三个旋转，所有排列总共24种，固定角12种，欧拉角12种，都被称为&lt;strong&gt;转交排列设定法&lt;/strong&gt;（需要注意第一次转动和最后一次转动绕同一个主轴也是一种排列，只要保证相邻两次切换围绕的主轴即可）&lt;/p&gt;
+&lt;p&gt;除此之外，姿态描述还有&lt;strong&gt;轴角表示法&lt;/strong&gt;和&lt;strong&gt;四元数表示法&lt;/strong&gt;，完全解释篇幅较长，若有余力我会写拓展专题&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;映射mapping&#34;&gt;映射（Mapping）
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;映射&lt;/strong&gt;是将矢量从一个坐标系投影到另一个坐标系的变换&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;坐标平移&#34;&gt;坐标平移
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%B9%B3%E7%A7%BB%E6%98%A0%E5%B0%84.png&#34;
+	width=&#34;991&#34;
+	height=&#34;684&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%B9%B3%E7%A7%BB%E6%98%A0%E5%B0%84_hu7910244405458201898.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%B9%B3%E7%A7%BB%E6%98%A0%E5%B0%84_hu701767560489917930.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;144&#34;
+		data-flex-basis=&#34;347px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;我们用矢量$^AP_{BORG}$表示${B}$的原点相对于${A}$的位置&lt;/p&gt;
+&lt;p&gt;当${A}$与${B}$姿态相同，位置不同时，由矢量加法的几何意义：&lt;/p&gt;
+&lt;p&gt;$^AP=^BP+^AP_{BORG}$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;坐标旋转&#34;&gt;坐标旋转
+&lt;/h3&gt;&lt;p&gt;当${A}$与${B}$位置相同，姿态不同时，由上一篇所介绍的旋转矩阵转换矢量坐标的作用：&lt;/p&gt;
+&lt;p&gt;$^AP=^A_BR^BP$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;一般变换&#34;&gt;一般变换
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E4%B8%80%E8%88%AC%E5%8F%98%E6%8D%A2.png&#34;
+	width=&#34;998&#34;
+	height=&#34;701&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E4%B8%80%E8%88%AC%E5%8F%98%E6%8D%A2_hu3058388109767332253.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E4%B8%80%E8%88%AC%E5%8F%98%E6%8D%A2_hu12487837547359664853.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;142&#34;
+		data-flex-basis=&#34;341px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;当${A}$与${B}$位置和姿态都不同时，可以先将${B}$旋转到和${A}$相同的姿态得到${B&amp;rsquo;}$，以${B&amp;rsquo;}$为中间坐标系对$^BP$进行旋转变换，再作${B&amp;rsquo;}$到${A}$的平移变换：&lt;/p&gt;
+&lt;p&gt;$^AP=^A_BR^BP+^AP_{BORG}$②&lt;/p&gt;
+&lt;p&gt;为了简化算式，我们将平移和旋转整合起来，定义&lt;strong&gt;齐次变换矩阵&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;$^A_BT=\begin{bmatrix}^A_BR&amp;amp;^AP_{BORG}\\mathbf{0}^T&amp;amp;1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;其中$\mathbf{0}^T$表示三维零向量的转置&lt;/p&gt;
+&lt;p&gt;这样式②可写为：&lt;/p&gt;
+&lt;p&gt;$\begin{bmatrix}^AP\1\end{bmatrix}=\begin{bmatrix}^A_BR&amp;amp;^AP_{BORG}\\mathbf{0}^T&amp;amp;1\end{bmatrix}\begin{bmatrix}^BP\1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;这样我们就以一个简单的矩阵形式表示了一般变换的旋转和平移&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;复合变换&#34;&gt;复合变换
+&lt;/h3&gt;&lt;p&gt;复合变换借用中间坐标系求解两坐标系的相对关系&lt;/p&gt;
+&lt;p&gt;例如已知${C}$相对于${B}$，并且已知${B}$相对于${A}$，已知$^CP$求$^AP$，可先将$^CP$变换成$^BP$再变换成$^AP$：&lt;/p&gt;
+&lt;p&gt;$^BP=^B_CT^CP$&lt;/p&gt;
+&lt;p&gt;$^AP=^A_BT^BP=^A_BT^B_CT^CP$&lt;/p&gt;
+&lt;p&gt;由此定义$^A_CP=^A_BT^B_CT$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;逆变换&#34;&gt;逆变换
+&lt;/h3&gt;&lt;p&gt;已知$^A_BT$求$^B_AT$可以直接对$^A_BT$求逆矩阵，但还可以利用变换的性质&lt;/p&gt;
+&lt;p&gt;关于$^B_AT$的旋转变换，由旋转矩阵的性质可知$^B_AR=^A_BR^T$&lt;/p&gt;
+&lt;p&gt;关于$^B_AT$的平移变换，将$^AP_{BORG}$变换成${B}$中的描述：$^B(^AP_{BORG})=^B_AT^AP_{BORG}=^B_AR^AP_{BORG}+^BP_{AORG}$&lt;/p&gt;
+&lt;p&gt;上式左侧为零，可得：$^BP_{AORG}=-^B_AR^AP_{BORG}=-^A_BR^T{}^AP_{BORG}$&lt;/p&gt;
+&lt;p&gt;由此$^B_AT=\begin{bmatrix}^B_AR^T&amp;amp;-^A_BR^T{}^AP_{BORG}\\mathbf{0}^T&amp;amp;1\end{bmatrix}=^A_BT^{-1}$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;变换方程&#34;&gt;变换方程
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%8F%98%E6%8D%A2%E6%96%B9%E7%A8%8B.png&#34;
+	width=&#34;785&#34;
+	height=&#34;700&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%8F%98%E6%8D%A2%E6%96%B9%E7%A8%8B_hu13418319046409233328.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%8F%98%E6%8D%A2%E6%96%B9%E7%A8%8B_hu5399116838821268337.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;112&#34;
+		data-flex-basis=&#34;269px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;图中${D}$可以用两种不同的方式表达成变换相乘的方式：&lt;/p&gt;
+&lt;p&gt;$^U_DT=^U_AT^A_DT$&lt;/p&gt;
+&lt;p&gt;$^U_DT=^U_BT^B_CT^C_DT$&lt;/p&gt;
+&lt;p&gt;两个表达式构造成一个变换方程：&lt;/p&gt;
+&lt;p&gt;$^U_AT^A_DT=^U_BT^B_CT^C_DT$&lt;/p&gt;
+&lt;p&gt;如有$n$个未知变换和$n$个变换方程，变换可由变换方程解出。设上式中所有变换除了$^B_CT$外均已知，可解出：&lt;/p&gt;
+&lt;p&gt;$^B_CT=^U_BT^{-1}{}^U_AT^A_DT^C_DT^{-1}$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;算子operator&#34;&gt;算子（Operator）
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;算子&lt;/strong&gt;是对矢量进行平移和旋转操作的变换&lt;/p&gt;
+&lt;p&gt;$^A_BT$除了变换以外，也可以充当算子对矢量或点进行平移或转动&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;平移算子&#34;&gt;平移算子
+&lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%B9%B3%E7%A7%BB%E7%AE%97%E5%AD%90.png&#34;
+	width=&#34;828&#34;
+	height=&#34;701&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%B9%B3%E7%A7%BB%E7%AE%97%E5%AD%90_hu15523400037111155551.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%B9%B3%E7%A7%BB%E7%AE%97%E5%AD%90_hu18026311177663640301.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;118&#34;
+		data-flex-basis=&#34;283px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;将$^AP_1$指向的点沿$^AQ$进行平移得到一个新的矢量$^AP_2$，计算如下：&lt;/p&gt;
+&lt;p&gt;$^AP_2=^AP_1+^AQ$&lt;/p&gt;
+&lt;p&gt;用矩阵算子写出平移变换，有：&lt;/p&gt;
+&lt;p&gt;$^AP_2=D(Q)^AP_1$&lt;/p&gt;
+&lt;p&gt;算子$D_Q$可以被看成是一个特殊形式的齐次变换：&lt;/p&gt;
+&lt;p&gt;$D(Q)=\begin{bmatrix}I&amp;amp;^AQ\\mathbf{0}^T&amp;amp;1\end{bmatrix}$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;旋转算子&#34;&gt;旋转算子
+&lt;/h3&gt;&lt;p&gt;由上一篇所介绍的旋转矩阵描述刚体转动状态的作用，可以得到旋转算子的定义：将矢量$^AP_1$用旋转$R$变换成一个新的矢量$^AP_2$&lt;/p&gt;
+&lt;p&gt;当一个旋转矩阵作为算子时无需写出上下标，因为不涉及两个坐标系，但我们将用另一个符号说明是绕哪个轴旋转的，写成：&lt;/p&gt;
+&lt;p&gt;$^AP_2=R_K(\theta)^AP_1$&lt;/p&gt;
+&lt;p&gt;符号$R_K(\theta)$是一个旋转算子，表示绕$\hat{K}$轴旋转$\theta$角度，例如绕$\hat{Z}$轴旋转$\theta$的算子：&lt;/p&gt;
+&lt;p&gt;$R_z(\theta)=\begin{bmatrix}c\theta&amp;amp;-s\theta&amp;amp;0&amp;amp;0\s\theta&amp;amp;c\theta&amp;amp;0&amp;amp;0\0&amp;amp;0&amp;amp;1&amp;amp;0\0&amp;amp;0&amp;amp;0&amp;amp;1\end{bmatrix}$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;变换算子&#34;&gt;变换算子
+&lt;/h3&gt;&lt;p&gt;与一般变换一样，将平移和旋转整合起来我们得到通用的变换算子。因为只涉及一个坐标系，所以没有上下标。算子$T$将矢量$^AP_1$平移并旋转得到一个新矢量：$^AP_2=T^AP_1$&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;齐次变换矩阵&#34;&gt;齐次变换矩阵
+&lt;/h2&gt;&lt;p&gt;源于旋转矩阵在上一篇所讲的三个作用，在这一篇我们也探索出了齐次变换矩阵的三个作用：&lt;/p&gt;
+&lt;p&gt;1.描述位姿：$^A_BT$表示${B}$相对于${A}$，其中$^A_BR$的各列是定义${B}$主轴方向的单位矢量，$^AP_{BORG}$确定了${B}$的原点&lt;/p&gt;
+&lt;p&gt;2.变换映射：$^A_BT$是映射$^BP\rightarrow^AP$&lt;/p&gt;
+&lt;p&gt;3.变换算子：$^A_BT$将$^AP_1$变换为$^AP_2$&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;本章我们只考虑了位置矢量的变换，而速度矢量和力矢量由于类型不同，它们的变换形式也不同，将在第五章讨论&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;本章完&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>【机器人学导论】Ep2.1.空间描述和变换-1</title>
+        <link>https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/</link>
+        <pubDate>Fri, 01 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;主要参考学习资料：&lt;/p&gt;
+&lt;p&gt;《机器人学导论（第4版）》John J.Craig著&lt;/p&gt;
+&lt;p&gt;台大机器人学之运动学——林沛群（本文插图来自该课程课件）&lt;/p&gt;
+&lt;p&gt;本章前置知识：矢量和矩阵的四则运算-单位矩阵-转置矩阵-逆矩阵-正交矩阵&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;空间描述和变换&#34;&gt;空间描述和变换
+&lt;/h1&gt;&lt;hr&gt;
+&lt;h2 id=&#34;描述&#34;&gt;描述
+&lt;/h2&gt;&lt;p&gt;我们用${A}$来表示一个&lt;strong&gt;坐标系(Frame)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;讨论问题之前，我们需要建立一个&lt;strong&gt;世界坐标系(World Frame)&lt;/strong&gt;，之后定义的位置和姿态都是参照世界坐标系定义的笛卡尔坐标系&lt;/p&gt;
+&lt;p&gt;一个平面中的物体拥有沿$x$轴、$y$轴两个方向移动的自由度和绕垂直于平面的轴转动的&lt;strong&gt;自由度（Degree Of Freedom，可简记为DOF）&lt;/strong&gt;，即两个移动自由度和一个转动自由度，共三个自由度&lt;/p&gt;
+&lt;p&gt;同理，一个空间中的物体拥有沿$x$轴、$y$轴、$z$轴三个方向移动的自由度和绕这三个轴转动的自由度，即三个移动自由度和三个转动自由度，共六个自由度&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;位置描述&#34;&gt;位置描述
+&lt;/h3&gt;&lt;p&gt;位置描述涵盖刚体在三个方向上的移动自由度&lt;/p&gt;
+&lt;p&gt;一旦建立了坐标系，我们可以用一个$3\times 1$的&lt;strong&gt;位置矢量&lt;/strong&gt;给世界坐标系中的任何点定位&lt;/p&gt;
+&lt;p&gt;矢量用一个左上标来表明其定义在哪个坐标系，例如$^AP$的元素数值是沿坐标系${A}$三个主轴方向上的投影，矢量的各个元素用下标$x$、$y$和$z$来标明：&lt;/p&gt;
+&lt;p&gt;$^AP=^A\begin{bmatrix}p_x\p_y\p_z\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;（其中矩阵左上标表示矩阵中坐标都是相对于该坐标系而言，由于格式输入限制位置偏下）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E4%BD%8D%E7%BD%AE.png&#34;
+	width=&#34;1220&#34;
+	height=&#34;696&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E4%BD%8D%E7%BD%AE_hu10055723063743765319.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E4%BD%8D%E7%BD%AE_hu12760768912805978274.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;175&#34;
+		data-flex-basis=&#34;420px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;姿态描述&#34;&gt;姿态描述
+&lt;/h3&gt;&lt;p&gt;姿态描述涵盖刚体三个方向上的转动自由度&lt;/p&gt;
+&lt;p&gt;我们可以在刚体上固定一个坐标系${B}$，用${B}$相对于${A}$的描述来表示物体的姿态，而${B}$可以用该坐标系三个主轴方向的单位矢量来确定&lt;/p&gt;
+&lt;p&gt;我们用$\hat{X}_B$、$\hat{Y}_B$和$\hat{Z}_B$来表示${B}$主轴方向的单位矢量，当${A}$作为参考坐标系时，它们被写为$^A\hat{X}_B$、$^A\hat{Y}_B$和$^A\hat{Z}_B$&lt;/p&gt;
+&lt;p&gt;将这三个单位矢量按照$^A\hat{X}_B$、$^A\hat{Y}_B$和$^A\hat{Z}_B$的顺序排列组成一个$3\times3$的矩阵，称为&lt;strong&gt;旋转矩阵(Rotation Matrix)&lt;/strong&gt;。表达${B}$相对于${A}$的旋转矩阵记为$_B^AR$&lt;/p&gt;
+&lt;p&gt;$_B^AR$=$\begin{pmatrix}^A\hat{X}_B&amp;amp;^A\hat{Y}_B&amp;amp;^A\hat{Z}_B\end{pmatrix}$&lt;/p&gt;
+&lt;p&gt;又$^A\hat{X}_B$、$^A\hat{Y}_B$和$^A\hat{Z}_B$是以${A}$为参考，所以矢量中各个元素的数值为$\hat{X}_B$、$\hat{Y}_B$和$\hat{Z}_B$分别在${A}$三个主轴方向上的投影长度，因而上式可以进一步写为&lt;/p&gt;
+&lt;p&gt;$_B^AR=\begin{pmatrix}^A\hat{X}_B&amp;amp;^A\hat{Y}_B&amp;amp;^A\hat{Z}_B\end{pmatrix}=\begin{bmatrix}\hat{X}_B\cdot\hat{X}_A&amp;amp;\hat{Y}_B\cdot\hat{X}_A&amp;amp;\hat{Z}_B\cdot\hat{X}_A\\hat{X}_B\cdot\hat{Y}_A&amp;amp;\hat{Y}_B\cdot\hat{Y}_A&amp;amp;\hat{Z}_B\cdot\hat{Y}_A\\hat{X}_B\cdot\hat{Z}_A&amp;amp;\hat{Y}_B\cdot\hat{Z}_A&amp;amp;\hat{Z}_B\cdot\hat{Z}_A\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;又矩阵中各个矢量均为单位矢量，点积之值也是$\hat{X}_B$、$\hat{Y}_B$和$\hat{Z}_B$对于${A}$的方向余弦，该矩阵又称为&lt;strong&gt;方向余弦矩阵(Direction Cosine Matrix)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;综上，我们用旋转矩阵描述了刚体的姿态&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;旋转矩阵&#34;&gt;旋转矩阵
+&lt;/h4&gt;&lt;p&gt;接下来重点介绍旋转矩阵的性质与作用&lt;/p&gt;
+&lt;h5 id=&#34;性质&#34;&gt;性质
+&lt;/h5&gt;&lt;p&gt;将旋转矩阵中各个点积前后矢量互换，我们有如下推导（其中右上标T为转置符号）：&lt;/p&gt;
+&lt;p&gt;$_B^AR=\begin{pmatrix}^A\hat{X}_B&amp;amp;^A\hat{Y}_B&amp;amp;^A\hat{Z}_B\end{pmatrix}=\begin{bmatrix}\hat{X}_B\cdot\hat{X}_A&amp;amp;\hat{Y}_B\cdot\hat{X}_A&amp;amp;\hat{Z}_B\cdot\hat{X}_A\\hat{X}_B\cdot\hat{Y}_A&amp;amp;\hat{Y}_B\cdot\hat{Y}_A&amp;amp;\hat{Z}_B\cdot\hat{Y}_A\\hat{X}_B\cdot\hat{Z}_A&amp;amp;\hat{Y}_B\cdot\hat{Z}_A&amp;amp;\hat{Z}_B\cdot\hat{Z}_A\end{bmatrix}$
+$=\begin{bmatrix}\hat{X}_A\cdot\hat{X}_B&amp;amp;\hat{X}_A\cdot\hat{Y}_B&amp;amp;\hat{X}_A\cdot\hat{Z}_B\\hat{Y}_A\cdot\hat{X}_B&amp;amp;\hat{Y}_A\cdot\hat{Y}_B&amp;amp;\hat{Y}_A\cdot\hat{Z}_B\\hat{Z}_A\cdot\hat{X}_B&amp;amp;\hat{Z}_A\cdot\hat{Y}_B&amp;amp;\hat{Z}_A\cdot\hat{Z}_B\end{bmatrix}=\begin{bmatrix}\hat{X}_A{^T}\\hat{Y}_A{^T}\\hat{Z}_A{^T}\end{bmatrix}$$=\begin{pmatrix}^A\hat{X}_B&amp;amp;^A\hat{Y}_B&amp;amp;^A\hat{Z}_B\end{pmatrix}^T=^B_AR^T$&lt;/p&gt;
+&lt;p&gt;由此$^A_BR=^B_AR^T$&lt;/p&gt;
+&lt;p&gt;又由：&lt;/p&gt;
+&lt;p&gt;$^A_BR{^T}^A_BR=\begin{bmatrix}\hat{X}_A{^T}\\hat{Y}_A{^T}\\hat{Z}_A{^T}\end{bmatrix}\begin{pmatrix}^A\hat{X}_B&amp;amp;^A\hat{Y}_B&amp;amp;^A\hat{Z}_B\end{pmatrix}=I_3$&lt;/p&gt;
+&lt;p&gt;其中$I_3$是$3\times3$的单位矩阵，因此：&lt;/p&gt;
+&lt;p&gt;$^A_BR=^B_AR^{-1}=^B_AR{^T}$&lt;/p&gt;
+&lt;p&gt;即$^B_AR$的转置矩阵等于它的逆矩阵，又同时等于$^A_BR$。由线性代数可知，前者是正交矩阵的性质&lt;/p&gt;
+&lt;p&gt;旋转矩阵有九个数字，但只有三个矢量两两垂直、均为单位矢量总共六个条件约束，因此只有三个数字是独立变量，与空间中转动具有三个自由度相符&lt;/p&gt;
+&lt;hr&gt;
+&lt;h5 id=&#34;作用&#34;&gt;作用
+&lt;/h5&gt;&lt;p&gt;除了前文所讲的描述一个刚体的姿态外，旋转矩阵还有两个作用&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1.转换矢量的坐标&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;矢量$P$相对于${B}$的坐标表示：$^BP=^Bp_x\hat{X}_B+^Bp_y\hat{Y}_B+^Bp_z\hat{Z}_B$&lt;/p&gt;
+&lt;p&gt;矢量$P$相对于${A}$的坐标表示：$^AP=^Ap_x\hat{X}_A+^Ap_y\hat{Y}_A+^Ap_z\hat{Z}_A$&lt;/p&gt;
+&lt;p&gt;$^BP$和$^AP$只是坐标表示不同，本质上是同一个矢量，由此矢量$P$相对于${A}$的坐标也可以用$^BP$在${A}$三个主轴上的投影计算：&lt;/p&gt;
+&lt;p&gt;$^Ap_x=^BP\hat{X}_A=^Bp_x\hat{X}_B\hat{X}_A+^Bp_y\hat{Y}_B\hat{X}_A+^Bp_z\hat{Z}_B\hat{X}_A$&lt;/p&gt;
+&lt;p&gt;$^Ap_y=^BP\hat{Y}_A=^Bp_x\hat{X}_B\hat{Y}_A+^Bp_y\hat{Y}_B\hat{Y}_A+^Bp_z\hat{Z}_B\hat{Y}_A$&lt;/p&gt;
+&lt;p&gt;$^Ap_z=^BP\hat{X}_A=^Bp_x\hat{X}_B\hat{Z}_A+^Bp_y\hat{Y}_B\hat{Z}_A+^Bp_z\hat{Z}_B\hat{Z}_A$&lt;/p&gt;
+&lt;p&gt;用矩阵表示则为：&lt;/p&gt;
+&lt;p&gt;$^AP=^A\begin{bmatrix}p_x\p_y\p_z\end{bmatrix}=\begin{bmatrix}\hat{X}_B\cdot\hat{X}_A&amp;amp;\hat{Y}_B\cdot\hat{X}_A&amp;amp;\hat{Z}_B\cdot\hat{X}_A\\hat{X}_B\cdot\hat{Y}_A&amp;amp;\hat{Y}_B\cdot\hat{Y}_A&amp;amp;\hat{Z}_B\cdot\hat{Y}_A\\hat{X}_B\cdot\hat{Z}_A&amp;amp;\hat{Y}_B\cdot\hat{Z}_A&amp;amp;\hat{Z}_B\cdot\hat{Z}_A\end{bmatrix}^B\begin{bmatrix}p_x\p_y\p_z\end{bmatrix}=^A_BR^BP$&lt;/p&gt;
+&lt;p&gt;由此得到${B}$相对于${A}$的旋转矩阵可以将$P$的表示由相对于${B}$转换为相对于${A}$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2.描述刚体转动的状态&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;分别研究坐标系绕三个主轴旋转的状态&lt;/p&gt;
+&lt;p&gt;以${A}$绕$\hat{Z}_A$逆时针旋转$\theta$（以后不标明旋转方向默认为逆时针旋转）得到${B}$为例，计算此时${B}$相对于${A}$的旋转矩阵得：&lt;/p&gt;
+&lt;p&gt;$^A_BR=\begin{bmatrix}\cos\theta&amp;amp;-\sin\theta&amp;amp;0\\sin\theta&amp;amp;\cos\theta&amp;amp;0\0&amp;amp;0&amp;amp;1\end{bmatrix}=\begin{bmatrix}c\theta&amp;amp;-s\theta&amp;amp;0\s\theta&amp;amp;c\theta&amp;amp;0\0&amp;amp;0&amp;amp;1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;（由于我们将在计算中用到许多三角函数，因此三角函数用对应首字母简记）&lt;/p&gt;
+&lt;p&gt;由此，我们将绕$\hat{Z}&lt;em&gt;A$旋转$\theta$以这种方式计算出来的旋转矩阵记为$R&lt;/em&gt;{\hat{Z}_A}(\theta)$，则：&lt;/p&gt;
+&lt;p&gt;$R_{\hat{Z}_A}(\theta)=\begin{bmatrix}c\theta&amp;amp;-s\theta&amp;amp;0\s\theta&amp;amp;c\theta&amp;amp;0\0&amp;amp;0&amp;amp;1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E6%97%8B%E8%BD%AC.png&#34;
+	width=&#34;985&#34;
+	height=&#34;617&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E6%97%8B%E8%BD%AC_hu17404435337557359247.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E6%97%8B%E8%BD%AC_hu16928834168348170938.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;159&#34;
+		data-flex-basis=&#34;383px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;同理得到：&lt;/p&gt;
+&lt;p&gt;$R_{\hat{X}_A}(\theta)=\begin{bmatrix}1&amp;amp;0&amp;amp;0\0&amp;amp;c\theta&amp;amp;-s\theta\0&amp;amp;s\theta&amp;amp;c\theta\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;$R_{\hat{Y}_A}(\theta)=\begin{bmatrix}c\theta&amp;amp;0&amp;amp;s\theta\0&amp;amp;1&amp;amp;0\-s\theta&amp;amp;0&amp;amp;c\theta\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;通过接下来的例子我们来理解这类旋转矩阵如何描述刚体转动的状态&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/%e8%bd%ac%e5%8a%a8&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;$^AP=^A(p_x;p_y;p_z)^T$对$\hat{X}_A$旋转$\theta$得到$^AP&amp;rsquo;$，$^AP&amp;rsquo;=?$&lt;/p&gt;
+&lt;p&gt;不妨让${A}$跟着$^AP$同步旋转，得到${A&amp;rsquo;}$，那么$^AP&amp;rsquo;$相对于${A&amp;rsquo;}$的坐标跟$^AP$相对于${A}$的坐标相等，而后者已知&lt;/p&gt;
+&lt;p&gt;又通过题目条件和前文定义我们知道$^A_{A&amp;rsquo;}R=R_{\hat{X}_A}(\theta)=\begin{bmatrix}1&amp;amp;0&amp;amp;0\0&amp;amp;c\theta&amp;amp;-s\theta\0&amp;amp;s\theta&amp;amp;c\theta\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;利用旋转矩阵转换矢量坐标的作用，我们可以把$^AP&amp;rsquo;$相对于${A&amp;rsquo;}$的坐标转换为相对于原坐标系${A}$的坐标，即：&lt;/p&gt;
+&lt;p&gt;$^AP&amp;rsquo;=^A_{A&amp;rsquo;}R^AP=R_{\hat{X}_A}(\theta)^AP$&lt;/p&gt;
+&lt;p&gt;所以旋转矩阵$R(\theta)$可以计算矢量在同一坐标系下旋转后的坐标&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;位姿描述&#34;&gt;位姿描述
+&lt;/h3&gt;&lt;p&gt;位置和姿态的组合称为&lt;strong&gt;位姿&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;我们同样用${A}$来表示一个位姿&lt;/p&gt;
+&lt;p&gt;以${A}$为参考描述位姿${B}$，结合前文的位置描述和姿态描述，我们用$^A_BR$表示${B}$的姿态，用$^AP_{BORG}$表示${B}$的原点的位置矢量（下标ORG意为原点origin），于是位姿描述记为：&lt;/p&gt;
+&lt;p&gt;${B}={^A_BR,{,}^AP_{BORG}}$&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;下一篇文章将讲述本章后半部分空间中的变换内容&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>【机器人学导论】Ep1.概述</title>
+        <link>https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/</link>
+        <pubDate>Wed, 30 Oct 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/</guid>
+        <description>&lt;blockquote&gt;
+&lt;p&gt;主要参考学习资料：&lt;/p&gt;
+&lt;p&gt;《机器人学导论（第4版）》John J.Craig著&lt;/p&gt;
+&lt;p&gt;台大机器人学之运动学——林沛群&lt;/p&gt;
+&lt;p&gt;前置课程：博主目前只对线性代数和理论力学方面有一定基础，学习过程中遇到额外必要的前置知识我会做补充或者开辟新的知识笔记专栏&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;概述&#34;&gt;概述
+&lt;/h1&gt;&lt;p&gt;本章简要介绍机器人学导论中的基础名词和学习内容，具体内容将在后续展开&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;知识体系&#34;&gt;知识体系
+&lt;/h2&gt;&lt;p&gt;本知识笔记以《机器人学导论》一书为主，书中内容结构如下：&lt;/p&gt;
+&lt;p&gt;第1章 概述&lt;/p&gt;
+&lt;p&gt;第2章 空间描述和变换&lt;/p&gt;
+&lt;p&gt;第3章 操作臂运动学&lt;/p&gt;
+&lt;p&gt;第4章 操作臂逆运动学&lt;/p&gt;
+&lt;p&gt;第5章 雅可比：速度和静力&lt;/p&gt;
+&lt;p&gt;第6章 操作臂动力学&lt;/p&gt;
+&lt;p&gt;第7章 轨迹生成&lt;/p&gt;
+&lt;p&gt;第8章 操作臂的机构设计&lt;/p&gt;
+&lt;p&gt;第9章 操作臂的线性控制&lt;/p&gt;
+&lt;p&gt;第10章 操作臂的非线性控制&lt;/p&gt;
+&lt;p&gt;第11章 操作臂的力控制&lt;/p&gt;
+&lt;p&gt;第12章 机器人编程语言及编程系统&lt;/p&gt;
+&lt;p&gt;第13章 离线编程系统&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;操作臂的力学与控制&#34;&gt;操作臂的力学与控制
+&lt;/h2&gt;&lt;p&gt;在机器人领域，&lt;strong&gt;机械臂&lt;/strong&gt;（&lt;strong&gt;操作臂&lt;/strong&gt;）是起步最早、现今最成熟的技术，而机器人学知识也跟随此路线发展而来，因此对机器人知识的学习从机械臂开始&lt;/p&gt;
+&lt;p&gt;以下内容将按顺序在书中后面12个章节一一讨论&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;位置和姿态的描述&#34;&gt;位置和姿态的描述
+&lt;/h3&gt;&lt;p&gt;研究机器人学需要考虑三维空间中物体的空间状态，可以用两个重要特性描述：&lt;strong&gt;位置&lt;/strong&gt;和&lt;strong&gt;姿态&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;为了用数学方法表示和计算这些参量，我们一般在物体上设置一个&lt;strong&gt;坐标系（位姿）&lt;/strong&gt;，然后在某个参考坐标系中描述该位姿的位置和姿态&lt;/p&gt;
+&lt;p&gt;任意位姿都能用作参考坐标系，因此我们经常将物体空间属性的描述从一个位姿&lt;strong&gt;变换&lt;/strong&gt;到另一个位姿
+&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E4%BD%8D%E5%A7%BF.png&#34;
+	width=&#34;515&#34;
+	height=&#34;476&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E4%BD%8D%E5%A7%BF_hu15512684215587645714.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E4%BD%8D%E5%A7%BF_hu8356007772408231576.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;108&#34;
+		data-flex-basis=&#34;259px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;操作臂正运动学&#34;&gt;操作臂正运动学
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;运动学&lt;/strong&gt;研究物体的运动而不考虑引起这种运动的力，操作臂运动学的研究对象为运动的全部几何和时间特性（位置、速度、加速度和位置变量对于其他变量的高阶微分）&lt;/p&gt;
+&lt;p&gt;大部分操作臂由刚性&lt;strong&gt;连杆&lt;/strong&gt;组成，相邻连杆由&lt;strong&gt;关节&lt;/strong&gt;连接，允许相对转动&lt;/p&gt;
+&lt;p&gt;如果是&lt;strong&gt;转动关节&lt;/strong&gt;，两个相邻连杆的相对位移被称为关节角；如果是&lt;strong&gt;滑（移）动关节&lt;/strong&gt;，位移被称为&lt;strong&gt;关节偏移量&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;操作臂&lt;strong&gt;自由度&lt;/strong&gt;的个数是使操作臂具有确定运动时必须给出的独立运动的数目，或操作臂独立驱动的关节数&lt;/p&gt;
+&lt;p&gt;组成操作臂运动链的自由端称为&lt;strong&gt;末端执行器&lt;/strong&gt;，通常采用末端执行器上的&lt;strong&gt;工具坐标系&lt;/strong&gt;相对于操作臂固定底座的&lt;strong&gt;基坐标系&lt;/strong&gt;来描述操作臂的位置&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;正运动学&lt;/strong&gt;根据已知的各个关节的关节角计算末端执行器的位置和姿态，这个过程被称为从&lt;strong&gt;关节空间&lt;/strong&gt;描述到&lt;strong&gt;笛卡尔空间&lt;/strong&gt;描述的操作臂位置表示&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;笛卡尔空间：用三个变量描述空间一点的位置，用另外三个变量描述物体的姿态&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;操作臂逆运动学&#34;&gt;操作臂逆运动学
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;逆运动学&lt;/strong&gt;根据给定的末端执行器的位置和姿态计算所有关节可达到给定位置和姿态的关节角&lt;/p&gt;
+&lt;p&gt;逆运动学计算涉及的运动学方程的解的存在性定义了操作臂的&lt;strong&gt;工作空间&lt;/strong&gt; &lt;em&gt;（末端执行器活动范围）&lt;/em&gt;
+&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E8%BF%90%E5%8A%A8%E5%AD%A6.png&#34;
+	width=&#34;745&#34;
+	height=&#34;452&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E8%BF%90%E5%8A%A8%E5%AD%A6_hu9116584054419310379.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E8%BF%90%E5%8A%A8%E5%AD%A6_hu6164801150757213213.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;164&#34;
+		data-flex-basis=&#34;395px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;速度静力奇异点&#34;&gt;速度，静力，奇异点
+&lt;/h3&gt;&lt;p&gt;除了静态定位问题，对于运动中的操作臂，我们定义&lt;strong&gt;雅可比矩阵&lt;/strong&gt;来方便地进行机构的速度分析&lt;/p&gt;
+&lt;p&gt;雅可比矩阵定义了从关节空间速度向笛卡尔空间速度的&lt;strong&gt;映射&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;在&lt;strong&gt;奇异点&lt;/strong&gt;，这种映射不可逆（给定的末端执行器的运动状态超出了关节运动能力的限制），同时某些关节的运动可能无法引起末端执行器的有效运动，称为&lt;strong&gt;局部退化&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;当操作臂接触工件或工作面，并施加一个静力，需要解决如何设定&lt;strong&gt;关节力矩&lt;/strong&gt;来产生要求的接触力和力矩&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;动力学&#34;&gt;动力学
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;动力学&lt;/strong&gt;研究产生运动所需要的力&lt;/p&gt;
+&lt;p&gt;控制操作臂末端执行器的运动速度需要关节驱动器产生一组复杂的&lt;strong&gt;扭矩函数&lt;/strong&gt;来实现，取决于末端执行器的运动路径和速度、连杆的质量特性和负载、关节摩擦等，扭矩函数通过操作臂动力学方程来求解，用于操作臂的控制和仿真&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;轨迹生成&#34;&gt;轨迹生成
+&lt;/h3&gt;&lt;p&gt;计算每个关节运动的连续函数来平稳控制操作臂从一点运动到另外一点的过程为&lt;strong&gt;轨迹生成&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;操作臂从起点到目标点需要确定一些中间&lt;strong&gt;路径点&lt;/strong&gt;，通过一系列路径点的连续函数被称为&lt;strong&gt;样条函数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;笛卡尔轨迹生成&lt;/strong&gt;将末端执行器的期望运动转化为一系列等效的关节运动
+&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E8%BF%90%E5%8A%A8%E5%AD%A62.png&#34;
+	width=&#34;761&#34;
+	height=&#34;387&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E8%BF%90%E5%8A%A8%E5%AD%A62_hu13699410036776569814.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/%E8%BF%90%E5%8A%A8%E5%AD%A62_hu12128017618298807650.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;196&#34;
+		data-flex-basis=&#34;471px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;操作臂设计与传感器&#34;&gt;操作臂设计与传感器
+&lt;/h3&gt;&lt;p&gt;为特定任务设计的机器人为专用机器人，能够完成各种任务的为通用机器人。从经济角度考虑，操作臂的机械设计由期望执行的任务决定，设计者需考虑几何尺寸、速度、承载能力、关节的数量与几何布局等因素，这些因素影响了操作臂工作空间的大小和性质、操作臂结构的刚度以及其他属性&lt;/p&gt;
+&lt;p&gt;完整的操作臂设计还包括：驱动器的选择和位置、传动系统以及内部位置传感器（有时是力传感器）&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;线性位置控制&#34;&gt;线性位置控制
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;位置控制系统&lt;/strong&gt;不仅包括理想状态下产生期望运动的力矩的计算，更要考虑自动补偿由于系统参数引起的误差以及抑制引起系统偏离期望轨迹的扰动。为此，通过&lt;strong&gt;控制算法&lt;/strong&gt;对位置和速度&lt;strong&gt;传感器&lt;/strong&gt;进行检测，计算出驱动器的扭矩指令。第9章讨论基于操作臂动力学的线性近似得出的控制算法&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;非线性位置控制&#34;&gt;非线性位置控制
+&lt;/h3&gt;&lt;p&gt;考虑操作臂完整的非线性动力学的&lt;strong&gt;非线性控制&lt;/strong&gt;算法，比简单的线性控制方法性能更好&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;力控制&#34;&gt;力控制
+&lt;/h3&gt;&lt;p&gt;当操作臂在自由空间中运动时，只有位置控制有意义&lt;/p&gt;
+&lt;p&gt;当接触零件、工具或工作表面时，操作臂控制力的能力极其重要&lt;/p&gt;
+&lt;p&gt;当操作臂在部分方向受到作用表面约束时，需要采用&lt;strong&gt;混合&lt;/strong&gt;控制方式，在某些方向用&lt;strong&gt;位置控制规律&lt;/strong&gt;来控制，而其余方向用&lt;strong&gt;力控制规律&lt;/strong&gt;来控制&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;机器人编程&#34;&gt;机器人编程
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;机器人编程语言&lt;/strong&gt;是用户和工业机器人交互的接口&lt;/p&gt;
+&lt;p&gt;操作者指定操作臂末端执行器的一个特殊点为&lt;strong&gt;操作点&lt;/strong&gt;，也叫&lt;strong&gt;TCP（工具中心点）&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;通过一系列路径点确定路径，同时确定不同路径段上TCP的速度，依据这些输入，轨迹生成算法规划处机器人运动的所有细节。轨迹生成的输入问题由机器人编程语言的指令来给出&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;离线编程与仿真&#34;&gt;离线编程与仿真
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;离线编程系统&lt;/strong&gt;是一种机器人编程环境，可以在不需要机器人停机的状态下对机器人进行编程，也可以在没有做出机器人实物的情况下对机器人设计进行&lt;strong&gt;仿真&lt;/strong&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;本章完&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="位置描述；姿态描述-旋转矩阵；位姿描述">
+<title>【机器人学导论】Ep2.1.空间描述和变换-1</title>
+
+<link rel='canonical' href='https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【机器人学导论】Ep2.1.空间描述和变换-1">
+<meta property='og:description' content="位置描述；姿态描述-旋转矩阵；位姿描述">
+<meta property='og:url' content='https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/'>
+<meta property='og:site_name' content='一杯为品'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-11-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-11-01T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="【机器人学导论】Ep2.1.空间描述和变换-1">
+<meta name="twitter:description" content="位置描述；姿态描述-旋转矩阵；位姿描述">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu16835031703737007367.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🐦</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一杯为品</a></h1>
+            <h2 class="site-description">哈工大2023届智能机器人班在读，在努力成为机器人、人工智能、硬件工程多面手的路上</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://blog.csdn.net/mojin2005?spm=1010.2135.3001.5343'
+                        target="_blank"
+                        title="CSDN"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M48 0H0V48H48V0ZM25.9509 14.1922C27.8907 14.578 29.6725 15.5304 31.0711 16.9289C31.8521 17.71 33.1184 17.71 33.8995 16.9289C34.6805 16.1479 34.6805 14.8816 33.8995 14.1005C31.9416 12.1426 29.447 10.8092 26.7313 10.269C24.0155 9.72882 21.2006 10.0061 18.6424 11.0657C16.0843 12.1253 13.8978 13.9197 12.3594 16.222C10.8211 18.5243 10 21.2311 10 24C10 26.7689 10.8211 29.4757 12.3594 31.778C13.8978 34.0803 16.0843 35.8747 18.6424 36.9343C21.2006 37.9939 24.0155 38.2712 26.7313 37.731C29.447 37.1908 31.9416 35.8574 33.8995 33.8995C34.6805 33.1185 34.6805 31.8521 33.8995 31.0711C33.1184 30.29 31.8521 30.29 31.0711 31.0711C29.6725 32.4696 27.8907 33.422 25.9509 33.8079C24.0111 34.1937 22.0004 33.9957 20.1732 33.2388C18.3459 32.4819 16.7841 31.2002 15.6853 29.5557C14.5865 27.9112 14 25.9778 14 24C14 22.0222 14.5865 20.0888 15.6853 18.4443C16.7841 16.7998 18.3459 15.5181 20.1732 14.7612C22.0004 14.0043 24.0111 13.8063 25.9509 14.1922Z" fill="#333333"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/INKEM'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#描述">描述</a>
+      <ol>
+        <li><a href="#位置描述">位置描述</a></li>
+        <li><a href="#姿态描述">姿态描述</a>
+          <ol>
+            <li><a href="#旋转矩阵">旋转矩阵</a></li>
+          </ol>
+        </li>
+        <li><a href="#位姿描述">位姿描述</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" >
+                学习笔记
+            </a>
+        
+            <a href="/categories/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BA/" >
+                机器人学导论
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/">【机器人学导论】Ep2.1.空间描述和变换-1</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            位置描述；姿态描述-旋转矩阵；位姿描述
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 01, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 6 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <blockquote>
+<p>主要参考学习资料：</p>
+<p>《机器人学导论（第4版）》John J.Craig著</p>
+<p>台大机器人学之运动学——林沛群（本文插图来自该课程课件）</p>
+<p>本章前置知识：矢量和矩阵的四则运算-单位矩阵-转置矩阵-逆矩阵-正交矩阵</p>
+</blockquote>
+<h1 id="空间描述和变换">空间描述和变换
+</h1><hr>
+<h2 id="描述">描述
+</h2><p>我们用${A}$来表示一个<strong>坐标系(Frame)</strong></p>
+<p>讨论问题之前，我们需要建立一个<strong>世界坐标系(World Frame)</strong>，之后定义的位置和姿态都是参照世界坐标系定义的笛卡尔坐标系</p>
+<p>一个平面中的物体拥有沿$x$轴、$y$轴两个方向移动的自由度和绕垂直于平面的轴转动的<strong>自由度（Degree Of Freedom，可简记为DOF）</strong>，即两个移动自由度和一个转动自由度，共三个自由度</p>
+<p>同理，一个空间中的物体拥有沿$x$轴、$y$轴、$z$轴三个方向移动的自由度和绕这三个轴转动的自由度，即三个移动自由度和三个转动自由度，共六个自由度</p>
+<hr>
+<h3 id="位置描述">位置描述
+</h3><p>位置描述涵盖刚体在三个方向上的移动自由度</p>
+<p>一旦建立了坐标系，我们可以用一个$3\times 1$的<strong>位置矢量</strong>给世界坐标系中的任何点定位</p>
+<p>矢量用一个左上标来表明其定义在哪个坐标系，例如$^AP$的元素数值是沿坐标系${A}$三个主轴方向上的投影，矢量的各个元素用下标$x$、$y$和$z$来标明：</p>
+<p>$^AP=^A\begin{bmatrix}p_x\p_y\p_z\end{bmatrix}$</p>
+<p>（其中矩阵左上标表示矩阵中坐标都是相对于该坐标系而言，由于格式输入限制位置偏下）</p>
+<p><img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E4%BD%8D%E7%BD%AE.png"
+	width="1220"
+	height="696"
+	srcset="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E4%BD%8D%E7%BD%AE_hu10055723063743765319.png 480w, /p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E4%BD%8D%E7%BD%AE_hu12760768912805978274.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="175"
+		data-flex-basis="420px"
+	
+></p>
+<hr>
+<h3 id="姿态描述">姿态描述
+</h3><p>姿态描述涵盖刚体三个方向上的转动自由度</p>
+<p>我们可以在刚体上固定一个坐标系${B}$，用${B}$相对于${A}$的描述来表示物体的姿态，而${B}$可以用该坐标系三个主轴方向的单位矢量来确定</p>
+<p>我们用$\hat{X}_B$、$\hat{Y}_B$和$\hat{Z}_B$来表示${B}$主轴方向的单位矢量，当${A}$作为参考坐标系时，它们被写为$^A\hat{X}_B$、$^A\hat{Y}_B$和$^A\hat{Z}_B$</p>
+<p>将这三个单位矢量按照$^A\hat{X}_B$、$^A\hat{Y}_B$和$^A\hat{Z}_B$的顺序排列组成一个$3\times3$的矩阵，称为<strong>旋转矩阵(Rotation Matrix)</strong>。表达${B}$相对于${A}$的旋转矩阵记为$_B^AR$</p>
+<p>$_B^AR$=$\begin{pmatrix}^A\hat{X}_B&amp;^A\hat{Y}_B&amp;^A\hat{Z}_B\end{pmatrix}$</p>
+<p>又$^A\hat{X}_B$、$^A\hat{Y}_B$和$^A\hat{Z}_B$是以${A}$为参考，所以矢量中各个元素的数值为$\hat{X}_B$、$\hat{Y}_B$和$\hat{Z}_B$分别在${A}$三个主轴方向上的投影长度，因而上式可以进一步写为</p>
+<p>$_B^AR=\begin{pmatrix}^A\hat{X}_B&amp;^A\hat{Y}_B&amp;^A\hat{Z}_B\end{pmatrix}=\begin{bmatrix}\hat{X}_B\cdot\hat{X}_A&amp;\hat{Y}_B\cdot\hat{X}_A&amp;\hat{Z}_B\cdot\hat{X}_A\\hat{X}_B\cdot\hat{Y}_A&amp;\hat{Y}_B\cdot\hat{Y}_A&amp;\hat{Z}_B\cdot\hat{Y}_A\\hat{X}_B\cdot\hat{Z}_A&amp;\hat{Y}_B\cdot\hat{Z}_A&amp;\hat{Z}_B\cdot\hat{Z}_A\end{bmatrix}$</p>
+<p>又矩阵中各个矢量均为单位矢量，点积之值也是$\hat{X}_B$、$\hat{Y}_B$和$\hat{Z}_B$对于${A}$的方向余弦，该矩阵又称为<strong>方向余弦矩阵(Direction Cosine Matrix)</strong></p>
+<p>综上，我们用旋转矩阵描述了刚体的姿态</p>
+<hr>
+<h4 id="旋转矩阵">旋转矩阵
+</h4><p>接下来重点介绍旋转矩阵的性质与作用</p>
+<h5 id="性质">性质
+</h5><p>将旋转矩阵中各个点积前后矢量互换，我们有如下推导（其中右上标T为转置符号）：</p>
+<p>$_B^AR=\begin{pmatrix}^A\hat{X}_B&amp;^A\hat{Y}_B&amp;^A\hat{Z}_B\end{pmatrix}=\begin{bmatrix}\hat{X}_B\cdot\hat{X}_A&amp;\hat{Y}_B\cdot\hat{X}_A&amp;\hat{Z}_B\cdot\hat{X}_A\\hat{X}_B\cdot\hat{Y}_A&amp;\hat{Y}_B\cdot\hat{Y}_A&amp;\hat{Z}_B\cdot\hat{Y}_A\\hat{X}_B\cdot\hat{Z}_A&amp;\hat{Y}_B\cdot\hat{Z}_A&amp;\hat{Z}_B\cdot\hat{Z}_A\end{bmatrix}$
+$=\begin{bmatrix}\hat{X}_A\cdot\hat{X}_B&amp;\hat{X}_A\cdot\hat{Y}_B&amp;\hat{X}_A\cdot\hat{Z}_B\\hat{Y}_A\cdot\hat{X}_B&amp;\hat{Y}_A\cdot\hat{Y}_B&amp;\hat{Y}_A\cdot\hat{Z}_B\\hat{Z}_A\cdot\hat{X}_B&amp;\hat{Z}_A\cdot\hat{Y}_B&amp;\hat{Z}_A\cdot\hat{Z}_B\end{bmatrix}=\begin{bmatrix}\hat{X}_A{^T}\\hat{Y}_A{^T}\\hat{Z}_A{^T}\end{bmatrix}$$=\begin{pmatrix}^A\hat{X}_B&amp;^A\hat{Y}_B&amp;^A\hat{Z}_B\end{pmatrix}^T=^B_AR^T$</p>
+<p>由此$^A_BR=^B_AR^T$</p>
+<p>又由：</p>
+<p>$^A_BR{^T}^A_BR=\begin{bmatrix}\hat{X}_A{^T}\\hat{Y}_A{^T}\\hat{Z}_A{^T}\end{bmatrix}\begin{pmatrix}^A\hat{X}_B&amp;^A\hat{Y}_B&amp;^A\hat{Z}_B\end{pmatrix}=I_3$</p>
+<p>其中$I_3$是$3\times3$的单位矩阵，因此：</p>
+<p>$^A_BR=^B_AR^{-1}=^B_AR{^T}$</p>
+<p>即$^B_AR$的转置矩阵等于它的逆矩阵，又同时等于$^A_BR$。由线性代数可知，前者是正交矩阵的性质</p>
+<p>旋转矩阵有九个数字，但只有三个矢量两两垂直、均为单位矢量总共六个条件约束，因此只有三个数字是独立变量，与空间中转动具有三个自由度相符</p>
+<hr>
+<h5 id="作用">作用
+</h5><p>除了前文所讲的描述一个刚体的姿态外，旋转矩阵还有两个作用</p>
+<p><strong>1.转换矢量的坐标</strong></p>
+<p>矢量$P$相对于${B}$的坐标表示：$^BP=^Bp_x\hat{X}_B+^Bp_y\hat{Y}_B+^Bp_z\hat{Z}_B$</p>
+<p>矢量$P$相对于${A}$的坐标表示：$^AP=^Ap_x\hat{X}_A+^Ap_y\hat{Y}_A+^Ap_z\hat{Z}_A$</p>
+<p>$^BP$和$^AP$只是坐标表示不同，本质上是同一个矢量，由此矢量$P$相对于${A}$的坐标也可以用$^BP$在${A}$三个主轴上的投影计算：</p>
+<p>$^Ap_x=^BP\hat{X}_A=^Bp_x\hat{X}_B\hat{X}_A+^Bp_y\hat{Y}_B\hat{X}_A+^Bp_z\hat{Z}_B\hat{X}_A$</p>
+<p>$^Ap_y=^BP\hat{Y}_A=^Bp_x\hat{X}_B\hat{Y}_A+^Bp_y\hat{Y}_B\hat{Y}_A+^Bp_z\hat{Z}_B\hat{Y}_A$</p>
+<p>$^Ap_z=^BP\hat{X}_A=^Bp_x\hat{X}_B\hat{Z}_A+^Bp_y\hat{Y}_B\hat{Z}_A+^Bp_z\hat{Z}_B\hat{Z}_A$</p>
+<p>用矩阵表示则为：</p>
+<p>$^AP=^A\begin{bmatrix}p_x\p_y\p_z\end{bmatrix}=\begin{bmatrix}\hat{X}_B\cdot\hat{X}_A&amp;\hat{Y}_B\cdot\hat{X}_A&amp;\hat{Z}_B\cdot\hat{X}_A\\hat{X}_B\cdot\hat{Y}_A&amp;\hat{Y}_B\cdot\hat{Y}_A&amp;\hat{Z}_B\cdot\hat{Y}_A\\hat{X}_B\cdot\hat{Z}_A&amp;\hat{Y}_B\cdot\hat{Z}_A&amp;\hat{Z}_B\cdot\hat{Z}_A\end{bmatrix}^B\begin{bmatrix}p_x\p_y\p_z\end{bmatrix}=^A_BR^BP$</p>
+<p>由此得到${B}$相对于${A}$的旋转矩阵可以将$P$的表示由相对于${B}$转换为相对于${A}$</p>
+<p><strong>2.描述刚体转动的状态</strong></p>
+<p>分别研究坐标系绕三个主轴旋转的状态</p>
+<p>以${A}$绕$\hat{Z}_A$逆时针旋转$\theta$（以后不标明旋转方向默认为逆时针旋转）得到${B}$为例，计算此时${B}$相对于${A}$的旋转矩阵得：</p>
+<p>$^A_BR=\begin{bmatrix}\cos\theta&amp;-\sin\theta&amp;0\\sin\theta&amp;\cos\theta&amp;0\0&amp;0&amp;1\end{bmatrix}=\begin{bmatrix}c\theta&amp;-s\theta&amp;0\s\theta&amp;c\theta&amp;0\0&amp;0&amp;1\end{bmatrix}$</p>
+<p>（由于我们将在计算中用到许多三角函数，因此三角函数用对应首字母简记）</p>
+<p>由此，我们将绕$\hat{Z}<em>A$旋转$\theta$以这种方式计算出来的旋转矩阵记为$R</em>{\hat{Z}_A}(\theta)$，则：</p>
+<p>$R_{\hat{Z}_A}(\theta)=\begin{bmatrix}c\theta&amp;-s\theta&amp;0\s\theta&amp;c\theta&amp;0\0&amp;0&amp;1\end{bmatrix}$</p>
+<p><img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E6%97%8B%E8%BD%AC.png"
+	width="985"
+	height="617"
+	srcset="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E6%97%8B%E8%BD%AC_hu17404435337557359247.png 480w, /p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E6%97%8B%E8%BD%AC_hu16928834168348170938.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="159"
+		data-flex-basis="383px"
+	
+></p>
+<p>同理得到：</p>
+<p>$R_{\hat{X}_A}(\theta)=\begin{bmatrix}1&amp;0&amp;0\0&amp;c\theta&amp;-s\theta\0&amp;s\theta&amp;c\theta\end{bmatrix}$</p>
+<p>$R_{\hat{Y}_A}(\theta)=\begin{bmatrix}c\theta&amp;0&amp;s\theta\0&amp;1&amp;0\-s\theta&amp;0&amp;c\theta\end{bmatrix}$</p>
+<p>通过接下来的例子我们来理解这类旋转矩阵如何描述刚体转动的状态</p>
+<p><img src="/%e8%bd%ac%e5%8a%a8"
+	
+	
+	
+	loading="lazy"
+	
+	
+></p>
+<p>$^AP=^A(p_x;p_y;p_z)^T$对$\hat{X}_A$旋转$\theta$得到$^AP&rsquo;$，$^AP&rsquo;=?$</p>
+<p>不妨让${A}$跟着$^AP$同步旋转，得到${A&rsquo;}$，那么$^AP&rsquo;$相对于${A&rsquo;}$的坐标跟$^AP$相对于${A}$的坐标相等，而后者已知</p>
+<p>又通过题目条件和前文定义我们知道$^A_{A&rsquo;}R=R_{\hat{X}_A}(\theta)=\begin{bmatrix}1&amp;0&amp;0\0&amp;c\theta&amp;-s\theta\0&amp;s\theta&amp;c\theta\end{bmatrix}$</p>
+<p>利用旋转矩阵转换矢量坐标的作用，我们可以把$^AP&rsquo;$相对于${A&rsquo;}$的坐标转换为相对于原坐标系${A}$的坐标，即：</p>
+<p>$^AP&rsquo;=^A_{A&rsquo;}R^AP=R_{\hat{X}_A}(\theta)^AP$</p>
+<p>所以旋转矩阵$R(\theta)$可以计算矢量在同一坐标系下旋转后的坐标</p>
+<hr>
+<h3 id="位姿描述">位姿描述
+</h3><p>位置和姿态的组合称为<strong>位姿</strong></p>
+<p>我们同样用${A}$来表示一个位姿</p>
+<p>以${A}$为参考描述位姿${B}$，结合前文的位置描述和姿态描述，我们用$^A_BR$表示${B}$的姿态，用$^AP_{BORG}$表示${B}$的原点的位置矢量（下标ORG意为原点origin），于是位姿描述记为：</p>
+<p>${B}={^A_BR,{,}^AP_{BORG}}$</p>
+<hr>
+<p><strong>下一篇文章将讲述本章后半部分空间中的变换内容</strong></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep3.操作臂（正向）运动学</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep2.2.空间描述和变换-2</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep1.%E6%A6%82%E8%BF%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep1.概述</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【复变函数论】Ep2.解析函数</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep1.%E5%A4%8D%E6%95%B0%E4%B8%8E%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【复变函数论】Ep1.复数与复变函数</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 一杯为品
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
