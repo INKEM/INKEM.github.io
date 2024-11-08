@@ -23,7 +23,7 @@
         (function() {
             const colorSchemeKey = 'StackColorScheme';
             if(!localStorage.getItem(colorSchemeKey)){
-                localStorage.setItem(colorSchemeKey, "auto");
+                localStorage.setItem(colorSchemeKey, "dark");
             }
         })();
     </script><script>
@@ -749,6 +749,25 @@ $=\begin{bmatrix}\hat{X}_A\cdot\hat{X}_B&\hat{X}_A\cdot\hat{Y}_B&\hat{X}_A\cdot\
         document.head.appendChild(customFont);
     }());
 </script>
+<script src=https://INKEM.github.io/background/sakura.js></script>
+<style>
+  body {
+    background: url(https://INKEM.github.io/background/Sakura.png) no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+</style>
+<style>
+  @font-face {
+    font-family: '初夏明朝';
+    src: url(https://INKEM.github.io/font/EarlySummerSerif-Bold.ttf) format('truetype');
+  }
+
+  :root {
+    --base-font-family: '初夏明朝';
+    --code-font-family: '初夏明朝';
+  }
+</style>
 
     </body>
 </html>

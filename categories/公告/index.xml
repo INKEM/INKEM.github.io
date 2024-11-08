@@ -14,7 +14,9 @@
         
         <guid>https://INKEM.github.io/p/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE%E6%9B%B4%E6%96%B0%E5%85%AC%E5%91%8A1/</guid>
         <description>&lt;p&gt;修复了LaTex内联公式中下划线引起Markdown语法歧义导致公式无法正常显示的bug&lt;/p&gt;
-&lt;p&gt;解决方法：&lt;/p&gt;
+&lt;p&gt;新增樱花背景和动态效果，默认模式为深色&lt;/p&gt;
+&lt;p&gt;更改字体为初夏明朝体&lt;/p&gt;
+&lt;p&gt;bug解决方法：&lt;/p&gt;
 &lt;p&gt;hugo.yaml文件中第227行开始&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
