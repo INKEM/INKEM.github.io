@@ -383,16 +383,16 @@
 </h1><h2 id="1-解析函数的概念与柯西-黎曼方程">§1 解析函数的概念与柯西-黎曼方程
 </h2><h3 id="1复变函数的导数与微分">1.复变函数的导数与微分
 </h3><p><strong>复变函数的导数</strong></p>
-<p>设函数$\varpi=f(z)$在点$z_0$的邻域内或包含$z_0$的区域$D$内有定义，如果当$z$按任意方式趋于$z_0$，即当$\Delta z$按任意方式趋于零时，比值$\frac{\Delta\varpi}{\Delta z}$的极限都存在，且其值有限，则称此极限为函数$f(z)$在点$z_0$的<strong>导数</strong>，并记为$f&rsquo;(z_0)$，即</p>
+<p>设函数$\varpi=f(z)$在点$z_0$的邻域内或包含$z_0$的区域$D$内有定义，如果当$z$按任意方式趋于$z_0$，即当$\Delta z$按任意方式趋于零时，比值$\frac{\Delta\varpi}{\Delta z}$的极限都存在，且其值有限，则称此极限为函数$f(z)$在点$z_0$的<strong>导数</strong>，并记为$f'(z_0)$，即</p>
 $$f'(z_0)=\lim_{\Delta z\rightarrow 0}\frac{\Delta\varpi}{\Delta z}=\lim_{z\rightarrow z_0}\frac{f(z)-f(z_0)}{z-z_0}$$<p>这时称函数$f(z)$于点$z_0$<strong>可导</strong></p>
 <hr>
 <p><strong>复变函数的微分</strong></p>
 <p>设函数$\varpi=f(z)$在点$z$可导，于是</p>
-<p>$\lim_{\Delta z\rightarrow 0}\frac{\Delta\varpi}{\Delta z}=f&rsquo;(z)$</p>
-<p>$\frac{\Delta\varpi}{\Delta z}=f&rsquo;(z)+\eta,;\lim_{\Delta z\rightarrow 0}\eta=0$</p>
-<p>$\Delta\varpi=f&rsquo;(z)\Delta z+\varepsilon$</p>
+<p>$\lim_{\Delta z\rightarrow 0}\frac{\Delta\varpi}{\Delta z}=f'(z)$</p>
+<p>$\frac{\Delta\varpi}{\Delta z}=f'(z)+\eta,\;\lim_{\Delta z\rightarrow 0}\eta=0$</p>
+<p>$\Delta\varpi=f'(z)\Delta z+\varepsilon$</p>
 <p>其中$|\varepsilon\cdot\Delta z|$为比$|\Delta z|$高阶的无穷小</p>
-<p>称$f&rsquo;(z)\Delta z$为$\varpi=f(z)$在点$z$的<strong>微分</strong>，记为$d\varpi$或$df(z)$，此时也称$f(z)$在点$z$<strong>可微</strong>，即$d\varpi=f&rsquo;(z)\Delta z$</p>
+<p>称$f'(z)\Delta z$为$\varpi=f(z)$在点$z$的<strong>微分</strong>，记为$d\varpi$或$df(z)$，此时也称$f(z)$在点$z$<strong>可微</strong>，即$d\varpi=f'(z)\Delta z$</p>
 <p>可导$\Leftrightarrow$可微$\Rightarrow$连续</p>
 <hr>
 <h3 id="2解析函数及其简单性质">2.解析函数及其简单性质
@@ -403,62 +403,62 @@ $$f'(z_0)=\lim_{\Delta z\rightarrow 0}\frac{\Delta\varpi}{\Delta z}=\lim_{z\righ
 <hr>
 <p><strong>解析函数的性质</strong></p>
 <p>$(1)$函数在一点解析，则其各阶导数也在该点解析</p>
-<p>$(2)$如函数$f_1(z),,f_2(z)$在区域$D$内解析，则其和、差、积、商（商要求分母在$D$内不为零）在$D$内解析，<em>并且求导公式和一元实函数一致</em></p>
+<p>$(2)$如函数$f_1(z),\,f_2(z)$在区域$D$内解析，则其和、差、积、商（商要求分母在$D$内不为零）在$D$内解析，<em>并且求导公式和一元实函数一致</em></p>
 <p>$(3)$<strong>复合函数的求导法则</strong>：设函数$\xi=f(z)$在区域$D$内解析，函数$\varpi=g(\xi)$在区域$G$内解析，若对于$D$内每一点$z$，函数$f(z)$的值$\xi$均属于$G$，则$\varpi=g[f(z)]$在$D$内解析，且$\frac{dg[f(z)]}{dz}=\frac{dg(\xi)}{d\xi}\cdot\frac{df(z)}{dz}$</p>
 <hr>
 <h3 id="3柯西-黎曼方程">3.柯西-黎曼方程
 </h3><p><strong>柯西-黎曼方程</strong></p>
-<p>假设$\varpi=f(z)=u(x,,y)+iv(x,,y)$是复变元$z=x+iy$的一个定义在区域$D$内的函数</p>
-<p>函数$f(z)$可微的条件$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y},;\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}$是关于$u$及$v$的偏微分方程组，称为<strong>柯西-黎曼方程</strong>（简称$C.-,R.$方程）</p>
+<p>假设$\varpi=f(z)=u(x,\,y)+iv(x,\,y)$是复变元$z=x+iy$的一个定义在区域$D$内的函数</p>
+<p>函数$f(z)$可微的条件$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y},\;\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}$是关于$u$及$v$的偏微分方程组，称为<strong>柯西-黎曼方程</strong>（简称$C.-\,R.$方程）</p>
 <p><em>证明思路：设$\Delta z=\Delta x+i\Delta y$，变点$z+\Delta z$分别沿平行于实轴和虚轴的方向趋于点$z$的方向导数相等</em></p>
 <hr>
 <p><strong>可微的充要条件</strong></p>
-<p>设函数$f(z)=u(x,,y)+iv(x,,y)$在区域$D$内有定义，$f(x,,y)$在$D$内一点$z=x+iy$可微的充要条件是</p>
-<p>$(1)$二元函数$u(x,,y),;v(x,,y)$在点$(x,,y)$可微</p>
-<p>$(2)$$u(x,,y),;v(x,,y)$在点$(x,,y)$满足$C.-,R.$方程</p>
-<p>上述条件满足时，$f&rsquo;(x)=\frac{\partial u}{\partial x}+i\frac{\partial v}{\partial x}$（<em>可利用$C.-,R.$方程代换其中的偏导数</em>）</p>
-<p><em>在区域$D$内解析的充要条件将上述条件中点$(x,,y)$改为区域$D$即可</em></p>
+<p>设函数$f(z)=u(x,\,y)+iv(x,\,y)$在区域$D$内有定义，$f(x,\,y)$在$D$内一点$z=x+iy$可微的充要条件是</p>
+<p>$(1)$二元函数$u(x,\,y),\;v(x,\,y)$在点$(x,\,y)$可微</p>
+<p>$(2)$$u(x,\,y),\;v(x,\,y)$在点$(x,\,y)$满足$C.-\,R.$方程</p>
+<p>上述条件满足时，$f'(x)=\frac{\partial u}{\partial x}+i\frac{\partial v}{\partial x}$（<em>可利用$C.-\,R.$方程代换其中的偏导数</em>）</p>
+<p><em>在区域$D$内解析的充要条件将上述条件中点$(x,\,y)$改为区域$D$即可</em></p>
 <hr>
 <p><strong>指数形式可微的充要条件</strong></p>
-<p>若将复数$z$表示成指数形式$z=re^{i\theta}$，则函数$\varpi=f(z)$又可表示为$\varpi=u(r,,\theta)+iv(r,,\theta)$</p>
-<p>若$u(r,,\theta),,v(r,,\theta)$可微，且$u_r=\frac{1}{r}v_\theta,;u_\theta=-rv_r$，则$f(z)=f(r,\theta)$可微</p>
+<p>若将复数$z$表示成指数形式$z=re^{i\theta}$，则函数$\varpi=f(z)$又可表示为$\varpi=u(r,\,\theta)+iv(r,\,\theta)$</p>
+<p>若$u(r,\,\theta),\,v(r,\,\theta)$可微，且$u_r=\frac{1}{r}v_\theta,\;u_\theta=-rv_r$，则$f(z)=f(r,\theta)$可微</p>
 <hr>
 <h2 id="2-初等解析函数">§2 初等解析函数
 </h2><h3 id="1指数函数">1.指数函数
 </h3><p>对于任何复数$z=x+iy$，我们用关系式$e^z=e^{x+iy}=e^x(\cos y+i\sin y)$来定义指数函数$e^z$</p>
 <blockquote>
 <p>性质</p>
-<p>$(1)|e^z|=e^x&gt;0,,arg,e^z=y$</p>
-<p>$(2)e^z$在$z$平面上解析，且$(e^z)&rsquo;=e^z$</p>
+<p>$(1)|e^z|=e^x>0,\,arg\,e^z=y$</p>
+<p>$(2)e^z$在$z$平面上解析，且$(e^z)'=e^z$</p>
 <p>$(3)e^z$是以$2\pi i$为基本周期的周期函数（$e^{2k\pi i}=1$）</p>
 </blockquote>
 <hr>
 <h3 id="2三角函数与双曲函数">2.三角函数与双曲函数
-</h3><p>由指数函数定义，当$x=0$时推得$e^{iy}=\cos y+i\sin y,;e^{-iy}=\cos y-i\sin y$</p>
-<p>从而得到$\sin y=\frac{e^{iy}-e^{-iy}}{2i},;\cos y=\frac{e^{iy}+e^{-iy}}{2}$</p>
-<p>因而用$\sin z=\frac{e^{iz}-e^{-iz}}{2i},;\cos z=\frac{e^{iz}+e^{-iz}}{2}$分别定义为$z$的<strong>正弦函数</strong>和<strong>余弦函数</strong></p>
+</h3><p>由指数函数定义，当$x=0$时推得$e^{iy}=\cos y+i\sin y,\;e^{-iy}=\cos y-i\sin y$</p>
+<p>从而得到$\sin y=\frac{e^{iy}-e^{-iy}}{2i},\;\cos y=\frac{e^{iy}+e^{-iy}}{2}$</p>
+<p>因而用$\sin z=\frac{e^{iz}-e^{-iz}}{2i},\;\cos z=\frac{e^{iz}+e^{-iz}}{2}$分别定义为$z$的<strong>正弦函数</strong>和<strong>余弦函数</strong></p>
 <blockquote>
 <p>性质</p>
-<p>$(1)$在$z$平面上解析，且$(\sin z)&rsquo;=\cos z,;(\cos z)&rsquo;=-\sin z$</p>
+<p>$(1)$在$z$平面上解析，且$(\sin z)'=\cos z,\;(\cos z)'=-\sin z$</p>
 <p>$(2)\sin z$是奇函数，$\cos z$是偶函数，并遵从三角恒等式：</p>
 <p>$\sin^2z+\cos^2z=1$</p>
 <p>$\sin(z_1+z_2)=\sin z_1\cdot\cos z_2+\cos z_1\cdot\sin z_2$</p>
 <p>$\cos(z_1+z_2)=\cos z_1\cdot\cos z_2-\sin z_1\cdot\sin z_2$</p>
 <p>$(3)$是以$2\pi$为周期的周期函数</p>
-<p>$(4)\sin z$的零点为$z=n\pi,(n∈\mathbb{z})$</p>
-<p>$\cos z$的零点为$z=(n+\frac{1}{2}\pi,(n∈\mathbb{z})$</p>
-<p>$(5)$在复数域内$|\sin z|\leq1,;|\cos z|\leq1$不成立</p>
+<p>$(4)\sin z$的零点为$z=n\pi\,(n∈\mathbb{z})$</p>
+<p>$\cos z$的零点为$z=(n+\frac{1}{2}\pi\,(n∈\mathbb{z})$</p>
+<p>$(5)$在复数域内$|\sin z|\leq1,\;|\cos z|\leq1$不成立</p>
 </blockquote>
 <hr>
-<p>定义$\tan z=\frac{\sin z}{\cos z},;\cot z=\frac{\cos z}{\sin z},;\sec z=\frac{1}{\cos z},;\csc z=\frac{1}{\sin z}$分别称为$z$的<strong>正切函数</strong>、<strong>余切函数</strong>、<strong>正割函数</strong>及<strong>余割函数</strong></p>
+<p>定义$\tan z=\frac{\sin z}{\cos z},\;\cot z=\frac{\cos z}{\sin z},\;\sec z=\frac{1}{\cos z},\;\csc z=\frac{1}{\sin z}$分别称为$z$的<strong>正切函数</strong>、<strong>余切函数</strong>、<strong>正割函数</strong>及<strong>余割函数</strong></p>
 <blockquote>
 <p>性质</p>
 <p>$(1)$在$z$平面上使分母不为零的点处解析，且</p>
-<p>$(\tan z)&rsquo;=\sec^2z,;(\cot z)&rsquo;=-\csc^2z,;(\sec z)&rsquo;=\sec z\cdot\tan z,;(\csc z)&rsquo;=-\csc z\cdot\cot z$</p>
+<p>$(\tan z)'=\sec^2z,\;(\cot z)'=-\csc^2z,\;(\sec z)'=\sec z\cdot\tan z,\;(\csc z)'=-\csc z\cdot\cot z$</p>
 <p>$(2)$正切函数和余切函数的周期为$\pi$，正割函数和余割函数的周期为$2\pi$</p>
 </blockquote>
 <hr>
-<p>定义$\sinh z=\frac{e^z-e^{-z}}{2},;\cosh z=\frac{e^z+e^{-z}}{2},;\tanh z=\frac{\sinh z}{\cosh z},;\coth z=\frac{1}{\tanh z},;sech,z=\frac{1}{\cosh z},;csch,z=\frac{1}{\sinh z}$</p>
+<p>定义$\sinh z=\frac{e^z-e^{-z}}{2},\;\cosh z=\frac{e^z+e^{-z}}{2},\;\tanh z=\frac{\sinh z}{\cosh z},\;\coth z=\frac{1}{\tanh z},\;sech\,z=\frac{1}{\cosh z},\;csch\,z=\frac{1}{\sinh z}$</p>
 <p>分别称为$z$的<strong>双曲正弦函数</strong>、<strong>双曲余弦函数</strong>、<strong>双曲正切函数</strong>、<strong>双曲余切函数</strong>、<strong>双曲正割函数</strong>及<strong>双曲余割函数</strong></p>
 <hr>
 <h2 id="3-初等多值函数">§3 初等多值函数
@@ -468,9 +468,9 @@ $$f'(z_0)=\lim_{\Delta z\rightarrow 0}\frac{\Delta\varpi}{\Delta z}=\lim_{z\righ
 <h3 id="1辐角函数">1.辐角函数
 </h3><p><strong>辐角函数与辐角改变量</strong></p>
 <p>函数的多值性源于辐角的多值性</p>
-<p>任意一个复数$z(z\neq0)$有无穷多个辐角，<strong>辐角函数</strong>$\varpi=Arg,z$是一个多值函数，定义域是$C$\${0}$</p>
-<p>设$L$是$C$\${0}$内一条简单曲线，$z_0$是$L$的起点，$z_1$是$L$的终点，当$z$沿$L$从$z_0$连续变动到$z_1$时，$\overrightarrow{Oz}$所旋转的角称作$Arg,z$在$L$上的改变量，简称<strong>辐角改变量</strong>，记作$\Delta_LArg,z$</p>
-<p>从$z_0$到$z_1$由于$L$绕原点的方向和圈数不一样，$\Delta_LArg,z$也不一样
+<p>任意一个复数$z(z\neq0)$有无穷多个辐角，<strong>辐角函数</strong>$\varpi=Arg\,z$是一个多值函数，定义域是$C$\${0}$</p>
+<p>设$L$是$C$\${0}$内一条简单曲线，$z_0$是$L$的起点，$z_1$是$L$的终点，当$z$沿$L$从$z_0$连续变动到$z_1$时，$\overrightarrow{Oz}$所旋转的角称作$Arg,z$在$L$上的改变量，简称**辐角改变量**，记作$\Delta_LArg,z$</p>
+<p>从$z_0$到$z_1$由于$L$绕原点的方向和圈数不一样，$\Delta_LArg\,z$也不一样
 <img src="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E8%BE%90%E8%A7%92.png"
 	width="1033"
 	height="339"
@@ -483,23 +483,23 @@ $$f'(z_0)=\lim_{\Delta z\rightarrow 0}\frac{\Delta\varpi}{\Delta z}=\lim_{z\righ
 		data-flex-basis="731px"
 	
 ></p>
-<p>在$z_0$取定$Arg,z$的一个值记为$arg,z$，称为$Arg,z$在$z_0$的初值，将$arg,z_0+\Delta_LArg,z$称作$Arg,z$在$z_0$的终值，记作$arg,z$，则$arg,z$依赖于起点的初值和辐角改变量</p>
+<p>在$z_0$取定$Arg\,z$的一个值记为$arg\,z$，称为$Arg\,z$在$z_0$的初值，将$arg\,z_0+\Delta_LArg\,z$称作$Arg\,z$在$z_0$的终值，记作$arg\,z$，则$arg\,z$依赖于起点的初值和辐角改变量</p>
 <hr>
 <p><strong>单值连续函数</strong></p>
-<p>由于多值函数不方便应用，我们希望将$Arg,z$分解为若干单值连续函数</p>
-<p>由$arg,z=arg,z_0+\Delta_LArg,z$可知，对取定的初值$arg,z_0$，由于$\Delta_LArg,z$在区域$C$\${0}$内不唯一，$arg,z$也不唯一。所以需要寻找使$\Delta_LArg,z$唯一的区域（辐角改变量只与起点、终点位置有关而与曲线形状无关）</p>
+<p>由于多值函数不方便应用，我们希望将$Arg\,z$分解为若干单值连续函数</p>
+<p>由$arg\,z=arg\,z_0+\Delta_LArg\,z$可知，对取定的初值$arg\,z_0$，由于$\Delta_LArg\,z$在区域$C$\${0}$内不唯一，$arg,z$也不唯一。所以需要寻找使$\Delta_LArg,z$唯一的区域（辐角改变量只与起点、终点位置有关而与曲线形状无关）</p>
 <p>该区域性质与保守场有异曲同工之处，可移用保守场的判定（沿着任何闭合环路积分均为$0$），因此研究简单闭曲线$L\subset$ $C$\${0}$，有</p>
 <blockquote>
-<p>$\Delta_LArg,z=0$，$0$在$L$外部</p>
-<p>$\Delta_LArg,z=2\pi$，$0$在$L$内部</p>
+<p>$\Delta_LArg\,z=0$，$0$在$L$外部</p>
+<p>$\Delta_LArg\,z=2\pi$，$0$在$L$内部</p>
 </blockquote>
-<p>因此，只要能使区域内任一简单闭曲线都不围绕原点$z=0$即可，若将复平面$C$沿负实轴剪开成一单连通开区域记为$G$，则$\Delta_LArg,z$只与$L$的起点和终点有关，而与曲线的形状无关</p>
-<p>在$G$内固定起点$z_0$，取定初值$arg,z_0$，则$arg,z_0+\Delta_LArg,z$就是<strong>单值连续函数</strong>；取定初值$arg,z_0+2\pi$，得另一个单值连续函数；以此类推，取定初值$arg,z_0+2k\pi$，就在$G$内把$Arg,z$分成无穷多个单值连续函数$arg,z+2k\pi,;z\in G,,k\in \mathbb{Z}$</p>
+<p>因此，只要能使区域内任一简单闭曲线都不围绕原点$z=0$即可，若将复平面$C$沿负实轴剪开成一单连通开区域记为$G$，则$\Delta_LArg\,z$只与$L$的起点和终点有关，而与曲线的形状无关</p>
+<p>在$G$内固定起点$z_0$，取定初值$arg\,z_0$，则$arg\,z_0+\Delta_LArg\,z$就是<strong>单值连续函数</strong>；取定初值$arg\,z_0+2\pi$，得另一个单值连续函数；以此类推，取定初值$arg\,z_0+2k\pi$，就在$G$内把$Arg\,z$分成无穷多个单值连续函数$arg\,z+2k\pi,\;z\in G,\,k\in \mathbb{Z}$</p>
 <hr>
 <h3 id="2根式函数">2.根式函数
 </h3><p><strong>根式函数及其变换</strong></p>
 <p>规定<strong>根式函数</strong>$\varpi=\sqrt[n]{z}$为<strong>幂函数</strong>$z=\varpi^n$的反函数</p>
-<p>如果令$z=re^{i\theta},;\varpi=\rho e^{i\varphi}$，可知$\rho=\sqrt[n]{r},;\varphi=\frac{\theta}{n}$</p>
+<p>如果令$z=re^{i\theta},\;\varpi=\rho e^{i\varphi}$，可知$\rho=\sqrt[n]{r},\;\varphi=\frac{\theta}{n}$</p>
 <p>即$z$平面到$\varpi$平面的变换为模长开$n$次方根、辐角除以$n$的变换
 <img src="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%8F%98%E6%8D%A2.png"
 	width="1035"
@@ -515,8 +515,8 @@ $$f'(z_0)=\lim_{\Delta z\rightarrow 0}\frac{\Delta\varpi}{\Delta z}=\lim_{z\righ
 ></p>
 <hr>
 <p><strong>根式函数的单叶性区域</strong></p>
-<p>为了寻找其单叶性区域，先限定$Arg,z$取$(-\pi,,\pi)$，则该变化使$z$平面压缩到了$-\frac{\pi}{n} &lt; \varphi &lt; \frac{\pi}{n}$的角形区域内，该区域为$\varpi=\sqrt[n]{z}$的一个单叶性区域</p>
-<p>同理，当$Arg,z$取$(\pi,3\pi)$，可划分出第二个单叶性区域$\frac{\pi}{n}&lt;\varphi&lt;\frac{3\pi}{n}$，以此类推，当$Arg,z$取$(-\pi+2k\pi,,\pi+2k\pi)$时，对应的单叶性区域为$(\frac{2k\pi}{n}-\frac{\pi}{n})&lt;\varphi&lt;(\frac{2k\pi}{n}+\frac{\pi}{n})$，当$k$从$0$取到$n-1$时，得到的所有单叶性区域将$\varpi$平面填满，此为函数$\varpi=\sqrt[n]{z}$单叶性区域的一种分法。总之，幂函数$\varpi=\sqrt[n]{z}$的单叶性区域是顶点在原点$z=0$，张度不超过$\frac{2\pi}{n}$的角形区域
+<p>为了寻找其单叶性区域，先限定$Arg\,z$取$(-\pi,\,\pi)$，则该变化使$z$平面压缩到了$-\frac{\pi}{n} < \varphi < \frac{\pi}{n}$的角形区域内，该区域为$\varpi=\sqrt[n]{z}$的一个单叶性区域</p>
+<p>同理，当$Arg\,z$取$(\pi,3\pi)$，可划分出第二个单叶性区域$\frac{\pi}{n}<\varphi<\frac{3\pi}{n}$，以此类推，当$Arg\,z$取$(-\pi+2k\pi,\,\pi+2k\pi)$时，对应的单叶性区域为$(\frac{2k\pi}{n}-\frac{\pi}{n})<\varphi<(\frac{2k\pi}{n}+\frac{\pi}{n})$，当$k$从$0$取到$n-1$时，得到的所有单叶性区域将$\varpi$平面填满，此为函数$\varpi=\sqrt[n]{z}$单叶性区域的一种分法。总之，幂函数$\varpi=\sqrt[n]{z}$的单叶性区域是顶点在原点$z=0$，张度不超过$\frac{2\pi}{n}$的角形区域
 <img src="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%88%86%E6%94%AF.png"
 	width="615"
 	height="273"
@@ -531,7 +531,7 @@ $$f'(z_0)=\lim_{\Delta z\rightarrow 0}\frac{\Delta\varpi}{\Delta z}=\lim_{z\righ
 ></p>
 <hr>
 <p><strong>指数函数的单值解析分支</strong></p>
-<p>只要将$Arg,z$的取值区间范围限定在$2\pi$，所得即为单叶性区域，由前文辐角函数可知，在$z$平面上从原点$O$到点$\infty$任意引一条射线（或一条通向无穷远点的广义简单曲线）将$z$平面割破，构成一个以此<strong>割线</strong>为边界的区域，记为$G$，在此区域上指定一点$z_0$取不同的初值$arg,z_0$，就能各自得到区域内任意的点$z$唯一的辐角，从而得到</p>
+<p>只要将$Arg\,z$的取值区间范围限定在$2\pi$，所得即为单叶性区域，由前文辐角函数可知，在$z$平面上从原点$O$到点$\infty$任意引一条射线（或一条通向无穷远点的广义简单曲线）将$z$平面割破，构成一个以此<strong>割线</strong>为边界的区域，记为$G$，在此区域上指定一点$z_0$取不同的初值$arg\,z_0$，就能各自得到区域内任意的点$z$唯一的辐角，从而得到</p>
 $$\varpi_k=(\sqrt[n]{z})_k=\sqrt[n]{r(z)}e^{i\frac{\theta(z)+2k\pi}{n}}\;(z\in G,\,k=0,\,1,\,…,\,n-1)$$<p>称为$\sqrt[n]{z}$的$n$个<strong>单值连续分支函数</strong>。而分出$\sqrt[n]{z}$的单值解析分支的割线称为$\sqrt[n]{z}$的<strong>支割线</strong>。支割线两侧称为<strong>两岸</strong>，如果支割线接近于平行$x$轴方向就分成<strong>上岸</strong>和<strong>下岸</strong>，如果接近于平行$y$轴方向就分成<strong>左岸</strong>和<strong>右岸</strong>
 <img src="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%88%86%E6%94%AF%E4%BE%8B.png"
 	width="1040"
@@ -546,23 +546,23 @@ $$\varpi_k=(\sqrt[n]{z})_k=\sqrt[n]{r(z)}e^{i\frac{\theta(z)+2k\pi}{n}}\;(z\in G
 	
 ></p>
 <p>对于$\varpi_k=(\sqrt[n]{z})_k$的单值解析分支，有</p>
-<p>$\frac{\mathrm{d} }{\mathrm{d} z}(\sqrt[n]{z})_k=\frac{1}{n}\frac{(\sqrt[n]{z})_k}{z};(z\in G,,k=0,,1,,…,,n-1)$</p>
+<p>$\frac{\mathrm{d} }{\mathrm{d} z}(\sqrt[n]{z})_k=\frac{1}{n}\frac{(\sqrt[n]{z})_k}{z}\;(z\in G,\,k=0,\,1,\,…,\,n-1)$</p>
 <hr>
 <p><strong>支点</strong></p>
 <p>假设有一点，在此点的充分小邻域内，作一个包围此点的圆周$\Gamma$，当变点$z$从$\Gamma$上一点除法，绕$\Gamma$连续变动一周而回到其出发点时，多值函数从其一支变到另外一支，则该点称为此多值函数的<strong>支点</strong>（可以理解为该圆周$\Gamma$跨过了划分单值连续分支函数的支割线），$\sqrt[n]{z}$以$z=0$和$z=\infty$为支点，推广到$\sqrt[n]{z-a}$则以$z=a$和$z=\infty$为支点</p>
 <hr>
 <h3 id="3对数函数">3.对数函数
-</h3><p>规定<strong>对数函数</strong>$\varpi=Ln,z$为<strong>指数函数</strong>$e^{\varpi}=z$的反函数</p>
-<p>如果令${z=re^{i\theta}},;\varpi=u+iv$，可得$u=\ln,r,,v=\theta+2k\pi,(k\in\mathbb{Z})$</p>
-<p>故方程的全部根是$Ln,z=\ln,r+i(\theta+2k\pi)=\ln,|z|+i(arg,z+2k\pi),(k\in\mathbb{Z})$</p>
-<p>当$k$取确定值时，$Ln,z$的对应值记为$(\ln,z)_k$</p>
+</h3><p>规定<strong>对数函数</strong>$\varpi=Ln\,z$为<strong>指数函数</strong>$e^{\varpi}=z$的反函数</p>
+<p>如果令${z=re^{i\theta}},\;\varpi=u+iv$，可得$u=\ln\,r,\,v=\theta+2k\pi\,(k\in\mathbb{Z})$</p>
+<p>故方程的全部根是$Ln\,z=\ln\,r+i(\theta+2k\pi)=\ln\,|z|+i(arg\,z+2k\pi)\,(k\in\mathbb{Z})$</p>
+<p>当$k$取确定值时，$Ln\,z$的对应值记为$(\ln\,z)_k$</p>
 <p><strong>基本性质</strong></p>
-<p>$Ln(z_1z_2)=Ln,z_1+Ln,z_2$</p>
-<p>$Ln(\frac{z_1}{z_2})=Ln,z_1-Ln,z_2$</p>
-<p>$(z_1,,z_2\neq0,,\infty)$</p>
+<p>$Ln(z_1z_2)=Ln\,z_1+Ln\,z_2$</p>
+<p>$Ln(\frac{z_1}{z_2})=Ln\,z_1-Ln\,z_2$</p>
+<p>$(z_1,\,z_2\neq0,\,\infty)$</p>
 <hr>
 <p><strong>对数函数的单值解析分支</strong></p>
-<p>由定义可知$z$的辐角决定$\varpi$在平面上的纵坐标，$z$平面中取负实轴为割线限定辐角在$(-\pi,,\pi)$的区域变换为$\varpi$平面上纵坐标在$(-\pi,,\pi)$的带形区域，该区域为$\varpi=Ln,z$的一个单叶性区域。总之，对数函数$\varpi=Ln,z$的单叶性区域是宽为$2\pi$的带形区域
+<p>由定义可知$z$的辐角决定$\varpi$在平面上的纵坐标，$z$平面中取负实轴为割线限定辐角在$(-\pi,\,\pi)$的区域变换为$\varpi$平面上纵坐标在$(-\pi,\,\pi)$的带形区域，该区域为$\varpi=Ln\,z$的一个单叶性区域。总之，对数函数$\varpi=Ln\,z$的单叶性区域是宽为$2\pi$的带形区域
 <img src="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E5%AF%B9%E6%95%B0%E5%8F%98%E6%8D%A2.png"
 	width="1056"
 	height="425"
@@ -575,9 +575,9 @@ $$\varpi_k=(\sqrt[n]{z})_k=\sqrt[n]{r(z)}e^{i\frac{\theta(z)+2k\pi}{n}}\;(z\in G
 		data-flex-basis="596px"
 	
 ></p>
-<p>$\varpi=Ln,z$的无穷多个单值连续分支函数为</p>
+<p>$\varpi=Ln\,z$的无穷多个单值连续分支函数为</p>
 $$\varpi_k=(\ln\,z)_k=\ln\,r(z)+i[\theta(z)+2k\pi]\;(z\in G,\,k\in\mathbb{z})$$<p>支点为$z=0$和$z=\infty$，支割线为连接$z=0$和$z=\infty$的广义简单曲线，且有</p>
-<p>$\frac{\mathrm{d}}{\mathrm{d}z}(\ln,z)_k=\frac{1}{z};(z\in G,,k\in\mathbb{z})$
+<p>$\frac{\mathrm{d}}{\mathrm{d}z}(\ln\,z)_k=\frac{1}{z}\;(z\in G,\,k\in\mathbb{z})$
 <img src="/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E5%AF%B9%E6%95%B0%E5%88%86%E6%94%AF.png"
 	width="1025"
 	height="476"
@@ -605,24 +605,24 @@ $$\varpi_k=(\ln\,z)_k=\ln\,r(z)+i[\theta(z)+2k\pi]\;(z\in G,\,k\in\mathbb{z})$$<
 <hr>
 <h3 id="4一般幂函数与一般指数函数">4.一般幂函数与一般指数函数
 </h3><p><strong>一般幂函数</strong></p>
-<p>$\varpi=z^\alpha=e^{\alpha Ln,z}(z\ne0,,\infty;,\alpha\in\mathbb{R})$称为$z$的<strong>一般幂函数</strong></p>
-<p>设$(\ln,z)_0$表示$Ln,z$中的任意一个确定的值，则</p>
+<p>$\varpi=z^\alpha=e^{\alpha Ln\,z}(z\ne0,\,\infty;\,\alpha\in\mathbb{R})$称为$z$的<strong>一般幂函数</strong></p>
+<p>设$(\ln\,z)_0$表示$Ln\,z$中的任意一个确定的值，则</p>
 $$z^\alpha=e^{\alpha Ln\,z}=e^{\alpha[(\ln z)_0+2k\pi i]}=\varpi_0e^{2k\pi i\alpha}\;(k\in\mathbb{Z})$$<p>其中$\varpi_0=e^{\alpha(\ln z)_0}$表示$z^{\alpha}$所有的值中的一个</p>
 <blockquote>
 <p>讨论$\alpha$的如下三种情形：</p>
 <p>$(1)\alpha$是一整数$n$，此时$e^{2k\pi in}=1$，$z^\alpha$是$z$的单值函数</p>
-<p>$(2)\alpha$是一有理数$\frac{q}{p}$，此时$e^{2k\pi i\frac{q}{p}}$只能取$k=0,,1,,2,,…,,p-1$总共$p$个不同的值（参考根式函数），$z^{\frac{q}{p}}=\varpi_0e^{2k\pi i\frac{q}{p}},;k=0,,1,,2,,…,,p-1$</p>
+<p>$(2)\alpha$是一有理数$\frac{q}{p}$，此时$e^{2k\pi i\frac{q}{p}}$只能取$k=0,\,1,\,2,\,…,\,p-1$总共$p$个不同的值（参考根式函数），$z^{\frac{q}{p}}=\varpi_0e^{2k\pi i\frac{q}{p}},\;k=0,\,1,\,2,\,…,\,p-1$</p>
 <p>$(3)\alpha$是一无理数或虚数，此时$e^{2k\pi i\alpha}$有无限个值，$z^\alpha$是无限多值的</p>
 </blockquote>
 <p>对$\varpi=z^\alpha$的每一分支，有$\frac{\mathrm{d}}{\mathrm{d}z}z^\alpha=\alpha z^{\alpha-1}$</p>
 <hr>
 <p><strong>一般指数函数</strong></p>
-<p>$\varpi=\alpha^z=e^{zLn,\alpha}(\alpha\ne0,\infty,为一复常数)$称为<strong>一般指数函数</strong>，是无穷多个独立的、在$z$平面上单值解析的函数（取决于$Ln,\alpha$的取值）</p>
+<p>$\varpi=\alpha^z=e^{zLn\,\alpha}(\alpha\ne0,\infty,为一复常数)$称为<strong>一般指数函数</strong>，是无穷多个独立的、在$z$平面上单值解析的函数（取决于$Ln\,\alpha$的取值）</p>
 <hr>
 <h3 id="5具有多个有限支点的情形">5.具有多个有限支点的情形
 </h3><p>讨论函数$\varpi=f(z)=\sqrt[n]{P(z)}$的支点，其中$P(z)$是任意的$N$次多项式$A(z-a_1)^{\alpha_1}…(z-a_m)^{\alpha_m}$</p>
-<p>$a_1,,a_2,,…,,a_m$是$P(z)$的一切<strong>相异零点</strong>，$\alpha_1,,\alpha_2,,…,,\alpha_m$分别是它们的<strong>重数</strong>，满足$\alpha_1+\alpha_2+…+\alpha_m=N$</p>
-<p>根据根式函数和复数乘法对复数辐角的改变法则，可知沿一简单闭曲线$C$，$f(z)$的辐角改变量$\Delta_carg,f(z)=\frac{1}{n}(\alpha_1\Delta_carg,(z-a_1)+…+\alpha_m\Delta_carg,(z-a_m))$</p>
+<p>$a_1,\,a_2,\,…,\,a_m$是$P(z)$的一切<strong>相异零点</strong>，$\alpha_1,\,\alpha_2,\,…,\,\alpha_m$分别是它们的<strong>重数</strong>，满足$\alpha_1+\alpha_2+…+\alpha_m=N$</p>
+<p>根据根式函数和复数乘法对复数辐角的改变法则，可知沿一简单闭曲线$C$，$f(z)$的辐角改变量$\Delta_carg\,f(z)=\frac{1}{n}(\alpha_1\Delta_carg\,(z-a_1)+…+\alpha_m\Delta_carg\,(z-a_m))$</p>
 <blockquote>
 <p>研究简单闭曲线$C$包围相异零点所有组合的情况，可以得到下列结论：</p>
 <p>$(1)f(z)$可能的支点是所有相异零点和$\infty$</p>
@@ -631,15 +631,15 @@ $$z^\alpha=e^{\alpha Ln\,z}=e^{\alpha[(\ln z)_0+2k\pi i]}=\varpi_0e^{2k\pi i\alp
 <p>$(4)$如果$n$能整除所有重数中若干个之和，则相异零点中对应的那几个就可以连接成割线抱成团，即变点$z$沿只包含这些相异零点在其内部的简单闭曲线转一周后函数值不变。抱团的点可能不止一个，其余不入团的点则与点$\infty$连接成一条割线</p>
 </blockquote>
 <hr>
-<p>由已给单值解析分支$f(z)$的初值$f(z_1)$计算终值$f(z_2)$，先计算当$z$从$z_1$沿曲线$C$（不穿过支割线）到终点$z_2$时，$f(z)$的辐角连续改变量$\Delta_carg,f(z)$，再计算终值</p>
+<p>由已给单值解析分支$f(z)$的初值$f(z_1)$计算终值$f(z_2)$，先计算当$z$从$z_1$沿曲线$C$（不穿过支割线）到终点$z_2$时，$f(z)$的辐角连续改变量$\Delta_carg\,f(z)$，再计算终值</p>
 $$f(z_2)=|f(z_2)|e^{i\Delta_carg\,f(z)}\cdot e^{iarg\,f(z_1)}$$<hr>
 <h3 id="6反三角函数与反双曲函数">6.反三角函数与反双曲函数
-</h3><p><strong>反正切函数</strong>$Arctan,z=\frac{1}{2i}Ln\frac{1+iz}{1-iz}$</p>
-<p><strong>反正弦函数</strong>$Arcsin,z=\frac{1}{i}Ln(iz+\sqrt{1-z^2})$</p>
-<p><strong>反余弦函数</strong>$Arccos,z=\frac{1}{i}Ln(z+i\sqrt{1-z^2})$</p>
-<p><strong>反双曲余弦函数</strong>$Arcosh,z=Ln(z+\sqrt{z^2-1})$</p>
-<p><strong>反双曲正弦函数</strong>$Arsinh,z=Ln(z+\sqrt{z^2+1})$</p>
-<p><strong>反双曲正切函数</strong>$Artanh,z=\frac{1}{2}Ln\frac{1+z}{1-z}$</p>
+</h3><p><strong>反正切函数</strong>$Arctan\,z=\frac{1}{2i}Ln\frac{1+iz}{1-iz}$</p>
+<p><strong>反正弦函数</strong>$Arcsin\,z=\frac{1}{i}Ln(iz+\sqrt{1-z^2})$</p>
+<p><strong>反余弦函数</strong>$Arccos\,z=\frac{1}{i}Ln(z+i\sqrt{1-z^2})$</p>
+<p><strong>反双曲余弦函数</strong>$Arcosh\,z=Ln(z+\sqrt{z^2-1})$</p>
+<p><strong>反双曲正弦函数</strong>$Arsinh\,z=Ln(z+\sqrt{z^2+1})$</p>
+<p><strong>反双曲正切函数</strong>$Artanh\,z=\frac{1}{2}Ln\frac{1+z}{1-z}$</p>
 <p>其中对数是无穷多值的，根式是二值的，因此反三角函数和反双曲函数是无穷多值的，其分成单值解析分支的方法与前文讨论方法类似</p>
 <hr>
 <p><strong>本章完</strong></p>

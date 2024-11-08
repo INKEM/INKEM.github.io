@@ -401,19 +401,19 @@
 		data-flex-basis="870px"
 	
 ></p>
-<p>给定参考坐标系${A}$和我们要描述姿态的坐标系${B}$，从固定角的视角来看，任意姿态的${B}$都可以由以下过程表示：将${B}$与${A}$重合，先绕$\hat{X}_A$旋转$\gamma$角，再绕$\hat{Y}_A$旋转$\beta$角，最后绕$\hat{Z}<em>A$旋转$\alpha$角得到最终的${B}$，因而可以推导${B}$到${A}$的等价旋转矩阵：$^A_BR</em>{XYZ}(\gamma,\beta,\alpha)=R_Z(\alpha)R_Y(\beta)R_X(\gamma)=\begin{bmatrix}c\alpha&amp;-s\alpha&amp;0\s\alpha&amp;c\alpha&amp;0\0&amp;0&amp;1\end{bmatrix}\begin{bmatrix}c\beta&amp;0&amp;s\beta\0&amp;1&amp;0\-s\beta&amp;0&amp;c\beta\end{bmatrix}\begin{bmatrix}1&amp;0&amp;0\0&amp;c\gamma&amp;-s\gamma\0&amp;s\gamma&amp;c\gamma\end{bmatrix}$</p>
+<p>给定参考坐标系$\{A\}$和我们要描述姿态的坐标系$\{B\}$，从固定角的视角来看，任意姿态的$\{B\}$都可以由以下过程表示：将$\{B\}$与$\{A\}$重合，先绕$\hat{X}_A$旋转$\gamma$角，再绕$\hat{Y}_A$旋转$\beta$角，最后绕$\hat{Z}_A$旋转$\alpha$角得到最终的$\{B\}$，因而可以推导$\{B\}$到$\{A\}$的等价旋转矩阵：$^A_BR_{XYZ}(\gamma,\beta,\alpha)=R_Z(\alpha)R_Y(\beta)R_X(\gamma)=\begin{bmatrix}c\alpha&-s\alpha&0\\s\alpha&c\alpha&0\\0&0&1\end{bmatrix}\begin{bmatrix}c\beta&0&s\beta\\0&1&0\\-s\beta&0&c\beta\end{bmatrix}\begin{bmatrix}1&0&0\\0&c\gamma&-s\gamma\\0&s\gamma&c\gamma\end{bmatrix}$</p>
 <p>（矩阵书写顺序与实际旋转操作顺序相反，从旋转一个矢量的角度来看，是因为旋转矩阵乘在矢量的左边，所以右侧的矩阵会先与矢量相乘）</p>
 <p>(等价旋转矩阵下标表示绕主轴旋转的操作顺序，可以根据实际情况调换)</p>
 <p>最终得到：</p>
-<p>$^A_BR_{XYZ}(\gamma,\beta,\alpha)=\begin{bmatrix}c\alpha c\beta&amp;c\alpha c\beta s\gamma-s\alpha c\gamma&amp;c\alpha s\beta c\gamma+s\alpha s\gamma\s\alpha c\beta&amp;s\alpha s\beta s\gamma+c\alpha c\gamma&amp;s\alpha s\beta c\gamma-c\alpha s\gamma\-s\beta&amp;c\beta s\gamma&amp;c\beta c\gamma\end{bmatrix}$①</p>
+<p>$^A_BR_{XYZ}(\gamma,\beta,\alpha)=\begin{bmatrix}c\alpha c\beta&c\alpha c\beta s\gamma-s\alpha c\gamma&c\alpha s\beta c\gamma+s\alpha s\gamma\\s\alpha c\beta&s\alpha s\beta s\gamma+c\alpha c\gamma&s\alpha s\beta c\gamma-c\alpha s\gamma\\-s\beta&c\beta s\gamma&c\beta c\gamma\end{bmatrix}$①</p>
 <p>反过来，如果已知旋转矩阵各个元素的数值，逆求三个固定角，令</p>
-<p>$^A_BR_{XYZ}(\gamma,\beta,\alpha)=\begin{bmatrix}r_{11}&amp;r_{12}&amp;r_{13}\r_{21}&amp;r_{22}&amp;r_{23}\r_{31}&amp;r_{32}&amp;r_{33}\end{bmatrix}$</p>
+<p>$^A_BR_{XYZ}(\gamma,\beta,\alpha)=\begin{bmatrix}r_{11}&r_{12}&r_{13}\\r_{21}&r_{22}&r_{23}\\r_{31}&r_{32}&r_{33}\end{bmatrix}$</p>
 <p>则</p>
-<p>$\left{\begin{matrix}\beta=\mathrm{Atan2}(-r_{31},\sqrt{r_{11}^2+r_{21}^2})\ \alpha=\mathrm{Atan2}(\frac{r_{21}}{c\beta},\frac{r_{11}}{c\beta})\ \gamma=\mathrm{Atan2}(\frac{r_{31}}{c\beta},\frac{r_{33}}{c\beta})\end{matrix}\right.$</p>
+<p>$\left\{\begin{matrix}\beta=\mathrm{Atan2}(-r_{31},\sqrt{r_{11}^2+r_{21}^2})\\ \alpha=\mathrm{Atan2}(\frac{r_{21}}{c\beta},\frac{r_{11}}{c\beta})\\ \gamma=\mathrm{Atan2}(\frac{r_{31}}{c\beta},\frac{r_{33}}{c\beta})\end{matrix}\right.$</p>
 <p>$(\beta\neq 90^{\circ})$</p>
 <p>（式中$\mathrm{Atan2}(y,x)=arctan\frac{y}{x}$，即反正切函数的双参量表示法，可以根据$x$和$y$的符号判别角的象限，而单输入值的反正切函数无法区分）</p>
 <p>上式中$\cos\beta$只考虑正根以得到单解来建立各种姿态表示法之间一一对应的映射函数，但在某些情况下有必要求出所有的解，会在第四章说明</p>
-<p>如果$\beta=90^{\circ}$，则只能求出$\alpha$和$\gamma$的和或差，在这种情况下一般取$\alpha=0$，$\gamma=\left{\begin{matrix}\mathrm{Atan2}(r_{12},r_{22})(\beta=90^{\circ})\-\mathrm{Atan2}(r_{12},r_{22})(\beta=-90^{\circ})\end{matrix}\right.$</p>
+<p>如果$\beta=90^{\circ}$，则只能求出$\alpha$和$\gamma$的和或差，在这种情况下一般取$\alpha=0$，$\gamma=\left\{\begin{matrix}\mathrm{Atan2}(r_{12},r_{22})(\beta=90^{\circ})\\-\mathrm{Atan2}(r_{12},r_{22})(\beta=-90^{\circ})\end{matrix}\right.$</p>
 <p>结合式①即可理解求解公式的推导</p>
 <hr>
 <h3 id="z-y-x欧拉角">Z-Y-X欧拉角
@@ -429,15 +429,15 @@
 		data-flex-basis="876px"
 	
 ></p>
-<p>给定参考坐标系${A}$和我们要描述姿态的坐标系${B}$，从欧拉角的视角来看，任意姿态的${B}$都可以由以下过程表示：将${B}$与${A}$重合，先绕$\hat{Z}<em>B$转$\alpha$角得到${B&rsquo;}$，再绕$\hat{Y}</em>{B&rsquo;}$转$\beta$角得到${B&rsquo;&rsquo;}$，最后绕$\hat{X}_{B&rsquo;&rsquo;}$转$\gamma$角得到最终的${B}$（欧拉角选取转轴的顺序与固定角相反，原因会在下面解释）</p>
-<p>借由${B}$的中间状态${B&rsquo;}$和${B&rsquo;&rsquo;}$和欧拉角的定义表达$^A_BR$，我们可以写出：</p>
-<p>$^A_BR=^A_{B&rsquo;}R^{B&rsquo;}<em>{B&rsquo;&rsquo;}R^{B&rsquo;&rsquo;}</em>{B}R$</p>
+<p>给定参考坐标系$\{A\}$和我们要描述姿态的坐标系$\{B\}$，从欧拉角的视角来看，任意姿态的$\{B\}$都可以由以下过程表示：将$\{B\}$与$\{A\}$重合，先绕$\hat{Z}_B$转$\alpha$角得到$\{B'\}$，再绕$\hat{Y}_{B'}$转$\beta$角得到$\{B''\}$，最后绕$\hat{X}_{B''}$转$\gamma$角得到最终的$\{B\}$（欧拉角选取转轴的顺序与固定角相反，原因会在下面解释）</p>
+<p>借由$\{B\}$的中间状态$\{B'\}$和$\{B''\}$和欧拉角的定义表达$^A_BR$，我们可以写出：</p>
+<p>$^A_BR=^A_{B'}R^{B'}_{B''}R^{B''}_{B}R$</p>
 <p>即：</p>
-<p>$^A_BR_{X&rsquo;Y&rsquo;Z&rsquo;}(\gamma,\beta,\alpha)=R_{Z&rsquo;}(\alpha)R_{Y&rsquo;}(\beta)R_{X&rsquo;}(\gamma)=\begin{bmatrix}c\alpha&amp;-s\alpha&amp;0\s\alpha&amp;c\alpha&amp;0\0&amp;0&amp;1\end{bmatrix}\begin{bmatrix}c\beta&amp;0&amp;s\beta\0&amp;1&amp;0\-s\beta&amp;0&amp;c\beta\end{bmatrix}\begin{bmatrix}1&amp;0&amp;0\0&amp;c\gamma&amp;-s\gamma\0&amp;s\gamma&amp;c\gamma\end{bmatrix}$</p>
+<p>$^A_BR_{X'Y'Z'}(\gamma,\beta,\alpha)=R_{Z'}(\alpha)R_{Y'}(\beta)R_{X'}(\gamma)=\begin{bmatrix}c\alpha&-s\alpha&0\\s\alpha&c\alpha&0\\0&0&1\end{bmatrix}\begin{bmatrix}c\beta&0&s\beta\\0&1&0\\-s\beta&0&c\beta\end{bmatrix}\begin{bmatrix}1&0&0\\0&c\gamma&-s\gamma\\0&s\gamma&c\gamma\end{bmatrix}$</p>
 <p>相乘后得：</p>
-<p>$^A_BR_{X&rsquo;Y&rsquo;Z&rsquo;}(\gamma,\beta,\alpha)=\begin{bmatrix}c\alpha c\beta&amp;c\alpha c\beta s\gamma-s\alpha c\gamma&amp;c\alpha s\beta c\gamma+s\alpha s\gamma\s\alpha c\beta&amp;s\alpha s\beta s\gamma+c\alpha c\gamma&amp;s\alpha s\beta c\gamma-c\alpha s\gamma\-s\beta&amp;c\beta s\gamma&amp;c\beta c\gamma\end{bmatrix}$</p>
+<p>$^A_BR_{X'Y'Z'}(\gamma,\beta,\alpha)=\begin{bmatrix}c\alpha c\beta&c\alpha c\beta s\gamma-s\alpha c\gamma&c\alpha s\beta c\gamma+s\alpha s\gamma\\s\alpha c\beta&s\alpha s\beta s\gamma+c\alpha c\gamma&s\alpha s\beta c\gamma-c\alpha s\gamma\\-s\beta&c\beta s\gamma&c\beta c\gamma\end{bmatrix}$</p>
 <p>我们发现，这个结果与以相反顺序绕固定轴旋转三次得到的结果完全相同，因而逆求解公式也相同</p>
-<p>可以这样更深地理解固定角与欧拉角之间的关系：两种姿态描述方法不同的解释在于运用了旋转矩阵两种不同的作用，一是在同一个坐标系下旋转矢量，二是将矢量的坐标在不同坐标系之间变换。固定角是用前者描述${A}$的三个主轴矢量旋转到${B}$的过程，而欧拉角是用后者将在${B}$下的主轴矢量坐标一步步借由中间坐标系变换到${A}$</p>
+<p>可以这样更深地理解固定角与欧拉角之间的关系：两种姿态描述方法不同的解释在于运用了旋转矩阵两种不同的作用，一是在同一个坐标系下旋转矢量，二是将矢量的坐标在不同坐标系之间变换。固定角是用前者描述$\{A\}$的三个主轴矢量旋转到$\{B\}$的过程，而欧拉角是用后者将在$\{B\}$下的主轴矢量坐标一步步借由中间坐标系变换到$\{A\}$</p>
 <hr>
 <h3 id="其他转角组合">其他转角组合
 </h3><p>在实际情况我们会遇到更多按不同顺序进行绕主轴的三个旋转，所有排列总共24种，固定角12种，欧拉角12种，都被称为<strong>转交排列设定法</strong>（需要注意第一次转动和最后一次转动绕同一个主轴也是一种排列，只要保证相邻两次切换围绕的主轴即可）</p>
@@ -459,12 +459,12 @@
 		data-flex-basis="347px"
 	
 ></p>
-<p>我们用矢量$^AP_{BORG}$表示${B}$的原点相对于${A}$的位置</p>
-<p>当${A}$与${B}$姿态相同，位置不同时，由矢量加法的几何意义：</p>
+<p>我们用矢量$^AP_{BORG}$表示$\{B\}$的原点相对于$\{A\}$的位置</p>
+<p>当$\{A\}$与$\{B\}$姿态相同，位置不同时，由矢量加法的几何意义：</p>
 <p>$^AP=^BP+^AP_{BORG}$</p>
 <hr>
 <h3 id="坐标旋转">坐标旋转
-</h3><p>当${A}$与${B}$位置相同，姿态不同时，由上一篇所介绍的旋转矩阵转换矢量坐标的作用：</p>
+</h3><p>当$\{A\}$与$\{B\}$位置相同，姿态不同时，由上一篇所介绍的旋转矩阵转换矢量坐标的作用：</p>
 <p>$^AP=^A_BR^BP$</p>
 <hr>
 <h3 id="一般变换">一般变换
@@ -480,18 +480,18 @@
 		data-flex-basis="341px"
 	
 ></p>
-<p>当${A}$与${B}$位置和姿态都不同时，可以先将${B}$旋转到和${A}$相同的姿态得到${B&rsquo;}$，以${B&rsquo;}$为中间坐标系对$^BP$进行旋转变换，再作${B&rsquo;}$到${A}$的平移变换：</p>
+<p>当$\{A\}$与$\{B\}$位置和姿态都不同时，可以先将$\{B\}$旋转到和$\{A\}$相同的姿态得到$\{B'\}$，以$\{B'\}$为中间坐标系对$^BP$进行旋转变换，再作$\{B'\}$到$\{A\}$的平移变换：</p>
 <p>$^AP=^A_BR^BP+^AP_{BORG}$②</p>
 <p>为了简化算式，我们将平移和旋转整合起来，定义<strong>齐次变换矩阵</strong>：</p>
-<p>$^A_BT=\begin{bmatrix}^A_BR&amp;^AP_{BORG}\\mathbf{0}^T&amp;1\end{bmatrix}$</p>
+<p>$^A_BT=\begin{bmatrix}^A_BR&^AP_{BORG}\\\mathbf{0}^T&1\end{bmatrix}$</p>
 <p>其中$\mathbf{0}^T$表示三维零向量的转置</p>
 <p>这样式②可写为：</p>
-<p>$\begin{bmatrix}^AP\1\end{bmatrix}=\begin{bmatrix}^A_BR&amp;^AP_{BORG}\\mathbf{0}^T&amp;1\end{bmatrix}\begin{bmatrix}^BP\1\end{bmatrix}$</p>
+<p>$\begin{bmatrix}^AP\\1\end{bmatrix}=\begin{bmatrix}^A_BR&^AP_{BORG}\\\mathbf{0}^T&1\end{bmatrix}\begin{bmatrix}^BP\\1\end{bmatrix}$</p>
 <p>这样我们就以一个简单的矩阵形式表示了一般变换的旋转和平移</p>
 <hr>
 <h3 id="复合变换">复合变换
 </h3><p>复合变换借用中间坐标系求解两坐标系的相对关系</p>
-<p>例如已知${C}$相对于${B}$，并且已知${B}$相对于${A}$，已知$^CP$求$^AP$，可先将$^CP$变换成$^BP$再变换成$^AP$：</p>
+<p>例如已知$\{C\}$相对于$\{B\}$，并且已知$\{B\}$相对于$\{A\}$，已知$^CP$求$^AP$，可先将$^CP$变换成$^BP$再变换成$^AP$：</p>
 <p>$^BP=^B_CT^CP$</p>
 <p>$^AP=^A_BT^BP=^A_BT^B_CT^CP$</p>
 <p>由此定义$^A_CP=^A_BT^B_CT$</p>
@@ -499,9 +499,9 @@
 <h3 id="逆变换">逆变换
 </h3><p>已知$^A_BT$求$^B_AT$可以直接对$^A_BT$求逆矩阵，但还可以利用变换的性质</p>
 <p>关于$^B_AT$的旋转变换，由旋转矩阵的性质可知$^B_AR=^A_BR^T$</p>
-<p>关于$^B_AT$的平移变换，将$^AP_{BORG}$变换成${B}$中的描述：$^B(^AP_{BORG})=^B_AT^AP_{BORG}=^B_AR^AP_{BORG}+^BP_{AORG}$</p>
+<p>关于$^B_AT$的平移变换，将$^AP_{BORG}$变换成$\{B\}$中的描述：$^B(^AP_{BORG})=^B_AT^AP_{BORG}=^B_AR^AP_{BORG}+^BP_{AORG}$</p>
 <p>上式左侧为零，可得：$^BP_{AORG}=-^B_AR^AP_{BORG}=-^A_BR^T{}^AP_{BORG}$</p>
-<p>由此$^B_AT=\begin{bmatrix}^B_AR^T&amp;-^A_BR^T{}^AP_{BORG}\\mathbf{0}^T&amp;1\end{bmatrix}=^A_BT^{-1}$</p>
+<p>由此$^B_AT=\begin{bmatrix}^B_AR^T&-^A_BR^T{}^AP_{BORG}\\\mathbf{0}^T&1\end{bmatrix}=^A_BT^{-1}$</p>
 <hr>
 <h3 id="变换方程">变换方程
 </h3><p><img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%8F%98%E6%8D%A2%E6%96%B9%E7%A8%8B.png"
@@ -516,7 +516,7 @@
 		data-flex-basis="269px"
 	
 ></p>
-<p>图中${D}$可以用两种不同的方式表达成变换相乘的方式：</p>
+<p>图中$\{D\}$可以用两种不同的方式表达成变换相乘的方式：</p>
 <p>$^U_DT=^U_AT^A_DT$</p>
 <p>$^U_DT=^U_BT^B_CT^C_DT$</p>
 <p>两个表达式构造成一个变换方程：</p>
@@ -546,21 +546,21 @@
 <p>用矩阵算子写出平移变换，有：</p>
 <p>$^AP_2=D(Q)^AP_1$</p>
 <p>算子$D_Q$可以被看成是一个特殊形式的齐次变换：</p>
-<p>$D(Q)=\begin{bmatrix}I&amp;^AQ\\mathbf{0}^T&amp;1\end{bmatrix}$</p>
+<p>$D(Q)=\begin{bmatrix}I&^AQ\\\mathbf{0}^T&1\end{bmatrix}$</p>
 <hr>
 <h3 id="旋转算子">旋转算子
 </h3><p>由上一篇所介绍的旋转矩阵描述刚体转动状态的作用，可以得到旋转算子的定义：将矢量$^AP_1$用旋转$R$变换成一个新的矢量$^AP_2$</p>
 <p>当一个旋转矩阵作为算子时无需写出上下标，因为不涉及两个坐标系，但我们将用另一个符号说明是绕哪个轴旋转的，写成：</p>
 <p>$^AP_2=R_K(\theta)^AP_1$</p>
 <p>符号$R_K(\theta)$是一个旋转算子，表示绕$\hat{K}$轴旋转$\theta$角度，例如绕$\hat{Z}$轴旋转$\theta$的算子：</p>
-<p>$R_z(\theta)=\begin{bmatrix}c\theta&amp;-s\theta&amp;0&amp;0\s\theta&amp;c\theta&amp;0&amp;0\0&amp;0&amp;1&amp;0\0&amp;0&amp;0&amp;1\end{bmatrix}$</p>
+<p>$R_z(\theta)=\begin{bmatrix}c\theta&-s\theta&0&0\\s\theta&c\theta&0&0\\0&0&1&0\\0&0&0&1\end{bmatrix}$</p>
 <hr>
 <h3 id="变换算子">变换算子
 </h3><p>与一般变换一样，将平移和旋转整合起来我们得到通用的变换算子。因为只涉及一个坐标系，所以没有上下标。算子$T$将矢量$^AP_1$平移并旋转得到一个新矢量：$^AP_2=T^AP_1$</p>
 <hr>
 <h2 id="齐次变换矩阵">齐次变换矩阵
 </h2><p>源于旋转矩阵在上一篇所讲的三个作用，在这一篇我们也探索出了齐次变换矩阵的三个作用：</p>
-<p>1.描述位姿：$^A_BT$表示${B}$相对于${A}$，其中$^A_BR$的各列是定义${B}$主轴方向的单位矢量，$^AP_{BORG}$确定了${B}$的原点</p>
+<p>1.描述位姿：$^A_BT$表示$\{B\}$相对于$\{A\}$，其中$^A_BR$的各列是定义$\{B\}$主轴方向的单位矢量，$^AP_{BORG}$确定了$\{B\}$的原点</p>
 <p>2.变换映射：$^A_BT$是映射$^BP\rightarrow^AP$</p>
 <p>3.变换算子：$^A_BT$将$^AP_1$变换为$^AP_2$</p>
 <hr>

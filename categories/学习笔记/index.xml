@@ -67,10 +67,10 @@
 &lt;hr&gt;
 &lt;h3 id=&#34;连杆坐标系&#34;&gt;连杆坐标系
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;中间连杆坐标系&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;按以下方法确定连杆上的固连坐标系${i}$：&lt;/p&gt;
+&lt;p&gt;按以下方法确定连杆上的固连坐标系$\{i\}$：&lt;/p&gt;
 &lt;p&gt;原点位于公垂线$a_i$与关节轴$i$的交点处&lt;/p&gt;
 &lt;p&gt;$\hat{Z}_i$轴与关节轴$i$重合&lt;/p&gt;
-&lt;p&gt;$\hat{X}_i$轴：当$a_i\ne0$，沿$a_i$方向由关节$i$指向关节$i+1$；当$a_i=0$，垂直于$\hat{Z}&lt;em&gt;i$和$\hat{Z}&lt;/em&gt;{i+1}$所在的平面&lt;/p&gt;
+&lt;p&gt;$\hat{X}_i$轴：当$a_i\ne0$，沿$a_i$方向由关节$i$指向关节$i+1$；当$a_i=0$，垂直于$\hat{Z}_i$和$\hat{Z}_{i+1}$所在的平面&lt;/p&gt;
 &lt;p&gt;$\hat{Y}_i$轴由右手定则确定&lt;/p&gt;
 &lt;p&gt;由于$\hat{Z}_i$轴可选取两个方向，且当关节轴$i$与$i+1$相交时$\hat{X}_i$轴可选取两个方向，建立的坐标系并不唯一
 &lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/3.png&#34;
@@ -86,27 +86,27 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;首末端连杆坐标系&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;首端连杆坐标系${0}$与关节$1$初始姿态时（关节变量为$0$）的坐标系${1}$重合&lt;/p&gt;
-&lt;p&gt;末端连杆坐标系${N}$原点位于公垂线$a_{N-1}$与关节轴${N}$交点处，$\hat{X}&lt;em&gt;N$轴与$\hat{X}&lt;/em&gt;{N-1}$轴同向&lt;/p&gt;
+&lt;p&gt;首端连杆坐标系$\{0\}$与关节$1$初始姿态时（关节变量为$0$）的坐标系$\{1\}$重合&lt;/p&gt;
+&lt;p&gt;末端连杆坐标系$\{N\}$原点位于公垂线$a_{N-1}$与关节轴$\{N\}$交点处，$\hat{X}_N$轴与$\hat{X}_{N-1}$轴同向&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;连杆坐标系中的D-H表示法&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;$a_i=$沿$\hat{X}_i$轴从$\hat{Z}&lt;em&gt;i$移动到$\hat{Z}&lt;/em&gt;{i+1}$的距离&lt;/p&gt;
-&lt;p&gt;$\alpha_i=$绕$\hat{X}_i$轴从$\hat{Z}&lt;em&gt;i$旋转到$\hat{Z}&lt;/em&gt;{i+1}$的角度&lt;/p&gt;
-&lt;p&gt;$d_i=$沿$\hat{Z}&lt;em&gt;i$轴从$\hat{X}&lt;/em&gt;{i-1}$移动到$\hat{X}_i$的距离&lt;/p&gt;
-&lt;p&gt;$\theta_i=$绕$\hat{Z}&lt;em&gt;i$轴从$\hat{X}&lt;/em&gt;{i-1}$旋转到$\hat{X}_i$的角度&lt;/p&gt;
-&lt;p&gt;$a_i&amp;gt;0$，$\alpha_i$、$d_i$和$\theta_i$的值相对于坐标系主轴方向有正负&lt;/p&gt;
+&lt;p&gt;$a_i=$沿$\hat{X}_i$轴从${\hat{Z}_i}$移动到$\hat{Z}_{i+1}$的距离&lt;/p&gt;
+&lt;p&gt;$\alpha_i=$绕$\hat{X}_i$轴从$\hat{Z}_i$旋转到$\hat{Z}_{i+1}$的角度&lt;/p&gt;
+&lt;p&gt;$d_i=$沿$\hat{Z}_i$轴从$\hat{X}_{i-1}$移动到$\hat{X}_i$的距离&lt;/p&gt;
+&lt;p&gt;$\theta_i=$绕$\hat{Z}_i$轴从$\hat{X}_{i-1}$旋转到$\hat{X}_i$的角度&lt;/p&gt;
+&lt;p&gt;$a_i&gt;0$，$\alpha_i$、$d_i$和$\theta_i$的值相对于坐标系主轴方向有正负&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;建立连杆坐标系的步骤&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;1.画出各关节轴的延长线&lt;/p&gt;
-&lt;p&gt;2.找出相邻关节轴$i$和$i+1$的公垂线或交点，以关节轴$i$和$i+1$的交点或公垂线与关节轴$i$的交点作为连杆坐标系${i}$的原点&lt;/p&gt;
+&lt;p&gt;2.找出相邻关节轴$i$和$i+1$的公垂线或交点，以关节轴$i$和$i+1$的交点或公垂线与关节轴$i$的交点作为连杆坐标系$\{i\}$的原点&lt;/p&gt;
 &lt;p&gt;3.规定$\hat{Z}_i$轴沿关节轴$i$的指向&lt;/p&gt;
 &lt;p&gt;4.规定$\hat{X}_i$轴沿公垂线的指向，若关节轴$i$与$i+1$相交则垂直于关节轴$i$与$i+1$所在的平面&lt;/p&gt;
 &lt;p&gt;5.按右手定则确定$\hat{Y}_i$轴&lt;/p&gt;
 &lt;p&gt;6.补充首末端连杆坐标系&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;坐标系的标准命名&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;基（Base）坐标系${B}$位于操作臂的基座上&lt;/p&gt;
-&lt;p&gt;固定（Settle）坐标系${S}$位置与任务相关，比如工作台的一个角上&lt;/p&gt;
-&lt;p&gt;腕部（Wrist）坐标系${W}$位于操作臂的末端连杆&lt;/p&gt;
-&lt;p&gt;工具（Tool）坐标系${T}$位于机器人所夹持工具的末端&lt;/p&gt;
-&lt;p&gt;目标（Goal）坐标系${G}$是对机器人移动工具到达的位置描述
+&lt;p&gt;基（Base）坐标系$\{B\}$位于操作臂的基座上&lt;/p&gt;
+&lt;p&gt;固定（Settle）坐标系$\{S\}$位置与任务相关，比如工作台的一个角上&lt;/p&gt;
+&lt;p&gt;腕部（Wrist）坐标系$\{W\}$位于操作臂的末端连杆&lt;/p&gt;
+&lt;p&gt;工具（Tool）坐标系$\{T\}$位于机器人所夹持工具的末端&lt;/p&gt;
+&lt;p&gt;目标（Goal）坐标系$\{G\}$是对机器人移动工具到达的位置描述
 &lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/5.png&#34;
 	width=&#34;700&#34;
 	height=&#34;607&#34;
@@ -123,7 +123,7 @@
 &lt;h2 id=&#34;操作臂运动学&#34;&gt;操作臂运动学
 &lt;/h2&gt;&lt;hr&gt;
 &lt;h3 id=&#34;连杆变换link-transformation&#34;&gt;连杆变换（Link Transformation）
-&lt;/h3&gt;&lt;p&gt;我们希望用四个连杆参数建立起相邻连杆坐标系${i}$和${i-1}$之间的变换关系，即$^{i-1}P=^{i-1}_{i}T^iP$
+&lt;/h3&gt;&lt;p&gt;我们希望用四个连杆参数建立起相邻连杆坐标系$\{i\}$和$\{i-1\}$之间的变换关系，即$^{i-1}P=^{i-1}_{i}T^iP$
 &lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/4.png&#34;
 	width=&#34;865&#34;
 	height=&#34;600&#34;
@@ -136,18 +136,18 @@
 		data-flex-basis=&#34;346px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;我们考虑借由图中标出的四个连杆参数将${i-1}$一步步变换为${i}$&lt;/p&gt;
-&lt;p&gt;将${i-1}$绕$\hat{X}&lt;em&gt;{i-1}$旋转$\alpha&lt;/em&gt;{i-1}$得到${R}$&lt;/p&gt;
-&lt;p&gt;将${R}$沿$\hat{X}&lt;em&gt;R$平移$a&lt;/em&gt;{i-1}$得到${Q}$&lt;/p&gt;
-&lt;p&gt;将${Q}$绕$\hat{Z}_Q$旋转$\theta_i$得到${P}$&lt;/p&gt;
-&lt;p&gt;将${P}$沿$\hat{Z}_P$平移$d_i$得到${i}$&lt;/p&gt;
+&lt;p&gt;我们考虑借由图中标出的四个连杆参数将$\{i-1\}$一步步变换为$\{i\}$&lt;/p&gt;
+&lt;p&gt;将$\{i-1\}$绕$\hat{X}_{i-1}$旋转$\alpha_{i-1}$得到$\{R\}$&lt;/p&gt;
+&lt;p&gt;将$\{R\}$沿$\hat{X}_R$平移$a_{i-1}$得到$\{Q\}$&lt;/p&gt;
+&lt;p&gt;将$\{Q\}$绕$\hat{Z}_Q$旋转$\theta_i$得到$\{P\}$&lt;/p&gt;
+&lt;p&gt;将$\{P\}$沿$\hat{Z}_P$平移$d_i$得到$\{i\}$&lt;/p&gt;
 &lt;p&gt;于是变换矩阵可写成：&lt;/p&gt;
 &lt;p&gt;$^{i-1}P=^{i-1}_{i}T^iP=^{i-1}_RT^R_QT^Q_PT^P_iT^iP$&lt;/p&gt;
-&lt;p&gt;$^{i-1}&lt;em&gt;{i}T=^{i-1}&lt;em&gt;RT^R_QT^Q_PT^P_iT=R_X(\alpha&lt;/em&gt;{i-1})D_X(a&lt;/em&gt;{i-1})R_Z(\theta_i)D_Z(d_i)$&lt;/p&gt;
+&lt;p&gt;$^{i-1}_{i}T=^{i-1}_RT^R_QT^Q_PT^P_iT=R_X(\alpha_{i-1})D_X(a_{i-1})R_Z(\theta_i)D_Z(d_i)$&lt;/p&gt;
 &lt;p&gt;最终计算得到：&lt;/p&gt;
-&lt;p&gt;$^{i-1}&lt;em&gt;{i}T=\begin{bmatrix}c\theta_i&amp;amp;-s\theta_i&amp;amp;0&amp;amp;a&lt;/em&gt;{i-1}\s\theta_ic\alpha_{i-1}&amp;amp;c\theta_ic\alpha_{i-1}&amp;amp;-s\alpha_{i-1}&amp;amp;-s\alpha_{i-1}d_i\s\theta_is\alpha_{i-1}&amp;amp;c\theta_is\alpha_{i-1}&amp;amp;c\alpha_{i-1}&amp;amp;c\alpha_{i-1}d_i\0&amp;amp;0&amp;amp;0&amp;amp;1\end{bmatrix}$&lt;/p&gt;
-&lt;p&gt;左上角$3\times3$为旋转矩阵，最右列为${i}$的原点相对于${i-1}$的原点的位置矢量&lt;/p&gt;
-&lt;p&gt;计算出各个连杆变换矩阵，将其连乘就能得到${N}$相对于${0}$的变换矩阵：&lt;/p&gt;
+&lt;p&gt;$^{i-1}_{i}T=\begin{bmatrix}c\theta_i&amp;-s\theta_i&amp;0&amp;a_{i-1}\\s\theta_ic\alpha_{i-1}&amp;c\theta_ic\alpha_{i-1}&amp;-s\alpha_{i-1}&amp;-s\alpha_{i-1}d_i\\s\theta_is\alpha_{i-1}&amp;c\theta_is\alpha_{i-1}&amp;c\alpha_{i-1}&amp;c\alpha_{i-1}d_i\\0&amp;0&amp;0&amp;1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;左上角$3\times3$为旋转矩阵，最右列为$\{i\}$的原点相对于$\{i-1\}$的原点的位置矢量&lt;/p&gt;
+&lt;p&gt;计算出各个连杆变换矩阵，将其连乘就能得到$\{N\}$相对于$\{0\}$的变换矩阵：&lt;/p&gt;
 &lt;p&gt;$^0_NT=^0_1T^1_2T^2_3T…^{N-1}_NT$&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;驱动器空间关节空间和笛卡尔空间&#34;&gt;驱动器空间、关节空间和笛卡尔空间
@@ -201,19 +201,19 @@
 		data-flex-basis=&#34;870px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;给定参考坐标系${A}$和我们要描述姿态的坐标系${B}$，从固定角的视角来看，任意姿态的${B}$都可以由以下过程表示：将${B}$与${A}$重合，先绕$\hat{X}_A$旋转$\gamma$角，再绕$\hat{Y}_A$旋转$\beta$角，最后绕$\hat{Z}&lt;em&gt;A$旋转$\alpha$角得到最终的${B}$，因而可以推导${B}$到${A}$的等价旋转矩阵：$^A_BR&lt;/em&gt;{XYZ}(\gamma,\beta,\alpha)=R_Z(\alpha)R_Y(\beta)R_X(\gamma)=\begin{bmatrix}c\alpha&amp;amp;-s\alpha&amp;amp;0\s\alpha&amp;amp;c\alpha&amp;amp;0\0&amp;amp;0&amp;amp;1\end{bmatrix}\begin{bmatrix}c\beta&amp;amp;0&amp;amp;s\beta\0&amp;amp;1&amp;amp;0\-s\beta&amp;amp;0&amp;amp;c\beta\end{bmatrix}\begin{bmatrix}1&amp;amp;0&amp;amp;0\0&amp;amp;c\gamma&amp;amp;-s\gamma\0&amp;amp;s\gamma&amp;amp;c\gamma\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;给定参考坐标系$\{A\}$和我们要描述姿态的坐标系$\{B\}$，从固定角的视角来看，任意姿态的$\{B\}$都可以由以下过程表示：将$\{B\}$与$\{A\}$重合，先绕$\hat{X}_A$旋转$\gamma$角，再绕$\hat{Y}_A$旋转$\beta$角，最后绕$\hat{Z}_A$旋转$\alpha$角得到最终的$\{B\}$，因而可以推导$\{B\}$到$\{A\}$的等价旋转矩阵：$^A_BR_{XYZ}(\gamma,\beta,\alpha)=R_Z(\alpha)R_Y(\beta)R_X(\gamma)=\begin{bmatrix}c\alpha&amp;-s\alpha&amp;0\\s\alpha&amp;c\alpha&amp;0\\0&amp;0&amp;1\end{bmatrix}\begin{bmatrix}c\beta&amp;0&amp;s\beta\\0&amp;1&amp;0\\-s\beta&amp;0&amp;c\beta\end{bmatrix}\begin{bmatrix}1&amp;0&amp;0\\0&amp;c\gamma&amp;-s\gamma\\0&amp;s\gamma&amp;c\gamma\end{bmatrix}$&lt;/p&gt;
 &lt;p&gt;（矩阵书写顺序与实际旋转操作顺序相反，从旋转一个矢量的角度来看，是因为旋转矩阵乘在矢量的左边，所以右侧的矩阵会先与矢量相乘）&lt;/p&gt;
 &lt;p&gt;(等价旋转矩阵下标表示绕主轴旋转的操作顺序，可以根据实际情况调换)&lt;/p&gt;
 &lt;p&gt;最终得到：&lt;/p&gt;
-&lt;p&gt;$^A_BR_{XYZ}(\gamma,\beta,\alpha)=\begin{bmatrix}c\alpha c\beta&amp;amp;c\alpha c\beta s\gamma-s\alpha c\gamma&amp;amp;c\alpha s\beta c\gamma+s\alpha s\gamma\s\alpha c\beta&amp;amp;s\alpha s\beta s\gamma+c\alpha c\gamma&amp;amp;s\alpha s\beta c\gamma-c\alpha s\gamma\-s\beta&amp;amp;c\beta s\gamma&amp;amp;c\beta c\gamma\end{bmatrix}$①&lt;/p&gt;
+&lt;p&gt;$^A_BR_{XYZ}(\gamma,\beta,\alpha)=\begin{bmatrix}c\alpha c\beta&amp;c\alpha c\beta s\gamma-s\alpha c\gamma&amp;c\alpha s\beta c\gamma+s\alpha s\gamma\\s\alpha c\beta&amp;s\alpha s\beta s\gamma+c\alpha c\gamma&amp;s\alpha s\beta c\gamma-c\alpha s\gamma\\-s\beta&amp;c\beta s\gamma&amp;c\beta c\gamma\end{bmatrix}$①&lt;/p&gt;
 &lt;p&gt;反过来，如果已知旋转矩阵各个元素的数值，逆求三个固定角，令&lt;/p&gt;
-&lt;p&gt;$^A_BR_{XYZ}(\gamma,\beta,\alpha)=\begin{bmatrix}r_{11}&amp;amp;r_{12}&amp;amp;r_{13}\r_{21}&amp;amp;r_{22}&amp;amp;r_{23}\r_{31}&amp;amp;r_{32}&amp;amp;r_{33}\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;$^A_BR_{XYZ}(\gamma,\beta,\alpha)=\begin{bmatrix}r_{11}&amp;r_{12}&amp;r_{13}\\r_{21}&amp;r_{22}&amp;r_{23}\\r_{31}&amp;r_{32}&amp;r_{33}\end{bmatrix}$&lt;/p&gt;
 &lt;p&gt;则&lt;/p&gt;
-&lt;p&gt;$\left{\begin{matrix}\beta=\mathrm{Atan2}(-r_{31},\sqrt{r_{11}^2+r_{21}^2})\ \alpha=\mathrm{Atan2}(\frac{r_{21}}{c\beta},\frac{r_{11}}{c\beta})\ \gamma=\mathrm{Atan2}(\frac{r_{31}}{c\beta},\frac{r_{33}}{c\beta})\end{matrix}\right.$&lt;/p&gt;
+&lt;p&gt;$\left\{\begin{matrix}\beta=\mathrm{Atan2}(-r_{31},\sqrt{r_{11}^2+r_{21}^2})\\ \alpha=\mathrm{Atan2}(\frac{r_{21}}{c\beta},\frac{r_{11}}{c\beta})\\ \gamma=\mathrm{Atan2}(\frac{r_{31}}{c\beta},\frac{r_{33}}{c\beta})\end{matrix}\right.$&lt;/p&gt;
 &lt;p&gt;$(\beta\neq 90^{\circ})$&lt;/p&gt;
 &lt;p&gt;（式中$\mathrm{Atan2}(y,x)=arctan\frac{y}{x}$，即反正切函数的双参量表示法，可以根据$x$和$y$的符号判别角的象限，而单输入值的反正切函数无法区分）&lt;/p&gt;
 &lt;p&gt;上式中$\cos\beta$只考虑正根以得到单解来建立各种姿态表示法之间一一对应的映射函数，但在某些情况下有必要求出所有的解，会在第四章说明&lt;/p&gt;
-&lt;p&gt;如果$\beta=90^{\circ}$，则只能求出$\alpha$和$\gamma$的和或差，在这种情况下一般取$\alpha=0$，$\gamma=\left{\begin{matrix}\mathrm{Atan2}(r_{12},r_{22})(\beta=90^{\circ})\-\mathrm{Atan2}(r_{12},r_{22})(\beta=-90^{\circ})\end{matrix}\right.$&lt;/p&gt;
+&lt;p&gt;如果$\beta=90^{\circ}$，则只能求出$\alpha$和$\gamma$的和或差，在这种情况下一般取$\alpha=0$，$\gamma=\left\{\begin{matrix}\mathrm{Atan2}(r_{12},r_{22})(\beta=90^{\circ})\\-\mathrm{Atan2}(r_{12},r_{22})(\beta=-90^{\circ})\end{matrix}\right.$&lt;/p&gt;
 &lt;p&gt;结合式①即可理解求解公式的推导&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;z-y-x欧拉角&#34;&gt;Z-Y-X欧拉角
@@ -229,15 +229,15 @@
 		data-flex-basis=&#34;876px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;给定参考坐标系${A}$和我们要描述姿态的坐标系${B}$，从欧拉角的视角来看，任意姿态的${B}$都可以由以下过程表示：将${B}$与${A}$重合，先绕$\hat{Z}&lt;em&gt;B$转$\alpha$角得到${B&amp;rsquo;}$，再绕$\hat{Y}&lt;/em&gt;{B&amp;rsquo;}$转$\beta$角得到${B&amp;rsquo;&amp;rsquo;}$，最后绕$\hat{X}_{B&amp;rsquo;&amp;rsquo;}$转$\gamma$角得到最终的${B}$（欧拉角选取转轴的顺序与固定角相反，原因会在下面解释）&lt;/p&gt;
-&lt;p&gt;借由${B}$的中间状态${B&amp;rsquo;}$和${B&amp;rsquo;&amp;rsquo;}$和欧拉角的定义表达$^A_BR$，我们可以写出：&lt;/p&gt;
-&lt;p&gt;$^A_BR=^A_{B&amp;rsquo;}R^{B&amp;rsquo;}&lt;em&gt;{B&amp;rsquo;&amp;rsquo;}R^{B&amp;rsquo;&amp;rsquo;}&lt;/em&gt;{B}R$&lt;/p&gt;
+&lt;p&gt;给定参考坐标系$\{A\}$和我们要描述姿态的坐标系$\{B\}$，从欧拉角的视角来看，任意姿态的$\{B\}$都可以由以下过程表示：将$\{B\}$与$\{A\}$重合，先绕$\hat{Z}_B$转$\alpha$角得到$\{B&#39;\}$，再绕$\hat{Y}_{B&#39;}$转$\beta$角得到$\{B&#39;&#39;\}$，最后绕$\hat{X}_{B&#39;&#39;}$转$\gamma$角得到最终的$\{B\}$（欧拉角选取转轴的顺序与固定角相反，原因会在下面解释）&lt;/p&gt;
+&lt;p&gt;借由$\{B\}$的中间状态$\{B&#39;\}$和$\{B&#39;&#39;\}$和欧拉角的定义表达$^A_BR$，我们可以写出：&lt;/p&gt;
+&lt;p&gt;$^A_BR=^A_{B&#39;}R^{B&#39;}_{B&#39;&#39;}R^{B&#39;&#39;}_{B}R$&lt;/p&gt;
 &lt;p&gt;即：&lt;/p&gt;
-&lt;p&gt;$^A_BR_{X&amp;rsquo;Y&amp;rsquo;Z&amp;rsquo;}(\gamma,\beta,\alpha)=R_{Z&amp;rsquo;}(\alpha)R_{Y&amp;rsquo;}(\beta)R_{X&amp;rsquo;}(\gamma)=\begin{bmatrix}c\alpha&amp;amp;-s\alpha&amp;amp;0\s\alpha&amp;amp;c\alpha&amp;amp;0\0&amp;amp;0&amp;amp;1\end{bmatrix}\begin{bmatrix}c\beta&amp;amp;0&amp;amp;s\beta\0&amp;amp;1&amp;amp;0\-s\beta&amp;amp;0&amp;amp;c\beta\end{bmatrix}\begin{bmatrix}1&amp;amp;0&amp;amp;0\0&amp;amp;c\gamma&amp;amp;-s\gamma\0&amp;amp;s\gamma&amp;amp;c\gamma\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;$^A_BR_{X&#39;Y&#39;Z&#39;}(\gamma,\beta,\alpha)=R_{Z&#39;}(\alpha)R_{Y&#39;}(\beta)R_{X&#39;}(\gamma)=\begin{bmatrix}c\alpha&amp;-s\alpha&amp;0\\s\alpha&amp;c\alpha&amp;0\\0&amp;0&amp;1\end{bmatrix}\begin{bmatrix}c\beta&amp;0&amp;s\beta\\0&amp;1&amp;0\\-s\beta&amp;0&amp;c\beta\end{bmatrix}\begin{bmatrix}1&amp;0&amp;0\\0&amp;c\gamma&amp;-s\gamma\\0&amp;s\gamma&amp;c\gamma\end{bmatrix}$&lt;/p&gt;
 &lt;p&gt;相乘后得：&lt;/p&gt;
-&lt;p&gt;$^A_BR_{X&amp;rsquo;Y&amp;rsquo;Z&amp;rsquo;}(\gamma,\beta,\alpha)=\begin{bmatrix}c\alpha c\beta&amp;amp;c\alpha c\beta s\gamma-s\alpha c\gamma&amp;amp;c\alpha s\beta c\gamma+s\alpha s\gamma\s\alpha c\beta&amp;amp;s\alpha s\beta s\gamma+c\alpha c\gamma&amp;amp;s\alpha s\beta c\gamma-c\alpha s\gamma\-s\beta&amp;amp;c\beta s\gamma&amp;amp;c\beta c\gamma\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;$^A_BR_{X&#39;Y&#39;Z&#39;}(\gamma,\beta,\alpha)=\begin{bmatrix}c\alpha c\beta&amp;c\alpha c\beta s\gamma-s\alpha c\gamma&amp;c\alpha s\beta c\gamma+s\alpha s\gamma\\s\alpha c\beta&amp;s\alpha s\beta s\gamma+c\alpha c\gamma&amp;s\alpha s\beta c\gamma-c\alpha s\gamma\\-s\beta&amp;c\beta s\gamma&amp;c\beta c\gamma\end{bmatrix}$&lt;/p&gt;
 &lt;p&gt;我们发现，这个结果与以相反顺序绕固定轴旋转三次得到的结果完全相同，因而逆求解公式也相同&lt;/p&gt;
-&lt;p&gt;可以这样更深地理解固定角与欧拉角之间的关系：两种姿态描述方法不同的解释在于运用了旋转矩阵两种不同的作用，一是在同一个坐标系下旋转矢量，二是将矢量的坐标在不同坐标系之间变换。固定角是用前者描述${A}$的三个主轴矢量旋转到${B}$的过程，而欧拉角是用后者将在${B}$下的主轴矢量坐标一步步借由中间坐标系变换到${A}$&lt;/p&gt;
+&lt;p&gt;可以这样更深地理解固定角与欧拉角之间的关系：两种姿态描述方法不同的解释在于运用了旋转矩阵两种不同的作用，一是在同一个坐标系下旋转矢量，二是将矢量的坐标在不同坐标系之间变换。固定角是用前者描述$\{A\}$的三个主轴矢量旋转到$\{B\}$的过程，而欧拉角是用后者将在$\{B\}$下的主轴矢量坐标一步步借由中间坐标系变换到$\{A\}$&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;其他转角组合&#34;&gt;其他转角组合
 &lt;/h3&gt;&lt;p&gt;在实际情况我们会遇到更多按不同顺序进行绕主轴的三个旋转，所有排列总共24种，固定角12种，欧拉角12种，都被称为&lt;strong&gt;转交排列设定法&lt;/strong&gt;（需要注意第一次转动和最后一次转动绕同一个主轴也是一种排列，只要保证相邻两次切换围绕的主轴即可）&lt;/p&gt;
@@ -259,12 +259,12 @@
 		data-flex-basis=&#34;347px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;我们用矢量$^AP_{BORG}$表示${B}$的原点相对于${A}$的位置&lt;/p&gt;
-&lt;p&gt;当${A}$与${B}$姿态相同，位置不同时，由矢量加法的几何意义：&lt;/p&gt;
+&lt;p&gt;我们用矢量$^AP_{BORG}$表示$\{B\}$的原点相对于$\{A\}$的位置&lt;/p&gt;
+&lt;p&gt;当$\{A\}$与$\{B\}$姿态相同，位置不同时，由矢量加法的几何意义：&lt;/p&gt;
 &lt;p&gt;$^AP=^BP+^AP_{BORG}$&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;坐标旋转&#34;&gt;坐标旋转
-&lt;/h3&gt;&lt;p&gt;当${A}$与${B}$位置相同，姿态不同时，由上一篇所介绍的旋转矩阵转换矢量坐标的作用：&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;当$\{A\}$与$\{B\}$位置相同，姿态不同时，由上一篇所介绍的旋转矩阵转换矢量坐标的作用：&lt;/p&gt;
 &lt;p&gt;$^AP=^A_BR^BP$&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;一般变换&#34;&gt;一般变换
@@ -280,18 +280,18 @@
 		data-flex-basis=&#34;341px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;当${A}$与${B}$位置和姿态都不同时，可以先将${B}$旋转到和${A}$相同的姿态得到${B&amp;rsquo;}$，以${B&amp;rsquo;}$为中间坐标系对$^BP$进行旋转变换，再作${B&amp;rsquo;}$到${A}$的平移变换：&lt;/p&gt;
+&lt;p&gt;当$\{A\}$与$\{B\}$位置和姿态都不同时，可以先将$\{B\}$旋转到和$\{A\}$相同的姿态得到$\{B&#39;\}$，以$\{B&#39;\}$为中间坐标系对$^BP$进行旋转变换，再作$\{B&#39;\}$到$\{A\}$的平移变换：&lt;/p&gt;
 &lt;p&gt;$^AP=^A_BR^BP+^AP_{BORG}$②&lt;/p&gt;
 &lt;p&gt;为了简化算式，我们将平移和旋转整合起来，定义&lt;strong&gt;齐次变换矩阵&lt;/strong&gt;：&lt;/p&gt;
-&lt;p&gt;$^A_BT=\begin{bmatrix}^A_BR&amp;amp;^AP_{BORG}\\mathbf{0}^T&amp;amp;1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;$^A_BT=\begin{bmatrix}^A_BR&amp;^AP_{BORG}\\\mathbf{0}^T&amp;1\end{bmatrix}$&lt;/p&gt;
 &lt;p&gt;其中$\mathbf{0}^T$表示三维零向量的转置&lt;/p&gt;
 &lt;p&gt;这样式②可写为：&lt;/p&gt;
-&lt;p&gt;$\begin{bmatrix}^AP\1\end{bmatrix}=\begin{bmatrix}^A_BR&amp;amp;^AP_{BORG}\\mathbf{0}^T&amp;amp;1\end{bmatrix}\begin{bmatrix}^BP\1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;$\begin{bmatrix}^AP\\1\end{bmatrix}=\begin{bmatrix}^A_BR&amp;^AP_{BORG}\\\mathbf{0}^T&amp;1\end{bmatrix}\begin{bmatrix}^BP\\1\end{bmatrix}$&lt;/p&gt;
 &lt;p&gt;这样我们就以一个简单的矩阵形式表示了一般变换的旋转和平移&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;复合变换&#34;&gt;复合变换
 &lt;/h3&gt;&lt;p&gt;复合变换借用中间坐标系求解两坐标系的相对关系&lt;/p&gt;
-&lt;p&gt;例如已知${C}$相对于${B}$，并且已知${B}$相对于${A}$，已知$^CP$求$^AP$，可先将$^CP$变换成$^BP$再变换成$^AP$：&lt;/p&gt;
+&lt;p&gt;例如已知$\{C\}$相对于$\{B\}$，并且已知$\{B\}$相对于$\{A\}$，已知$^CP$求$^AP$，可先将$^CP$变换成$^BP$再变换成$^AP$：&lt;/p&gt;
 &lt;p&gt;$^BP=^B_CT^CP$&lt;/p&gt;
 &lt;p&gt;$^AP=^A_BT^BP=^A_BT^B_CT^CP$&lt;/p&gt;
 &lt;p&gt;由此定义$^A_CP=^A_BT^B_CT$&lt;/p&gt;
@@ -299,9 +299,9 @@
 &lt;h3 id=&#34;逆变换&#34;&gt;逆变换
 &lt;/h3&gt;&lt;p&gt;已知$^A_BT$求$^B_AT$可以直接对$^A_BT$求逆矩阵，但还可以利用变换的性质&lt;/p&gt;
 &lt;p&gt;关于$^B_AT$的旋转变换，由旋转矩阵的性质可知$^B_AR=^A_BR^T$&lt;/p&gt;
-&lt;p&gt;关于$^B_AT$的平移变换，将$^AP_{BORG}$变换成${B}$中的描述：$^B(^AP_{BORG})=^B_AT^AP_{BORG}=^B_AR^AP_{BORG}+^BP_{AORG}$&lt;/p&gt;
+&lt;p&gt;关于$^B_AT$的平移变换，将$^AP_{BORG}$变换成$\{B\}$中的描述：$^B(^AP_{BORG})=^B_AT^AP_{BORG}=^B_AR^AP_{BORG}+^BP_{AORG}$&lt;/p&gt;
 &lt;p&gt;上式左侧为零，可得：$^BP_{AORG}=-^B_AR^AP_{BORG}=-^A_BR^T{}^AP_{BORG}$&lt;/p&gt;
-&lt;p&gt;由此$^B_AT=\begin{bmatrix}^B_AR^T&amp;amp;-^A_BR^T{}^AP_{BORG}\\mathbf{0}^T&amp;amp;1\end{bmatrix}=^A_BT^{-1}$&lt;/p&gt;
+&lt;p&gt;由此$^B_AT=\begin{bmatrix}^B_AR^T&amp;-^A_BR^T{}^AP_{BORG}\\\mathbf{0}^T&amp;1\end{bmatrix}=^A_BT^{-1}$&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;变换方程&#34;&gt;变换方程
 &lt;/h3&gt;&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/%E5%8F%98%E6%8D%A2%E6%96%B9%E7%A8%8B.png&#34;
@@ -316,7 +316,7 @@
 		data-flex-basis=&#34;269px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;图中${D}$可以用两种不同的方式表达成变换相乘的方式：&lt;/p&gt;
+&lt;p&gt;图中$\{D\}$可以用两种不同的方式表达成变换相乘的方式：&lt;/p&gt;
 &lt;p&gt;$^U_DT=^U_AT^A_DT$&lt;/p&gt;
 &lt;p&gt;$^U_DT=^U_BT^B_CT^C_DT$&lt;/p&gt;
 &lt;p&gt;两个表达式构造成一个变换方程：&lt;/p&gt;
@@ -346,21 +346,21 @@
 &lt;p&gt;用矩阵算子写出平移变换，有：&lt;/p&gt;
 &lt;p&gt;$^AP_2=D(Q)^AP_1$&lt;/p&gt;
 &lt;p&gt;算子$D_Q$可以被看成是一个特殊形式的齐次变换：&lt;/p&gt;
-&lt;p&gt;$D(Q)=\begin{bmatrix}I&amp;amp;^AQ\\mathbf{0}^T&amp;amp;1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;$D(Q)=\begin{bmatrix}I&amp;^AQ\\\mathbf{0}^T&amp;1\end{bmatrix}$&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;旋转算子&#34;&gt;旋转算子
 &lt;/h3&gt;&lt;p&gt;由上一篇所介绍的旋转矩阵描述刚体转动状态的作用，可以得到旋转算子的定义：将矢量$^AP_1$用旋转$R$变换成一个新的矢量$^AP_2$&lt;/p&gt;
 &lt;p&gt;当一个旋转矩阵作为算子时无需写出上下标，因为不涉及两个坐标系，但我们将用另一个符号说明是绕哪个轴旋转的，写成：&lt;/p&gt;
 &lt;p&gt;$^AP_2=R_K(\theta)^AP_1$&lt;/p&gt;
 &lt;p&gt;符号$R_K(\theta)$是一个旋转算子，表示绕$\hat{K}$轴旋转$\theta$角度，例如绕$\hat{Z}$轴旋转$\theta$的算子：&lt;/p&gt;
-&lt;p&gt;$R_z(\theta)=\begin{bmatrix}c\theta&amp;amp;-s\theta&amp;amp;0&amp;amp;0\s\theta&amp;amp;c\theta&amp;amp;0&amp;amp;0\0&amp;amp;0&amp;amp;1&amp;amp;0\0&amp;amp;0&amp;amp;0&amp;amp;1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;$R_z(\theta)=\begin{bmatrix}c\theta&amp;-s\theta&amp;0&amp;0\\s\theta&amp;c\theta&amp;0&amp;0\\0&amp;0&amp;1&amp;0\\0&amp;0&amp;0&amp;1\end{bmatrix}$&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;变换算子&#34;&gt;变换算子
 &lt;/h3&gt;&lt;p&gt;与一般变换一样，将平移和旋转整合起来我们得到通用的变换算子。因为只涉及一个坐标系，所以没有上下标。算子$T$将矢量$^AP_1$平移并旋转得到一个新矢量：$^AP_2=T^AP_1$&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;齐次变换矩阵&#34;&gt;齐次变换矩阵
 &lt;/h2&gt;&lt;p&gt;源于旋转矩阵在上一篇所讲的三个作用，在这一篇我们也探索出了齐次变换矩阵的三个作用：&lt;/p&gt;
-&lt;p&gt;1.描述位姿：$^A_BT$表示${B}$相对于${A}$，其中$^A_BR$的各列是定义${B}$主轴方向的单位矢量，$^AP_{BORG}$确定了${B}$的原点&lt;/p&gt;
+&lt;p&gt;1.描述位姿：$^A_BT$表示$\{B\}$相对于$\{A\}$，其中$^A_BR$的各列是定义$\{B\}$主轴方向的单位矢量，$^AP_{BORG}$确定了$\{B\}$的原点&lt;/p&gt;
 &lt;p&gt;2.变换映射：$^A_BT$是映射$^BP\rightarrow^AP$&lt;/p&gt;
 &lt;p&gt;3.变换算子：$^A_BT$将$^AP_1$变换为$^AP_2$&lt;/p&gt;
 &lt;hr&gt;
@@ -384,7 +384,7 @@
 &lt;h1 id=&#34;空间描述和变换&#34;&gt;空间描述和变换
 &lt;/h1&gt;&lt;hr&gt;
 &lt;h2 id=&#34;描述&#34;&gt;描述
-&lt;/h2&gt;&lt;p&gt;我们用${A}$来表示一个&lt;strong&gt;坐标系(Frame)&lt;/strong&gt;&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;我们用$\{A\}$来表示一个&lt;strong&gt;坐标系(Frame)&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;讨论问题之前，我们需要建立一个&lt;strong&gt;世界坐标系(World Frame)&lt;/strong&gt;，之后定义的位置和姿态都是参照世界坐标系定义的笛卡尔坐标系&lt;/p&gt;
 &lt;p&gt;一个平面中的物体拥有沿$x$轴、$y$轴两个方向移动的自由度和绕垂直于平面的轴转动的&lt;strong&gt;自由度（Degree Of Freedom，可简记为DOF）&lt;/strong&gt;，即两个移动自由度和一个转动自由度，共三个自由度&lt;/p&gt;
 &lt;p&gt;同理，一个空间中的物体拥有沿$x$轴、$y$轴、$z$轴三个方向移动的自由度和绕这三个轴转动的自由度，即三个移动自由度和三个转动自由度，共六个自由度&lt;/p&gt;
@@ -392,8 +392,8 @@
 &lt;h3 id=&#34;位置描述&#34;&gt;位置描述
 &lt;/h3&gt;&lt;p&gt;位置描述涵盖刚体在三个方向上的移动自由度&lt;/p&gt;
 &lt;p&gt;一旦建立了坐标系，我们可以用一个$3\times 1$的&lt;strong&gt;位置矢量&lt;/strong&gt;给世界坐标系中的任何点定位&lt;/p&gt;
-&lt;p&gt;矢量用一个左上标来表明其定义在哪个坐标系，例如$^AP$的元素数值是沿坐标系${A}$三个主轴方向上的投影，矢量的各个元素用下标$x$、$y$和$z$来标明：&lt;/p&gt;
-&lt;p&gt;$^AP=^A\begin{bmatrix}p_x\p_y\p_z\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;矢量用一个左上标来表明其定义在哪个坐标系，例如$^AP$的元素数值是沿坐标系$\{A\}$三个主轴方向上的投影，矢量的各个元素用下标$x$、$y$和$z$来标明：&lt;/p&gt;
+&lt;p&gt;$^AP=^A\begin{bmatrix}p_x\\p_y\\p_z\end{bmatrix}$&lt;/p&gt;
 &lt;p&gt;（其中矩阵左上标表示矩阵中坐标都是相对于该坐标系而言，由于格式输入限制位置偏下）&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E4%BD%8D%E7%BD%AE.png&#34;
 	width=&#34;1220&#34;
@@ -410,24 +410,24 @@
 &lt;hr&gt;
 &lt;h3 id=&#34;姿态描述&#34;&gt;姿态描述
 &lt;/h3&gt;&lt;p&gt;姿态描述涵盖刚体三个方向上的转动自由度&lt;/p&gt;
-&lt;p&gt;我们可以在刚体上固定一个坐标系${B}$，用${B}$相对于${A}$的描述来表示物体的姿态，而${B}$可以用该坐标系三个主轴方向的单位矢量来确定&lt;/p&gt;
-&lt;p&gt;我们用$\hat{X}_B$、$\hat{Y}_B$和$\hat{Z}_B$来表示${B}$主轴方向的单位矢量，当${A}$作为参考坐标系时，它们被写为$^A\hat{X}_B$、$^A\hat{Y}_B$和$^A\hat{Z}_B$&lt;/p&gt;
-&lt;p&gt;将这三个单位矢量按照$^A\hat{X}_B$、$^A\hat{Y}_B$和$^A\hat{Z}_B$的顺序排列组成一个$3\times3$的矩阵，称为&lt;strong&gt;旋转矩阵(Rotation Matrix)&lt;/strong&gt;。表达${B}$相对于${A}$的旋转矩阵记为$_B^AR$&lt;/p&gt;
-&lt;p&gt;$_B^AR$=$\begin{pmatrix}^A\hat{X}_B&amp;amp;^A\hat{Y}_B&amp;amp;^A\hat{Z}_B\end{pmatrix}$&lt;/p&gt;
-&lt;p&gt;又$^A\hat{X}_B$、$^A\hat{Y}_B$和$^A\hat{Z}_B$是以${A}$为参考，所以矢量中各个元素的数值为$\hat{X}_B$、$\hat{Y}_B$和$\hat{Z}_B$分别在${A}$三个主轴方向上的投影长度，因而上式可以进一步写为&lt;/p&gt;
-&lt;p&gt;$_B^AR=\begin{pmatrix}^A\hat{X}_B&amp;amp;^A\hat{Y}_B&amp;amp;^A\hat{Z}_B\end{pmatrix}=\begin{bmatrix}\hat{X}_B\cdot\hat{X}_A&amp;amp;\hat{Y}_B\cdot\hat{X}_A&amp;amp;\hat{Z}_B\cdot\hat{X}_A\\hat{X}_B\cdot\hat{Y}_A&amp;amp;\hat{Y}_B\cdot\hat{Y}_A&amp;amp;\hat{Z}_B\cdot\hat{Y}_A\\hat{X}_B\cdot\hat{Z}_A&amp;amp;\hat{Y}_B\cdot\hat{Z}_A&amp;amp;\hat{Z}_B\cdot\hat{Z}_A\end{bmatrix}$&lt;/p&gt;
-&lt;p&gt;又矩阵中各个矢量均为单位矢量，点积之值也是$\hat{X}_B$、$\hat{Y}_B$和$\hat{Z}_B$对于${A}$的方向余弦，该矩阵又称为&lt;strong&gt;方向余弦矩阵(Direction Cosine Matrix)&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;我们可以在刚体上固定一个坐标系$\{B\}$，用$\{B\}$相对于$\{A\}$的描述来表示物体的姿态，而$\{B\}$可以用该坐标系三个主轴方向的单位矢量来确定&lt;/p&gt;
+&lt;p&gt;我们用$\hat{X}_B$、$\hat{Y}_B$和$\hat{Z}_B$来表示$\{B\}$主轴方向的单位矢量，当$\{A\}$作为参考坐标系时，它们被写为$^A\hat{X}_B$、$^A\hat{Y}_B$和$^A\hat{Z}_B$&lt;/p&gt;
+&lt;p&gt;将这三个单位矢量按照$^A\hat{X}_B$、$^A\hat{Y}_B$和$^A\hat{Z}_B$的顺序排列组成一个$3\times3$的矩阵，称为&lt;strong&gt;旋转矩阵(Rotation Matrix)&lt;/strong&gt;。表达$\{B\}$相对于$\{A\}$的旋转矩阵记为$_B^AR$&lt;/p&gt;
+&lt;p&gt;$_B^AR$=$\begin{pmatrix}^A\hat{X}_B&amp;^A\hat{Y}_B&amp;^A\hat{Z}_B\end{pmatrix}$&lt;/p&gt;
+&lt;p&gt;又$^A\hat{X}_B$、$^A\hat{Y}_B$和$^A\hat{Z}_B$是以$\{A\}$为参考，所以矢量中各个元素的数值为$\hat{X}_B$、$\hat{Y}_B$和$\hat{Z}_B$分别在$\{A\}$三个主轴方向上的投影长度，因而上式可以进一步写为&lt;/p&gt;
+&lt;p&gt;$_B^AR=\begin{pmatrix}^A\hat{X}_B&amp;^A\hat{Y}_B&amp;^A\hat{Z}_B\end{pmatrix}=\begin{bmatrix}\hat{X}_B\cdot\hat{X}_A&amp;\hat{Y}_B\cdot\hat{X}_A&amp;\hat{Z}_B\cdot\hat{X}_A\\\hat{X}_B\cdot\hat{Y}_A&amp;\hat{Y}_B\cdot\hat{Y}_A&amp;\hat{Z}_B\cdot\hat{Y}_A\\\hat{X}_B\cdot\hat{Z}_A&amp;\hat{Y}_B\cdot\hat{Z}_A&amp;\hat{Z}_B\cdot\hat{Z}_A\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;又矩阵中各个矢量均为单位矢量，点积之值也是$\hat{X}_B$、$\hat{Y}_B$和$\hat{Z}_B$对于$\{A\}$的方向余弦，该矩阵又称为&lt;strong&gt;方向余弦矩阵(Direction Cosine Matrix)&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;综上，我们用旋转矩阵描述了刚体的姿态&lt;/p&gt;
 &lt;hr&gt;
 &lt;h4 id=&#34;旋转矩阵&#34;&gt;旋转矩阵
 &lt;/h4&gt;&lt;p&gt;接下来重点介绍旋转矩阵的性质与作用&lt;/p&gt;
 &lt;h5 id=&#34;性质&#34;&gt;性质
 &lt;/h5&gt;&lt;p&gt;将旋转矩阵中各个点积前后矢量互换，我们有如下推导（其中右上标T为转置符号）：&lt;/p&gt;
-&lt;p&gt;$_B^AR=\begin{pmatrix}^A\hat{X}_B&amp;amp;^A\hat{Y}_B&amp;amp;^A\hat{Z}_B\end{pmatrix}=\begin{bmatrix}\hat{X}_B\cdot\hat{X}_A&amp;amp;\hat{Y}_B\cdot\hat{X}_A&amp;amp;\hat{Z}_B\cdot\hat{X}_A\\hat{X}_B\cdot\hat{Y}_A&amp;amp;\hat{Y}_B\cdot\hat{Y}_A&amp;amp;\hat{Z}_B\cdot\hat{Y}_A\\hat{X}_B\cdot\hat{Z}_A&amp;amp;\hat{Y}_B\cdot\hat{Z}_A&amp;amp;\hat{Z}_B\cdot\hat{Z}_A\end{bmatrix}$
-$=\begin{bmatrix}\hat{X}_A\cdot\hat{X}_B&amp;amp;\hat{X}_A\cdot\hat{Y}_B&amp;amp;\hat{X}_A\cdot\hat{Z}_B\\hat{Y}_A\cdot\hat{X}_B&amp;amp;\hat{Y}_A\cdot\hat{Y}_B&amp;amp;\hat{Y}_A\cdot\hat{Z}_B\\hat{Z}_A\cdot\hat{X}_B&amp;amp;\hat{Z}_A\cdot\hat{Y}_B&amp;amp;\hat{Z}_A\cdot\hat{Z}_B\end{bmatrix}=\begin{bmatrix}\hat{X}_A{^T}\\hat{Y}_A{^T}\\hat{Z}_A{^T}\end{bmatrix}$$=\begin{pmatrix}^A\hat{X}_B&amp;amp;^A\hat{Y}_B&amp;amp;^A\hat{Z}_B\end{pmatrix}^T=^B_AR^T$&lt;/p&gt;
+&lt;p&gt;$_B^AR=\begin{pmatrix}^A\hat{X}_B&amp;^A\hat{Y}_B&amp;^A\hat{Z}_B\end{pmatrix}=\begin{bmatrix}\hat{X}_B\cdot\hat{X}_A&amp;\hat{Y}_B\cdot\hat{X}_A&amp;\hat{Z}_B\cdot\hat{X}_A\\\hat{X}_B\cdot\hat{Y}_A&amp;\hat{Y}_B\cdot\hat{Y}_A&amp;\hat{Z}_B\cdot\hat{Y}_A\\\hat{X}_B\cdot\hat{Z}_A&amp;\hat{Y}_B\cdot\hat{Z}_A&amp;\hat{Z}_B\cdot\hat{Z}_A\end{bmatrix}$
+$=\begin{bmatrix}\hat{X}_A\cdot\hat{X}_B&amp;\hat{X}_A\cdot\hat{Y}_B&amp;\hat{X}_A\cdot\hat{Z}_B\\\hat{Y}_A\cdot\hat{X}_B&amp;\hat{Y}_A\cdot\hat{Y}_B&amp;\hat{Y}_A\cdot\hat{Z}_B\\\hat{Z}_A\cdot\hat{X}_B&amp;\hat{Z}_A\cdot\hat{Y}_B&amp;\hat{Z}_A\cdot\hat{Z}_B\end{bmatrix}=\begin{bmatrix}\hat{X}_A{^T}\\\hat{Y}_A{^T}\\\hat{Z}_A{^T}\end{bmatrix}$$=\begin{pmatrix}^A\hat{X}_B&amp;^A\hat{Y}_B&amp;^A\hat{Z}_B\end{pmatrix}^T=^B_AR^T$&lt;/p&gt;
 &lt;p&gt;由此$^A_BR=^B_AR^T$&lt;/p&gt;
 &lt;p&gt;又由：&lt;/p&gt;
-&lt;p&gt;$^A_BR{^T}^A_BR=\begin{bmatrix}\hat{X}_A{^T}\\hat{Y}_A{^T}\\hat{Z}_A{^T}\end{bmatrix}\begin{pmatrix}^A\hat{X}_B&amp;amp;^A\hat{Y}_B&amp;amp;^A\hat{Z}_B\end{pmatrix}=I_3$&lt;/p&gt;
+&lt;p&gt;$^A_BR{^T}^A_BR=\begin{bmatrix}\hat{X}_A{^T}\\\hat{Y}_A{^T}\\\hat{Z}_A{^T}\end{bmatrix}\begin{pmatrix}^A\hat{X}_B&amp;^A\hat{Y}_B&amp;^A\hat{Z}_B\end{pmatrix}=I_3$&lt;/p&gt;
 &lt;p&gt;其中$I_3$是$3\times3$的单位矩阵，因此：&lt;/p&gt;
 &lt;p&gt;$^A_BR=^B_AR^{-1}=^B_AR{^T}$&lt;/p&gt;
 &lt;p&gt;即$^B_AR$的转置矩阵等于它的逆矩阵，又同时等于$^A_BR$。由线性代数可知，前者是正交矩阵的性质&lt;/p&gt;
@@ -436,22 +436,22 @@ $=\begin{bmatrix}\hat{X}_A\cdot\hat{X}_B&amp;amp;\hat{X}_A\cdot\hat{Y}_B&amp;amp
 &lt;h5 id=&#34;作用&#34;&gt;作用
 &lt;/h5&gt;&lt;p&gt;除了前文所讲的描述一个刚体的姿态外，旋转矩阵还有两个作用&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;1.转换矢量的坐标&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;矢量$P$相对于${B}$的坐标表示：$^BP=^Bp_x\hat{X}_B+^Bp_y\hat{Y}_B+^Bp_z\hat{Z}_B$&lt;/p&gt;
-&lt;p&gt;矢量$P$相对于${A}$的坐标表示：$^AP=^Ap_x\hat{X}_A+^Ap_y\hat{Y}_A+^Ap_z\hat{Z}_A$&lt;/p&gt;
-&lt;p&gt;$^BP$和$^AP$只是坐标表示不同，本质上是同一个矢量，由此矢量$P$相对于${A}$的坐标也可以用$^BP$在${A}$三个主轴上的投影计算：&lt;/p&gt;
+&lt;p&gt;矢量$P$相对于$\{B\}$的坐标表示：$^BP=^Bp_x\hat{X}_B+^Bp_y\hat{Y}_B+^Bp_z\hat{Z}_B$&lt;/p&gt;
+&lt;p&gt;矢量$P$相对于$\{A\}$的坐标表示：$^AP=^Ap_x\hat{X}_A+^Ap_y\hat{Y}_A+^Ap_z\hat{Z}_A$&lt;/p&gt;
+&lt;p&gt;$^BP$和$^AP$只是坐标表示不同，本质上是同一个矢量，由此矢量$P$相对于$\{A\}$的坐标也可以用$^BP$在$\{A\}$三个主轴上的投影计算：&lt;/p&gt;
 &lt;p&gt;$^Ap_x=^BP\hat{X}_A=^Bp_x\hat{X}_B\hat{X}_A+^Bp_y\hat{Y}_B\hat{X}_A+^Bp_z\hat{Z}_B\hat{X}_A$&lt;/p&gt;
 &lt;p&gt;$^Ap_y=^BP\hat{Y}_A=^Bp_x\hat{X}_B\hat{Y}_A+^Bp_y\hat{Y}_B\hat{Y}_A+^Bp_z\hat{Z}_B\hat{Y}_A$&lt;/p&gt;
 &lt;p&gt;$^Ap_z=^BP\hat{X}_A=^Bp_x\hat{X}_B\hat{Z}_A+^Bp_y\hat{Y}_B\hat{Z}_A+^Bp_z\hat{Z}_B\hat{Z}_A$&lt;/p&gt;
 &lt;p&gt;用矩阵表示则为：&lt;/p&gt;
-&lt;p&gt;$^AP=^A\begin{bmatrix}p_x\p_y\p_z\end{bmatrix}=\begin{bmatrix}\hat{X}_B\cdot\hat{X}_A&amp;amp;\hat{Y}_B\cdot\hat{X}_A&amp;amp;\hat{Z}_B\cdot\hat{X}_A\\hat{X}_B\cdot\hat{Y}_A&amp;amp;\hat{Y}_B\cdot\hat{Y}_A&amp;amp;\hat{Z}_B\cdot\hat{Y}_A\\hat{X}_B\cdot\hat{Z}_A&amp;amp;\hat{Y}_B\cdot\hat{Z}_A&amp;amp;\hat{Z}_B\cdot\hat{Z}_A\end{bmatrix}^B\begin{bmatrix}p_x\p_y\p_z\end{bmatrix}=^A_BR^BP$&lt;/p&gt;
-&lt;p&gt;由此得到${B}$相对于${A}$的旋转矩阵可以将$P$的表示由相对于${B}$转换为相对于${A}$&lt;/p&gt;
+&lt;p&gt;$^AP=^A\begin{bmatrix}p_x\\p_y\\p_z\end{bmatrix}=\begin{bmatrix}\hat{X}_B\cdot\hat{X}_A&amp;\hat{Y}_B\cdot\hat{X}_A&amp;\hat{Z}_B\cdot\hat{X}_A\\\hat{X}_B\cdot\hat{Y}_A&amp;\hat{Y}_B\cdot\hat{Y}_A&amp;\hat{Z}_B\cdot\hat{Y}_A\\\hat{X}_B\cdot\hat{Z}_A&amp;\hat{Y}_B\cdot\hat{Z}_A&amp;\hat{Z}_B\cdot\hat{Z}_A\end{bmatrix}^B\begin{bmatrix}p_x\\p_y\\p_z\end{bmatrix}=^A_BR^BP$&lt;/p&gt;
+&lt;p&gt;由此得到$\{B\}$相对于$\{A\}$的旋转矩阵可以将$P$的表示由相对于$\{B\}$转换为相对于$\{A\}$&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;2.描述刚体转动的状态&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;分别研究坐标系绕三个主轴旋转的状态&lt;/p&gt;
-&lt;p&gt;以${A}$绕$\hat{Z}_A$逆时针旋转$\theta$（以后不标明旋转方向默认为逆时针旋转）得到${B}$为例，计算此时${B}$相对于${A}$的旋转矩阵得：&lt;/p&gt;
-&lt;p&gt;$^A_BR=\begin{bmatrix}\cos\theta&amp;amp;-\sin\theta&amp;amp;0\\sin\theta&amp;amp;\cos\theta&amp;amp;0\0&amp;amp;0&amp;amp;1\end{bmatrix}=\begin{bmatrix}c\theta&amp;amp;-s\theta&amp;amp;0\s\theta&amp;amp;c\theta&amp;amp;0\0&amp;amp;0&amp;amp;1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;以$\{A\}$绕$\hat{Z}_A$逆时针旋转$\theta$（以后不标明旋转方向默认为逆时针旋转）得到$\{B\}$为例，计算此时$\{B\}$相对于$\{A\}$的旋转矩阵得：&lt;/p&gt;
+&lt;p&gt;$^A_BR=\begin{bmatrix}\cos\theta&amp;-\sin\theta&amp;0\\\sin\theta&amp;\cos\theta&amp;0\\0&amp;0&amp;1\end{bmatrix}=\begin{bmatrix}c\theta&amp;-s\theta&amp;0\\s\theta&amp;c\theta&amp;0\\0&amp;0&amp;1\end{bmatrix}$&lt;/p&gt;
 &lt;p&gt;（由于我们将在计算中用到许多三角函数，因此三角函数用对应首字母简记）&lt;/p&gt;
-&lt;p&gt;由此，我们将绕$\hat{Z}&lt;em&gt;A$旋转$\theta$以这种方式计算出来的旋转矩阵记为$R&lt;/em&gt;{\hat{Z}_A}(\theta)$，则：&lt;/p&gt;
-&lt;p&gt;$R_{\hat{Z}_A}(\theta)=\begin{bmatrix}c\theta&amp;amp;-s\theta&amp;amp;0\s\theta&amp;amp;c\theta&amp;amp;0\0&amp;amp;0&amp;amp;1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;由此，我们将绕$\hat{Z}_A$旋转$\theta$以这种方式计算出来的旋转矩阵记为$R_{\hat{Z}_A}(\theta)$，则：&lt;/p&gt;
+&lt;p&gt;$R_{\hat{Z}_A}(\theta)=\begin{bmatrix}c\theta&amp;-s\theta&amp;0\\s\theta&amp;c\theta&amp;0\\0&amp;0&amp;1\end{bmatrix}$&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E6%97%8B%E8%BD%AC.png&#34;
 	width=&#34;985&#34;
 	height=&#34;617&#34;
@@ -465,8 +465,8 @@ $=\begin{bmatrix}\hat{X}_A\cdot\hat{X}_B&amp;amp;\hat{X}_A\cdot\hat{Y}_B&amp;amp
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;同理得到：&lt;/p&gt;
-&lt;p&gt;$R_{\hat{X}_A}(\theta)=\begin{bmatrix}1&amp;amp;0&amp;amp;0\0&amp;amp;c\theta&amp;amp;-s\theta\0&amp;amp;s\theta&amp;amp;c\theta\end{bmatrix}$&lt;/p&gt;
-&lt;p&gt;$R_{\hat{Y}_A}(\theta)=\begin{bmatrix}c\theta&amp;amp;0&amp;amp;s\theta\0&amp;amp;1&amp;amp;0\-s\theta&amp;amp;0&amp;amp;c\theta\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;$R_{\hat{X}_A}(\theta)=\begin{bmatrix}1&amp;0&amp;0\\0&amp;c\theta&amp;-s\theta\\0&amp;s\theta&amp;c\theta\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;$R_{\hat{Y}_A}(\theta)=\begin{bmatrix}c\theta&amp;0&amp;s\theta\\0&amp;1&amp;0\\-s\theta&amp;0&amp;c\theta\end{bmatrix}$&lt;/p&gt;
 &lt;p&gt;通过接下来的例子我们来理解这类旋转矩阵如何描述刚体转动的状态&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/%e8%bd%ac%e5%8a%a8&#34;
 	
@@ -476,18 +476,18 @@ $=\begin{bmatrix}\hat{X}_A\cdot\hat{X}_B&amp;amp;\hat{X}_A\cdot\hat{Y}_B&amp;amp
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;$^AP=^A(p_x;p_y;p_z)^T$对$\hat{X}_A$旋转$\theta$得到$^AP&amp;rsquo;$，$^AP&amp;rsquo;=?$&lt;/p&gt;
-&lt;p&gt;不妨让${A}$跟着$^AP$同步旋转，得到${A&amp;rsquo;}$，那么$^AP&amp;rsquo;$相对于${A&amp;rsquo;}$的坐标跟$^AP$相对于${A}$的坐标相等，而后者已知&lt;/p&gt;
-&lt;p&gt;又通过题目条件和前文定义我们知道$^A_{A&amp;rsquo;}R=R_{\hat{X}_A}(\theta)=\begin{bmatrix}1&amp;amp;0&amp;amp;0\0&amp;amp;c\theta&amp;amp;-s\theta\0&amp;amp;s\theta&amp;amp;c\theta\end{bmatrix}$&lt;/p&gt;
-&lt;p&gt;利用旋转矩阵转换矢量坐标的作用，我们可以把$^AP&amp;rsquo;$相对于${A&amp;rsquo;}$的坐标转换为相对于原坐标系${A}$的坐标，即：&lt;/p&gt;
-&lt;p&gt;$^AP&amp;rsquo;=^A_{A&amp;rsquo;}R^AP=R_{\hat{X}_A}(\theta)^AP$&lt;/p&gt;
+&lt;p&gt;$^AP=^A(p_x\;p_y\;p_z)^T$对$\hat{X}_A$旋转$\theta$得到$^AP&#39;$，$^AP&#39;=?$&lt;/p&gt;
+&lt;p&gt;不妨让$\{A\}$跟着$^AP$同步旋转，得到$\{A&#39;\}$，那么$^AP&#39;$相对于$\{A&#39;\}$的坐标跟$^AP$相对于$\{A\}$的坐标相等，而后者已知&lt;/p&gt;
+&lt;p&gt;又通过题目条件和前文定义我们知道$^A_{A&#39;}R=R_{\hat{X}_A}(\theta)=\begin{bmatrix}1&amp;0&amp;0\\0&amp;c\theta&amp;-s\theta\\0&amp;s\theta&amp;c\theta\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;利用旋转矩阵转换矢量坐标的作用，我们可以把$^AP&#39;$相对于$\{A&#39;\}$的坐标转换为相对于原坐标系$\{A\}$的坐标，即：&lt;/p&gt;
+&lt;p&gt;$^AP&#39;=^A_{A&#39;}R^AP=R_{\hat{X}_A}(\theta)^AP$&lt;/p&gt;
 &lt;p&gt;所以旋转矩阵$R(\theta)$可以计算矢量在同一坐标系下旋转后的坐标&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;位姿描述&#34;&gt;位姿描述
 &lt;/h3&gt;&lt;p&gt;位置和姿态的组合称为&lt;strong&gt;位姿&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;我们同样用${A}$来表示一个位姿&lt;/p&gt;
-&lt;p&gt;以${A}$为参考描述位姿${B}$，结合前文的位置描述和姿态描述，我们用$^A_BR$表示${B}$的姿态，用$^AP_{BORG}$表示${B}$的原点的位置矢量（下标ORG意为原点origin），于是位姿描述记为：&lt;/p&gt;
-&lt;p&gt;${B}={^A_BR,{,}^AP_{BORG}}$&lt;/p&gt;
+&lt;p&gt;我们同样用$\{A\}$来表示一个位姿&lt;/p&gt;
+&lt;p&gt;以$\{A\}$为参考描述位姿$\{B\}$，结合前文的位置描述和姿态描述，我们用$^A_BR$表示$\{B\}$的姿态，用$^AP_{BORG}$表示$\{B\}$的原点的位置矢量（下标ORG意为原点origin），于是位姿描述记为：&lt;/p&gt;
+&lt;p&gt;$\{B\}=\{^A_BR,{\,}^AP_{BORG}\}$&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;下一篇文章将讲述本章后半部分空间中的变换内容&lt;/strong&gt;&lt;/p&gt;
 </description>
@@ -638,16 +638,16 @@ $=\begin{bmatrix}\hat{X}_A\cdot\hat{X}_B&amp;amp;\hat{X}_A\cdot\hat{Y}_B&amp;amp
 &lt;/h1&gt;&lt;h2 id=&#34;1-解析函数的概念与柯西-黎曼方程&#34;&gt;§1 解析函数的概念与柯西-黎曼方程
 &lt;/h2&gt;&lt;h3 id=&#34;1复变函数的导数与微分&#34;&gt;1.复变函数的导数与微分
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;复变函数的导数&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;设函数$\varpi=f(z)$在点$z_0$的邻域内或包含$z_0$的区域$D$内有定义，如果当$z$按任意方式趋于$z_0$，即当$\Delta z$按任意方式趋于零时，比值$\frac{\Delta\varpi}{\Delta z}$的极限都存在，且其值有限，则称此极限为函数$f(z)$在点$z_0$的&lt;strong&gt;导数&lt;/strong&gt;，并记为$f&amp;rsquo;(z_0)$，即&lt;/p&gt;
+&lt;p&gt;设函数$\varpi=f(z)$在点$z_0$的邻域内或包含$z_0$的区域$D$内有定义，如果当$z$按任意方式趋于$z_0$，即当$\Delta z$按任意方式趋于零时，比值$\frac{\Delta\varpi}{\Delta z}$的极限都存在，且其值有限，则称此极限为函数$f(z)$在点$z_0$的&lt;strong&gt;导数&lt;/strong&gt;，并记为$f&#39;(z_0)$，即&lt;/p&gt;
 $$f&#39;(z_0)=\lim_{\Delta z\rightarrow 0}\frac{\Delta\varpi}{\Delta z}=\lim_{z\rightarrow z_0}\frac{f(z)-f(z_0)}{z-z_0}$$&lt;p&gt;这时称函数$f(z)$于点$z_0$&lt;strong&gt;可导&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;复变函数的微分&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;设函数$\varpi=f(z)$在点$z$可导，于是&lt;/p&gt;
-&lt;p&gt;$\lim_{\Delta z\rightarrow 0}\frac{\Delta\varpi}{\Delta z}=f&amp;rsquo;(z)$&lt;/p&gt;
-&lt;p&gt;$\frac{\Delta\varpi}{\Delta z}=f&amp;rsquo;(z)+\eta,;\lim_{\Delta z\rightarrow 0}\eta=0$&lt;/p&gt;
-&lt;p&gt;$\Delta\varpi=f&amp;rsquo;(z)\Delta z+\varepsilon$&lt;/p&gt;
+&lt;p&gt;$\lim_{\Delta z\rightarrow 0}\frac{\Delta\varpi}{\Delta z}=f&#39;(z)$&lt;/p&gt;
+&lt;p&gt;$\frac{\Delta\varpi}{\Delta z}=f&#39;(z)+\eta,\;\lim_{\Delta z\rightarrow 0}\eta=0$&lt;/p&gt;
+&lt;p&gt;$\Delta\varpi=f&#39;(z)\Delta z+\varepsilon$&lt;/p&gt;
 &lt;p&gt;其中$|\varepsilon\cdot\Delta z|$为比$|\Delta z|$高阶的无穷小&lt;/p&gt;
-&lt;p&gt;称$f&amp;rsquo;(z)\Delta z$为$\varpi=f(z)$在点$z$的&lt;strong&gt;微分&lt;/strong&gt;，记为$d\varpi$或$df(z)$，此时也称$f(z)$在点$z$&lt;strong&gt;可微&lt;/strong&gt;，即$d\varpi=f&amp;rsquo;(z)\Delta z$&lt;/p&gt;
+&lt;p&gt;称$f&#39;(z)\Delta z$为$\varpi=f(z)$在点$z$的&lt;strong&gt;微分&lt;/strong&gt;，记为$d\varpi$或$df(z)$，此时也称$f(z)$在点$z$&lt;strong&gt;可微&lt;/strong&gt;，即$d\varpi=f&#39;(z)\Delta z$&lt;/p&gt;
 &lt;p&gt;可导$\Leftrightarrow$可微$\Rightarrow$连续&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;2解析函数及其简单性质&#34;&gt;2.解析函数及其简单性质
@@ -658,62 +658,62 @@ $$f&#39;(z_0)=\lim_{\Delta z\rightarrow 0}\frac{\Delta\varpi}{\Delta z}=\lim_{z\
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;解析函数的性质&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;$(1)$函数在一点解析，则其各阶导数也在该点解析&lt;/p&gt;
-&lt;p&gt;$(2)$如函数$f_1(z),,f_2(z)$在区域$D$内解析，则其和、差、积、商（商要求分母在$D$内不为零）在$D$内解析，&lt;em&gt;并且求导公式和一元实函数一致&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;$(2)$如函数$f_1(z),\,f_2(z)$在区域$D$内解析，则其和、差、积、商（商要求分母在$D$内不为零）在$D$内解析，&lt;em&gt;并且求导公式和一元实函数一致&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;$(3)$&lt;strong&gt;复合函数的求导法则&lt;/strong&gt;：设函数$\xi=f(z)$在区域$D$内解析，函数$\varpi=g(\xi)$在区域$G$内解析，若对于$D$内每一点$z$，函数$f(z)$的值$\xi$均属于$G$，则$\varpi=g[f(z)]$在$D$内解析，且$\frac{dg[f(z)]}{dz}=\frac{dg(\xi)}{d\xi}\cdot\frac{df(z)}{dz}$&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;3柯西-黎曼方程&#34;&gt;3.柯西-黎曼方程
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;柯西-黎曼方程&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;假设$\varpi=f(z)=u(x,,y)+iv(x,,y)$是复变元$z=x+iy$的一个定义在区域$D$内的函数&lt;/p&gt;
-&lt;p&gt;函数$f(z)$可微的条件$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y},;\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}$是关于$u$及$v$的偏微分方程组，称为&lt;strong&gt;柯西-黎曼方程&lt;/strong&gt;（简称$C.-,R.$方程）&lt;/p&gt;
+&lt;p&gt;假设$\varpi=f(z)=u(x,\,y)+iv(x,\,y)$是复变元$z=x+iy$的一个定义在区域$D$内的函数&lt;/p&gt;
+&lt;p&gt;函数$f(z)$可微的条件$\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y},\;\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}$是关于$u$及$v$的偏微分方程组，称为&lt;strong&gt;柯西-黎曼方程&lt;/strong&gt;（简称$C.-\,R.$方程）&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;证明思路：设$\Delta z=\Delta x+i\Delta y$，变点$z+\Delta z$分别沿平行于实轴和虚轴的方向趋于点$z$的方向导数相等&lt;/em&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;可微的充要条件&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;设函数$f(z)=u(x,,y)+iv(x,,y)$在区域$D$内有定义，$f(x,,y)$在$D$内一点$z=x+iy$可微的充要条件是&lt;/p&gt;
-&lt;p&gt;$(1)$二元函数$u(x,,y),;v(x,,y)$在点$(x,,y)$可微&lt;/p&gt;
-&lt;p&gt;$(2)$$u(x,,y),;v(x,,y)$在点$(x,,y)$满足$C.-,R.$方程&lt;/p&gt;
-&lt;p&gt;上述条件满足时，$f&amp;rsquo;(x)=\frac{\partial u}{\partial x}+i\frac{\partial v}{\partial x}$（&lt;em&gt;可利用$C.-,R.$方程代换其中的偏导数&lt;/em&gt;）&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;在区域$D$内解析的充要条件将上述条件中点$(x,,y)$改为区域$D$即可&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;设函数$f(z)=u(x,\,y)+iv(x,\,y)$在区域$D$内有定义，$f(x,\,y)$在$D$内一点$z=x+iy$可微的充要条件是&lt;/p&gt;
+&lt;p&gt;$(1)$二元函数$u(x,\,y),\;v(x,\,y)$在点$(x,\,y)$可微&lt;/p&gt;
+&lt;p&gt;$(2)$$u(x,\,y),\;v(x,\,y)$在点$(x,\,y)$满足$C.-\,R.$方程&lt;/p&gt;
+&lt;p&gt;上述条件满足时，$f&#39;(x)=\frac{\partial u}{\partial x}+i\frac{\partial v}{\partial x}$（&lt;em&gt;可利用$C.-\,R.$方程代换其中的偏导数&lt;/em&gt;）&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;在区域$D$内解析的充要条件将上述条件中点$(x,\,y)$改为区域$D$即可&lt;/em&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;指数形式可微的充要条件&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;若将复数$z$表示成指数形式$z=re^{i\theta}$，则函数$\varpi=f(z)$又可表示为$\varpi=u(r,,\theta)+iv(r,,\theta)$&lt;/p&gt;
-&lt;p&gt;若$u(r,,\theta),,v(r,,\theta)$可微，且$u_r=\frac{1}{r}v_\theta,;u_\theta=-rv_r$，则$f(z)=f(r,\theta)$可微&lt;/p&gt;
+&lt;p&gt;若将复数$z$表示成指数形式$z=re^{i\theta}$，则函数$\varpi=f(z)$又可表示为$\varpi=u(r,\,\theta)+iv(r,\,\theta)$&lt;/p&gt;
+&lt;p&gt;若$u(r,\,\theta),\,v(r,\,\theta)$可微，且$u_r=\frac{1}{r}v_\theta,\;u_\theta=-rv_r$，则$f(z)=f(r,\theta)$可微&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;2-初等解析函数&#34;&gt;§2 初等解析函数
 &lt;/h2&gt;&lt;h3 id=&#34;1指数函数&#34;&gt;1.指数函数
 &lt;/h3&gt;&lt;p&gt;对于任何复数$z=x+iy$，我们用关系式$e^z=e^{x+iy}=e^x(\cos y+i\sin y)$来定义指数函数$e^z$&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;性质&lt;/p&gt;
-&lt;p&gt;$(1)|e^z|=e^x&amp;gt;0,,arg,e^z=y$&lt;/p&gt;
-&lt;p&gt;$(2)e^z$在$z$平面上解析，且$(e^z)&amp;rsquo;=e^z$&lt;/p&gt;
+&lt;p&gt;$(1)|e^z|=e^x&gt;0,\,arg\,e^z=y$&lt;/p&gt;
+&lt;p&gt;$(2)e^z$在$z$平面上解析，且$(e^z)&#39;=e^z$&lt;/p&gt;
 &lt;p&gt;$(3)e^z$是以$2\pi i$为基本周期的周期函数（$e^{2k\pi i}=1$）&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;2三角函数与双曲函数&#34;&gt;2.三角函数与双曲函数
-&lt;/h3&gt;&lt;p&gt;由指数函数定义，当$x=0$时推得$e^{iy}=\cos y+i\sin y,;e^{-iy}=\cos y-i\sin y$&lt;/p&gt;
-&lt;p&gt;从而得到$\sin y=\frac{e^{iy}-e^{-iy}}{2i},;\cos y=\frac{e^{iy}+e^{-iy}}{2}$&lt;/p&gt;
-&lt;p&gt;因而用$\sin z=\frac{e^{iz}-e^{-iz}}{2i},;\cos z=\frac{e^{iz}+e^{-iz}}{2}$分别定义为$z$的&lt;strong&gt;正弦函数&lt;/strong&gt;和&lt;strong&gt;余弦函数&lt;/strong&gt;&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;由指数函数定义，当$x=0$时推得$e^{iy}=\cos y+i\sin y,\;e^{-iy}=\cos y-i\sin y$&lt;/p&gt;
+&lt;p&gt;从而得到$\sin y=\frac{e^{iy}-e^{-iy}}{2i},\;\cos y=\frac{e^{iy}+e^{-iy}}{2}$&lt;/p&gt;
+&lt;p&gt;因而用$\sin z=\frac{e^{iz}-e^{-iz}}{2i},\;\cos z=\frac{e^{iz}+e^{-iz}}{2}$分别定义为$z$的&lt;strong&gt;正弦函数&lt;/strong&gt;和&lt;strong&gt;余弦函数&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;性质&lt;/p&gt;
-&lt;p&gt;$(1)$在$z$平面上解析，且$(\sin z)&amp;rsquo;=\cos z,;(\cos z)&amp;rsquo;=-\sin z$&lt;/p&gt;
+&lt;p&gt;$(1)$在$z$平面上解析，且$(\sin z)&#39;=\cos z,\;(\cos z)&#39;=-\sin z$&lt;/p&gt;
 &lt;p&gt;$(2)\sin z$是奇函数，$\cos z$是偶函数，并遵从三角恒等式：&lt;/p&gt;
 &lt;p&gt;$\sin^2z+\cos^2z=1$&lt;/p&gt;
 &lt;p&gt;$\sin(z_1+z_2)=\sin z_1\cdot\cos z_2+\cos z_1\cdot\sin z_2$&lt;/p&gt;
 &lt;p&gt;$\cos(z_1+z_2)=\cos z_1\cdot\cos z_2-\sin z_1\cdot\sin z_2$&lt;/p&gt;
 &lt;p&gt;$(3)$是以$2\pi$为周期的周期函数&lt;/p&gt;
-&lt;p&gt;$(4)\sin z$的零点为$z=n\pi,(n∈\mathbb{z})$&lt;/p&gt;
-&lt;p&gt;$\cos z$的零点为$z=(n+\frac{1}{2}\pi,(n∈\mathbb{z})$&lt;/p&gt;
-&lt;p&gt;$(5)$在复数域内$|\sin z|\leq1,;|\cos z|\leq1$不成立&lt;/p&gt;
+&lt;p&gt;$(4)\sin z$的零点为$z=n\pi\,(n∈\mathbb{z})$&lt;/p&gt;
+&lt;p&gt;$\cos z$的零点为$z=(n+\frac{1}{2}\pi\,(n∈\mathbb{z})$&lt;/p&gt;
+&lt;p&gt;$(5)$在复数域内$|\sin z|\leq1,\;|\cos z|\leq1$不成立&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;p&gt;定义$\tan z=\frac{\sin z}{\cos z},;\cot z=\frac{\cos z}{\sin z},;\sec z=\frac{1}{\cos z},;\csc z=\frac{1}{\sin z}$分别称为$z$的&lt;strong&gt;正切函数&lt;/strong&gt;、&lt;strong&gt;余切函数&lt;/strong&gt;、&lt;strong&gt;正割函数&lt;/strong&gt;及&lt;strong&gt;余割函数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;定义$\tan z=\frac{\sin z}{\cos z},\;\cot z=\frac{\cos z}{\sin z},\;\sec z=\frac{1}{\cos z},\;\csc z=\frac{1}{\sin z}$分别称为$z$的&lt;strong&gt;正切函数&lt;/strong&gt;、&lt;strong&gt;余切函数&lt;/strong&gt;、&lt;strong&gt;正割函数&lt;/strong&gt;及&lt;strong&gt;余割函数&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;性质&lt;/p&gt;
 &lt;p&gt;$(1)$在$z$平面上使分母不为零的点处解析，且&lt;/p&gt;
-&lt;p&gt;$(\tan z)&amp;rsquo;=\sec^2z,;(\cot z)&amp;rsquo;=-\csc^2z,;(\sec z)&amp;rsquo;=\sec z\cdot\tan z,;(\csc z)&amp;rsquo;=-\csc z\cdot\cot z$&lt;/p&gt;
+&lt;p&gt;$(\tan z)&#39;=\sec^2z,\;(\cot z)&#39;=-\csc^2z,\;(\sec z)&#39;=\sec z\cdot\tan z,\;(\csc z)&#39;=-\csc z\cdot\cot z$&lt;/p&gt;
 &lt;p&gt;$(2)$正切函数和余切函数的周期为$\pi$，正割函数和余割函数的周期为$2\pi$&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;p&gt;定义$\sinh z=\frac{e^z-e^{-z}}{2},;\cosh z=\frac{e^z+e^{-z}}{2},;\tanh z=\frac{\sinh z}{\cosh z},;\coth z=\frac{1}{\tanh z},;sech,z=\frac{1}{\cosh z},;csch,z=\frac{1}{\sinh z}$&lt;/p&gt;
+&lt;p&gt;定义$\sinh z=\frac{e^z-e^{-z}}{2},\;\cosh z=\frac{e^z+e^{-z}}{2},\;\tanh z=\frac{\sinh z}{\cosh z},\;\coth z=\frac{1}{\tanh z},\;sech\,z=\frac{1}{\cosh z},\;csch\,z=\frac{1}{\sinh z}$&lt;/p&gt;
 &lt;p&gt;分别称为$z$的&lt;strong&gt;双曲正弦函数&lt;/strong&gt;、&lt;strong&gt;双曲余弦函数&lt;/strong&gt;、&lt;strong&gt;双曲正切函数&lt;/strong&gt;、&lt;strong&gt;双曲余切函数&lt;/strong&gt;、&lt;strong&gt;双曲正割函数&lt;/strong&gt;及&lt;strong&gt;双曲余割函数&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;3-初等多值函数&#34;&gt;§3 初等多值函数
@@ -723,9 +723,9 @@ $$f&#39;(z_0)=\lim_{\Delta z\rightarrow 0}\frac{\Delta\varpi}{\Delta z}=\lim_{z\
 &lt;h3 id=&#34;1辐角函数&#34;&gt;1.辐角函数
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;辐角函数与辐角改变量&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;函数的多值性源于辐角的多值性&lt;/p&gt;
-&lt;p&gt;任意一个复数$z(z\neq0)$有无穷多个辐角，&lt;strong&gt;辐角函数&lt;/strong&gt;$\varpi=Arg,z$是一个多值函数，定义域是$C$\${0}$&lt;/p&gt;
-&lt;p&gt;设$L$是$C$\${0}$内一条简单曲线，$z_0$是$L$的起点，$z_1$是$L$的终点，当$z$沿$L$从$z_0$连续变动到$z_1$时，$\overrightarrow{Oz}$所旋转的角称作$Arg,z$在$L$上的改变量，简称&lt;strong&gt;辐角改变量&lt;/strong&gt;，记作$\Delta_LArg,z$&lt;/p&gt;
-&lt;p&gt;从$z_0$到$z_1$由于$L$绕原点的方向和圈数不一样，$\Delta_LArg,z$也不一样
+&lt;p&gt;任意一个复数$z(z\neq0)$有无穷多个辐角，&lt;strong&gt;辐角函数&lt;/strong&gt;$\varpi=Arg\,z$是一个多值函数，定义域是$C$\${0}$&lt;/p&gt;
+&lt;p&gt;设$L$是$C$\${0}$内一条简单曲线，$z_0$是$L$的起点，$z_1$是$L$的终点，当$z$沿$L$从$z_0$连续变动到$z_1$时，$\overrightarrow{Oz}$所旋转的角称作$Arg,z$在$L$上的改变量，简称**辐角改变量**，记作$\Delta_LArg,z$&lt;/p&gt;
+&lt;p&gt;从$z_0$到$z_1$由于$L$绕原点的方向和圈数不一样，$\Delta_LArg\,z$也不一样
 &lt;img src=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E8%BE%90%E8%A7%92.png&#34;
 	width=&#34;1033&#34;
 	height=&#34;339&#34;
@@ -738,23 +738,23 @@ $$f&#39;(z_0)=\lim_{\Delta z\rightarrow 0}\frac{\Delta\varpi}{\Delta z}=\lim_{z\
 		data-flex-basis=&#34;731px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;在$z_0$取定$Arg,z$的一个值记为$arg,z$，称为$Arg,z$在$z_0$的初值，将$arg,z_0+\Delta_LArg,z$称作$Arg,z$在$z_0$的终值，记作$arg,z$，则$arg,z$依赖于起点的初值和辐角改变量&lt;/p&gt;
+&lt;p&gt;在$z_0$取定$Arg\,z$的一个值记为$arg\,z$，称为$Arg\,z$在$z_0$的初值，将$arg\,z_0+\Delta_LArg\,z$称作$Arg\,z$在$z_0$的终值，记作$arg\,z$，则$arg\,z$依赖于起点的初值和辐角改变量&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;单值连续函数&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;由于多值函数不方便应用，我们希望将$Arg,z$分解为若干单值连续函数&lt;/p&gt;
-&lt;p&gt;由$arg,z=arg,z_0+\Delta_LArg,z$可知，对取定的初值$arg,z_0$，由于$\Delta_LArg,z$在区域$C$\${0}$内不唯一，$arg,z$也不唯一。所以需要寻找使$\Delta_LArg,z$唯一的区域（辐角改变量只与起点、终点位置有关而与曲线形状无关）&lt;/p&gt;
+&lt;p&gt;由于多值函数不方便应用，我们希望将$Arg\,z$分解为若干单值连续函数&lt;/p&gt;
+&lt;p&gt;由$arg\,z=arg\,z_0+\Delta_LArg\,z$可知，对取定的初值$arg\,z_0$，由于$\Delta_LArg\,z$在区域$C$\${0}$内不唯一，$arg,z$也不唯一。所以需要寻找使$\Delta_LArg,z$唯一的区域（辐角改变量只与起点、终点位置有关而与曲线形状无关）&lt;/p&gt;
 &lt;p&gt;该区域性质与保守场有异曲同工之处，可移用保守场的判定（沿着任何闭合环路积分均为$0$），因此研究简单闭曲线$L\subset$ $C$\${0}$，有&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;$\Delta_LArg,z=0$，$0$在$L$外部&lt;/p&gt;
-&lt;p&gt;$\Delta_LArg,z=2\pi$，$0$在$L$内部&lt;/p&gt;
+&lt;p&gt;$\Delta_LArg\,z=0$，$0$在$L$外部&lt;/p&gt;
+&lt;p&gt;$\Delta_LArg\,z=2\pi$，$0$在$L$内部&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;因此，只要能使区域内任一简单闭曲线都不围绕原点$z=0$即可，若将复平面$C$沿负实轴剪开成一单连通开区域记为$G$，则$\Delta_LArg,z$只与$L$的起点和终点有关，而与曲线的形状无关&lt;/p&gt;
-&lt;p&gt;在$G$内固定起点$z_0$，取定初值$arg,z_0$，则$arg,z_0+\Delta_LArg,z$就是&lt;strong&gt;单值连续函数&lt;/strong&gt;；取定初值$arg,z_0+2\pi$，得另一个单值连续函数；以此类推，取定初值$arg,z_0+2k\pi$，就在$G$内把$Arg,z$分成无穷多个单值连续函数$arg,z+2k\pi,;z\in G,,k\in \mathbb{Z}$&lt;/p&gt;
+&lt;p&gt;因此，只要能使区域内任一简单闭曲线都不围绕原点$z=0$即可，若将复平面$C$沿负实轴剪开成一单连通开区域记为$G$，则$\Delta_LArg\,z$只与$L$的起点和终点有关，而与曲线的形状无关&lt;/p&gt;
+&lt;p&gt;在$G$内固定起点$z_0$，取定初值$arg\,z_0$，则$arg\,z_0+\Delta_LArg\,z$就是&lt;strong&gt;单值连续函数&lt;/strong&gt;；取定初值$arg\,z_0+2\pi$，得另一个单值连续函数；以此类推，取定初值$arg\,z_0+2k\pi$，就在$G$内把$Arg\,z$分成无穷多个单值连续函数$arg\,z+2k\pi,\;z\in G,\,k\in \mathbb{Z}$&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;2根式函数&#34;&gt;2.根式函数
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;根式函数及其变换&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;规定&lt;strong&gt;根式函数&lt;/strong&gt;$\varpi=\sqrt[n]{z}$为&lt;strong&gt;幂函数&lt;/strong&gt;$z=\varpi^n$的反函数&lt;/p&gt;
-&lt;p&gt;如果令$z=re^{i\theta},;\varpi=\rho e^{i\varphi}$，可知$\rho=\sqrt[n]{r},;\varphi=\frac{\theta}{n}$&lt;/p&gt;
+&lt;p&gt;如果令$z=re^{i\theta},\;\varpi=\rho e^{i\varphi}$，可知$\rho=\sqrt[n]{r},\;\varphi=\frac{\theta}{n}$&lt;/p&gt;
 &lt;p&gt;即$z$平面到$\varpi$平面的变换为模长开$n$次方根、辐角除以$n$的变换
 &lt;img src=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%8F%98%E6%8D%A2.png&#34;
 	width=&#34;1035&#34;
@@ -770,8 +770,8 @@ $$f&#39;(z_0)=\lim_{\Delta z\rightarrow 0}\frac{\Delta\varpi}{\Delta z}=\lim_{z\
 &gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;根式函数的单叶性区域&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;为了寻找其单叶性区域，先限定$Arg,z$取$(-\pi,,\pi)$，则该变化使$z$平面压缩到了$-\frac{\pi}{n} &amp;lt; \varphi &amp;lt; \frac{\pi}{n}$的角形区域内，该区域为$\varpi=\sqrt[n]{z}$的一个单叶性区域&lt;/p&gt;
-&lt;p&gt;同理，当$Arg,z$取$(\pi,3\pi)$，可划分出第二个单叶性区域$\frac{\pi}{n}&amp;lt;\varphi&amp;lt;\frac{3\pi}{n}$，以此类推，当$Arg,z$取$(-\pi+2k\pi,,\pi+2k\pi)$时，对应的单叶性区域为$(\frac{2k\pi}{n}-\frac{\pi}{n})&amp;lt;\varphi&amp;lt;(\frac{2k\pi}{n}+\frac{\pi}{n})$，当$k$从$0$取到$n-1$时，得到的所有单叶性区域将$\varpi$平面填满，此为函数$\varpi=\sqrt[n]{z}$单叶性区域的一种分法。总之，幂函数$\varpi=\sqrt[n]{z}$的单叶性区域是顶点在原点$z=0$，张度不超过$\frac{2\pi}{n}$的角形区域
+&lt;p&gt;为了寻找其单叶性区域，先限定$Arg\,z$取$(-\pi,\,\pi)$，则该变化使$z$平面压缩到了$-\frac{\pi}{n} &lt; \varphi &lt; \frac{\pi}{n}$的角形区域内，该区域为$\varpi=\sqrt[n]{z}$的一个单叶性区域&lt;/p&gt;
+&lt;p&gt;同理，当$Arg\,z$取$(\pi,3\pi)$，可划分出第二个单叶性区域$\frac{\pi}{n}&lt;\varphi&lt;\frac{3\pi}{n}$，以此类推，当$Arg\,z$取$(-\pi+2k\pi,\,\pi+2k\pi)$时，对应的单叶性区域为$(\frac{2k\pi}{n}-\frac{\pi}{n})&lt;\varphi&lt;(\frac{2k\pi}{n}+\frac{\pi}{n})$，当$k$从$0$取到$n-1$时，得到的所有单叶性区域将$\varpi$平面填满，此为函数$\varpi=\sqrt[n]{z}$单叶性区域的一种分法。总之，幂函数$\varpi=\sqrt[n]{z}$的单叶性区域是顶点在原点$z=0$，张度不超过$\frac{2\pi}{n}$的角形区域
 &lt;img src=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%88%86%E6%94%AF.png&#34;
 	width=&#34;615&#34;
 	height=&#34;273&#34;
@@ -786,7 +786,7 @@ $$f&#39;(z_0)=\lim_{\Delta z\rightarrow 0}\frac{\Delta\varpi}{\Delta z}=\lim_{z\
 &gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;指数函数的单值解析分支&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;只要将$Arg,z$的取值区间范围限定在$2\pi$，所得即为单叶性区域，由前文辐角函数可知，在$z$平面上从原点$O$到点$\infty$任意引一条射线（或一条通向无穷远点的广义简单曲线）将$z$平面割破，构成一个以此&lt;strong&gt;割线&lt;/strong&gt;为边界的区域，记为$G$，在此区域上指定一点$z_0$取不同的初值$arg,z_0$，就能各自得到区域内任意的点$z$唯一的辐角，从而得到&lt;/p&gt;
+&lt;p&gt;只要将$Arg\,z$的取值区间范围限定在$2\pi$，所得即为单叶性区域，由前文辐角函数可知，在$z$平面上从原点$O$到点$\infty$任意引一条射线（或一条通向无穷远点的广义简单曲线）将$z$平面割破，构成一个以此&lt;strong&gt;割线&lt;/strong&gt;为边界的区域，记为$G$，在此区域上指定一点$z_0$取不同的初值$arg\,z_0$，就能各自得到区域内任意的点$z$唯一的辐角，从而得到&lt;/p&gt;
 $$\varpi_k=(\sqrt[n]{z})_k=\sqrt[n]{r(z)}e^{i\frac{\theta(z)+2k\pi}{n}}\;(z\in G,\,k=0,\,1,\,…,\,n-1)$$&lt;p&gt;称为$\sqrt[n]{z}$的$n$个&lt;strong&gt;单值连续分支函数&lt;/strong&gt;。而分出$\sqrt[n]{z}$的单值解析分支的割线称为$\sqrt[n]{z}$的&lt;strong&gt;支割线&lt;/strong&gt;。支割线两侧称为&lt;strong&gt;两岸&lt;/strong&gt;，如果支割线接近于平行$x$轴方向就分成&lt;strong&gt;上岸&lt;/strong&gt;和&lt;strong&gt;下岸&lt;/strong&gt;，如果接近于平行$y$轴方向就分成&lt;strong&gt;左岸&lt;/strong&gt;和&lt;strong&gt;右岸&lt;/strong&gt;
 &lt;img src=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E6%A0%B9%E5%BC%8F%E5%88%86%E6%94%AF%E4%BE%8B.png&#34;
 	width=&#34;1040&#34;
@@ -801,23 +801,23 @@ $$\varpi_k=(\sqrt[n]{z})_k=\sqrt[n]{r(z)}e^{i\frac{\theta(z)+2k\pi}{n}}\;(z\in G
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;对于$\varpi_k=(\sqrt[n]{z})_k$的单值解析分支，有&lt;/p&gt;
-&lt;p&gt;$\frac{\mathrm{d} }{\mathrm{d} z}(\sqrt[n]{z})_k=\frac{1}{n}\frac{(\sqrt[n]{z})_k}{z};(z\in G,,k=0,,1,,…,,n-1)$&lt;/p&gt;
+&lt;p&gt;$\frac{\mathrm{d} }{\mathrm{d} z}(\sqrt[n]{z})_k=\frac{1}{n}\frac{(\sqrt[n]{z})_k}{z}\;(z\in G,\,k=0,\,1,\,…,\,n-1)$&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;支点&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;假设有一点，在此点的充分小邻域内，作一个包围此点的圆周$\Gamma$，当变点$z$从$\Gamma$上一点除法，绕$\Gamma$连续变动一周而回到其出发点时，多值函数从其一支变到另外一支，则该点称为此多值函数的&lt;strong&gt;支点&lt;/strong&gt;（可以理解为该圆周$\Gamma$跨过了划分单值连续分支函数的支割线），$\sqrt[n]{z}$以$z=0$和$z=\infty$为支点，推广到$\sqrt[n]{z-a}$则以$z=a$和$z=\infty$为支点&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;3对数函数&#34;&gt;3.对数函数
-&lt;/h3&gt;&lt;p&gt;规定&lt;strong&gt;对数函数&lt;/strong&gt;$\varpi=Ln,z$为&lt;strong&gt;指数函数&lt;/strong&gt;$e^{\varpi}=z$的反函数&lt;/p&gt;
-&lt;p&gt;如果令${z=re^{i\theta}},;\varpi=u+iv$，可得$u=\ln,r,,v=\theta+2k\pi,(k\in\mathbb{Z})$&lt;/p&gt;
-&lt;p&gt;故方程的全部根是$Ln,z=\ln,r+i(\theta+2k\pi)=\ln,|z|+i(arg,z+2k\pi),(k\in\mathbb{Z})$&lt;/p&gt;
-&lt;p&gt;当$k$取确定值时，$Ln,z$的对应值记为$(\ln,z)_k$&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;规定&lt;strong&gt;对数函数&lt;/strong&gt;$\varpi=Ln\,z$为&lt;strong&gt;指数函数&lt;/strong&gt;$e^{\varpi}=z$的反函数&lt;/p&gt;
+&lt;p&gt;如果令${z=re^{i\theta}},\;\varpi=u+iv$，可得$u=\ln\,r,\,v=\theta+2k\pi\,(k\in\mathbb{Z})$&lt;/p&gt;
+&lt;p&gt;故方程的全部根是$Ln\,z=\ln\,r+i(\theta+2k\pi)=\ln\,|z|+i(arg\,z+2k\pi)\,(k\in\mathbb{Z})$&lt;/p&gt;
+&lt;p&gt;当$k$取确定值时，$Ln\,z$的对应值记为$(\ln\,z)_k$&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;基本性质&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;$Ln(z_1z_2)=Ln,z_1+Ln,z_2$&lt;/p&gt;
-&lt;p&gt;$Ln(\frac{z_1}{z_2})=Ln,z_1-Ln,z_2$&lt;/p&gt;
-&lt;p&gt;$(z_1,,z_2\neq0,,\infty)$&lt;/p&gt;
+&lt;p&gt;$Ln(z_1z_2)=Ln\,z_1+Ln\,z_2$&lt;/p&gt;
+&lt;p&gt;$Ln(\frac{z_1}{z_2})=Ln\,z_1-Ln\,z_2$&lt;/p&gt;
+&lt;p&gt;$(z_1,\,z_2\neq0,\,\infty)$&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;对数函数的单值解析分支&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;由定义可知$z$的辐角决定$\varpi$在平面上的纵坐标，$z$平面中取负实轴为割线限定辐角在$(-\pi,,\pi)$的区域变换为$\varpi$平面上纵坐标在$(-\pi,,\pi)$的带形区域，该区域为$\varpi=Ln,z$的一个单叶性区域。总之，对数函数$\varpi=Ln,z$的单叶性区域是宽为$2\pi$的带形区域
+&lt;p&gt;由定义可知$z$的辐角决定$\varpi$在平面上的纵坐标，$z$平面中取负实轴为割线限定辐角在$(-\pi,\,\pi)$的区域变换为$\varpi$平面上纵坐标在$(-\pi,\,\pi)$的带形区域，该区域为$\varpi=Ln\,z$的一个单叶性区域。总之，对数函数$\varpi=Ln\,z$的单叶性区域是宽为$2\pi$的带形区域
 &lt;img src=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E5%AF%B9%E6%95%B0%E5%8F%98%E6%8D%A2.png&#34;
 	width=&#34;1056&#34;
 	height=&#34;425&#34;
@@ -830,9 +830,9 @@ $$\varpi_k=(\sqrt[n]{z})_k=\sqrt[n]{r(z)}e^{i\frac{\theta(z)+2k\pi}{n}}\;(z\in G
 		data-flex-basis=&#34;596px&#34;
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;$\varpi=Ln,z$的无穷多个单值连续分支函数为&lt;/p&gt;
+&lt;p&gt;$\varpi=Ln\,z$的无穷多个单值连续分支函数为&lt;/p&gt;
 $$\varpi_k=(\ln\,z)_k=\ln\,r(z)+i[\theta(z)+2k\pi]\;(z\in G,\,k\in\mathbb{z})$$&lt;p&gt;支点为$z=0$和$z=\infty$，支割线为连接$z=0$和$z=\infty$的广义简单曲线，且有&lt;/p&gt;
-&lt;p&gt;$\frac{\mathrm{d}}{\mathrm{d}z}(\ln,z)_k=\frac{1}{z};(z\in G,,k\in\mathbb{z})$
+&lt;p&gt;$\frac{\mathrm{d}}{\mathrm{d}z}(\ln\,z)_k=\frac{1}{z}\;(z\in G,\,k\in\mathbb{z})$
 &lt;img src=&#34;https://INKEM.github.io/p/%E5%A4%8D%E5%8F%98%E5%87%BD%E6%95%B0%E8%AE%BAep2.%E8%A7%A3%E6%9E%90%E5%87%BD%E6%95%B0/%E5%AF%B9%E6%95%B0%E5%88%86%E6%94%AF.png&#34;
 	width=&#34;1025&#34;
 	height=&#34;476&#34;
@@ -860,24 +860,24 @@ $$\varpi_k=(\ln\,z)_k=\ln\,r(z)+i[\theta(z)+2k\pi]\;(z\in G,\,k\in\mathbb{z})$$&
 &lt;hr&gt;
 &lt;h3 id=&#34;4一般幂函数与一般指数函数&#34;&gt;4.一般幂函数与一般指数函数
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;一般幂函数&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;$\varpi=z^\alpha=e^{\alpha Ln,z}(z\ne0,,\infty;,\alpha\in\mathbb{R})$称为$z$的&lt;strong&gt;一般幂函数&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;设$(\ln,z)_0$表示$Ln,z$中的任意一个确定的值，则&lt;/p&gt;
+&lt;p&gt;$\varpi=z^\alpha=e^{\alpha Ln\,z}(z\ne0,\,\infty;\,\alpha\in\mathbb{R})$称为$z$的&lt;strong&gt;一般幂函数&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设$(\ln\,z)_0$表示$Ln\,z$中的任意一个确定的值，则&lt;/p&gt;
 $$z^\alpha=e^{\alpha Ln\,z}=e^{\alpha[(\ln z)_0+2k\pi i]}=\varpi_0e^{2k\pi i\alpha}\;(k\in\mathbb{Z})$$&lt;p&gt;其中$\varpi_0=e^{\alpha(\ln z)_0}$表示$z^{\alpha}$所有的值中的一个&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;讨论$\alpha$的如下三种情形：&lt;/p&gt;
 &lt;p&gt;$(1)\alpha$是一整数$n$，此时$e^{2k\pi in}=1$，$z^\alpha$是$z$的单值函数&lt;/p&gt;
-&lt;p&gt;$(2)\alpha$是一有理数$\frac{q}{p}$，此时$e^{2k\pi i\frac{q}{p}}$只能取$k=0,,1,,2,,…,,p-1$总共$p$个不同的值（参考根式函数），$z^{\frac{q}{p}}=\varpi_0e^{2k\pi i\frac{q}{p}},;k=0,,1,,2,,…,,p-1$&lt;/p&gt;
+&lt;p&gt;$(2)\alpha$是一有理数$\frac{q}{p}$，此时$e^{2k\pi i\frac{q}{p}}$只能取$k=0,\,1,\,2,\,…,\,p-1$总共$p$个不同的值（参考根式函数），$z^{\frac{q}{p}}=\varpi_0e^{2k\pi i\frac{q}{p}},\;k=0,\,1,\,2,\,…,\,p-1$&lt;/p&gt;
 &lt;p&gt;$(3)\alpha$是一无理数或虚数，此时$e^{2k\pi i\alpha}$有无限个值，$z^\alpha$是无限多值的&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;对$\varpi=z^\alpha$的每一分支，有$\frac{\mathrm{d}}{\mathrm{d}z}z^\alpha=\alpha z^{\alpha-1}$&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;一般指数函数&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;$\varpi=\alpha^z=e^{zLn,\alpha}(\alpha\ne0,\infty,为一复常数)$称为&lt;strong&gt;一般指数函数&lt;/strong&gt;，是无穷多个独立的、在$z$平面上单值解析的函数（取决于$Ln,\alpha$的取值）&lt;/p&gt;
+&lt;p&gt;$\varpi=\alpha^z=e^{zLn\,\alpha}(\alpha\ne0,\infty,为一复常数)$称为&lt;strong&gt;一般指数函数&lt;/strong&gt;，是无穷多个独立的、在$z$平面上单值解析的函数（取决于$Ln\,\alpha$的取值）&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;5具有多个有限支点的情形&#34;&gt;5.具有多个有限支点的情形
 &lt;/h3&gt;&lt;p&gt;讨论函数$\varpi=f(z)=\sqrt[n]{P(z)}$的支点，其中$P(z)$是任意的$N$次多项式$A(z-a_1)^{\alpha_1}…(z-a_m)^{\alpha_m}$&lt;/p&gt;
-&lt;p&gt;$a_1,,a_2,,…,,a_m$是$P(z)$的一切&lt;strong&gt;相异零点&lt;/strong&gt;，$\alpha_1,,\alpha_2,,…,,\alpha_m$分别是它们的&lt;strong&gt;重数&lt;/strong&gt;，满足$\alpha_1+\alpha_2+…+\alpha_m=N$&lt;/p&gt;
-&lt;p&gt;根据根式函数和复数乘法对复数辐角的改变法则，可知沿一简单闭曲线$C$，$f(z)$的辐角改变量$\Delta_carg,f(z)=\frac{1}{n}(\alpha_1\Delta_carg,(z-a_1)+…+\alpha_m\Delta_carg,(z-a_m))$&lt;/p&gt;
+&lt;p&gt;$a_1,\,a_2,\,…,\,a_m$是$P(z)$的一切&lt;strong&gt;相异零点&lt;/strong&gt;，$\alpha_1,\,\alpha_2,\,…,\,\alpha_m$分别是它们的&lt;strong&gt;重数&lt;/strong&gt;，满足$\alpha_1+\alpha_2+…+\alpha_m=N$&lt;/p&gt;
+&lt;p&gt;根据根式函数和复数乘法对复数辐角的改变法则，可知沿一简单闭曲线$C$，$f(z)$的辐角改变量$\Delta_carg\,f(z)=\frac{1}{n}(\alpha_1\Delta_carg\,(z-a_1)+…+\alpha_m\Delta_carg\,(z-a_m))$&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;研究简单闭曲线$C$包围相异零点所有组合的情况，可以得到下列结论：&lt;/p&gt;
 &lt;p&gt;$(1)f(z)$可能的支点是所有相异零点和$\infty$&lt;/p&gt;
@@ -886,15 +886,15 @@ $$z^\alpha=e^{\alpha Ln\,z}=e^{\alpha[(\ln z)_0+2k\pi i]}=\varpi_0e^{2k\pi i\alp
 &lt;p&gt;$(4)$如果$n$能整除所有重数中若干个之和，则相异零点中对应的那几个就可以连接成割线抱成团，即变点$z$沿只包含这些相异零点在其内部的简单闭曲线转一周后函数值不变。抱团的点可能不止一个，其余不入团的点则与点$\infty$连接成一条割线&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
-&lt;p&gt;由已给单值解析分支$f(z)$的初值$f(z_1)$计算终值$f(z_2)$，先计算当$z$从$z_1$沿曲线$C$（不穿过支割线）到终点$z_2$时，$f(z)$的辐角连续改变量$\Delta_carg,f(z)$，再计算终值&lt;/p&gt;
+&lt;p&gt;由已给单值解析分支$f(z)$的初值$f(z_1)$计算终值$f(z_2)$，先计算当$z$从$z_1$沿曲线$C$（不穿过支割线）到终点$z_2$时，$f(z)$的辐角连续改变量$\Delta_carg\,f(z)$，再计算终值&lt;/p&gt;
 $$f(z_2)=|f(z_2)|e^{i\Delta_carg\,f(z)}\cdot e^{iarg\,f(z_1)}$$&lt;hr&gt;
 &lt;h3 id=&#34;6反三角函数与反双曲函数&#34;&gt;6.反三角函数与反双曲函数
-&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;反正切函数&lt;/strong&gt;$Arctan,z=\frac{1}{2i}Ln\frac{1+iz}{1-iz}$&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;反正弦函数&lt;/strong&gt;$Arcsin,z=\frac{1}{i}Ln(iz+\sqrt{1-z^2})$&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;反余弦函数&lt;/strong&gt;$Arccos,z=\frac{1}{i}Ln(z+i\sqrt{1-z^2})$&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;反双曲余弦函数&lt;/strong&gt;$Arcosh,z=Ln(z+\sqrt{z^2-1})$&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;反双曲正弦函数&lt;/strong&gt;$Arsinh,z=Ln(z+\sqrt{z^2+1})$&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;反双曲正切函数&lt;/strong&gt;$Artanh,z=\frac{1}{2}Ln\frac{1+z}{1-z}$&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;反正切函数&lt;/strong&gt;$Arctan\,z=\frac{1}{2i}Ln\frac{1+iz}{1-iz}$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;反正弦函数&lt;/strong&gt;$Arcsin\,z=\frac{1}{i}Ln(iz+\sqrt{1-z^2})$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;反余弦函数&lt;/strong&gt;$Arccos\,z=\frac{1}{i}Ln(z+i\sqrt{1-z^2})$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;反双曲余弦函数&lt;/strong&gt;$Arcosh\,z=Ln(z+\sqrt{z^2-1})$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;反双曲正弦函数&lt;/strong&gt;$Arsinh\,z=Ln(z+\sqrt{z^2+1})$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;反双曲正切函数&lt;/strong&gt;$Artanh\,z=\frac{1}{2}Ln\frac{1+z}{1-z}$&lt;/p&gt;
 &lt;p&gt;其中对数是无穷多值的，根式是二值的，因此反三角函数和反双曲函数是无穷多值的，其分成单值解析分支的方法与前文讨论方法类似&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;本章完&lt;/strong&gt;&lt;/p&gt;
@@ -919,7 +919,7 @@ $$f(z_2)=|f(z_2)|e^{i\Delta_carg\,f(z)}\cdot e^{iarg\,f(z_1)}$$&lt;hr&gt;
 &lt;/h2&gt;&lt;h3 id=&#34;1复数域&#34;&gt;1.复数域
 &lt;/h3&gt;&lt;p&gt;形如$z=x+iy$的数称为&lt;strong&gt;复数&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;$i$满足$i^2=-1$，称为&lt;strong&gt;虚数单位&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;实数$x$和$y$分别称为复数$z$的&lt;strong&gt;实部&lt;/strong&gt;和&lt;strong&gt;虚部&lt;/strong&gt;，记为$x=Re,z, y=Im,z$&lt;/p&gt;
+&lt;p&gt;实数$x$和$y$分别称为复数$z$的&lt;strong&gt;实部&lt;/strong&gt;和&lt;strong&gt;虚部&lt;/strong&gt;，记为$x=Re\,z, y=Im\,z$&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;虚部不为零的复数称为&lt;strong&gt;虚数&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;实部为零且虚部不为零的复数称为&lt;strong&gt;纯虚数&lt;/strong&gt;&lt;/p&gt;
@@ -956,14 +956,14 @@ $$f(z_2)=|f(z_2)|e^{i\Delta_carg\,f(z)}\cdot e^{iarg\,f(z_1)}$$&lt;hr&gt;
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;模与辐角&lt;/strong&gt;
 用向量$\overrightarrow{Oz}$表示复数$z=x+iy$，向量的长度称为复数$z$的&lt;strong&gt;模&lt;/strong&gt;或&lt;strong&gt;绝对值&lt;/strong&gt;，以符号$\left | z \right |$或$r$表示，因而有$r=\left | z \right |=\sqrt{x^2+y^2}\geqslant 0$&lt;/p&gt;
 &lt;p&gt;实轴正向到非零复数的向量$\overrightarrow{Oz}$间的夹角$θ$满足$\tan \theta =\frac{y}{x}$，称为复数$z$的&lt;strong&gt;辐角&lt;/strong&gt;，记为$θ=Arg z$&lt;/p&gt;
-&lt;p&gt;任一非零复数$z$有无穷多个辐角，以$arg,z$表示其中一个特定值，且满足$-π&amp;lt;arg,z≤π$的一个为$Arg,z$的&lt;strong&gt;主值&lt;/strong&gt;或$z$的&lt;strong&gt;主辐角&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;任一非零复数$z$有无穷多个辐角，以$arg\,z$表示其中一个特定值，且满足$-π&lt;arg\,z≤π$的一个为$Arg\,z$的&lt;strong&gt;主值&lt;/strong&gt;或$z$的&lt;strong&gt;主辐角&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;复数的表达形式&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;从直角坐标与极坐标的关系，可以用复数的模$r$与辐角$θ$表示非零复数$z$，即&lt;/p&gt;
 &lt;p&gt;$z = r(\cos θ + i \sin θ)$&lt;/p&gt;
 &lt;p&gt;称为非零复数$z$的&lt;strong&gt;三角形式&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;当$r=1$，称$z$为&lt;strong&gt;单位复数&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;由欧拉公式$e^{i\theta }=\cos \theta +i\sin\theta$可以把三角形式改写成$z=re^{i\theta }$或$z=|z|e^{iarg, z}$，&lt;/p&gt;
+&lt;p&gt;由欧拉公式$e^{i\theta }=\cos \theta +i\sin\theta$可以把三角形式改写成$z=re^{i\theta }$或$z=|z|e^{iarg\, z}$，&lt;/p&gt;
 &lt;p&gt;为非零复数$z$的&lt;strong&gt;指数形式&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;称$z=x+iy$为复数$z$的&lt;strong&gt;代数形式&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;三种表示法可以互相转换，各有其便&lt;/p&gt;
@@ -975,8 +975,8 @@ $$f(z_2)=|f(z_2)|e^{i\Delta_carg\,f(z)}\cdot e^{iarg\,f(z_1)}$$&lt;hr&gt;
 &lt;p&gt;$z_1z_2=r_1r_2e^{i(\theta _1+\theta _2)}$ ①&lt;/p&gt;
 &lt;p&gt;$\frac{z_1}{z_2}=\frac{r_1}{r_2}e^{i(\theta_1-\theta_2)}$&lt;/p&gt;
 &lt;p&gt;得&lt;/p&gt;
-&lt;p&gt;$|z_1z_2|=|z_1||z_2|,; |\frac{z_1}{z_2}|=\frac{|z_1|}{|z_2|}(z_2\neq 0)$&lt;/p&gt;
-&lt;p&gt;$Arg(z_1z_2)=Arg, z_1+Arg, z_2,;Arg(\frac{z_1}{z_2})=Arg, z_1-Arg, z_2$&lt;/p&gt;
+&lt;p&gt;$|z_1z_2|=|z_1||z_2|,\; |\frac{z_1}{z_2}|=\frac{|z_1|}{|z_2|}(z_2\neq 0)$&lt;/p&gt;
+&lt;p&gt;$Arg(z_1z_2)=Arg\, z_1+Arg\, z_2,\;Arg(\frac{z_1}{z_2})=Arg\, z_1-Arg\, z_2$&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;式①说明，$z_1z_2$所对应的向量是把$z_1$所对应的向量的长度伸缩$r_2$倍，然后再逆时针旋转$\theta$得到的&lt;/p&gt;
 &lt;p&gt;特别地，$iz$相当于将$z$所对应的向量沿逆时针方向旋转$\frac{\pi }{2}$，这里$i$称为&lt;strong&gt;旋转乘数&lt;/strong&gt;&lt;/p&gt;
@@ -985,7 +985,7 @@ $$f(z_2)=|f(z_2)|e^{i\Delta_carg\,f(z)}\cdot e^{iarg\,f(z_1)}$$&lt;hr&gt;
 &lt;/h3&gt;&lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;复数的乘幂&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;设$z=re^{i\theta }$ ，则$z^n=r^ne^{in\theta}=r^n(\cos n\theta+i\sin n\theta)$&lt;/p&gt;
-&lt;p&gt;从而有$|z^n| = |z|^n,;Arg,z^n=nArg,z$&lt;/p&gt;
+&lt;p&gt;从而有$|z^n| = |z|^n,\;Arg\,z^n=nArg\,z$&lt;/p&gt;
 &lt;p&gt;当$r=1$，得&lt;strong&gt;棣莫弗（De Moivre）公式&lt;/strong&gt;&lt;/p&gt;
 $$(\cos\theta+i\sin\theta)^n=(\cos n\theta+i\sin n\theta)$$&lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;复数的方根&lt;/strong&gt;&lt;/p&gt;
@@ -993,21 +993,21 @@ $$(\cos\theta+i\sin\theta)^n=(\cos n\theta+i\sin n\theta)$$&lt;hr&gt;
 $$\varpi ^n=z(n≥2,\,n∈Z)$$&lt;blockquote&gt;
 &lt;p&gt;设$z=re^{i\theta}$, $\varpi=\rho e^{i\varphi}$&lt;/p&gt;
 &lt;p&gt;则$\rho ^ne^{in\varphi}=re^{i\theta}$&lt;/p&gt;
-&lt;p&gt;解出$\rho=\sqrt[n]{r},;\varphi=\frac{\theta+2k\pi}{n}$&lt;/p&gt;
-&lt;p&gt;从而有$|\sqrt[n]{z}|=\sqrt[n]{|z|},; Arg,\sqrt[n]{z}=\frac{Arg, z}{n}$&lt;/p&gt;
+&lt;p&gt;解出$\rho=\sqrt[n]{r},\;\varphi=\frac{\theta+2k\pi}{n}$&lt;/p&gt;
+&lt;p&gt;从而有$|\sqrt[n]{z}|=\sqrt[n]{|z|},\; Arg\,\sqrt[n]{z}=\frac{Arg\, z}{n}$&lt;/p&gt;
 &lt;p&gt;因此$z$的$n$次方根为&lt;/p&gt;
-$$\varpi_k=(\sqrt[n]{z})_k=\sqrt[n]{r}e^{i\frac{\theta+2k\pi}{n}}$$&lt;p&gt;$k$取$0,,1,,2,,…,, n-1$即可得出$n$个根&lt;/p&gt;
-&lt;p&gt;其中$e^{i\frac{2k\pi}{n}}$为$1$的$n$个$n$次方根，记为$1,,\omega,,\omega^2,,…,,\omega ^{n-1}(\omega=e ^{i\frac{2\pi}{n}})$&lt;/p&gt;
-&lt;p&gt;从而非零复数$z$的$n$个$n$次方根为$\varpi_0,,\omega\varpi_0,,\omega^2\varpi_0,,…,,\omega ^{n-1}\varpi_0$&lt;/p&gt;
+$$\varpi_k=(\sqrt[n]{z})_k=\sqrt[n]{r}e^{i\frac{\theta+2k\pi}{n}}$$&lt;p&gt;$k$取$0,\,1,\,2,\,…,\, n-1$即可得出$n$个根&lt;/p&gt;
+&lt;p&gt;其中$e^{i\frac{2k\pi}{n}}$为$1$的$n$个$n$次方根，记为$1,\,\omega,\,\omega^2,\,…,\,\omega ^{n-1}(\omega=e ^{i\frac{2\pi}{n}})$&lt;/p&gt;
+&lt;p&gt;从而非零复数$z$的$n$个$n$次方根为$\varpi_0,\,\omega\varpi_0,\,\omega^2\varpi_0,\,…,\,\omega ^{n-1}\varpi_0$&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;5共轭复数&#34;&gt;5.共轭复数
 &lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;共轭复数一些性质如下：&lt;/p&gt;
-&lt;p&gt;$(1)\overline{(\bar{z})}=z,;\overline{z_1\pm z_2}=\bar{z_1}+\bar{z_2}$&lt;/p&gt;
-&lt;p&gt;$(2)\overline{z_1z_2}=\bar{z_1}\bar{z_2},,\overline{(\frac{z_1}{z_2})}=\frac{\bar{z_1}}{\bar{z_2}}(z_2\neq 0)$&lt;/p&gt;
-&lt;p&gt;$(3)|z|^2=z\bar{z},;Re, z=\frac{z+\bar{z}}{2},; Im, z=\frac{z-\bar{z}}{2i}$&lt;/p&gt;
-&lt;p&gt;$(4)$设$R(a,,b,,c,,…)$表示对于复数$a,,b,,c,,…$的任一有理运算，则&lt;/p&gt;
+&lt;p&gt;$(1)\overline{(\bar{z})}=z,\;\overline{z_1\pm z_2}=\bar{z_1}+\bar{z_2}$&lt;/p&gt;
+&lt;p&gt;$(2)\overline{z_1z_2}=\bar{z_1}\bar{z_2},\,\overline{(\frac{z_1}{z_2})}=\frac{\bar{z_1}}{\bar{z_2}}(z_2\neq 0)$&lt;/p&gt;
+&lt;p&gt;$(3)|z|^2=z\bar{z},\;Re\, z=\frac{z+\bar{z}}{2},\; Im\, z=\frac{z-\bar{z}}{2i}$&lt;/p&gt;
+&lt;p&gt;$(4)$设$R(a,\,b,\,c,\,…)$表示对于复数$a,\,b,\,c,\,…$的任一有理运算，则&lt;/p&gt;
 $$\overline{R(a,\,b,\,c,\,…)}=R(\bar{a},\,\bar{b},\,\bar{c},\,…)$$&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;6复数在几何上的应用&#34;&gt;6.复数在几何上的应用
@@ -1021,15 +1021,15 @@ $$\alpha =arg\frac{z_2-z_1}{z_3-z_1}$$&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;2-复平面上的点集&#34;&gt;§2 复平面上的点集
 &lt;/h2&gt;&lt;h3 id=&#34;1平面点集的几个基本概念&#34;&gt;1.平面点集的几个基本概念
-&lt;/h3&gt;&lt;p&gt;由不等式$|z-z_0|&amp;lt;\rho$所确定的&lt;strong&gt;平面点集&lt;/strong&gt;，称为点$z_0$的$\rho$&lt;strong&gt;邻域&lt;/strong&gt;，记为$N_\rho(z_0)$&lt;/p&gt;
-&lt;p&gt;$0&amp;lt;|z-z_0|&amp;lt;\rho$为点$z_0$的&lt;strong&gt;去心&lt;/strong&gt;$\rho$&lt;strong&gt;邻域&lt;/strong&gt;，记为$N_\rho(z_0)$ \ ${z_0}$&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;由不等式$|z-z_0|&lt;\rho$所确定的&lt;strong&gt;平面点集&lt;/strong&gt;，称为点$z_0$的$\rho$&lt;strong&gt;邻域&lt;/strong&gt;，记为$N_\rho(z_0)$&lt;/p&gt;
+&lt;p&gt;$0&lt;|z-z_0|&lt;\rho$为点$z_0$的&lt;strong&gt;去心&lt;/strong&gt;$\rho$&lt;strong&gt;邻域&lt;/strong&gt;，记为$N_\rho(z_0)$ \ $\{z_0\}$&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;点与集的分类&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;对点集$E$，若平面上一点$z_0$（不必属于$E$）的任意邻域都有$E$的无穷多个点，则称$z_0$为$E$的&lt;strong&gt;聚点&lt;/strong&gt;或&lt;strong&gt;极限点&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;若$z_0$属于$E$，但非$E$的聚点，则称$z_0$为$E$的&lt;strong&gt;孤立点&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;若$z_0$不属于$E$，又非$E$的聚点，则称$z_0$为$E$的&lt;strong&gt;外点&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;点$E$的全部聚点所成集用$E&amp;rsquo;$表示&lt;/p&gt;
-&lt;p&gt;若$E&amp;rsquo;\subseteq E$，则称$E$为&lt;strong&gt;闭集&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;点$E$的全部聚点所成集用$E&#39;$表示&lt;/p&gt;
+&lt;p&gt;若$E&#39;\subseteq E$，则称$E$为&lt;strong&gt;闭集&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;若点集$E$的点$z_0$有一邻域全含于$E$内，则称$z_0$为$E$的&lt;strong&gt;内点&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;若点集$E$的点皆为内点，则称$E$为&lt;strong&gt;开集&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;若在点$z_0$的任意邻域内，同时有属于点集$E$和不属于$E$的点，则称$z_0$为$E$的&lt;strong&gt;边界点&lt;/strong&gt;&lt;/p&gt;
@@ -1057,16 +1057,16 @@ $$\alpha =arg\frac{z_2-z_1}{z_3-z_1}$$&lt;/blockquote&gt;
 &lt;p&gt;区域$D$加上它的边界$C$称为&lt;strong&gt;闭域&lt;/strong&gt;，记为$\bar{D}=D+C$&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;连续曲线&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;设$x(t)$及$y(t)$是实变数$t$的两个实函数，它们在闭区间$[\alpha,,\beta]$上连续，则由复数方程$z=x(t)+iy(t);(\alpha≤t≤\beta)$所决定的点集$C$，称为平面上的一条&lt;strong&gt;连续曲线&lt;/strong&gt;，该复数方程称为$C$的&lt;strong&gt;参数方程&lt;/strong&gt;，$z(\alpha)$和$z(\beta)$分别称为$C$的&lt;strong&gt;起点&lt;/strong&gt;和&lt;strong&gt;终点&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;对满足$\alpha&amp;lt;t_1&amp;lt;\beta,;\alpha≤t_2≤\beta,;t_1\neq t_2$的$t_1$及$t_2$，当$z(t_1)=z(t_2)$成立时，点$z(t_1)$称为此曲线$C$的&lt;strong&gt;重点&lt;/strong&gt;（&lt;em&gt;即曲线除了首尾相接的情况外有交点&lt;/em&gt;）&lt;/p&gt;
+&lt;p&gt;设$x(t)$及$y(t)$是实变数$t$的两个实函数，它们在闭区间$[\alpha,\,\beta]$上连续，则由复数方程$z=x(t)+iy(t)\;(\alpha≤t≤\beta)$所决定的点集$C$，称为平面上的一条&lt;strong&gt;连续曲线&lt;/strong&gt;，该复数方程称为$C$的&lt;strong&gt;参数方程&lt;/strong&gt;，$z(\alpha)$和$z(\beta)$分别称为$C$的&lt;strong&gt;起点&lt;/strong&gt;和&lt;strong&gt;终点&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;对满足$\alpha&lt;t_1&lt;\beta,\;\alpha≤t_2≤\beta,\;t_1\neq t_2$的$t_1$及$t_2$，当$z(t_1)=z(t_2)$成立时，点$z(t_1)$称为此曲线$C$的&lt;strong&gt;重点&lt;/strong&gt;（&lt;em&gt;即曲线除了首尾相接的情况外有交点&lt;/em&gt;）&lt;/p&gt;
 &lt;p&gt;凡无重点的连续曲线，称为&lt;strong&gt;简单曲线&lt;/strong&gt;或&lt;strong&gt;若尔当曲线&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;$z(\alpha)=z(\beta)$的简单曲线称为&lt;strong&gt;简单闭曲线&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;可求长&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;设连续弧$AB$的参数方程为$z=z(t);(\alpha≤t≤\beta)$，任取实数列${t_n}：\alpha=t_0&amp;lt;t_1&amp;lt;t_2&amp;lt;…&amp;lt;t_{n-1}&amp;lt;t_n=\beta$，并且考虑$AB$弧上对应的点列：$z_j=z(t_j);(j=0,,1,,2,,…,,n)$，将它们用一折线$Q_n$连接起来，$Q_n$的长度$I_n=\sum\limits_{j=1}^n|z(t_j)-z(t_{j-1})|$，如果对于所有的数列${t_n}$，$I_n$有上界，则$AB$弧称为&lt;strong&gt;可求长的&lt;/strong&gt;，上确界$L=sup,I_n$称为$AB$弧的&lt;strong&gt;长度&lt;/strong&gt;（&lt;em&gt;类比割圆法求圆的周长&lt;/em&gt;）&lt;/p&gt;
+&lt;p&gt;设连续弧$AB$的参数方程为$z=z(t)\;(\alpha≤t≤\beta)$，任取实数列$\{t_n\}：\alpha=t_0&lt;t_1&lt;t_2&lt;…&lt;t_{n-1}&lt;t_n=\beta$，并且考虑$AB$弧上对应的点列：$z_j=z(t_j)\;(j=0,\,1,\,2,\,…,\,n)$，将它们用一折线$Q_n$连接起来，$Q_n$的长度$I_n=\sum\limits_{j=1}^n|z(t_j)-z(t_{j-1})|$，如果对于所有的数列$\{t_n\}$，$I_n$有上界，则$AB$弧称为&lt;strong&gt;可求长的&lt;/strong&gt;，上确界$L=sup\,I_n$称为$AB$弧的&lt;strong&gt;长度&lt;/strong&gt;（&lt;em&gt;类比割圆法求圆的周长&lt;/em&gt;）&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;光滑曲线&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;设简单（或简单闭）曲线$C$的参数方程为$z=x(t)+iy(t);(\alpha≤t≤\beta)$，又在$\alpha≤t≤\beta$上，$x&amp;rsquo;(t)$及$y&amp;rsquo;(t)$存在、连续且不全为零，则$C$称为&lt;strong&gt;光滑（闭）曲线&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;设简单（或简单闭）曲线$C$的参数方程为$z=x(t)+iy(t)\;(\alpha≤t≤\beta)$，又在$\alpha≤t≤\beta$上，$x&#39;(t)$及$y&#39;(t)$存在、连续且不全为零，则$C$称为&lt;strong&gt;光滑（闭）曲线&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;光滑（闭）曲线$C$具有连续转动的切线（&lt;em&gt;斜率不会突变&lt;/em&gt;）&lt;/p&gt;
 &lt;p&gt;由有限条光滑曲线衔接而成的连续曲线称为&lt;strong&gt;逐段光滑曲线&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;特别，&lt;strong&gt;简单折线&lt;/strong&gt;是逐段光滑曲线&lt;/p&gt;
@@ -1122,14 +1122,14 @@ $E$称为函数$\varpi=f(z)$的&lt;strong&gt;定义域&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;对于$E$，$\varpi$值的全体所成集$M$称为函数$\varpi=f(z)$的&lt;strong&gt;值域&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;复变函数的理解&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;设$\varpi=f(z)$是定义于点集$E$上的单值或多值函数，并令$z=x+iy,;\varpi=u+iv$&lt;/p&gt;
-&lt;p&gt;则$u,,v$皆随$x,,y$而确定，因而$\varpi=f(z)$又写成$\varpi=u(x,,y)+iv(x,,y)$&lt;/p&gt;
-&lt;p&gt;其中$u(x,,y)$及$v(x,,y)$是二元实变函数&lt;/p&gt;
-&lt;p&gt;如将$z$表示为指数形式$z=re^{i\theta}$，函数$\varpi=f(z)$又可表示为$\varpi=P(r,,\theta)+iQ(r,,\theta)$&lt;/p&gt;
-&lt;p&gt;可见复函数$\varpi=f(z)$等价于两个相应的二元实函数$u=\varphi(x,,y),;v=\psi(x,,y)$&lt;/p&gt;
+&lt;p&gt;设$\varpi=f(z)$是定义于点集$E$上的单值或多值函数，并令$z=x+iy,\;\varpi=u+iv$&lt;/p&gt;
+&lt;p&gt;则$u,\,v$皆随$x,\,y$而确定，因而$\varpi=f(z)$又写成$\varpi=u(x,\,y)+iv(x,\,y)$&lt;/p&gt;
+&lt;p&gt;其中$u(x,\,y)$及$v(x,\,y)$是二元实变函数&lt;/p&gt;
+&lt;p&gt;如将$z$表示为指数形式$z=re^{i\theta}$，函数$\varpi=f(z)$又可表示为$\varpi=P(r,\,\theta)+iQ(r,\,\theta)$&lt;/p&gt;
+&lt;p&gt;可见复函数$\varpi=f(z)$等价于两个相应的二元实函数$u=\varphi(x,\,y),\;v=\psi(x,\,y)$&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;对应/映射/变换&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;由$f(x+iy)=u+iv$，描出$f(z)$的图形必须采用$(u,,v,,x,,y)$空间&lt;/p&gt;
+&lt;p&gt;由$f(x+iy)=u+iv$，描出$f(z)$的图形必须采用$(u,\,v,\,x,\,y)$空间&lt;/p&gt;
 &lt;p&gt;为简化，采用两张复平面$z$平面和$\varpi$平面，把复变函数理解为两个复平面上的点集间的&lt;strong&gt;对应&lt;/strong&gt;（&lt;strong&gt;映射&lt;/strong&gt;或&lt;strong&gt;变换&lt;/strong&gt;），即复变函数$\varpi=f(z)$给出了从$z$平面上的点集$E$到$\varpi$平面上的点集$F$间的一个&lt;strong&gt;对应关系&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;与点$z∈E$对应的点$\varpi=f(z)$称为点$z$的&lt;strong&gt;像点&lt;/strong&gt;，同时点$z$就称为点$\varpi=f(z)$的&lt;strong&gt;原像&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -1153,19 +1153,19 @@ $E$称为函数$\varpi=f(z)$的&lt;strong&gt;定义域&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;2复变函数的极限与连续性&#34;&gt;2.复变函数的极限与连续性
 &lt;/h3&gt;&lt;p&gt;&lt;strong&gt;极限&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;设函数$\varpi=f(z)$于点集$E$上有定义，$z_0$为$E$的聚点，如存在一复数$\varpi_0$，使对任给的$\varepsilon&amp;gt;0$，有$\delta&amp;gt;0$，只要$0&amp;lt;|z-z_0|&amp;lt;\delta$，$z∈E$，就有$|f(z)-\varpi_0|&amp;lt;\varepsilon$，则称函数$f(z)$沿$E$于$z_0$有极限$\varpi_0$，并记为$\lim_{z\rightarrow z_0}f(z)=\varpi_0$&lt;/p&gt;
+&lt;p&gt;设函数$\varpi=f(z)$于点集$E$上有定义，$z_0$为$E$的聚点，如存在一复数$\varpi_0$，使对任给的$\varepsilon&gt;0$，有$\delta&gt;0$，只要$0&lt;|z-z_0|&lt;\delta$，$z∈E$，就有$|f(z)-\varpi_0|&lt;\varepsilon$，则称函数$f(z)$沿$E$于$z_0$有极限$\varpi_0$，并记为$\lim_{z\rightarrow z_0}f(z)=\varpi_0$&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;极限的充要条件&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;设函数$f(z)=u(x,,y)+iv(x,,y)$于点集$E$上有定义，$z_0=x_0+iy_0$为$E$的聚点，则$\lim_{z\rightarrow z_0}f(z)=\eta=a+ib$的充要条件是$\lim_{(x,,y)\rightarrow (x_0,,y_0)}u(x,,y)=a,;\lim_{(x,,y)\rightarrow (x_0,,y_0)}v(x,,y)=b$&lt;/p&gt;
+&lt;p&gt;设函数$f(z)=u(x,\,y)+iv(x,\,y)$于点集$E$上有定义，$z_0=x_0+iy_0$为$E$的聚点，则$\lim_{z\rightarrow z_0}f(z)=\eta=a+ib$的充要条件是$\lim_{(x,\,y)\rightarrow (x_0,\,y_0)}u(x,\,y)=a,\;\lim_{(x,\,y)\rightarrow (x_0,\,y_0)}v(x,\,y)=b$&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;连续&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;设函数$\varpi=f(z)$于点集$E$上有定义，$z_0$为$E$的聚点，且$z_0∈E$，若$\lim_{z\rightarrow z_0}f(z)=f(z_0)$，则称$f(z)$沿$E$于$z_0$连续&lt;/p&gt;
-&lt;p&gt;设函数$f(z)=u(x,,y)+iv(x,,y)$于点集$E$上有定义，$z_0∈E$，则$f(z)$沿$E$于$z_0$连续的充要条件是：二元实变函数$u(x,,y)$，$v(x,,y)$沿$E$于$(x_0,,y_0)$连续&lt;/p&gt;
+&lt;p&gt;设函数$f(z)=u(x,\,y)+iv(x,\,y)$于点集$E$上有定义，$z_0∈E$，则$f(z)$沿$E$于$z_0$连续的充要条件是：二元实变函数$u(x,\,y)$，$v(x,\,y)$沿$E$于$(x_0,\,y_0)$连续&lt;/p&gt;
 &lt;p&gt;如函数$f(z)$在点集$E$上各点均连续，则称$f(z)$在$E$上连续&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;波尔查诺-威尔斯特拉斯定理&lt;/strong&gt;：每一个有界无穷点集，至少有一个聚点&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;闭集套定理&lt;/strong&gt;：设无穷闭集列${\bar{F_n}}$，至少有一个为有界且$\bar{F_n}\supset\bar{F_{n+1}}$，$\lim_{n\rightarrow ∞}d(\bar{F_n})=0$（$d(\bar{F_n})$是$\bar{F_n}$的直径），则必有唯一的一点$z_0∈\bar{F_n}(n=1,,2,,…)$&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;海涅-博雷尔覆盖定理&lt;/strong&gt;：设有界闭集$E$的每一点$z$都是圆$K_z$的圆心，则这些圆${K_z}$中必有有限个圆把$E$盖住&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;闭集套定理&lt;/strong&gt;：设无穷闭集列$\{\bar{F_n}\}$，至少有一个为有界且$\bar{F_n}\supset\bar{F_{n+1}}$，$\lim_{n\rightarrow ∞}d(\bar{F_n})=0$（$d(\bar{F_n})$是$\bar{F_n}$的直径），则必有唯一的一点$z_0∈\bar{F_n}(n=1,\,2,\,…)$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;海涅-博雷尔覆盖定理&lt;/strong&gt;：设有界闭集$E$的每一点$z$都是圆$K_z$的圆心，则这些圆$\{K_z\}$中必有有限个圆把$E$盖住&lt;/p&gt;
 &lt;p&gt;（&lt;em&gt;类比一元数集相关定理&lt;/em&gt;）&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;在有界闭集$E$上连续的函数$f(z)$，具有下列三个性质：&lt;/p&gt;
@@ -1193,10 +1193,10 @@ $E$称为函数$\varpi=f(z)$的&lt;strong&gt;定义域&lt;/strong&gt;&lt;/p&gt;
 &lt;strong&gt;无穷远点&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;考虑$z$平面上一个以原点为圆心的圆周$C$，在球面上对应的也是一个圆周$\Gamma$，当圆周$C$的半径越大时，圆周$\Gamma$就越趋于北极点$N$&lt;/p&gt;
 &lt;p&gt;因此，北极点$N$可以看成是与$z$平面上的一个模为无穷大的假想点相对应，这个假想点称为&lt;strong&gt;无穷远点&lt;/strong&gt;，并记为$∞$
-复平面加上点$∞$后称为&lt;strong&gt;扩充复平面&lt;/strong&gt;，记作$C_∞=C+{∞}$​，与它对应的就是整个球面，称为&lt;strong&gt;复球面&lt;/strong&gt;&lt;/p&gt;
+复平面加上点$∞$后称为&lt;strong&gt;扩充复平面&lt;/strong&gt;，记作$C_∞=C+\{∞\}$​，与它对应的就是整个球面，称为&lt;strong&gt;复球面&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 id=&#34;2扩充复平面上的几个概念&#34;&gt;2.扩充复平面上的几个概念
-&lt;/h3&gt;&lt;p&gt;$(1)$扩充复平面上，$∞$的$\varepsilon$邻域$N_\varepsilon(\infty)$是指满足条件$|z|&amp;gt;\frac{1}{\varepsilon}$的点集，对应复球面上以北极点$N$为心的一个球盖，去心邻域则去掉北极点$N$；复平面以$\infty$为其唯一的边界点；扩充复平面以$\infty$为内点，且是唯一的无边界的区域&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;$(1)$扩充复平面上，$∞$的$\varepsilon$邻域$N_\varepsilon(\infty)$是指满足条件$|z|&gt;\frac{1}{\varepsilon}$的点集，对应复球面上以北极点$N$为心的一个球盖，去心邻域则去掉北极点$N$；复平面以$\infty$为其唯一的边界点；扩充复平面以$\infty$为内点，且是唯一的无边界的区域&lt;/p&gt;
 &lt;p&gt;$(2)$&lt;strong&gt;单连通区域&lt;/strong&gt;推广到扩充复平面上的区域与复平面相同&lt;/p&gt;
 &lt;p&gt;$(3)$在扩充复平面上，在关系式$\lim_{z\rightarrow z_0}f(z)=f(z_0)$中，如果$z_0$及$f(z_0)$之一或同时取$\infty$，就称$f(z)$在点$z_0$是&lt;strong&gt;广义连续&lt;/strong&gt;的，极限就称为&lt;strong&gt;广义极限&lt;/strong&gt;&lt;/p&gt;
 &lt;hr&gt;

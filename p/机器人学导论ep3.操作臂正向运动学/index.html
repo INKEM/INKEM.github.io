@@ -417,10 +417,10 @@
 <hr>
 <h3 id="连杆坐标系">连杆坐标系
 </h3><p><strong>中间连杆坐标系</strong></p>
-<p>按以下方法确定连杆上的固连坐标系${i}$：</p>
+<p>按以下方法确定连杆上的固连坐标系$\{i\}$：</p>
 <p>原点位于公垂线$a_i$与关节轴$i$的交点处</p>
 <p>$\hat{Z}_i$轴与关节轴$i$重合</p>
-<p>$\hat{X}_i$轴：当$a_i\ne0$，沿$a_i$方向由关节$i$指向关节$i+1$；当$a_i=0$，垂直于$\hat{Z}<em>i$和$\hat{Z}</em>{i+1}$所在的平面</p>
+<p>$\hat{X}_i$轴：当$a_i\ne0$，沿$a_i$方向由关节$i$指向关节$i+1$；当$a_i=0$，垂直于$\hat{Z}_i$和$\hat{Z}_{i+1}$所在的平面</p>
 <p>$\hat{Y}_i$轴由右手定则确定</p>
 <p>由于$\hat{Z}_i$轴可选取两个方向，且当关节轴$i$与$i+1$相交时$\hat{X}_i$轴可选取两个方向，建立的坐标系并不唯一
 <img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/3.png"
@@ -436,27 +436,27 @@
 	
 ></p>
 <p><strong>首末端连杆坐标系</strong></p>
-<p>首端连杆坐标系${0}$与关节$1$初始姿态时（关节变量为$0$）的坐标系${1}$重合</p>
-<p>末端连杆坐标系${N}$原点位于公垂线$a_{N-1}$与关节轴${N}$交点处，$\hat{X}<em>N$轴与$\hat{X}</em>{N-1}$轴同向</p>
+<p>首端连杆坐标系$\{0\}$与关节$1$初始姿态时（关节变量为$0$）的坐标系$\{1\}$重合</p>
+<p>末端连杆坐标系$\{N\}$原点位于公垂线$a_{N-1}$与关节轴$\{N\}$交点处，$\hat{X}_N$轴与$\hat{X}_{N-1}$轴同向</p>
 <p><strong>连杆坐标系中的D-H表示法</strong></p>
-<p>$a_i=$沿$\hat{X}_i$轴从$\hat{Z}<em>i$移动到$\hat{Z}</em>{i+1}$的距离</p>
-<p>$\alpha_i=$绕$\hat{X}_i$轴从$\hat{Z}<em>i$旋转到$\hat{Z}</em>{i+1}$的角度</p>
-<p>$d_i=$沿$\hat{Z}<em>i$轴从$\hat{X}</em>{i-1}$移动到$\hat{X}_i$的距离</p>
-<p>$\theta_i=$绕$\hat{Z}<em>i$轴从$\hat{X}</em>{i-1}$旋转到$\hat{X}_i$的角度</p>
-<p>$a_i&gt;0$，$\alpha_i$、$d_i$和$\theta_i$的值相对于坐标系主轴方向有正负</p>
+<p>$a_i=$沿$\hat{X}_i$轴从${\hat{Z}_i}$移动到$\hat{Z}_{i+1}$的距离</p>
+<p>$\alpha_i=$绕$\hat{X}_i$轴从$\hat{Z}_i$旋转到$\hat{Z}_{i+1}$的角度</p>
+<p>$d_i=$沿$\hat{Z}_i$轴从$\hat{X}_{i-1}$移动到$\hat{X}_i$的距离</p>
+<p>$\theta_i=$绕$\hat{Z}_i$轴从$\hat{X}_{i-1}$旋转到$\hat{X}_i$的角度</p>
+<p>$a_i>0$，$\alpha_i$、$d_i$和$\theta_i$的值相对于坐标系主轴方向有正负</p>
 <p><strong>建立连杆坐标系的步骤</strong></p>
 <p>1.画出各关节轴的延长线</p>
-<p>2.找出相邻关节轴$i$和$i+1$的公垂线或交点，以关节轴$i$和$i+1$的交点或公垂线与关节轴$i$的交点作为连杆坐标系${i}$的原点</p>
+<p>2.找出相邻关节轴$i$和$i+1$的公垂线或交点，以关节轴$i$和$i+1$的交点或公垂线与关节轴$i$的交点作为连杆坐标系$\{i\}$的原点</p>
 <p>3.规定$\hat{Z}_i$轴沿关节轴$i$的指向</p>
 <p>4.规定$\hat{X}_i$轴沿公垂线的指向，若关节轴$i$与$i+1$相交则垂直于关节轴$i$与$i+1$所在的平面</p>
 <p>5.按右手定则确定$\hat{Y}_i$轴</p>
 <p>6.补充首末端连杆坐标系</p>
 <p><strong>坐标系的标准命名</strong></p>
-<p>基（Base）坐标系${B}$位于操作臂的基座上</p>
-<p>固定（Settle）坐标系${S}$位置与任务相关，比如工作台的一个角上</p>
-<p>腕部（Wrist）坐标系${W}$位于操作臂的末端连杆</p>
-<p>工具（Tool）坐标系${T}$位于机器人所夹持工具的末端</p>
-<p>目标（Goal）坐标系${G}$是对机器人移动工具到达的位置描述
+<p>基（Base）坐标系$\{B\}$位于操作臂的基座上</p>
+<p>固定（Settle）坐标系$\{S\}$位置与任务相关，比如工作台的一个角上</p>
+<p>腕部（Wrist）坐标系$\{W\}$位于操作臂的末端连杆</p>
+<p>工具（Tool）坐标系$\{T\}$位于机器人所夹持工具的末端</p>
+<p>目标（Goal）坐标系$\{G\}$是对机器人移动工具到达的位置描述
 <img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/5.png"
 	width="700"
 	height="607"
@@ -473,7 +473,7 @@
 <h2 id="操作臂运动学">操作臂运动学
 </h2><hr>
 <h3 id="连杆变换link-transformation">连杆变换（Link Transformation）
-</h3><p>我们希望用四个连杆参数建立起相邻连杆坐标系${i}$和${i-1}$之间的变换关系，即$^{i-1}P=^{i-1}_{i}T^iP$
+</h3><p>我们希望用四个连杆参数建立起相邻连杆坐标系$\{i\}$和$\{i-1\}$之间的变换关系，即$^{i-1}P=^{i-1}_{i}T^iP$
 <img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/4.png"
 	width="865"
 	height="600"
@@ -486,18 +486,18 @@
 		data-flex-basis="346px"
 	
 ></p>
-<p>我们考虑借由图中标出的四个连杆参数将${i-1}$一步步变换为${i}$</p>
-<p>将${i-1}$绕$\hat{X}<em>{i-1}$旋转$\alpha</em>{i-1}$得到${R}$</p>
-<p>将${R}$沿$\hat{X}<em>R$平移$a</em>{i-1}$得到${Q}$</p>
-<p>将${Q}$绕$\hat{Z}_Q$旋转$\theta_i$得到${P}$</p>
-<p>将${P}$沿$\hat{Z}_P$平移$d_i$得到${i}$</p>
+<p>我们考虑借由图中标出的四个连杆参数将$\{i-1\}$一步步变换为$\{i\}$</p>
+<p>将$\{i-1\}$绕$\hat{X}_{i-1}$旋转$\alpha_{i-1}$得到$\{R\}$</p>
+<p>将$\{R\}$沿$\hat{X}_R$平移$a_{i-1}$得到$\{Q\}$</p>
+<p>将$\{Q\}$绕$\hat{Z}_Q$旋转$\theta_i$得到$\{P\}$</p>
+<p>将$\{P\}$沿$\hat{Z}_P$平移$d_i$得到$\{i\}$</p>
 <p>于是变换矩阵可写成：</p>
 <p>$^{i-1}P=^{i-1}_{i}T^iP=^{i-1}_RT^R_QT^Q_PT^P_iT^iP$</p>
-<p>$^{i-1}<em>{i}T=^{i-1}<em>RT^R_QT^Q_PT^P_iT=R_X(\alpha</em>{i-1})D_X(a</em>{i-1})R_Z(\theta_i)D_Z(d_i)$</p>
+<p>$^{i-1}_{i}T=^{i-1}_RT^R_QT^Q_PT^P_iT=R_X(\alpha_{i-1})D_X(a_{i-1})R_Z(\theta_i)D_Z(d_i)$</p>
 <p>最终计算得到：</p>
-<p>$^{i-1}<em>{i}T=\begin{bmatrix}c\theta_i&amp;-s\theta_i&amp;0&amp;a</em>{i-1}\s\theta_ic\alpha_{i-1}&amp;c\theta_ic\alpha_{i-1}&amp;-s\alpha_{i-1}&amp;-s\alpha_{i-1}d_i\s\theta_is\alpha_{i-1}&amp;c\theta_is\alpha_{i-1}&amp;c\alpha_{i-1}&amp;c\alpha_{i-1}d_i\0&amp;0&amp;0&amp;1\end{bmatrix}$</p>
-<p>左上角$3\times3$为旋转矩阵，最右列为${i}$的原点相对于${i-1}$的原点的位置矢量</p>
-<p>计算出各个连杆变换矩阵，将其连乘就能得到${N}$相对于${0}$的变换矩阵：</p>
+<p>$^{i-1}_{i}T=\begin{bmatrix}c\theta_i&-s\theta_i&0&a_{i-1}\\s\theta_ic\alpha_{i-1}&c\theta_ic\alpha_{i-1}&-s\alpha_{i-1}&-s\alpha_{i-1}d_i\\s\theta_is\alpha_{i-1}&c\theta_is\alpha_{i-1}&c\alpha_{i-1}&c\alpha_{i-1}d_i\\0&0&0&1\end{bmatrix}$</p>
+<p>左上角$3\times3$为旋转矩阵，最右列为$\{i\}$的原点相对于$\{i-1\}$的原点的位置矢量</p>
+<p>计算出各个连杆变换矩阵，将其连乘就能得到$\{N\}$相对于$\{0\}$的变换矩阵：</p>
 <p>$^0_NT=^0_1T^1_2T^2_3T…^{N-1}_NT$</p>
 <hr>
 <h3 id="驱动器空间关节空间和笛卡尔空间">驱动器空间、关节空间和笛卡尔空间
