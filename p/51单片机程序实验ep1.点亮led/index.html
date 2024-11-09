@@ -264,26 +264,32 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#51单片机最小系统">51单片机最小系统</a>
+    <li><a href="#单片机介绍">单片机介绍</a>
       <ol>
-        <li><a href="#晶振电路">晶振电路</a></li>
-        <li><a href="#复位电路">复位电路</a></li>
-        <li><a href="#电源电路">电源电路</a></li>
-        <li><a href="#下载电路">下载电路</a></li>
+        <li><a href="#51单片机最小系统">51单片机最小系统</a>
+          <ol>
+            <li><a href="#晶振电路">晶振电路</a></li>
+            <li><a href="#复位电路">复位电路</a></li>
+            <li><a href="#电源电路">电源电路</a></li>
+            <li><a href="#下载电路">下载电路</a></li>
+          </ol>
+        </li>
       </ol>
     </li>
-  </ol>
-
-  <ol>
-    <li><a href="#c51扩充数据类型">C51扩充数据类型</a></li>
-    <li><a href="#reg52头文件">reg52头文件</a></li>
-  </ol>
-
-  <ol>
-    <li><a href="#c51单片机gpio介绍及led线路">C51单片机GPIO介绍及LED线路</a></li>
-    <li><a href="#程序1点亮d1指示灯">程序1：点亮D1指示灯</a></li>
-    <li><a href="#程序2控制d1指示灯闪烁">程序2：控制D1指示灯闪烁</a></li>
-    <li><a href="#程序3led流水灯">程序3：LED流水灯</a></li>
+    <li><a href="#c语言c51扩充内容">C语言C51扩充内容</a>
+      <ol>
+        <li><a href="#c51扩充数据类型">C51扩充数据类型</a></li>
+        <li><a href="#reg52头文件">reg52头文件</a></li>
+      </ol>
+    </li>
+    <li><a href="#点亮第一个led">点亮第一个LED</a>
+      <ol>
+        <li><a href="#c51单片机gpio介绍及led线路">C51单片机GPIO介绍及LED线路</a></li>
+        <li><a href="#程序1点亮d1指示灯">程序1：点亮D1指示灯</a></li>
+        <li><a href="#程序2控制d1指示灯闪烁">程序2：控制D1指示灯闪烁</a></li>
+        <li><a href="#程序3led流水灯">程序3：LED流水灯</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -377,8 +383,8 @@
 <p>前置知识：C语言</p>
 <p>单片机套装：普中STC51单片机开发板A4标准版套餐7</p>
 </blockquote>
-<h1 id="单片机介绍">单片机介绍
-</h1><p><strong>单片机</strong>（Micro Controller Unit），简称MCU</p>
+<h2 id="单片机介绍">单片机介绍
+</h2><p><strong>单片机</strong>（Micro Controller Unit），简称MCU</p>
 <p>内部集成了CPU、RAM、ROM、定时器、中断系统、通讯接口等一系列电脑常用硬件功能</p>
 <p>单片机的任务是信息采集（依靠传感器）、处理（依靠CPU）和硬件设备（例如电机、LED等）的控制</p>
 <p>跟计算机相比，单片机是一个袖珍版计算机，一个芯片就能构成完整的计算机系统，但在性能上与计算机相差甚远，但单片机成本低、体积小、结构简单，在生活和工业控制领域大有所用的同时，学习使用单片机也是了解计算机原理与结构的最佳选择</p>
@@ -387,23 +393,23 @@
 <img src="6.png" style="zoom: 67%;" />
 <p><strong>STC89C52系列PDIP封装管脚图</strong></p>
 <img src="7.png" style="zoom:50%;" />
-<h2 id="51单片机最小系统">51单片机最小系统
-</h2><p>能使51单片机工作的最简单最基础的电路统称为51单片机最小系统，由晶振电路、复位电路、电源电路构成，而要为单片机烧录程序还需要下载电路</p>
-<h3 id="晶振电路">晶振电路
-</h3><p>晶振电路为单片机正常工作提供一个时钟</p>
+<h3 id="51单片机最小系统">51单片机最小系统
+</h3><p>能使51单片机工作的最简单最基础的电路统称为51单片机最小系统，由晶振电路、复位电路、电源电路构成，而要为单片机烧录程序还需要下载电路</p>
+<h4 id="晶振电路">晶振电路
+</h4><p>晶振电路为单片机正常工作提供一个时钟</p>
 <img src="1.png" style="zoom:33%;" />
 <p>51单片机的时钟频率在0~40MHz运行，通常选用12MHz（便于计算时间）或11.059MHz（串行通信波特率为零）的晶振接在管脚18、19</p>
 <p>旁路电容作用：消除晶振接入电路一瞬间产生的电感干扰，一端接地，电容大小取决于晶振大小</p>
-<h3 id="复位电路">复位电路
-</h3><p>复位电路提供系统复位的操作，当系统工作不正常或死机时可以重启系统</p>
+<h4 id="复位电路">复位电路
+</h4><p>复位电路提供系统复位的操作，当系统工作不正常或死机时可以重启系统</p>
 <img src="2.png" style="zoom: 33%;" />
 <img src="3.png" style="zoom:80%;" />
 <p>复位的两种方式：手动按键复位（上图）和接通电源自动复位（下图）</p>
 <p>STC89C51单片机为高电平复位，只要让引脚保持一段时间的高电平即可复位</p>
-<h3 id="电源电路">电源电路
-</h3><p>单片机电压过大会烧毁电路，电压过小系统会运行不起来，因此需要挑选合适的电源电路</p>
-<h3 id="下载电路">下载电路
-</h3><p><img src="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8Cep1.%E7%82%B9%E4%BA%AEled/5.png"
+<h4 id="电源电路">电源电路
+</h4><p>单片机电压过大会烧毁电路，电压过小系统会运行不起来，因此需要挑选合适的电源电路</p>
+<h4 id="下载电路">下载电路
+</h4><p><img src="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8Cep1.%E7%82%B9%E4%BA%AEled/5.png"
 	width="842"
 	height="354"
 	srcset="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8Cep1.%E7%82%B9%E4%BA%AEled/5_hu8304260819743258219.png 480w, /p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8Cep1.%E7%82%B9%E4%BA%AEled/5_hu8281418134176239089.png 1024w"
@@ -416,9 +422,9 @@
 	
 ></p>
 <p>下载电路将编译文件下载到单片机</p>
-<h1 id="c语言c51扩充内容">C语言C51扩充内容
-</h1><h2 id="c51扩充数据类型">C51扩充数据类型
-</h2><div class="table-wrapper"><table>
+<h2 id="c语言c51扩充内容">C语言C51扩充内容
+</h2><h3 id="c51扩充数据类型">C51扩充数据类型
+</h3><div class="table-wrapper"><table>
   <thead>
       <tr>
           <th>类型</th>
@@ -475,8 +481,8 @@
 </span></span><span class="line"><span class="cl"><span class="c1">//使用TI控制八位寄存器SCON位0~7中的位1
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="reg52头文件">reg52头文件
-</h2><p>reg52头文件定义了51单片机特殊功能寄存器和特殊功能位的名字以便我们访问</p>
+</div><h3 id="reg52头文件">reg52头文件
+</h3><p>reg52头文件定义了51单片机特殊功能寄存器和特殊功能位的名字以便我们访问</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -724,9 +730,9 @@
 </span></span><span class="line"><span class="cl"><span class="cp">#endif
 </span></span></span></code></pre></td></tr></table>
 </div>
-</div><h1 id="点亮第一个led">点亮第一个LED
-</h1><h2 id="c51单片机gpio介绍及led线路">C51单片机GPIO介绍及LED线路
-</h2><p>**GPIO（General Purpose Input Output）**是通用输入输出端口的简称，可以通过软件来控制其输入和输出</p>
+</div><h2 id="点亮第一个led">点亮第一个LED
+</h2><h3 id="c51单片机gpio介绍及led线路">C51单片机GPIO介绍及LED线路
+</h3><p>**GPIO（General Purpose Input Output）**是通用输入输出端口的简称，可以通过软件来控制其输入和输出</p>
 <p><strong>51单片机引脚分类：</strong></p>
 <ul>
 <li>电源引脚（Vcc/Vdd/Gnd/Vss）</li>
@@ -738,8 +744,8 @@
 <p>详细管脚功能可在单片机手册中查询</p>
 <p><strong>LED线路图</strong></p>
 <img src="8.png" style="zoom: 50%;" />
-<h2 id="程序1点亮d1指示灯">程序1：点亮D1指示灯
-</h2><div class="highlight"><div class="chroma">
+<h3 id="程序1点亮d1指示灯">程序1：点亮D1指示灯
+</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -761,8 +767,8 @@
 </div>
 </div><p><strong>效果图</strong></p>
 <img src="1.jpg" style="zoom:50%;" />
-<h2 id="程序2控制d1指示灯闪烁">程序2：控制D1指示灯闪烁
-</h2><div class="highlight"><div class="chroma">
+<h3 id="程序2控制d1指示灯闪烁">程序2：控制D1指示灯闪烁
+</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -812,8 +818,8 @@
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="程序3led流水灯">程序3：LED流水灯
-</h2><div class="highlight"><div class="chroma">
+</div><h3 id="程序3led流水灯">程序3：LED流水灯
+</h3><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
