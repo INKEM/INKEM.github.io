@@ -7,7 +7,200 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>一杯为品</copyright>
-        <lastBuildDate>Wed, 06 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://INKEM.github.io/categories/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BA/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 12 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://INKEM.github.io/categories/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BA/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【机器人学导论】Ep4.操作臂逆运动学</title>
+        <link>https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep4.%E6%93%8D%E4%BD%9C%E8%87%82%E9%80%86%E8%BF%90%E5%8A%A8%E5%AD%A6/</link>
+        <pubDate>Tue, 12 Nov 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep4.%E6%93%8D%E4%BD%9C%E8%87%82%E9%80%86%E8%BF%90%E5%8A%A8%E5%AD%A6/</guid>
+        <description>&lt;h1 id=&#34;操作臂逆运动学&#34;&gt;操作臂逆运动学
+&lt;/h1&gt;&lt;p&gt;上一章我们讨论了已知关节角，计算工具坐标系相对于固定坐标系的位姿的问题。在本章中我们将研究已知工具坐标系相对于固定坐标系的期望位姿，如何计算一系列满足期望要求的关节角，即&lt;strong&gt;逆运动学问题&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;逆运动学方程的解&#34;&gt;逆运动学方程的解
+&lt;/h2&gt;&lt;h3 id=&#34;解的存在性&#34;&gt;解的存在性
+&lt;/h3&gt;&lt;p&gt;研究解是否存在放在操作臂上即研究操作臂的&lt;strong&gt;工作空间&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;可达工作空间&lt;/strong&gt;（Reachable Workspace）：手臂可以用至少一种姿态到达的位置&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;灵巧工作空间&lt;/strong&gt;（Dexterous Workspace）：手臂可以用任何姿态到达的位置&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep4.%E6%93%8D%E4%BD%9C%E8%87%82%E9%80%86%E8%BF%90%E5%8A%A8%E5%AD%A6/1.png&#34;
+	width=&#34;1611&#34;
+	height=&#34;692&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep4.%E6%93%8D%E4%BD%9C%E8%87%82%E9%80%86%E8%BF%90%E5%8A%A8%E5%AD%A6/1_hu16214565174655429918.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep4.%E6%93%8D%E4%BD%9C%E8%87%82%E9%80%86%E8%BF%90%E5%8A%A8%E5%AD%A6/1_hu8531184121133376559.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;232&#34;
+		data-flex-basis=&#34;558px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;我们用R（旋转关节）和P（移动关节）的字母组合来简记一个操作臂的关节连接顺序&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;在上图的处于二维平面的RR操作臂中，如果$l_1&gt;l_2$，其可达工作空间为外径$l_1+l_2$、内径$l_1-l_2$的圆环，没有灵巧工作空间；如果$l_1=l_2$，其可达空间为半径$l_1+l_2$的圆，圆心为灵巧工作空间&lt;/p&gt;
+&lt;p&gt;如果要让操作臂达到一个三维空间内一般的目标位置和姿态，至少需要六个自由度。当操作臂自由度$n&lt;6$时，其工作空间会被局限在仅能由$n$个独立变量描述的$n$自由度&lt;strong&gt;子空间&lt;/strong&gt;（Subspace），又由于操作臂关节的活动范围受限，其工作空间是对应的$n$自由度子空间的子集&lt;/p&gt;
+&lt;img src=&#34;2.png&#34; style=&#34;zoom: 33%;&#34; /&gt;
+&lt;p&gt;对于上图的RRR操作臂，其工具坐标系的位置局限在由两个独立坐标变量$x$、$y$描述的一个平面内，而姿态局限在该平面中的一个独立旋转角度变量$\phi$，由此我们用三个独立变量描述出它的三自由度子空间为：&lt;/p&gt;
+&lt;p&gt;$^0_3T=\begin{bmatrix}c_\phi&amp;-s_\phi&amp;0&amp;x\\s_\phi&amp;c_\phi&amp;0&amp;y\\0&amp;0&amp;1&amp;0\\0&amp;0&amp;0&amp;1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;而其工作空间则进一步局限在该子空间中满足$\sqrt{x^2+y^2}\leqslant l_1+l_2+l_3$的部分中&lt;/p&gt;
+&lt;img src=&#34;3.png&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;p&gt;对于上图的RP操作臂，其工具坐标系的位置局限在由两个独立坐标变量$x$、$y$描述的一个平面内，而姿态也同时由$x$、$y$所决定，$^0\hat{Y}_2$始终向下，$^0\hat{Z}_2$与原点的位置矢量同向，$^0\hat{X}_2$由$^0\hat{Y}_2$、$^0\hat{Z}_2$叉乘得到，其二自由度工作空间为：&lt;/p&gt;
+&lt;p&gt;$^0_2T=\begin{bmatrix}\frac{y}{\sqrt{x^2+y^2}}&amp;0&amp;\frac{x}{\sqrt{x^2+y^2}}&amp;x\\\frac{-x}{\sqrt{x^2+y^2}}&amp;0&amp;\frac{y}{\sqrt{x^2+y^2}}&amp;y\\0&amp;-1&amp;0&amp;0\\0&amp;0&amp;0&amp;1\end{bmatrix}$&lt;/p&gt;
+&lt;h3 id=&#34;多解问题&#34;&gt;多解问题
+&lt;/h3&gt;&lt;p&gt;由于逆运动学方程是非线性方程，求解过程中往往遇到&lt;strong&gt;多解问题&lt;/strong&gt;&lt;/p&gt;
+&lt;img src=&#34;4.png&#34; style=&#34;zoom: 25%;&#34; /&gt;
+&lt;p&gt;通过上图我们来直观感受：对于同一个绿色末端连杆的目标位姿，根据肘部方向的不同，前两根连杆有深蓝和浅蓝所示的两种方式可以达到&lt;/p&gt;
+&lt;p&gt;但我们只能选择一个解来执行，因此要有解的选择标准。常见的选择条件一个是要求到达目标位姿的过程中每个运动关节的运动量最小，即&lt;strong&gt;就近原则&lt;/strong&gt;，另一个是考虑运动轨迹中的&lt;strong&gt;障碍物&lt;/strong&gt;。下图直观展示了这两种情况：&lt;/p&gt;
+&lt;img src=&#34;5.png&#34; style=&#34;zoom: 50%;&#34; /&gt;
+&lt;p&gt;解的个数取决于操作臂的关节数量、连杆参数和关节运动范围&lt;/p&gt;
+&lt;p&gt;对于关节数量，考虑一种极限状态，当一个操作臂在一定长度内有无穷多个关节，即可看做是一根柔性的曲线，对固定的末端姿态，中间段有无穷多个解&lt;/p&gt;
+&lt;p&gt;对于连杆参数，通常当连杆的非零参数越多，到达某一特定目标的方式也越多。以一个6R操作臂为例，下表展示了解的最大数目与等于零的连杆长度参数的数目之间的关系，非零参数越多，解的最大数目就越大&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;$a_i$&lt;/th&gt;
+          &lt;th&gt;解的个数&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$a_1=a_3=a_5=0$&lt;/td&gt;
+          &lt;td&gt;$\leqslant4$&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$a_3=a_5=0$&lt;/td&gt;
+          &lt;td&gt;$\leqslant8$&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;$a_3=0$&lt;/td&gt;
+          &lt;td&gt;$\leqslant16$&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;所有$a_i\neq0$&lt;/td&gt;
+          &lt;td&gt;$\leqslant16$&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;而关节运动范围则限制了解的选择&lt;/p&gt;
+&lt;h2 id=&#34;逆运动学方程的解法&#34;&gt;逆运动学方程的解法
+&lt;/h2&gt;&lt;p&gt;与线性方程组不同，非线性方程组没有通用的求解算法，我们只能用两大类解法来求解：&lt;strong&gt;封闭解&lt;/strong&gt;（&lt;strong&gt;解析解&lt;/strong&gt;，Closed-form Solutions）和&lt;strong&gt;数值解&lt;/strong&gt;（Numerical Solutions）&lt;/p&gt;
+&lt;p&gt;封闭解是一个关于方程自变量的解析函数，代入自变量即可解得因变量；数值解通过数值迭代求解。前者的缺点在于不是所有的非线性方程组都有封闭解，后者的缺点在于求解速度慢且不适应多解问题&lt;/p&gt;
+&lt;p&gt;为此，我们在逆运动学中尽量避免数值解，在设计操作臂的结构时保证其存在封闭解&lt;/p&gt;
+&lt;p&gt;逆运动学方程封闭解的解法包括&lt;strong&gt;代数解法&lt;/strong&gt;和&lt;strong&gt;几何解法&lt;/strong&gt;，前者纯靠代数运算，后者结合问题的几何性质，以下内容以数学计算为主，与机器人理论联系较少，可适当略读&lt;/p&gt;
+&lt;p&gt;我们先研究开头举例的RRR操作臂来给出这两种解法，对于给定的目标位姿独立变量$(x,y,\phi)$，求出三个关节的关节角$(\theta_1,\theta_2,\theta_3)$&lt;/p&gt;
+&lt;img src=&#34;2.png&#34; style=&#34;zoom: 33%;&#34; /&gt;
+&lt;h3 id=&#34;代数解法&#34;&gt;代数解法
+&lt;/h3&gt;&lt;p&gt;由前文求解的子空间，用目标位姿参数给出的位姿矩阵为：&lt;/p&gt;
+&lt;p&gt;$^0_3T=\begin{bmatrix}c_\phi&amp;-s_\phi&amp;0&amp;x\\s_\phi&amp;c_\phi&amp;0&amp;y\\0&amp;0&amp;1&amp;0\\0&amp;0&amp;0&amp;1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;由正向运动学，用关节变量给出的位姿矩阵为：&lt;/p&gt;
+&lt;p&gt;$^0_3T=\begin{bmatrix}c_{123}&amp;-s_{123}&amp;0&amp;l_1c_1+l_2c_{12}\\s_{123}&amp;c_{123}&amp;0&amp;l_1s_1+l_2s_{12}\\0&amp;0&amp;1&amp;0\\0&amp;0&amp;0&amp;1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;其中下标数字组合代表对应关节角的和，如$c_{12}$表示$\cos(\theta_1+\theta_2+\theta_3)$&lt;/p&gt;
+&lt;p&gt;两矩阵联立得到四个非线性方程：&lt;/p&gt;
+&lt;p&gt;$c_\phi=c_{123}$①&lt;/p&gt;
+&lt;p&gt;$s_\phi=s_{123}$②&lt;/p&gt;
+&lt;p&gt;$x=l_1c_1+l_2c_{12}$③&lt;/p&gt;
+&lt;p&gt;$y=l_1s_1+l_2s_{12}$④&lt;/p&gt;
+&lt;p&gt;对③和④同时平方再求和得：&lt;/p&gt;
+&lt;p&gt;$x^2+y^2=l^2_1+l^2_2+2l_1l_2c_2$&lt;/p&gt;
+&lt;p&gt;这里利用了三角函数两角和公式&lt;/p&gt;
+&lt;p&gt;由此求解出$c_2=\frac{x^2+y^2-l^2_1-l^2_2}{2l_1l_2}$&lt;/p&gt;
+&lt;p&gt;上式有解的条件为等式右侧的值必须在$[-1,1]$之间，否则说明在物理结构上目标点位置太远，操作臂不可达&lt;/p&gt;
+&lt;p&gt;假定目标点在工作空间内，则$s_2=\pm\sqrt{1-c^2_2}$&lt;/p&gt;
+&lt;p&gt;$\theta_2=\textup{Atan2}(s_2,c_2)$&lt;/p&gt;
+&lt;p&gt;式中正负符号的选择对应“肘部朝上”还是“肘部朝下”的多解问题&lt;/p&gt;
+&lt;p&gt;接下来求$\theta_1$&lt;/p&gt;
+&lt;p&gt;令：&lt;/p&gt;
+&lt;p&gt;$k_1=l_1+l_2c_2$&lt;/p&gt;
+&lt;p&gt;$k_2=l_2s_2$&lt;/p&gt;
+&lt;p&gt;则③和④可写成：&lt;/p&gt;
+&lt;p&gt;$x=k_1c_1-k_2s_1$&lt;/p&gt;
+&lt;p&gt;$y=k_1s_1+k_2c_1$&lt;/p&gt;
+&lt;p&gt;求解该类方程可用变量代换改变常数$k_1$和$k_2$的形式，如果：&lt;/p&gt;
+&lt;p&gt;$r=\sqrt{k^2_1+k^2_2}$&lt;/p&gt;
+&lt;p&gt;$\gamma=\textup{Atan2}(k_2,k_1)$&lt;/p&gt;
+&lt;p&gt;则：&lt;/p&gt;
+&lt;p&gt;$k_1=r\cos\gamma$&lt;/p&gt;
+&lt;p&gt;$k_2=r\sin\gamma$&lt;/p&gt;
+&lt;p&gt;则③和④可进一步写成：&lt;/p&gt;
+&lt;p&gt;$\frac{x}{r}=\cos\gamma\cos\theta_1-\sin\gamma\sin\theta_1$&lt;/p&gt;
+&lt;p&gt;$\frac{y}{r}=\cos\gamma\sin\theta_1-\sin\gamma\cos\theta_1$&lt;/p&gt;
+&lt;p&gt;因此：&lt;/p&gt;
+&lt;p&gt;$\cos(\gamma+\theta_1)=\frac{x}{r}$&lt;/p&gt;
+&lt;p&gt;$\sin(\gamma+\theta_1)=\frac{y}{r}$&lt;/p&gt;
+&lt;p&gt;得：&lt;/p&gt;
+&lt;p&gt;$\gamma+\theta_1=\textup{Atan2}(\frac{y}{r},\frac{x}{r})=\textup{Atan2}(y,x)$&lt;/p&gt;
+&lt;p&gt;从而：&lt;/p&gt;
+&lt;p&gt;$\theta_1=\textup{Atan2}(y,x)-\textup{Atan2}(k_2,k_1)$&lt;/p&gt;
+&lt;p&gt;最后$\theta_3$由$\theta_1+\theta_2+\theta_3=\phi$解出&lt;/p&gt;
+&lt;h3 id=&#34;几何解法&#34;&gt;几何解法
+&lt;/h3&gt;&lt;img src=&#34;6.png&#34; style=&#34;zoom:33%;&#34; /&gt;
+&lt;p&gt;画出以三个关节为顶点的三角形，由余弦定理得：&lt;/p&gt;
+&lt;p&gt;$x^2+y^2=l^2_1+l^2_2-2l_1l_2\cos(\theta_2+\pi)$&lt;/p&gt;
+&lt;p&gt;由此求解出$c_2=\frac{x^2+y^2-l^2_1-l^2_2}{2l_1l_2}$&lt;/p&gt;
+&lt;p&gt;为求解出$\theta_1$，需求出图中$\psi$和$\beta$的表达式&lt;/p&gt;
+&lt;p&gt;$\beta$是位置矢量与$\hat{X}_0$的夹角，可得：&lt;/p&gt;
+&lt;p&gt;$\beta=\textup{Atan2}(y,x)$&lt;/p&gt;
+&lt;p&gt;可在三角形再次利用余弦定理解出$\cos\psi=\frac{x^2+y^2+l^2_1-l^2_2}{2l_1\sqrt{x^2+y^2}}$&lt;/p&gt;
+&lt;p&gt;为使几何关系成立，求反余弦需使$0\leqslant\psi\leqslant\pi$&lt;/p&gt;
+&lt;p&gt;于是$\theta_1=\beta\pm\psi$，当$\theta_2&lt;0$取正，当$\theta_2&gt;0$取负&lt;/p&gt;
+&lt;p&gt;最后$\theta_3$由$\theta_1+\theta_2+\theta_3=\phi$解出&lt;/p&gt;
+&lt;h3 id=&#34;万能公式&#34;&gt;万能公式
+&lt;/h3&gt;&lt;p&gt;对于单变量的三角函数超越方程，可用万能公式代换化为多项式方程&lt;/p&gt;
+&lt;p&gt;令$u=\tan\frac{\theta}{2}$&lt;/p&gt;
+&lt;p&gt;则$\cos\theta=\frac{1-u^2}{1+u^2}$，$\sin\theta=\frac{2u}{1+u^2}$&lt;/p&gt;
+&lt;h3 id=&#34;三轴相交的pieper解法&#34;&gt;三轴相交的Pieper解法
+&lt;/h3&gt;&lt;p&gt;尽管一般的六自由度机器人没有封闭解，但在某些特殊情况下还是可解的。Pieper提出了一种求解最后三个连续轴相交于一点的六自由度操作臂的方法，核心思想为让$\theta_1$、$\theta_2$、$\theta_3$层层分离&lt;/p&gt;
+&lt;p&gt;当最后三个轴相交时，连杆坐标系$\{4\}$、$\{5\}$、$\{6\}$的原点均位于这个交点上，因此：&lt;/p&gt;
+&lt;p&gt;$^0P_{6ORG}=^0P_{4ORG}=^0_1T^1_2T^2_3T^3P_{4ORG}=\begin{bmatrix}x\\y\\z\\1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;其中，$^3P_{4ORG}$即$^3_4T$的第四列，由第三章中相邻连杆变换矩阵公式代入得：&lt;/p&gt;
+&lt;p&gt;$^0P_{4ORG}=^0_1T^1_2T^2_3T\begin{bmatrix}a_3\\-d_4s\alpha_3\\d_4c\alpha_3\\1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;将$^2_3T$乘进去得：&lt;/p&gt;
+&lt;p&gt;$^0P_{4ORG}=^0_1T^1_2T\begin{bmatrix}f_1(\theta_3)\\f_2(\theta_3)\\f_3(\theta_3)\\1\end{bmatrix}$&lt;/p&gt;
+&lt;p&gt;式中：&lt;/p&gt;
+&lt;p&gt;$f_1=a_3c_3+d_4s\alpha_3s_3+a_2$&lt;/p&gt;
+&lt;p&gt;$f_2=a_3c\alpha_2s_3-d_4s\alpha_3c\alpha_2c_3-d_4s\alpha_2c\alpha_3-d_3s\alpha_2$&lt;/p&gt;
+&lt;p&gt;$f_3=a_3s\alpha_2s_3-d_4s\alpha_3s\alpha_2c_3+d_4c\alpha_2c\alpha_3+d_3c\alpha_2$&lt;/p&gt;
+&lt;p&gt;继续将$^0_1T^1_2T$乘进去得：&lt;/p&gt;
+&lt;p&gt;$^0P_{4ORG}=\begin{bmatrix}c_1g_1-s_1g_2\\s_1g_1+c_1g_2\\g_3\\1\end{bmatrix}$①&lt;/p&gt;
+&lt;p&gt;式中：&lt;/p&gt;
+&lt;p&gt;$g_1=c_2f_1-s_2f_2+a_1$&lt;/p&gt;
+&lt;p&gt;$g_2=s_2c\alpha_1f_1+c_2c\alpha_1f_2-s\alpha_1f_3-d_2s\alpha_1$&lt;/p&gt;
+&lt;p&gt;$g_3=s_2s\alpha_1f_1+c_2s\alpha_1f_2+c\alpha_1f_3+d_2c\alpha_1$&lt;/p&gt;
+&lt;p&gt;现在写出$^0P_{4ORG}$模的平方的表达式：&lt;/p&gt;
+&lt;p&gt;$r=x^2+y^2+z^2=g_1^2+g_2^2+g_3^2$&lt;/p&gt;
+&lt;p&gt;$r=f_1^2+f_2^2+f_3^2+a_1^2+d_2^2+2d_2f_3+2a_1(c_2f_1-s_2f_2)$&lt;/p&gt;
+&lt;p&gt;上式与$z=g_3$联立得到一个方程组：&lt;/p&gt;
+&lt;p&gt;$\left\{\begin{matrix}r=(k_1c_2+k_2s_2)2a_1+k_3\\z=(k_1s_2-k_2c_2)s\alpha_1+k_4\end{matrix}\right.$②&lt;/p&gt;
+&lt;p&gt;式中：&lt;/p&gt;
+&lt;p&gt;$k_1=f_1$&lt;/p&gt;
+&lt;p&gt;$k_2=-f_2$&lt;/p&gt;
+&lt;p&gt;$k_3=f_1^2+f_2^2+f_3^2+a_1^2+d_2^2+2d_2f_3$&lt;/p&gt;
+&lt;p&gt;$k_4=f_3c\alpha_1+d_2c\alpha_1$&lt;/p&gt;
+&lt;p&gt;该方程组的求解分三种情况：&lt;/p&gt;
+&lt;p&gt;$1)$若$a_1=0$，则$r=k_3$，$r$已知，$k_3$是关于$\theta_3$的一元函数，由万能公式解出$\theta_3$&lt;/p&gt;
+&lt;p&gt;$2)$若$s\alpha_1=0$，则$z=k_4$，$z$已知，$k_4$是关于$\theta_3$的一元函数，由万能公式解出$\theta_3$&lt;/p&gt;
+&lt;p&gt;$3)$否则，消元法消去$c_2$和$s_2$，得到：&lt;/p&gt;
+&lt;p&gt;$\frac{(r-k_3)^2}{4a_1^2}+\frac{(z-k_4)^2}{s^2\alpha_1}=k_1^2+k_2^2$&lt;/p&gt;
+&lt;p&gt;由万能公式得到一个四次方程解出$\theta_3$&lt;/p&gt;
+&lt;p&gt;解出$\theta_3$后，可由②解出$\theta_2$，由①解出$\theta_1$&lt;/p&gt;
+&lt;p&gt;为了完成求解工作，还需要求出$\theta_4$、$\theta_5$、$\theta_6$，由于这些轴相交，原点已经确定，故这些关节角只影响末端连杆的姿态。先利用已经解出的$\theta_1$、$\theta_2$、$\theta_3$算出连杆坐标系$\{4\}$的初始姿态$^4_0R|_{\theta_4=0}$，再计算出以此为参考坐标系的末端连杆的姿态描述：&lt;/p&gt;
+&lt;p&gt;$^4_6R|_{\theta_4=0}=^0_4R^{-1}|_{\theta_4=0}{}_6^0R$&lt;/p&gt;
+&lt;p&gt;用欧拉角定义最后三个关节角得到一个旋转矩阵后与$^4_6R|_{\theta_4=0}$联立即可完成求解&lt;/p&gt;
+&lt;h4 id=&#34;关于用欧拉角定义关节角&#34;&gt;关于用欧拉角定义关节角：
+&lt;/h4&gt;&lt;p&gt;由于不同关节角对应的转轴是不同连杆坐标系的关节轴，而欧拉角从始至终都是绕一个坐标系的主轴旋转，因此用欧拉角来描述关节角的变换过程时，我们有时需要使欧拉角在关节角的基础上多转$180^\circ$，让欧拉角坐标系中的一个主轴能跟下一个连杆坐标系的关节轴对齐，便于用下一次旋转的欧拉角描述下一次旋转的关节角，可结合下图理解，其中连杆坐标系每次从蓝色变换到红色，欧拉角坐标系每次从橙色变换到绿色&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep4.%E6%93%8D%E4%BD%9C%E8%87%82%E9%80%86%E8%BF%90%E5%8A%A8%E5%AD%A6/7.png&#34;
+	width=&#34;916&#34;
+	height=&#34;677&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep4.%E6%93%8D%E4%BD%9C%E8%87%82%E9%80%86%E8%BF%90%E5%8A%A8%E5%AD%A6/7_hu168570339387252651.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep4.%E6%93%8D%E4%BD%9C%E8%87%82%E9%80%86%E8%BF%90%E5%8A%A8%E5%AD%A6/7_hu16948316596001306599.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;135&#34;
+		data-flex-basis=&#34;324px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;本章完&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>【机器人学导论】Ep3.操作臂（正向）运动学</title>
         <link>https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/</link>
         <pubDate>Wed, 06 Nov 2024 00:00:00 +0000</pubDate>

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="连杆参数；连杆坐标系；D-H表示法；连杆变换；操作臂运动学">
-<title>【机器人学导论】Ep3.操作臂（正向）运动学</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="逆运动学方程的解；代数解法；几何解法；Pieper解法">
+<title>【机器人学导论】Ep4.操作臂逆运动学</title>
 
-<link rel='canonical' href='https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/'>
+<link rel='canonical' href='https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep4.%E6%93%8D%E4%BD%9C%E8%87%82%E9%80%86%E8%BF%90%E5%8A%A8%E5%AD%A6/'>
 
-<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【机器人学导论】Ep3.操作臂（正向）运动学">
-<meta property='og:description' content="连杆参数；连杆坐标系；D-H表示法；连杆变换；操作臂运动学">
-<meta property='og:url' content='https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/'>
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【机器人学导论】Ep4.操作臂逆运动学">
+<meta property='og:description' content="逆运动学方程的解；代数解法；几何解法；Pieper解法">
+<meta property='og:url' content='https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep4.%E6%93%8D%E4%BD%9C%E8%87%82%E9%80%86%E8%BF%90%E5%8A%A8%E5%AD%A6/'>
 <meta property='og:site_name' content='一杯为品'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-11-06T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-11-06T00:00:00&#43;00:00'/>
-<meta name="twitter:title" content="【机器人学导论】Ep3.操作臂（正向）运动学">
-<meta name="twitter:description" content="连杆参数；连杆坐标系；D-H表示法；连杆变换；操作臂运动学">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-11-12T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-11-12T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="【机器人学导论】Ep4.操作臂逆运动学">
+<meta name="twitter:description" content="逆运动学方程的解；代数解法；几何解法；Pieper解法">
     <link rel="shortcut icon" href="/favicon.ico" />
 
     </head>
@@ -264,16 +264,22 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#连杆的描述">连杆的描述</a>
+    <li><a href="#逆运动学方程的解">逆运动学方程的解</a>
       <ol>
-        <li><a href="#连杆参数">连杆参数</a></li>
-        <li><a href="#连杆坐标系">连杆坐标系</a></li>
+        <li><a href="#解的存在性">解的存在性</a></li>
+        <li><a href="#多解问题">多解问题</a></li>
       </ol>
     </li>
-    <li><a href="#操作臂运动学">操作臂运动学</a>
+    <li><a href="#逆运动学方程的解法">逆运动学方程的解法</a>
       <ol>
-        <li><a href="#连杆变换link-transformation">连杆变换（Link Transformation）</a></li>
-        <li><a href="#驱动器空间关节空间和笛卡尔空间">驱动器空间、关节空间和笛卡尔空间</a></li>
+        <li><a href="#代数解法">代数解法</a></li>
+        <li><a href="#几何解法">几何解法</a></li>
+        <li><a href="#万能公式">万能公式</a></li>
+        <li><a href="#三轴相交的pieper解法">三轴相交的Pieper解法</a>
+          <ol>
+            <li><a href="#关于用欧拉角定义关节角">关于用欧拉角定义关节角：</a></li>
+          </ol>
+        </li>
       </ol>
     </li>
   </ol>
@@ -307,12 +313,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/">【机器人学导论】Ep3.操作臂（正向）运动学</a>
+            <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep4.%E6%93%8D%E4%BD%9C%E8%87%82%E9%80%86%E8%BF%90%E5%8A%A8%E5%AD%A6/">【机器人学导论】Ep4.操作臂逆运动学</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            连杆参数；连杆坐标系；D-H表示法；连杆变换；操作臂运动学
+            逆运动学方程的解；代数解法；几何解法；Pieper解法
         </h3>
         
     </div>
@@ -333,7 +339,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Nov 06, 2024</time>
+                <time class="article-time--published">Nov 12, 2024</time>
             </div>
         
 
@@ -348,7 +354,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 6 分钟
+                    阅读时长: 8 分钟
                 </time>
             </div>
         
@@ -363,157 +369,187 @@
     <section class="article-content">
     
     
-    <blockquote>
-<p>主要参考学习资料及插图来源：</p>
-<p>《机器人学导论（第4版）》John J.Craig著</p>
-<p>台大机器人学之运动学——林沛群</p>
-<p>本章数理基础：矩阵的四则运算</p>
-</blockquote>
-<h1 id="操作臂正向运动学">操作臂（正向）运动学
-</h1><p><strong>运动学</strong>讨论运动状态本身，不涉及产生运动的力</p>
-<hr>
-<h2 id="连杆的描述">连杆的描述
-</h2><hr>
-<h3 id="连杆参数">连杆参数
-</h3><p><strong>关节</strong>（Joint）分为移动关节和旋转关节，每个关节有一个自由度，对一个特定的轴移动或转动</p>
-<p><strong>连杆</strong>（Link）为连接关节的杆件，视作刚体</p>
-<p>连杆的编号从固定基座开始，称固定基座为连杆0，第一个可动连杆为连杆1，以此类推，操作臂最末端的连杆为连杆n</p>
-<p><strong>单个连杆：连杆长度和连杆扭转角</strong></p>
-<p>连杆$i-1$连接了关节轴$i-1$和关节轴$i$，关节轴$i-1$和关节轴$i$之间公垂线长度$a_{i-1}$为<strong>连杆长度</strong></p>
-<p>作一平面与两关节轴公垂线垂直，关节轴$i-1$和关节轴$i$在该平面上投影的夹角$\alpha_{i-1}$为<strong>连杆扭转角</strong>（即空间中两直线夹角的定义）
-<img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/1.png"
-	width="750"
-	height="577"
-	srcset="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/1_hu10898899399360834005.png 480w, /p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/1_hu12650047876164823889.png 1024w"
+    <h1 id="操作臂逆运动学">操作臂逆运动学
+</h1><p>上一章我们讨论了已知关节角，计算工具坐标系相对于固定坐标系的位姿的问题。在本章中我们将研究已知工具坐标系相对于固定坐标系的期望位姿，如何计算一系列满足期望要求的关节角，即<strong>逆运动学问题</strong></p>
+<h2 id="逆运动学方程的解">逆运动学方程的解
+</h2><h3 id="解的存在性">解的存在性
+</h3><p>研究解是否存在放在操作臂上即研究操作臂的<strong>工作空间</strong></p>
+<p><strong>可达工作空间</strong>（Reachable Workspace）：手臂可以用至少一种姿态到达的位置</p>
+<p><strong>灵巧工作空间</strong>（Dexterous Workspace）：手臂可以用任何姿态到达的位置</p>
+<p><img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep4.%E6%93%8D%E4%BD%9C%E8%87%82%E9%80%86%E8%BF%90%E5%8A%A8%E5%AD%A6/1.png"
+	width="1611"
+	height="692"
+	srcset="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep4.%E6%93%8D%E4%BD%9C%E8%87%82%E9%80%86%E8%BF%90%E5%8A%A8%E5%AD%A6/1_hu16214565174655429918.png 480w, /p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep4.%E6%93%8D%E4%BD%9C%E8%87%82%E9%80%86%E8%BF%90%E5%8A%A8%E5%AD%A6/1_hu8531184121133376559.png 1024w"
 	loading="lazy"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="129"
-		data-flex-basis="311px"
-	
->
-<em>平面图像表达空间关系可能存在视错觉，需结合文字描述来分析</em></p>
-<p><strong>多杆串连：连杆偏距和关节角</strong></p>
-<p>关节轴$i$上的两个相邻连杆沿公共轴线方向的距离$d_i$为<strong>连杆偏距</strong></p>
-<p>两个相邻连杆绕公共轴线旋转的夹角$\theta_i$为<strong>关节角</strong></p>
-<p>对于首端连杆（固定基座）和末端连杆（末端执行器），习惯设定$a_0=a_n=0$，$\alpha_0=\alpha_n=0$</p>
-<p>对于关节$1$，若为转动关节，$\theta_1$任取，$d_1=0$；若为移动关节，$d_1$任取，$\theta_1=0$。关节$n$同理
-<img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/2.png"
-	width="860"
-	height="589"
-	srcset="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/2_hu4006809544826190360.png 480w, /p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/2_hu17983708968411505105.png 1024w"
-	loading="lazy"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="146"
-		data-flex-basis="350px"
+		data-flex-grow="232"
+		data-flex-basis="558px"
 	
 ></p>
-<p><strong>连杆参数</strong></p>
-<p>由此，机器人的每个连杆都可以用上述四个运动学参数来描述</p>
-<p>对于转动关节，$\theta_i$为关节变量，其他三个连杆参数固定不变；对于移动关节，$d_i$为关节变量，其他三个连杆参数固定不变。这种用连杆参数描述机构运动关系的规则称为<strong>Denavit-Hartenberg方法（简称D-H表示法）</strong></p>
-<hr>
-<h3 id="连杆坐标系">连杆坐标系
-</h3><p><strong>中间连杆坐标系</strong></p>
-<p>按以下方法确定连杆上的固连坐标系$\{i\}$：</p>
-<p>原点位于公垂线$a_i$与关节轴$i$的交点处</p>
-<p>$\hat{Z}_i$轴与关节轴$i$重合</p>
-<p>$\hat{X}_i$轴：当$a_i\ne0$，沿$a_i$方向由关节$i$指向关节$i+1$；当$a_i=0$，垂直于$\hat{Z}_i$和$\hat{Z}_{i+1}$所在的平面</p>
-<p>$\hat{Y}_i$轴由右手定则确定</p>
-<p>由于$\hat{Z}_i$轴可选取两个方向，且当关节轴$i$与$i+1$相交时$\hat{X}_i$轴可选取两个方向，建立的坐标系并不唯一
-<img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/3.png"
-	width="875"
-	height="600"
-	srcset="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/3_hu9998783910083502393.png 480w, /p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/3_hu7351596980606407478.png 1024w"
+<p><em>我们用R（旋转关节）和P（移动关节）的字母组合来简记一个操作臂的关节连接顺序</em></p>
+<p>在上图的处于二维平面的RR操作臂中，如果$l_1>l_2$，其可达工作空间为外径$l_1+l_2$、内径$l_1-l_2$的圆环，没有灵巧工作空间；如果$l_1=l_2$，其可达空间为半径$l_1+l_2$的圆，圆心为灵巧工作空间</p>
+<p>如果要让操作臂达到一个三维空间内一般的目标位置和姿态，至少需要六个自由度。当操作臂自由度$n<6$时，其工作空间会被局限在仅能由$n$个独立变量描述的$n$自由度<strong>子空间</strong>（Subspace），又由于操作臂关节的活动范围受限，其工作空间是对应的$n$自由度子空间的子集</p>
+<img src="2.png" style="zoom: 33%;" />
+<p>对于上图的RRR操作臂，其工具坐标系的位置局限在由两个独立坐标变量$x$、$y$描述的一个平面内，而姿态局限在该平面中的一个独立旋转角度变量$\phi$，由此我们用三个独立变量描述出它的三自由度子空间为：</p>
+<p>$^0_3T=\begin{bmatrix}c_\phi&-s_\phi&0&x\\s_\phi&c_\phi&0&y\\0&0&1&0\\0&0&0&1\end{bmatrix}$</p>
+<p>而其工作空间则进一步局限在该子空间中满足$\sqrt{x^2+y^2}\leqslant l_1+l_2+l_3$的部分中</p>
+<img src="3.png" style="zoom:33%;" />
+<p>对于上图的RP操作臂，其工具坐标系的位置局限在由两个独立坐标变量$x$、$y$描述的一个平面内，而姿态也同时由$x$、$y$所决定，$^0\hat{Y}_2$始终向下，$^0\hat{Z}_2$与原点的位置矢量同向，$^0\hat{X}_2$由$^0\hat{Y}_2$、$^0\hat{Z}_2$叉乘得到，其二自由度工作空间为：</p>
+<p>$^0_2T=\begin{bmatrix}\frac{y}{\sqrt{x^2+y^2}}&0&\frac{x}{\sqrt{x^2+y^2}}&x\\\frac{-x}{\sqrt{x^2+y^2}}&0&\frac{y}{\sqrt{x^2+y^2}}&y\\0&-1&0&0\\0&0&0&1\end{bmatrix}$</p>
+<h3 id="多解问题">多解问题
+</h3><p>由于逆运动学方程是非线性方程，求解过程中往往遇到<strong>多解问题</strong></p>
+<img src="4.png" style="zoom: 25%;" />
+<p>通过上图我们来直观感受：对于同一个绿色末端连杆的目标位姿，根据肘部方向的不同，前两根连杆有深蓝和浅蓝所示的两种方式可以达到</p>
+<p>但我们只能选择一个解来执行，因此要有解的选择标准。常见的选择条件一个是要求到达目标位姿的过程中每个运动关节的运动量最小，即<strong>就近原则</strong>，另一个是考虑运动轨迹中的<strong>障碍物</strong>。下图直观展示了这两种情况：</p>
+<img src="5.png" style="zoom: 50%;" />
+<p>解的个数取决于操作臂的关节数量、连杆参数和关节运动范围</p>
+<p>对于关节数量，考虑一种极限状态，当一个操作臂在一定长度内有无穷多个关节，即可看做是一根柔性的曲线，对固定的末端姿态，中间段有无穷多个解</p>
+<p>对于连杆参数，通常当连杆的非零参数越多，到达某一特定目标的方式也越多。以一个6R操作臂为例，下表展示了解的最大数目与等于零的连杆长度参数的数目之间的关系，非零参数越多，解的最大数目就越大</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>$a_i$</th>
+          <th>解的个数</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>$a_1=a_3=a_5=0$</td>
+          <td>$\leqslant4$</td>
+      </tr>
+      <tr>
+          <td>$a_3=a_5=0$</td>
+          <td>$\leqslant8$</td>
+      </tr>
+      <tr>
+          <td>$a_3=0$</td>
+          <td>$\leqslant16$</td>
+      </tr>
+      <tr>
+          <td>所有$a_i\neq0$</td>
+          <td>$\leqslant16$</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>而关节运动范围则限制了解的选择</p>
+<h2 id="逆运动学方程的解法">逆运动学方程的解法
+</h2><p>与线性方程组不同，非线性方程组没有通用的求解算法，我们只能用两大类解法来求解：<strong>封闭解</strong>（<strong>解析解</strong>，Closed-form Solutions）和<strong>数值解</strong>（Numerical Solutions）</p>
+<p>封闭解是一个关于方程自变量的解析函数，代入自变量即可解得因变量；数值解通过数值迭代求解。前者的缺点在于不是所有的非线性方程组都有封闭解，后者的缺点在于求解速度慢且不适应多解问题</p>
+<p>为此，我们在逆运动学中尽量避免数值解，在设计操作臂的结构时保证其存在封闭解</p>
+<p>逆运动学方程封闭解的解法包括<strong>代数解法</strong>和<strong>几何解法</strong>，前者纯靠代数运算，后者结合问题的几何性质，以下内容以数学计算为主，与机器人理论联系较少，可适当略读</p>
+<p>我们先研究开头举例的RRR操作臂来给出这两种解法，对于给定的目标位姿独立变量$(x,y,\phi)$，求出三个关节的关节角$(\theta_1,\theta_2,\theta_3)$</p>
+<img src="2.png" style="zoom: 33%;" />
+<h3 id="代数解法">代数解法
+</h3><p>由前文求解的子空间，用目标位姿参数给出的位姿矩阵为：</p>
+<p>$^0_3T=\begin{bmatrix}c_\phi&-s_\phi&0&x\\s_\phi&c_\phi&0&y\\0&0&1&0\\0&0&0&1\end{bmatrix}$</p>
+<p>由正向运动学，用关节变量给出的位姿矩阵为：</p>
+<p>$^0_3T=\begin{bmatrix}c_{123}&-s_{123}&0&l_1c_1+l_2c_{12}\\s_{123}&c_{123}&0&l_1s_1+l_2s_{12}\\0&0&1&0\\0&0&0&1\end{bmatrix}$</p>
+<p>其中下标数字组合代表对应关节角的和，如$c_{12}$表示$\cos(\theta_1+\theta_2+\theta_3)$</p>
+<p>两矩阵联立得到四个非线性方程：</p>
+<p>$c_\phi=c_{123}$①</p>
+<p>$s_\phi=s_{123}$②</p>
+<p>$x=l_1c_1+l_2c_{12}$③</p>
+<p>$y=l_1s_1+l_2s_{12}$④</p>
+<p>对③和④同时平方再求和得：</p>
+<p>$x^2+y^2=l^2_1+l^2_2+2l_1l_2c_2$</p>
+<p>这里利用了三角函数两角和公式</p>
+<p>由此求解出$c_2=\frac{x^2+y^2-l^2_1-l^2_2}{2l_1l_2}$</p>
+<p>上式有解的条件为等式右侧的值必须在$[-1,1]$之间，否则说明在物理结构上目标点位置太远，操作臂不可达</p>
+<p>假定目标点在工作空间内，则$s_2=\pm\sqrt{1-c^2_2}$</p>
+<p>$\theta_2=\textup{Atan2}(s_2,c_2)$</p>
+<p>式中正负符号的选择对应“肘部朝上”还是“肘部朝下”的多解问题</p>
+<p>接下来求$\theta_1$</p>
+<p>令：</p>
+<p>$k_1=l_1+l_2c_2$</p>
+<p>$k_2=l_2s_2$</p>
+<p>则③和④可写成：</p>
+<p>$x=k_1c_1-k_2s_1$</p>
+<p>$y=k_1s_1+k_2c_1$</p>
+<p>求解该类方程可用变量代换改变常数$k_1$和$k_2$的形式，如果：</p>
+<p>$r=\sqrt{k^2_1+k^2_2}$</p>
+<p>$\gamma=\textup{Atan2}(k_2,k_1)$</p>
+<p>则：</p>
+<p>$k_1=r\cos\gamma$</p>
+<p>$k_2=r\sin\gamma$</p>
+<p>则③和④可进一步写成：</p>
+<p>$\frac{x}{r}=\cos\gamma\cos\theta_1-\sin\gamma\sin\theta_1$</p>
+<p>$\frac{y}{r}=\cos\gamma\sin\theta_1-\sin\gamma\cos\theta_1$</p>
+<p>因此：</p>
+<p>$\cos(\gamma+\theta_1)=\frac{x}{r}$</p>
+<p>$\sin(\gamma+\theta_1)=\frac{y}{r}$</p>
+<p>得：</p>
+<p>$\gamma+\theta_1=\textup{Atan2}(\frac{y}{r},\frac{x}{r})=\textup{Atan2}(y,x)$</p>
+<p>从而：</p>
+<p>$\theta_1=\textup{Atan2}(y,x)-\textup{Atan2}(k_2,k_1)$</p>
+<p>最后$\theta_3$由$\theta_1+\theta_2+\theta_3=\phi$解出</p>
+<h3 id="几何解法">几何解法
+</h3><img src="6.png" style="zoom:33%;" />
+<p>画出以三个关节为顶点的三角形，由余弦定理得：</p>
+<p>$x^2+y^2=l^2_1+l^2_2-2l_1l_2\cos(\theta_2+\pi)$</p>
+<p>由此求解出$c_2=\frac{x^2+y^2-l^2_1-l^2_2}{2l_1l_2}$</p>
+<p>为求解出$\theta_1$，需求出图中$\psi$和$\beta$的表达式</p>
+<p>$\beta$是位置矢量与$\hat{X}_0$的夹角，可得：</p>
+<p>$\beta=\textup{Atan2}(y,x)$</p>
+<p>可在三角形再次利用余弦定理解出$\cos\psi=\frac{x^2+y^2+l^2_1-l^2_2}{2l_1\sqrt{x^2+y^2}}$</p>
+<p>为使几何关系成立，求反余弦需使$0\leqslant\psi\leqslant\pi$</p>
+<p>于是$\theta_1=\beta\pm\psi$，当$\theta_2<0$取正，当$\theta_2>0$取负</p>
+<p>最后$\theta_3$由$\theta_1+\theta_2+\theta_3=\phi$解出</p>
+<h3 id="万能公式">万能公式
+</h3><p>对于单变量的三角函数超越方程，可用万能公式代换化为多项式方程</p>
+<p>令$u=\tan\frac{\theta}{2}$</p>
+<p>则$\cos\theta=\frac{1-u^2}{1+u^2}$，$\sin\theta=\frac{2u}{1+u^2}$</p>
+<h3 id="三轴相交的pieper解法">三轴相交的Pieper解法
+</h3><p>尽管一般的六自由度机器人没有封闭解，但在某些特殊情况下还是可解的。Pieper提出了一种求解最后三个连续轴相交于一点的六自由度操作臂的方法，核心思想为让$\theta_1$、$\theta_2$、$\theta_3$层层分离</p>
+<p>当最后三个轴相交时，连杆坐标系$\{4\}$、$\{5\}$、$\{6\}$的原点均位于这个交点上，因此：</p>
+<p>$^0P_{6ORG}=^0P_{4ORG}=^0_1T^1_2T^2_3T^3P_{4ORG}=\begin{bmatrix}x\\y\\z\\1\end{bmatrix}$</p>
+<p>其中，$^3P_{4ORG}$即$^3_4T$的第四列，由第三章中相邻连杆变换矩阵公式代入得：</p>
+<p>$^0P_{4ORG}=^0_1T^1_2T^2_3T\begin{bmatrix}a_3\\-d_4s\alpha_3\\d_4c\alpha_3\\1\end{bmatrix}$</p>
+<p>将$^2_3T$乘进去得：</p>
+<p>$^0P_{4ORG}=^0_1T^1_2T\begin{bmatrix}f_1(\theta_3)\\f_2(\theta_3)\\f_3(\theta_3)\\1\end{bmatrix}$</p>
+<p>式中：</p>
+<p>$f_1=a_3c_3+d_4s\alpha_3s_3+a_2$</p>
+<p>$f_2=a_3c\alpha_2s_3-d_4s\alpha_3c\alpha_2c_3-d_4s\alpha_2c\alpha_3-d_3s\alpha_2$</p>
+<p>$f_3=a_3s\alpha_2s_3-d_4s\alpha_3s\alpha_2c_3+d_4c\alpha_2c\alpha_3+d_3c\alpha_2$</p>
+<p>继续将$^0_1T^1_2T$乘进去得：</p>
+<p>$^0P_{4ORG}=\begin{bmatrix}c_1g_1-s_1g_2\\s_1g_1+c_1g_2\\g_3\\1\end{bmatrix}$①</p>
+<p>式中：</p>
+<p>$g_1=c_2f_1-s_2f_2+a_1$</p>
+<p>$g_2=s_2c\alpha_1f_1+c_2c\alpha_1f_2-s\alpha_1f_3-d_2s\alpha_1$</p>
+<p>$g_3=s_2s\alpha_1f_1+c_2s\alpha_1f_2+c\alpha_1f_3+d_2c\alpha_1$</p>
+<p>现在写出$^0P_{4ORG}$模的平方的表达式：</p>
+<p>$r=x^2+y^2+z^2=g_1^2+g_2^2+g_3^2$</p>
+<p>$r=f_1^2+f_2^2+f_3^2+a_1^2+d_2^2+2d_2f_3+2a_1(c_2f_1-s_2f_2)$</p>
+<p>上式与$z=g_3$联立得到一个方程组：</p>
+<p>$\left\{\begin{matrix}r=(k_1c_2+k_2s_2)2a_1+k_3\\z=(k_1s_2-k_2c_2)s\alpha_1+k_4\end{matrix}\right.$②</p>
+<p>式中：</p>
+<p>$k_1=f_1$</p>
+<p>$k_2=-f_2$</p>
+<p>$k_3=f_1^2+f_2^2+f_3^2+a_1^2+d_2^2+2d_2f_3$</p>
+<p>$k_4=f_3c\alpha_1+d_2c\alpha_1$</p>
+<p>该方程组的求解分三种情况：</p>
+<p>$1)$若$a_1=0$，则$r=k_3$，$r$已知，$k_3$是关于$\theta_3$的一元函数，由万能公式解出$\theta_3$</p>
+<p>$2)$若$s\alpha_1=0$，则$z=k_4$，$z$已知，$k_4$是关于$\theta_3$的一元函数，由万能公式解出$\theta_3$</p>
+<p>$3)$否则，消元法消去$c_2$和$s_2$，得到：</p>
+<p>$\frac{(r-k_3)^2}{4a_1^2}+\frac{(z-k_4)^2}{s^2\alpha_1}=k_1^2+k_2^2$</p>
+<p>由万能公式得到一个四次方程解出$\theta_3$</p>
+<p>解出$\theta_3$后，可由②解出$\theta_2$，由①解出$\theta_1$</p>
+<p>为了完成求解工作，还需要求出$\theta_4$、$\theta_5$、$\theta_6$，由于这些轴相交，原点已经确定，故这些关节角只影响末端连杆的姿态。先利用已经解出的$\theta_1$、$\theta_2$、$\theta_3$算出连杆坐标系$\{4\}$的初始姿态$^4_0R|_{\theta_4=0}$，再计算出以此为参考坐标系的末端连杆的姿态描述：</p>
+<p>$^4_6R|_{\theta_4=0}=^0_4R^{-1}|_{\theta_4=0}{}_6^0R$</p>
+<p>用欧拉角定义最后三个关节角得到一个旋转矩阵后与$^4_6R|_{\theta_4=0}$联立即可完成求解</p>
+<h4 id="关于用欧拉角定义关节角">关于用欧拉角定义关节角：
+</h4><p>由于不同关节角对应的转轴是不同连杆坐标系的关节轴，而欧拉角从始至终都是绕一个坐标系的主轴旋转，因此用欧拉角来描述关节角的变换过程时，我们有时需要使欧拉角在关节角的基础上多转$180^\circ$，让欧拉角坐标系中的一个主轴能跟下一个连杆坐标系的关节轴对齐，便于用下一次旋转的欧拉角描述下一次旋转的关节角，可结合下图理解，其中连杆坐标系每次从蓝色变换到红色，欧拉角坐标系每次从橙色变换到绿色</p>
+<p><img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep4.%E6%93%8D%E4%BD%9C%E8%87%82%E9%80%86%E8%BF%90%E5%8A%A8%E5%AD%A6/7.png"
+	width="916"
+	height="677"
+	srcset="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep4.%E6%93%8D%E4%BD%9C%E8%87%82%E9%80%86%E8%BF%90%E5%8A%A8%E5%AD%A6/7_hu168570339387252651.png 480w, /p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep4.%E6%93%8D%E4%BD%9C%E8%87%82%E9%80%86%E8%BF%90%E5%8A%A8%E5%AD%A6/7_hu16948316596001306599.png 1024w"
 	loading="lazy"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="145"
-		data-flex-basis="350px"
-	
-></p>
-<p><strong>首末端连杆坐标系</strong></p>
-<p>首端连杆坐标系$\{0\}$与关节$1$初始姿态时（关节变量为$0$）的坐标系$\{1\}$重合</p>
-<p>末端连杆坐标系$\{N\}$原点位于公垂线$a_{N-1}$与关节轴$\{N\}$交点处，$\hat{X}_N$轴与$\hat{X}_{N-1}$轴同向</p>
-<p><strong>连杆坐标系中的D-H表示法</strong></p>
-<p>$a_i=$沿$\hat{X}_i$轴从${\hat{Z}_i}$移动到$\hat{Z}_{i+1}$的距离</p>
-<p>$\alpha_i=$绕$\hat{X}_i$轴从$\hat{Z}_i$旋转到$\hat{Z}_{i+1}$的角度</p>
-<p>$d_i=$沿$\hat{Z}_i$轴从$\hat{X}_{i-1}$移动到$\hat{X}_i$的距离</p>
-<p>$\theta_i=$绕$\hat{Z}_i$轴从$\hat{X}_{i-1}$旋转到$\hat{X}_i$的角度</p>
-<p>$a_i>0$，$\alpha_i$、$d_i$和$\theta_i$的值相对于坐标系主轴方向有正负</p>
-<p><strong>建立连杆坐标系的步骤</strong></p>
-<p>1.画出各关节轴的延长线</p>
-<p>2.找出相邻关节轴$i$和$i+1$的公垂线或交点，以关节轴$i$和$i+1$的交点或公垂线与关节轴$i$的交点作为连杆坐标系$\{i\}$的原点</p>
-<p>3.规定$\hat{Z}_i$轴沿关节轴$i$的指向</p>
-<p>4.规定$\hat{X}_i$轴沿公垂线的指向，若关节轴$i$与$i+1$相交则垂直于关节轴$i$与$i+1$所在的平面</p>
-<p>5.按右手定则确定$\hat{Y}_i$轴</p>
-<p>6.补充首末端连杆坐标系</p>
-<p><strong>坐标系的标准命名</strong></p>
-<p>基（Base）坐标系$\{B\}$位于操作臂的基座上</p>
-<p>固定（Settle）坐标系$\{S\}$位置与任务相关，比如工作台的一个角上</p>
-<p>腕部（Wrist）坐标系$\{W\}$位于操作臂的末端连杆</p>
-<p>工具（Tool）坐标系$\{T\}$位于机器人所夹持工具的末端</p>
-<p>目标（Goal）坐标系$\{G\}$是对机器人移动工具到达的位置描述
-<img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/5.png"
-	width="700"
-	height="607"
-	srcset="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/5_hu9534990982299824121.png 480w, /p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/5_hu14512689326280933705.png 1024w"
-	loading="lazy"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="115"
-		data-flex-basis="276px"
-	
-></p>
-<hr>
-<h2 id="操作臂运动学">操作臂运动学
-</h2><hr>
-<h3 id="连杆变换link-transformation">连杆变换（Link Transformation）
-</h3><p>我们希望用四个连杆参数建立起相邻连杆坐标系$\{i\}$和$\{i-1\}$之间的变换关系，即$^{i-1}P=^{i-1}_{i}T^iP$
-<img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/4.png"
-	width="865"
-	height="600"
-	srcset="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/4_hu17257934097531589896.png 480w, /p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/4_hu1217825879124094349.png 1024w"
-	loading="lazy"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="144"
-		data-flex-basis="346px"
-	
-></p>
-<p>我们考虑借由图中标出的四个连杆参数将$\{i-1\}$一步步变换为$\{i\}$</p>
-<p>将$\{i-1\}$绕$\hat{X}_{i-1}$旋转$\alpha_{i-1}$得到$\{R\}$</p>
-<p>将$\{R\}$沿$\hat{X}_R$平移$a_{i-1}$得到$\{Q\}$</p>
-<p>将$\{Q\}$绕$\hat{Z}_Q$旋转$\theta_i$得到$\{P\}$</p>
-<p>将$\{P\}$沿$\hat{Z}_P$平移$d_i$得到$\{i\}$</p>
-<p>于是变换矩阵可写成：</p>
-<p>$^{i-1}P=^{i-1}_{i}T^iP=^{i-1}_RT^R_QT^Q_PT^P_iT^iP$</p>
-<p>$^{i-1}_{i}T=^{i-1}_RT^R_QT^Q_PT^P_iT=R_X(\alpha_{i-1})D_X(a_{i-1})R_Z(\theta_i)D_Z(d_i)$</p>
-<p>最终计算得到：</p>
-<p>$^{i-1}_{i}T=\begin{bmatrix}c\theta_i&-s\theta_i&0&a_{i-1}\\s\theta_ic\alpha_{i-1}&c\theta_ic\alpha_{i-1}&-s\alpha_{i-1}&-s\alpha_{i-1}d_i\\s\theta_is\alpha_{i-1}&c\theta_is\alpha_{i-1}&c\alpha_{i-1}&c\alpha_{i-1}d_i\\0&0&0&1\end{bmatrix}$</p>
-<p>左上角$3\times3$为旋转矩阵，最右列为$\{i\}$的原点相对于$\{i-1\}$的原点的位置矢量</p>
-<p>计算出各个连杆变换矩阵，将其连乘就能得到$\{N\}$相对于$\{0\}$的变换矩阵：</p>
-<p>$^0_NT=^0_1T^1_2T^2_3T…^{N-1}_NT$</p>
-<hr>
-<h3 id="驱动器空间关节空间和笛卡尔空间">驱动器空间、关节空间和笛卡尔空间
-</h3><p>对一个具有$n$个自由度的操作臂来说，它的所有连杆位置可由一组$n$个关节变量确定，这样的一组变量被称为$n\times1$的关节向量，所有关节向量组成的空间称为<strong>关节空间（Joint Space）</strong></p>
-<p>至此，我们研究的是如何将已知的关节空间描述转化为在<strong>笛卡尔空间（Cartesian Space）<strong>中的描述，称为</strong>正向运动学（Forward Kinematics）</strong>，反之则为<strong>逆运动学（Inverse Kinematics）</strong></p>
-<p>我们一直假设每个运动关节都是直接由某种驱动器驱动，但许多机器人有时用两个驱动器以差动的方式驱动一个关节，有时用直线驱动器通过四连杆机构来驱动旋转关节，而测量操作臂位置的传感器常常安装在驱动器上，因此进行控制器运算时必须把关节向量表示成一组驱动器变量方程，即驱动向量，组成的空间称为<strong>驱动器空间（Actuator Space）</strong>
-<img src="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/6.png"
-	width="639"
-	height="441"
-	srcset="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/6_hu17352662843190276247.png 480w, /p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/6_hu8158132323483451866.png 1024w"
-	loading="lazy"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="144"
-		data-flex-basis="347px"
+		data-flex-grow="135"
+		data-flex-basis="324px"
 	
 ></p>
 <hr>
@@ -566,12 +602,12 @@
             
                 
 <article class="">
-    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep4.%E6%93%8D%E4%BD%9C%E8%87%82%E9%80%86%E8%BF%90%E5%8A%A8%E5%AD%A6/">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">【机器人学导论】Ep4.操作臂逆运动学</h2>
+            <h2 class="article-title">【机器人学导论】Ep3.操作臂（正向）运动学</h2>
         </div>
     </a>
 </article>
