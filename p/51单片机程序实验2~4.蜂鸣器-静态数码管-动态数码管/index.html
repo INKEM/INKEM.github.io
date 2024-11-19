@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="蜂鸣器实验；静态数码管实验；动态数码管实验">
+<title>【51单片机】程序实验2~4.蜂鸣器-静态数码管-动态数码管</title>
+
+<link rel='canonical' href='https://INKEM.github.io/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【51单片机】程序实验2~4.蜂鸣器-静态数码管-动态数码管">
+<meta property='og:description' content="蜂鸣器实验；静态数码管实验；动态数码管实验">
+<meta property='og:url' content='https://INKEM.github.io/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/'>
+<meta property='og:site_name' content='一杯为品'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-11-19T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-11-19T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="【51单片机】程序实验2~4.蜂鸣器-静态数码管-动态数码管">
+<meta name="twitter:description" content="蜂鸣器实验；静态数码管实验；动态数码管实验">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu16835031703737007367.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🐦</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一杯为品</a></h1>
+            <h2 class="site-description">哈工大2023届智能机器人班在读，在努力成为机器人、人工智能、硬件工程多面手的路上</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://blog.csdn.net/mojin2005?spm=1010.2135.3001.5343'
+                        target="_blank"
+                        title="CSDN"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M48 0H0V48H48V0ZM25.9509 14.1922C27.8907 14.578 29.6725 15.5304 31.0711 16.9289C31.8521 17.71 33.1184 17.71 33.8995 16.9289C34.6805 16.1479 34.6805 14.8816 33.8995 14.1005C31.9416 12.1426 29.447 10.8092 26.7313 10.269C24.0155 9.72882 21.2006 10.0061 18.6424 11.0657C16.0843 12.1253 13.8978 13.9197 12.3594 16.222C10.8211 18.5243 10 21.2311 10 24C10 26.7689 10.8211 29.4757 12.3594 31.778C13.8978 34.0803 16.0843 35.8747 18.6424 36.9343C21.2006 37.9939 24.0155 38.2712 26.7313 37.731C29.447 37.1908 31.9416 35.8574 33.8995 33.8995C34.6805 33.1185 34.6805 31.8521 33.8995 31.0711C33.1184 30.29 31.8521 30.29 31.0711 31.0711C29.6725 32.4696 27.8907 33.422 25.9509 33.8079C24.0111 34.1937 22.0004 33.9957 20.1732 33.2388C18.3459 32.4819 16.7841 31.2002 15.6853 29.5557C14.5865 27.9112 14 25.9778 14 24C14 22.0222 14.5865 20.0888 15.6853 18.4443C16.7841 16.7998 18.3459 15.5181 20.1732 14.7612C22.0004 14.0043 24.0111 13.8063 25.9509 14.1922Z" fill="#333333"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/INKEM'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#蜂鸣器实验">蜂鸣器实验</a>
+      <ol>
+        <li><a href="#蜂鸣器介绍">蜂鸣器介绍</a></li>
+        <li><a href="#实验2-蜂鸣器">实验2 蜂鸣器</a></li>
+      </ol>
+    </li>
+    <li><a href="#静态数码管实验">静态数码管实验</a>
+      <ol>
+        <li><a href="#数码管介绍">数码管介绍</a>
+          <ol>
+            <li><a href="#数码管简介">数码管简介</a></li>
+            <li><a href="#数码管显示编码介绍">数码管显示编码介绍</a></li>
+            <li><a href="#数码管静态显示原理">数码管静态显示原理</a></li>
+          </ol>
+        </li>
+        <li><a href="#实验3-静态数码管">实验3 静态数码管</a></li>
+      </ol>
+    </li>
+    <li><a href="#动态数码管实验">动态数码管实验</a>
+      <ol>
+        <li><a href="#数码管介绍-1">数码管介绍</a>
+          <ol>
+            <li><a href="#数码管动态显示原理">数码管动态显示原理</a></li>
+            <li><a href="#74hc245芯片介绍">74HC245芯片介绍</a></li>
+            <li><a href="#74hc138芯片介绍">74HC138芯片介绍</a></li>
+          </ol>
+        </li>
+        <li><a href="#实验4-动态数码管">实验4 动态数码管</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="background-color: #2a9d8f; color: #fff;">
+                学习笔记
+            </a>
+        
+            <a href="/categories/51%E5%8D%95%E7%89%87%E6%9C%BA/" style="background-color: #FF0000; color: #fff;">
+                51单片机
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/">【51单片机】程序实验2~4.蜂鸣器-静态数码管-动态数码管</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            蜂鸣器实验；静态数码管实验；动态数码管实验
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 19, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 6 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="程序实验24蜂鸣器-静态数码管-动态数码管">程序实验2~4.蜂鸣器-静态数码管-动态数码管
+</h1><h2 id="蜂鸣器实验">蜂鸣器实验
+</h2><h3 id="蜂鸣器介绍">蜂鸣器介绍
+</h3><p>蜂鸣器是一种一体化结构的电子讯响器，采用直流电压供电，广泛应用于电子产品中作为发声器件。</p>
+<p>蜂鸣器主要分为压电式蜂鸣器和电磁式蜂鸣器两种类型。</p>
+<img src="1.jpg" style="zoom: 25%;" />
+<p>与LED相比，由于51单片机的I/O口的驱动电流不足，蜂鸣器无法直接使用其来驱动，而是通过放大电路实现驱动。</p>
+<p>我们通过周期性地改变电流的大小和方向，使振动膜片产生稳定的振动，进而使蜂鸣器发声，因此蜂鸣器的控制需要脉冲信号而不是单一信号，且脉冲信号频率一般要求在1.5-5KHz。</p>
+<p><img src="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/2.png"
+	width="876"
+	height="445"
+	srcset="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/2_hu7730186457723440050.png 480w, /p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/2_hu6964730130528127268.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="196"
+		data-flex-basis="472px"
+	
+></p>
+<h3 id="实验2-蜂鸣器">实验2 蜂鸣器
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;reg52.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">u8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">u16</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">sbit</span> <span class="n">BEEP</span> <span class="o">=</span> <span class="n">P2</span><span class="o">^</span><span class="mi">5</span><span class="p">;</span> <span class="c1">//定义蜂鸣器控制管脚为BEEP，博主使用的单片机对应管脚为P2.5
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">delay_10us</span><span class="p">(</span><span class="n">u16</span> <span class="n">time</span><span class="p">)</span> <span class="c1">//延时函数延用实验1程序
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">while</span><span class="p">(</span><span class="n">time</span> <span class="o">--</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">u16</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">;</span> <span class="c1">//控制蜂鸣器发声时间的变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">while</span><span class="p">(</span><span class="n">i</span><span class="o">--</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="n">BEEP</span> <span class="o">=</span> <span class="o">!</span><span class="n">BEEP</span><span class="p">;</span> <span class="c1">//使蜂鸣器控制管脚输出在高电平和低电平之间切换
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="nf">delay_10us</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span> <span class="c1">//控制输出信号脉冲周期2*100*10微秒
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="n">BEEP</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>蜂鸣器的音高</strong>取决于脉冲信号的周期（频率），周期越短（频率越高）音高越高。</p>
+<p><strong>蜂鸣器的音量</strong>取决于脉冲信号中高电平的占空比（即高电平输出时间在一个周期的占比），占空比越大音量越大。</p>
+<p>以下是一个便于控制蜂鸣器的音量的内部循环。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="k">while</span><span class="p">(</span><span class="n">i</span><span class="o">--</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">BEEP</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">delay_10us</span><span class="p">(</span><span class="mi">150</span><span class="p">);</span> <span class="c1">//低电平输出时间占75%
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">BEEP</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">delay_10us</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span> <span class="c1">//高电平输出时间占25%，相较于上一个程序蜂鸣器音量更小
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="静态数码管实验">静态数码管实验
+</h2><h3 id="数码管介绍">数码管介绍
+</h3><h4 id="数码管简介">数码管简介
+</h4><p><strong>共阳数码管</strong>是指将所有发光二极管的阳极接到一起形成公共阳极（COM）的数码管，共阳数码管在应用时应将公共极COM接到+5V，控制阴极低电平为亮，高电平为暗。</p>
+<p><img src="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/3.png"
+	width="514"
+	height="159"
+	srcset="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/3_hu15608682328967994121.png 480w, /p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/3_hu8908715600485438761.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="323"
+		data-flex-basis="775px"
+	
+></p>
+<p><strong>共阴数码管</strong>是指将所有发光二极管的阴极接到一起形成公共阴极（COM）的数码管，共阴数码管在应用时应将公共极COM接到地线GND，控制阳极高电平为亮，低电平为暗。</p>
+<p><img src="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/4.png"
+	width="397"
+	height="177"
+	srcset="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/4_hu5642845597760669189.png 480w, /p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/4_hu1077743936789598052.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="224"
+		data-flex-basis="538px"
+	
+></p>
+<p>同时，数码管也根据显示数字位数的不同分类，博主使用的单片机数码管为两块四位共阴数码管。</p>
+<p><img src="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/5.jpg"
+	width="1280"
+	height="373"
+	srcset="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/5_hu6838861356894296156.jpg 480w, /p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/5_hu1182438711095858572.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="343"
+		data-flex-basis="823px"
+	
+></p>
+<h4 id="数码管显示编码介绍">数码管显示编码介绍
+</h4><p><img src="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/6.png"
+	width="1067"
+	height="680"
+	srcset="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/6_hu17093258619274758593.png 480w, /p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/6_hu18314755587932117313.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="156"
+		data-flex-basis="376px"
+	
+></p>
+<p>数码管上的每个笔画与发光二极管为相同字母一一对应的关系，发光二极管a到DP对应P0.0到P0.7八位。</p>
+<p>对数字进行编码时，先确定显示的笔画和与之对应的发光二极管，比如数字0显示的笔画为abcdef；再根据数码管是共阴还是共阳确定每一位的电平写成二进制数，以共阴为例，数字0的二进制编码为00111111，共阳取反即可；最后到程序中转化为十六进制表示，数字0的十六进制编码即为0x3f。</p>
+<h4 id="数码管静态显示原理">数码管静态显示原理
+</h4><p>数码管的控制分为<strong>段选</strong>和<strong>位选</strong>：段选即选择发光二极管a到DP这些段，上文0x3f也被称为段码值；位选通过三八译码器利用三个管脚的输入控制八个共阴（阳）数码管的阴（阳）极，即用三位二进制来选择显示八个数位中的哪一个。</p>
+<p>静态显示的特点是每个数码管的段选必须接一个八位数据线来保持显示的字形码，即每个数码管都需要八个I/O口，当送入一次字形码后，显示字形可一直保持到送入新字形码为止。优点是CPU占用少，显示亮度亮；缺点是硬件电路复杂，成本较高。</p>
+<p>博主使用的单片机数码管为动态数码管，但由于下拉电阻作用，控制位选的管脚P22到P24默认输出高电平，对应数码管0到7中的第7位，因此可以在不进行位选时将该数码管当做静态数码管使用，关于位选将在动态数码管中进一步讲到。</p>
+<h3 id="实验3-静态数码管">实验3 静态数码管
+</h3><p>实现功能：控制静态数码管显示数字0，即让P0端口输出数字0的段码0x3f（共阴）。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;reg52.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">u8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">u16</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#define SEG_A_DP_PORT P0 </span><span class="c1">//宏定义P0端口，SEG为数码管LED Segment Displays简写，A_DP为A到DP段，PORT为端口
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="n">u8</span> <span class="n">gseg_code</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mh">0x3f</span><span class="p">,</span> <span class="mh">0x06</span><span class="p">,</span> <span class="mh">0x5b</span><span class="p">,</span> <span class="mh">0x4f</span><span class="p">,</span> <span class="mh">0x66</span><span class="p">,</span> <span class="mh">0x6d</span><span class="p">,</span> <span class="mh">0x7d</span><span class="p">,</span> <span class="mh">0x07</span><span class="p">,</span> <span class="mh">0x7f</span><span class="p">,</span> <span class="mh">0x6f</span><span class="p">,</span> <span class="mh">0x77</span><span class="p">,</span> <span class="mh">0x7c</span><span class="p">,</span> <span class="mh">0x39</span><span class="p">,</span> <span class="mh">0x5e</span><span class="p">,</span> <span class="mh">0x79</span><span class="p">,</span> <span class="mh">0x71</span><span class="p">};</span> <span class="c1">//用一个数组存储十六进制0到F的段码值，便于调用
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">SEG_A_DP_PORT</span> <span class="o">=</span> <span class="n">gseg_code</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="c1">//P0端口输出0的段码值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>效果图</p>
+<p><img src="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/7.jpg"
+	width="1280"
+	height="389"
+	srcset="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/7_hu5832464558799033308.jpg 480w, /p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/7_hu8992378447694326651.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="329"
+		data-flex-basis="789px"
+	
+></p>
+<p>由于是动态数码管，其显示会在0和8.之间频闪，但视觉上0更明显。</p>
+<h2 id="动态数码管实验">动态数码管实验
+</h2><h3 id="数码管介绍-1">数码管介绍
+</h3><h4 id="数码管动态显示原理">数码管动态显示原理
+</h4><p>动态显示是利用减少段选线，分开位选线，利用位选线不同时刻选择通断，改变段选数据来实现的。</p>
+<p>动态数码管通过高频闪烁利用人眼的视觉暂留效应造成静态显示的效果。</p>
+<h4 id="74hc245芯片介绍">74HC245芯片介绍
+</h4><p><strong>段选电路部分和74HC245芯片</strong></p>
+<p><img src="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/8.png"
+	width="1245"
+	height="681"
+	srcset="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/8_hu14314265358334616490.png 480w, /p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/8_hu13556219825916559493.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="182"
+		data-flex-basis="438px"
+	
+></p>
+<p>74HC245芯片是一种三态输出八路双向收发器，主要应用于一些大屏显示和其他消费类电子产品中作为驱动芯片使用。</p>
+<p>在51单片机中，数码管无法直接由管脚驱动，需要使用该驱动芯片。</p>
+<h4 id="74hc138芯片介绍">74HC138芯片介绍
+</h4><p><strong>位选电路部分和74HC138芯片</strong></p>
+<img src="9.png" style="zoom:33%;" />
+<p>74HC138芯片是一种三通道输入八通道输出译码器，也称为三八译码器，主要应用于消费类电子产品。</p>
+<p><img src="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/10.png"
+	width="700"
+	height="585"
+	srcset="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/10_hu1685396325287529169.png 480w, /p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/10_hu13459861917023039040.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="119"
+		data-flex-basis="287px"
+	
+></p>
+<p>上图为将芯片输入与输出对应起来的真值表，本实验中只涉及红框内部分，可知该芯片将三位二进制输入转化为0到7的值并选择对应序号的管脚输出。</p>
+<h3 id="实验4-动态数码管">实验4 动态数码管
+</h3><p>实现功能：控制八位动态数码管从左到右显示01234567。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;reg52.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">u8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">u16</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cp">#define SEG_A_DP_PORT P0
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="n">sbit</span> <span class="n">LSA</span> <span class="o">=</span> <span class="n">P2</span><span class="o">^</span><span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">sbit</span> <span class="n">LSB</span> <span class="o">=</span> <span class="n">P2</span><span class="o">^</span><span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">sbit</span> <span class="n">LSC</span> <span class="o">=</span> <span class="n">P2</span><span class="o">^</span><span class="mi">4</span><span class="p">;</span> <span class="c1">//定义位选管脚
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="n">u8</span> <span class="n">gseg_code</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mh">0x3f</span><span class="p">,</span> <span class="mh">0x06</span><span class="p">,</span> <span class="mh">0x5b</span><span class="p">,</span> <span class="mh">0x4f</span><span class="p">,</span> <span class="mh">0x66</span><span class="p">,</span> <span class="mh">0x6d</span><span class="p">,</span> <span class="mh">0x7d</span><span class="p">,</span> <span class="mh">0x07</span><span class="p">,</span> <span class="mh">0x7f</span><span class="p">,</span> <span class="mh">0x6f</span><span class="p">,</span> <span class="mh">0x77</span><span class="p">,</span> <span class="mh">0x7c</span><span class="p">,</span> <span class="mh">0x39</span><span class="p">,</span> <span class="mh">0x5e</span><span class="p">,</span> <span class="mh">0x79</span><span class="p">,</span> <span class="mh">0x71</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">delay_10us</span><span class="p">(</span><span class="n">u16</span> <span class="n">time</span><span class="p">)</span> <span class="c1">//延时函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">while</span><span class="p">(</span><span class="n">time</span> <span class="o">--</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">seg_display</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="c1">//动态数码管显示函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">u8</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//循环控制变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="c1">//八位数码管依次显示
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">switch</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="c1">//将i转化为三个位选管脚的二进制输出
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mi">0</span><span class="o">:</span> <span class="n">LSC</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">LSB</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">LSA</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mi">1</span><span class="o">:</span> <span class="n">LSC</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">LSB</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">LSA</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mi">2</span><span class="o">:</span> <span class="n">LSC</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">LSB</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">LSA</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mi">3</span><span class="o">:</span> <span class="n">LSC</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">LSB</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">LSA</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mi">4</span><span class="o">:</span> <span class="n">LSC</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">LSB</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">LSA</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mi">5</span><span class="o">:</span> <span class="n">LSC</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">LSB</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">LSA</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mi">6</span><span class="o">:</span> <span class="n">LSC</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">LSB</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">LSA</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mi">7</span><span class="o">:</span> <span class="n">LSC</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">LSB</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">LSA</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="c1">//本程序为阴极数码管，阳极需要取反
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="n">SEG_A_DP_PORT</span> <span class="o">=</span> <span class="n">gseg_code</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="c1">//显示对应的数字
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nf">delay_10us</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">SEG_A_DP_PORT</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span> <span class="c1">//消影
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">seg_display</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>因为数码管数位和要显示的数字的排列顺序不一样，从左到右是7到0位，但要输出0到7，有两种方法：</p>
+<p>一种是该程序，在switch函数中注意i与位选输出信号的对应关系，0到7分别对应二进制的7到0；</p>
+<p>另一种是不调换i与位选输出信号的对应关系，将i的循环迭代顺序反过来，同时调整第i位显示的数字为7-i。</p>
+<p>下面是第二种方法的动态数码管显示函数：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">seg_display</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">u8</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">--</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">switch</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mi">0</span><span class="o">:</span> <span class="n">LSC</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">LSB</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">LSA</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mi">1</span><span class="o">:</span> <span class="n">LSC</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">LSB</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">LSA</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mi">2</span><span class="o">:</span> <span class="n">LSC</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">LSB</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">LSA</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mi">3</span><span class="o">:</span> <span class="n">LSC</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">LSB</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">LSA</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mi">4</span><span class="o">:</span> <span class="n">LSC</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">LSB</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">LSA</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mi">5</span><span class="o">:</span> <span class="n">LSC</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">LSB</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">LSA</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mi">6</span><span class="o">:</span> <span class="n">LSC</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">LSB</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">LSA</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mi">7</span><span class="o">:</span> <span class="n">LSC</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">LSB</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">LSA</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="n">SEG_A_DP_PORT</span> <span class="o">=</span> <span class="n">gseg_code</span><span class="p">[</span><span class="mi">7</span><span class="o">-</span><span class="n">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">delay_10us</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="n">SEG_A_DP_PORT</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在程序中还有一个<strong>消影</strong>的操作。如果没有该操作，会发现后一个数字有前一个数字微弱的重影。这是因为动态数码管所有数位的段选线路是并在一起的，数码管在切换位选到切换段选的程序执行期间有一个极小的间隔，在切换位选后下一个数位会短暂地继承上一个数位的段码，因此在切换位选前将当前数位的显示擦除，擦除的空隙很短所以不会被人眼察觉到，而这也是动态数码管显示亮度低于静态数码管的原因。</p>
+<p>效果图</p>
+<p><img src="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/11.jpg"
+	width="1280"
+	height="342"
+	srcset="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/11_hu376918874871001599.jpg 480w, /p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/11_hu7373721381061012028.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="374"
+		data-flex-basis="898px"
+	
+></p>
+<hr>
+<p><strong>本篇完</strong></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8Cep1.%E7%82%B9%E4%BA%AEled/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【51单片机】程序实验Ep1.点亮LED</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep5.%E9%9B%85%E5%8F%AF%E6%AF%94%E9%80%9F%E5%BA%A6%E5%92%8C%E9%9D%99%E5%8A%9B/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep5.雅可比：速度和静力</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E9%80%9F%E8%A7%88%E4%B8%8A/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【Python】基础语法速览（上）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep4.%E6%93%8D%E4%BD%9C%E8%87%82%E9%80%86%E8%BF%90%E5%8A%A8%E5%AD%A6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep4.操作臂逆运动学</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep3.操作臂（正向）运动学</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 一杯为品
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src=https://INKEM.github.io/background/sakura.js></script>
+<style>
+  body {
+    background: url(https://INKEM.github.io/background/Sakura.png) no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+</style>
+<style>
+  @font-face {
+    font-family: '初夏明朝';
+    src: url(https://INKEM.github.io/font/EarlySummerSerif-Bold.ttf) format('truetype');
+  }
+
+  :root {
+    --base-font-family: '初夏明朝';
+    --code-font-family: '初夏明朝';
+  }
+</style>
+
+    </body>
+</html>
