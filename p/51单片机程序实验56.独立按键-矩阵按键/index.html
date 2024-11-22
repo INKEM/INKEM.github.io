@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="程序实验5&amp;6.独立按键-矩阵按键 独立按键 按键介绍 一个按键拥有四个脚，其中①和②、③和④之间初始导通，而①和③、②和④之间只有按下按键才会导通。\n在下拉电阻作用下，按键所处管脚默认为高电平，当按下按键时线路接地变成低电平。\n">
+<title>【51单片机】程序实验5&amp;6.独立按键-矩阵按键</title>
+
+<link rel='canonical' href='https://INKEM.github.io/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C56.%E7%8B%AC%E7%AB%8B%E6%8C%89%E9%94%AE-%E7%9F%A9%E9%98%B5%E6%8C%89%E9%94%AE/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【51单片机】程序实验5&6.独立按键-矩阵按键">
+<meta property='og:description' content="程序实验5&amp;6.独立按键-矩阵按键 独立按键 按键介绍 一个按键拥有四个脚，其中①和②、③和④之间初始导通，而①和③、②和④之间只有按下按键才会导通。\n在下拉电阻作用下，按键所处管脚默认为高电平，当按下按键时线路接地变成低电平。\n">
+<meta property='og:url' content='https://INKEM.github.io/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C56.%E7%8B%AC%E7%AB%8B%E6%8C%89%E9%94%AE-%E7%9F%A9%E9%98%B5%E6%8C%89%E9%94%AE/'>
+<meta property='og:site_name' content='一杯为品'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-11-22T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-11-22T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="【51单片机】程序实验5&6.独立按键-矩阵按键">
+<meta name="twitter:description" content="程序实验5&amp;6.独立按键-矩阵按键 独立按键 按键介绍 一个按键拥有四个脚，其中①和②、③和④之间初始导通，而①和③、②和④之间只有按下按键才会导通。\n在下拉电阻作用下，按键所处管脚默认为高电平，当按下按键时线路接地变成低电平。\n">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu16835031703737007367.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🐦</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一杯为品</a></h1>
+            <h2 class="site-description">哈工大2023届智能机器人班在读，在努力成为机器人、人工智能、硬件工程多面手的路上</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://blog.csdn.net/mojin2005?spm=1010.2135.3001.5343'
+                        target="_blank"
+                        title="CSDN"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M48 0H0V48H48V0ZM25.9509 14.1922C27.8907 14.578 29.6725 15.5304 31.0711 16.9289C31.8521 17.71 33.1184 17.71 33.8995 16.9289C34.6805 16.1479 34.6805 14.8816 33.8995 14.1005C31.9416 12.1426 29.447 10.8092 26.7313 10.269C24.0155 9.72882 21.2006 10.0061 18.6424 11.0657C16.0843 12.1253 13.8978 13.9197 12.3594 16.222C10.8211 18.5243 10 21.2311 10 24C10 26.7689 10.8211 29.4757 12.3594 31.778C13.8978 34.0803 16.0843 35.8747 18.6424 36.9343C21.2006 37.9939 24.0155 38.2712 26.7313 37.731C29.447 37.1908 31.9416 35.8574 33.8995 33.8995C34.6805 33.1185 34.6805 31.8521 33.8995 31.0711C33.1184 30.29 31.8521 30.29 31.0711 31.0711C29.6725 32.4696 27.8907 33.422 25.9509 33.8079C24.0111 34.1937 22.0004 33.9957 20.1732 33.2388C18.3459 32.4819 16.7841 31.2002 15.6853 29.5557C14.5865 27.9112 14 25.9778 14 24C14 22.0222 14.5865 20.0888 15.6853 18.4443C16.7841 16.7998 18.3459 15.5181 20.1732 14.7612C22.0004 14.0043 24.0111 13.8063 25.9509 14.1922Z" fill="#333333"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/INKEM'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#独立按键">独立按键</a>
+      <ol>
+        <li><a href="#按键介绍">按键介绍</a></li>
+        <li><a href="#实验5-独立按键">实验5 独立按键</a></li>
+      </ol>
+    </li>
+    <li><a href="#矩阵按键">矩阵按键</a>
+      <ol>
+        <li><a href="#矩阵按键介绍">矩阵按键介绍</a></li>
+        <li><a href="#实验6-1-行列式扫描">实验6-1 行列式扫描</a></li>
+        <li><a href="#实验6-2-线翻转扫描">实验6-2 线翻转扫描</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="background-color: #2a9d8f; color: #fff;">
+                学习笔记
+            </a>
+        
+            <a href="/categories/51%E5%8D%95%E7%89%87%E6%9C%BA/" style="background-color: #FF0000; color: #fff;">
+                51单片机
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C56.%E7%8B%AC%E7%AB%8B%E6%8C%89%E9%94%AE-%E7%9F%A9%E9%98%B5%E6%8C%89%E9%94%AE/">【51单片机】程序实验5&amp;6.独立按键-矩阵按键</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 22, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 5 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="程序实验56独立按键-矩阵按键">程序实验5&amp;6.独立按键-矩阵按键
+</h1><h2 id="独立按键">独立按键
+</h2><h3 id="按键介绍">按键介绍
+</h3><img src="1.png" style="zoom: 50%;" />
+<p>一个按键拥有四个脚，其中①和②、③和④之间初始导通，而①和③、②和④之间只有按下按键才会导通。</p>
+<p>在下拉电阻作用下，按键所处管脚默认为高电平，当按下按键时线路接地变成低电平。</p>
+<img src="2.png" style="zoom:50%;" />
+<p>在实际情况中，按键的状态切换过程存在抖动，而不是在高低电平之间瞬时、稳定地切换。由于抖动过程中的电平变化会造成按键状态的误判，因此需要采取消抖措施，有软件消抖和硬件消抖两种方法：</p>
+<p><strong>软件消抖</strong>根据实际经验估计抖动时间在5~10ms，于是可以在检测到第一次低电平后延时10ms再次检测，若仍为低电平可认为按键已处于按下状态。</p>
+<p><strong>硬件消抖</strong>在电路上并联滤波电容，利用按下按键后给电容充电的时间来滤除抖动影响。</p>
+<p>由于硬件消抖占用的电路面积较大且产生的成本较高，在实际开发应用中通常使用软件消抖。</p>
+<p><img src="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C56.%E7%8B%AC%E7%AB%8B%E6%8C%89%E9%94%AE-%E7%9F%A9%E9%98%B5%E6%8C%89%E9%94%AE/3.jpg"
+	width="1280"
+	height="348"
+	srcset="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C56.%E7%8B%AC%E7%AB%8B%E6%8C%89%E9%94%AE-%E7%9F%A9%E9%98%B5%E6%8C%89%E9%94%AE/3_hu17427179986374418773.jpg 480w, /p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C56.%E7%8B%AC%E7%AB%8B%E6%8C%89%E9%94%AE-%E7%9F%A9%E9%98%B5%E6%8C%89%E9%94%AE/3_hu16270569134099835120.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="367"
+		data-flex-basis="882px"
+	
+></p>
+<p><img src="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C56.%E7%8B%AC%E7%AB%8B%E6%8C%89%E9%94%AE-%E7%9F%A9%E9%98%B5%E6%8C%89%E9%94%AE/4.png"
+	width="1272"
+	height="479"
+	srcset="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C56.%E7%8B%AC%E7%AB%8B%E6%8C%89%E9%94%AE-%E7%9F%A9%E9%98%B5%E6%8C%89%E9%94%AE/4_hu5411534735370790039.png 480w, /p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C56.%E7%8B%AC%E7%AB%8B%E6%8C%89%E9%94%AE-%E7%9F%A9%E9%98%B5%E6%8C%89%E9%94%AE/4_hu14616822083119344917.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="265"
+		data-flex-basis="637px"
+	
+></p>
+<h3 id="实验5-独立按键">实验5 独立按键
+</h3><p>实现功能：通过开发板上的独立按键K1控制D1指示灯的亮灭。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;reg52.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">u8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">u16</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//定义四个按键的控制管脚
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">sbit</span> <span class="n">KEY1</span> <span class="o">=</span> <span class="n">P3</span><span class="o">^</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">sbit</span> <span class="n">KEY2</span> <span class="o">=</span> <span class="n">P3</span><span class="o">^</span><span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">sbit</span> <span class="n">KEY3</span> <span class="o">=</span> <span class="n">P3</span><span class="o">^</span><span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">sbit</span> <span class="n">KEY4</span> <span class="o">=</span> <span class="n">P3</span><span class="o">^</span><span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//定义D1指示灯的控制管脚
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">sbit</span> <span class="n">LED1</span> <span class="o">=</span> <span class="n">P2</span><span class="o">^</span><span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//延时函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">delay_10us</span><span class="p">(</span><span class="n">u16</span> <span class="n">time</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">while</span><span class="p">(</span><span class="n">time</span> <span class="o">--</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">按键扫描函数
+</span></span></span><span class="line"><span class="cl"><span class="cm">扫描有两种方式：一种只对按下瞬间扫描，不考虑按下后是保持还是松开（点按控制）；另一种为持续扫描按键按下的状态（长按控制）
+</span></span></span><span class="line"><span class="cl"><span class="cm">mode参数决定该函数采用哪种扫描，0为点按，1为长按
+</span></span></span><span class="line"><span class="cl"><span class="cm">*/</span>
+</span></span><span class="line"><span class="cl"><span class="n">u8</span> <span class="nf">key_scan</span><span class="p">(</span><span class="n">u8</span> <span class="n">mode</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//定义控制是否检测按下状态的变量，1检测，0不检测，注意静态变量赋值只生效一次
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">static</span> <span class="n">u8</span> <span class="n">key</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//如果为长按扫描则检测按下状态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="n">key</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//如果需要检测按下状态且有按键按下（低电平），则消抖后再检测具体是哪个按键被按下
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">KEY1</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">KEY2</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">KEY3</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">KEY4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">key</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//重置key变量默认下一次不需要检测按下状态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nf">delay_10us</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">//消抖
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        
+</span></span><span class="line"><span class="cl">        <span class="c1">//检测到哪个按键按下则返回对应的按键序号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">if</span><span class="p">(</span><span class="n">KEY1</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">KEY2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">KEY3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">KEY4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="mi">4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">//如果没有按键被按下则下一次继续检测是否有按键被按下
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">KEY1</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">KEY2</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">KEY3</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">KEY4</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">key</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">u8</span> <span class="n">key</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//存储按下按键序号的变量，没有按键被按下则为0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">key</span> <span class="o">=</span> <span class="nf">key_scan</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">//循环按键扫描函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="n">LED1</span> <span class="o">=</span> <span class="o">!</span><span class="n">LED1</span><span class="p">;</span> <span class="c1">//如果按键K1被按下则切换D1指示灯状态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="矩阵按键">矩阵按键
+</h2><h3 id="矩阵按键介绍">矩阵按键介绍
+</h3><img src="5.png" style="zoom:33%;" />
+<p>在独立按键中，一个按键占用一个I/O口。当按键数量较多时，如果采用独立按键的接法会占用非常多的I/O资源。单片机为了减少I/O占用的引脚，引入了矩阵按键。</p>
+<img src="6.png" style="zoom:50%;" />
+<p>矩阵按键的一端串联在行线路上，另一端串联在列线路上，当按键按下时，按键所在的行线路和列线路接通。所有线路在下拉电阻作用下默认为高电平。</p>
+<p>矩阵按键的扫描有两种方法：</p>
+<p><strong>行列式扫描</strong>按行（列）将矩阵按键拆成多组独立按键，对每一行（列）进行扫描时，将该行（列）设为低电平以达到独立按键中接地的条件，然后按独立按键扫描方法扫描，依次扫描完每一行（列）。</p>
+<p><strong>线翻转扫描</strong>按先列（行）后行（列）的方式确定按下按键的位置，先将所有行（列）线路接地，检测哪一列（行）有按键被按下，则对应的列（行）接通为低电平；再将所有列（行）线路接地，检测哪一行（列）有按键被按下，结合被按下按键的列（行）坐标确认其序号。</p>
+<h3 id="实验6-1-行列式扫描">实验6-1 行列式扫描
+</h3><p>实现功能：按下矩阵按键S1到S16使数码管第一位显示0到F。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;reg52.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">u8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">u16</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//宏定义矩阵按键端口
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#define KEY_MATRIX_PORT P1
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">//宏定义数码管端口
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#define SEG_A_DP_PORT P0
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">//数码管0~F编码
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">u8</span> <span class="n">gseg_code</span><span class="p">[</span><span class="mi">16</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mh">0x3f</span><span class="p">,</span> <span class="mh">0x06</span><span class="p">,</span> <span class="mh">0x5b</span><span class="p">,</span> <span class="mh">0x4f</span><span class="p">,</span> <span class="mh">0x66</span><span class="p">,</span> <span class="mh">0x6d</span><span class="p">,</span> <span class="mh">0x7d</span><span class="p">,</span> <span class="mh">0x07</span><span class="p">,</span> <span class="mh">0x7f</span><span class="p">,</span> <span class="mh">0x6f</span><span class="p">,</span> <span class="mh">0x77</span><span class="p">,</span> <span class="mh">0x7c</span><span class="p">,</span> <span class="mh">0x39</span><span class="p">,</span> <span class="mh">0x5e</span><span class="p">,</span> <span class="mh">0x79</span><span class="p">,</span> <span class="mh">0x71</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//延时函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">delay_10us</span><span class="p">(</span><span class="n">u16</span> <span class="n">time</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">while</span><span class="p">(</span><span class="n">time</span> <span class="o">--</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//行列式扫描函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">u8</span> <span class="nf">key_matrix_ranks_scan</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">u8</span> <span class="n">key_value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//存储按下按键序号的变量，没有按键被按下则为0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">KEY_MATRIX_PORT</span> <span class="o">=</span> <span class="mh">0xf7</span><span class="p">;</span> <span class="c1">//第一列设为低电平，即P1端口高位到低位输出11110111（前四位为行，后四位为列），再转换为十六进制
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">KEY_MATRIX_PORT</span> <span class="o">!=</span> <span class="mh">0xf7</span><span class="p">)</span> <span class="c1">//如果第一列有按键按下，则具体检测第一列哪一行按键被按下
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">delay_10us</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">//消抖
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">switch</span><span class="p">(</span><span class="n">KEY_MATRIX_PORT</span><span class="p">)</span> <span class="c1">//检测哪一行为低电平
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mh">0x77</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mh">0xb7</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mh">0xd7</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mh">0xe7</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">=</span> <span class="mi">13</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">while</span><span class="p">(</span><span class="n">KEY_MATRIX_PORT</span> <span class="o">!=</span> <span class="mh">0xf7</span><span class="p">);</span> <span class="c1">//点按扫描在按下按键松开之前不再检测
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">KEY_MATRIX_PORT</span> <span class="o">=</span> <span class="mh">0xfb</span><span class="p">;</span> <span class="c1">//扫描第二列
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">KEY_MATRIX_PORT</span> <span class="o">!=</span> <span class="mh">0xfb</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">delay_10us</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">switch</span><span class="p">(</span><span class="n">KEY_MATRIX_PORT</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mh">0x7b</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mh">0xbb</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mh">0xdb</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mh">0xeb</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">=</span> <span class="mi">14</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">while</span><span class="p">(</span><span class="n">KEY_MATRIX_PORT</span> <span class="o">!=</span> <span class="mh">0xfb</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">KEY_MATRIX_PORT</span> <span class="o">=</span> <span class="mh">0xfd</span><span class="p">;</span> <span class="c1">//扫描第三列
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">KEY_MATRIX_PORT</span> <span class="o">!=</span> <span class="mh">0xfd</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">delay_10us</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">switch</span><span class="p">(</span><span class="n">KEY_MATRIX_PORT</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mh">0x7d</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mh">0xbd</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mh">0xdd</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">=</span> <span class="mi">11</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mh">0xed</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">while</span><span class="p">(</span><span class="n">KEY_MATRIX_PORT</span> <span class="o">!=</span> <span class="mh">0xfd</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="n">KEY_MATRIX_PORT</span> <span class="o">=</span> <span class="mh">0xfe</span><span class="p">;</span> <span class="c1">//扫描第四列
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">KEY_MATRIX_PORT</span> <span class="o">!=</span> <span class="mh">0xfe</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">delay_10us</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">switch</span><span class="p">(</span><span class="n">KEY_MATRIX_PORT</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mh">0x7e</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mh">0xbe</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mh">0xde</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="k">case</span> <span class="mh">0xee</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">=</span> <span class="mi">16</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">while</span><span class="p">(</span><span class="n">KEY_MATRIX_PORT</span> <span class="o">!=</span> <span class="mh">0xfe</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">key_value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">u8</span> <span class="n">key</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//存储按下按键序号的变量，没有按键被按下则为0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">key</span> <span class="o">=</span> <span class="nf">key_matrix_ranks_scan</span><span class="p">();</span> <span class="c1">//循环行列式扫描函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="n">SEG_A_DP_PORT</span> <span class="o">=</span> <span class="n">gseg_code</span><span class="p">[</span><span class="n">key</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span> <span class="c1">//按下按键将数码管切换到对应的值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="实验6-2-线翻转扫描">实验6-2 线翻转扫描
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="c1">//线翻转扫描函数，将实验6-1中调用行列式扫描函数的地方替换为该函数即可
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">u8</span> <span class="nf">key_matrix_flip_scan</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">u8</span> <span class="n">key_value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//存储按下按键序号的变量，没有按键被按下则为0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">KEY_MATRIX_PORT</span> <span class="o">=</span> <span class="mh">0x0f</span><span class="p">;</span> <span class="c1">//将行线路全部接地，即P1端口输出00001111
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">KEY_MATRIX_PORT</span> <span class="o">!=</span> <span class="mh">0x0f</span><span class="p">)</span> <span class="c1">//如果有按键按下则进入具体检测
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">delay_10us</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">//消抖
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">if</span><span class="p">(</span><span class="n">KEY_MATRIX_PORT</span> <span class="o">!=</span> <span class="mh">0x0f</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="k">switch</span><span class="p">(</span><span class="n">KEY_MATRIX_PORT</span><span class="p">)</span> <span class="c1">//检测哪一列为低电平，则该列有按键被按下
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">case</span> <span class="mh">0x07</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">case</span> <span class="mh">0x0b</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">case</span> <span class="mh">0x0d</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">case</span> <span class="mh">0x0e</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			<span class="n">KEY_MATRIX_PORT</span> <span class="o">=</span> <span class="mh">0xf0</span><span class="p">;</span> <span class="c1">//将列线路全部接地
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="k">switch</span><span class="p">(</span><span class="n">KEY_MATRIX_PORT</span><span class="p">)</span> <span class="c1">//检测哪一行为低电平
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="p">{</span>
+</span></span><span class="line"><span class="cl">				<span class="k">case</span> <span class="mh">0x70</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">+=</span> <span class="mi">0</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span> <span class="c1">//按键序号 = 列序号 + 4 * (行序号 - 1)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>				<span class="k">case</span> <span class="mh">0xb0</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">+=</span> <span class="mi">4</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">case</span> <span class="mh">0xd0</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">+=</span> <span class="mi">8</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">				<span class="k">case</span> <span class="mh">0xe0</span><span class="o">:</span> <span class="n">key_value</span> <span class="o">+=</span> <span class="mi">12</span><span class="p">;</span> <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">			<span class="p">}</span>
+</span></span><span class="line"><span class="cl">			<span class="k">while</span><span class="p">(</span><span class="n">KEY_MATRIX_PORT</span> <span class="o">!=</span> <span class="mh">0xf0</span><span class="p">);</span> <span class="c1">//点按扫描在按下按键松开之前不再检测
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">key_value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<p><strong>本篇完</strong></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【51单片机】程序实验2~4.蜂鸣器-静态数码管-动态数码管</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8Cep1.%E7%82%B9%E4%BA%AEled/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【51单片机】程序实验Ep1.点亮LED</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E9%80%9F%E8%A7%88%E4%B8%8B/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【Python】基础语法速览（下）</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep5.%E9%9B%85%E5%8F%AF%E6%AF%94%E9%80%9F%E5%BA%A6%E5%92%8C%E9%9D%99%E5%8A%9B/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep5.雅可比：速度和静力</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E9%80%9F%E8%A7%88%E4%B8%8A/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【Python】基础语法速览（上）</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 一杯为品
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src=https://INKEM.github.io/background/sakura.js></script>
+<style>
+  body {
+    background: url(https://INKEM.github.io/background/Sakura.png) no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+</style>
+<style>
+  @font-face {
+    font-family: '初夏明朝';
+    src: url(https://INKEM.github.io/font/EarlySummerSerif-Bold.ttf) format('truetype');
+  }
+
+  :root {
+    --base-font-family: '初夏明朝';
+    --code-font-family: '初夏明朝';
+  }
+</style>
+
+    </body>
+</html>
