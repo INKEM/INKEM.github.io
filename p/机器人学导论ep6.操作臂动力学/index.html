@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="刚体的加速度和质量分布；牛顿-欧拉动力学方程；拉格朗日动力学方程">
+<title>【机器人学导论】Ep6.操作臂动力学</title>
+
+<link rel='canonical' href='https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep6.%E6%93%8D%E4%BD%9C%E8%87%82%E5%8A%A8%E5%8A%9B%E5%AD%A6/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【机器人学导论】Ep6.操作臂动力学">
+<meta property='og:description' content="刚体的加速度和质量分布；牛顿-欧拉动力学方程；拉格朗日动力学方程">
+<meta property='og:url' content='https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep6.%E6%93%8D%E4%BD%9C%E8%87%82%E5%8A%A8%E5%8A%9B%E5%AD%A6/'>
+<meta property='og:site_name' content='一杯为品'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-11-23T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-11-23T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="【机器人学导论】Ep6.操作臂动力学">
+<meta name="twitter:description" content="刚体的加速度和质量分布；牛顿-欧拉动力学方程；拉格朗日动力学方程">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu16835031703737007367.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🐦</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一杯为品</a></h1>
+            <h2 class="site-description">哈工大2023届智能机器人班在读，在努力成为机器人、人工智能、硬件工程多面手的路上</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://blog.csdn.net/mojin2005?spm=1010.2135.3001.5343'
+                        target="_blank"
+                        title="CSDN"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M48 0H0V48H48V0ZM25.9509 14.1922C27.8907 14.578 29.6725 15.5304 31.0711 16.9289C31.8521 17.71 33.1184 17.71 33.8995 16.9289C34.6805 16.1479 34.6805 14.8816 33.8995 14.1005C31.9416 12.1426 29.447 10.8092 26.7313 10.269C24.0155 9.72882 21.2006 10.0061 18.6424 11.0657C16.0843 12.1253 13.8978 13.9197 12.3594 16.222C10.8211 18.5243 10 21.2311 10 24C10 26.7689 10.8211 29.4757 12.3594 31.778C13.8978 34.0803 16.0843 35.8747 18.6424 36.9343C21.2006 37.9939 24.0155 38.2712 26.7313 37.731C29.447 37.1908 31.9416 35.8574 33.8995 33.8995C34.6805 33.1185 34.6805 31.8521 33.8995 31.0711C33.1184 30.29 31.8521 30.29 31.0711 31.0711C29.6725 32.4696 27.8907 33.422 25.9509 33.8079C24.0111 34.1937 22.0004 33.9957 20.1732 33.2388C18.3459 32.4819 16.7841 31.2002 15.6853 29.5557C14.5865 27.9112 14 25.9778 14 24C14 22.0222 14.5865 20.0888 15.6853 18.4443C16.7841 16.7998 18.3459 15.5181 20.1732 14.7612C22.0004 14.0043 24.0111 13.8063 25.9509 14.1922Z" fill="#333333"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/INKEM'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#刚体的加速度">刚体的加速度</a>
+      <ol>
+        <li><a href="#线加速度">线加速度</a></li>
+        <li><a href="#角加速度">角加速度</a></li>
+      </ol>
+    </li>
+    <li><a href="#质量分布">质量分布</a></li>
+    <li><a href="#牛顿-欧拉方程递推动力学方程">牛顿-欧拉方程递推动力学方程</a>
+      <ol>
+        <li><a href="#牛顿方程和欧拉方程">牛顿方程和欧拉方程</a></li>
+        <li><a href="#计算速度和加速度的外推法">计算速度和加速度的外推法</a></li>
+        <li><a href="#作用在连杆上的力和力矩">作用在连杆上的力和力矩</a></li>
+        <li><a href="#计算力和力矩的内推法">计算力和力矩的内推法</a></li>
+        <li><a href="#牛顿-欧拉递推动力学算法">牛顿-欧拉递推动力学算法</a></li>
+        <li><a href="#考虑重力的动力学算法">考虑重力的动力学算法</a></li>
+      </ol>
+    </li>
+    <li><a href="#操作臂动力学方程的结构">操作臂动力学方程的结构</a>
+      <ol>
+        <li><a href="#迭代形式与封闭形式">迭代形式与封闭形式</a></li>
+        <li><a href="#状态空间方程">状态空间方程</a></li>
+        <li><a href="#位形空间方程">位形空间方程</a></li>
+      </ol>
+    </li>
+    <li><a href="#操作臂动力学的拉格朗日方程">操作臂动力学的拉格朗日方程</a></li>
+    <li><a href="#笛卡尔空间中的操作臂动力学">笛卡尔空间中的操作臂动力学</a>
+      <ol>
+        <li><a href="#笛卡尔状态空间方程">笛卡尔状态空间方程</a></li>
+        <li><a href="#笛卡尔位形空间中的力矩方程">笛卡尔位形空间中的力矩方程</a></li>
+      </ol>
+    </li>
+    <li><a href="#考虑非刚体影响">考虑非刚体影响</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="background-color: #2a9d8f; color: #fff;">
+                学习笔记
+            </a>
+        
+            <a href="/categories/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BA/" style="background-color: #70DB93; color: #fff;">
+                机器人学导论
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep6.%E6%93%8D%E4%BD%9C%E8%87%82%E5%8A%A8%E5%8A%9B%E5%AD%A6/">【机器人学导论】Ep6.操作臂动力学</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            刚体的加速度和质量分布；牛顿-欧拉动力学方程；拉格朗日动力学方程
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Nov 23, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 12 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="操作臂动力学">操作臂动力学
+</h1><h2 id="刚体的加速度">刚体的加速度
+</h2><p>对刚体的线速度和角速度进行求导分别得到线加速度和角加速度：</p>
+<p>$^B\dot{V}_Q=\frac{\mathrm{d}}{\mathrm{d}t}^BV_Q=\lim_{\Delta t\rightarrow0}\frac{^BV_Q(t+\Delta t)-^BV_Q(t)}{\Delta t}$</p>
+<p>$^A\dot{\Omega}_B=\frac{\mathrm{d}}{\mathrm{d}t}^A\Omega_B=\lim_{\Delta t\rightarrow0}\frac{^A\Omega_B(t+\Delta t)-^A\Omega_B(t)}{\Delta t}$</p>
+<p>当刚体所处的瞬时参考坐标系为世界坐标系$\{U\}$时，可用下列符号表示：</p>
+<p>$\dot{v}_a=^U\dot{V}_AORG$</p>
+<p>$\dot{\omega}_A=^U\dot{\Omega}_A$</p>
+<h3 id="线加速度">线加速度
+</h3><p>应用第五章所得公式：</p>
+<p>$^AV_Q=^AV_{BORG}+^A_BR^BV_Q+^A\Omega_B\times^A_BR^BQ$</p>
+<p>当$\{A\}$与$\{B\}$原点重合：</p>
+<p>$^AV_Q=\frac{\mathrm{d}}{\mathrm{d}t}(^A_BR^BQ)=^A_BR^BV_Q+^A\Omega_B\times^A_BR^BQ$①</p>
+<p>对上式求导：</p>
+<p>$^A\dot{V}_Q=\frac{\mathrm{d}}{\mathrm{d}t}(^A_BR^BQ)+^A\dot{\Omega}_B\times^A_BR^BQ+^A\Omega_B\times\frac{\mathrm{d}}{\mathrm{d}t}(^A_BR^BQ)$</p>
+<p>$=^A_BR^B\dot{V}_Q+^A\Omega_B\times^A_BR^BV_Q+^A\dot{\Omega}_B\times^A_BR^BQ+^A\Omega_B\times(^A_BR^BV_Q+^A\Omega_B\times^A_BR^BQ)$</p>
+<p>$=^A_BR^B\dot{V}_Q+2^A\Omega_B\times^A_BR^BV_Q+^A\dot{\Omega}_B\times^A_BR^BQ+^A\Omega_B\times(^A\Omega_B\times^A_BR^BQ)$</p>
+<p>再考虑原点不重合的情况，加上$\{B\}$原点的加速度：</p>
+<p>$^A\dot{V}_Q=^A\dot{V}_{BORG}+^A_BR^B\dot{V}_Q+2^A\Omega_B\times^A_BR^BV_Q+^A\dot{\Omega}_B\times^A_BR^BQ+^A\Omega_B\times(^A\Omega_B\times^A_BR^BQ)$②</p>
+<p>上式为求解加速度的一般公式。</p>
+<p>当计算旋转关节操作臂连杆线加速度时，$^BQ$为常量，即：</p>
+<p>$^BV_Q=^B\dot{V}_Q=0$</p>
+<p>此时②简化为：</p>
+<p>$^A\dot{V}_Q=^A\dot{V}_{BORG}+^A\dot{\Omega}_B\times^A_BR^BQ+^A\Omega_B\times(^A\Omega_B\times^A_BR^BQ)$③</p>
+<h3 id="角加速度">角加速度
+</h3><p>假设$\{B\}$以$^A\Omega_B$相对于$\{A\}$转动，同时$\{C\}$以$^B\Omega_C$相对于$\{B\}$转动，则：</p>
+<p>$^A\Omega_C=^A\Omega_B+^A_BR^B\Omega_C$</p>
+<p>对上式求导：</p>
+<p>$^A\dot{\Omega}_C=^A\dot{\Omega}_B+\frac{\mathrm{d}}{\mathrm{d}t}(^A_BR^B\Omega_C)$</p>
+<p>最后一项用$^B\Omega_C$代入①中$^BQ$：</p>
+<p>$^A\dot{\Omega}_C=^A\dot{\Omega}_B+^A_BR^B\dot{\Omega}_C+^A\Omega_B\times^A_BR^B\Omega_C$④</p>
+<p>上式用于计算操作臂连杆的角加速度。</p>
+<h2 id="质量分布">质量分布
+</h2><p>对一个可以在三维空间自由移动的刚体来说可能存在无穷个旋转轴。在一个刚体绕任意轴做旋转运动时，我们需要一种能够表征刚体质量分布的方式。我们引入<strong>惯性张量</strong>，可以看做是对一个物体惯性矩的广义度量。</p>
+<p>惯性张量可以在任何坐标系中定义，但一般在刚体自身坐标系中定义，用左上标表明已知惯性张量所在的坐标系。$\{A\}$中的惯性张量可用$3\times3$矩阵表示如下：</p>
+<p>$^AI=\begin{bmatrix}I_{xx}&-I_{xy}&-I_{xz}\\-I_{xy}&I_{yy}&-I_{yz}\\-I_{xz}&-I_{yz}&I_{zz}\end{bmatrix}$</p>
+<p>矩阵中各元素为：</p>
+<p>$I_{xx}=\iiint_V(y^2+z^2)\rho\mathrm{d}v$</p>
+<p>$I_{yy}=\iiint_V(x^2+z^2)\rho\mathrm{d}v$</p>
+<p>$I_{zz}=\iiint_V(x^2+y^2)\rho\mathrm{d}v$</p>
+<p>$I_{xy}=\iiint_Vxy\rho\mathrm{d}v$</p>
+<p>$I_{xz}=\iiint_Vxz\rho\mathrm{d}v$</p>
+<p>$I_{yz}=\iiint_Vyz\rho\mathrm{d}v$</p>
+<p>式中刚体由单元体$\mathrm{d}v$组成，单元体的密度为$\rho$，每个单元体的位置由矢量$^AP=(x,y,z)^T$确定。</p>
+<p>$I_{xx}$、$I_{yy}$和$I_{zz}$称为<strong>惯性矩</strong>，其余三个交叉项称为<strong>惯量积</strong>。对一个刚体来说，该六个相互独立的参量取决于所在坐标系的位置和姿态。当选择的坐标系姿态使刚体的惯量积为零时，该坐标系的轴被称为<strong>主轴</strong>，而相应的惯量矩被称为<strong>主惯性矩</strong>。</p>
+<img src="1.png" style="zoom:50%;" />
+<p><strong>平行移轴定理</strong>描述了一个以刚体质心为原点的坐标系平移到另一个坐标系时惯性张量的变换关系。假设$\{C\}$是以刚体质心为原点的坐标系，$\{A\}$为任意平移后的坐标系，则平行移轴定理可以表示为：</p>
+<p>$^AI_{zz}=^CI_{zz}+m(x^2_c+y^2_c)$</p>
+<p>$^AI_{xy}=^CI_{xy}-mx_cy_c$</p>
+<p>式中矢量$P_c=(x_c,y_c,z_c)^T$表示刚体质心在$\{A\}$中的位置，其余轴下标的变换公式同理。</p>
+<p>平行移轴定理的矢量-矩阵形式为：</p>
+<p>$^AI=^CI+m(P^T_cP_cI_3-P_cP_c^T)$</p>
+<p>式中$I_3$为$3\times3$单位矩阵。</p>
+<p>惯性张量的其他性质：</p>
+<ul>
+<li>如果坐标系的两个坐标轴构成的平面为刚体质量分布的对称平面，则第三个坐标轴与这两个坐标轴的惯性积为零。</li>
+<li>三个惯量矩的和与参考坐标系的姿态无关。</li>
+<li>惯性张量的特征值为刚体的主惯性矩，特征矢量为主轴。</li>
+</ul>
+<p>大多数操作臂连杆的几何形状及结构组成都比较复杂，因而很难直接应用公式求解，一般使用测量装置来测量每个连杆的惯性矩。</p>
+<h2 id="牛顿-欧拉方程递推动力学方程">牛顿-欧拉方程递推动力学方程
+</h2><h3 id="牛顿方程和欧拉方程">牛顿方程和欧拉方程
+</h3><p>牛顿方程以及描述旋转运动的欧拉方程描述了力、惯量和加速度之间的关系。</p>
+<p><strong>牛顿方程</strong></p>
+<p>$F=m\dot{v}_c$</p>
+<p>$F$：作用在质心上的力；</p>
+<p>$m$：刚体的总质量；</p>
+<p>$\dot{v}_c$：刚体质心的加速度。</p>
+<img src="2.png" style="zoom: 33%;" />
+<p><strong>欧拉方程</strong></p>
+<p>$N=^CI\dot{\omega}+\omega\times^CI\omega$</p>
+<p>$N$：作用在刚体上的力矩；</p>
+<p>$^CI$：刚体在$\{C\}$中的惯性张量，$\{C\}$的原点在质心；</p>
+<p>$\omega$和$\dot{\omega}$：刚体旋转的角速度和角加速度。</p>
+<img src="3.png" style="zoom:33%;" />
+<h3 id="计算速度和加速度的外推法">计算速度和加速度的外推法
+</h3><p>为了计算作用在连杆上的惯性力，需要计算操作臂每个连杆质心在某一时刻的角速度、线加速度和角加速度。可应用递推方法完成这些计算，首先对连杆$1$进行计算，接着计算下一个连杆，一直外推到连杆$n$。</p>
+<p>第五章机器人连杆的运动中我们给出了角速度在连杆之间的传播方程：</p>
+<p>$^{i+1}\omega_{i+1}=^{i+1}_{i}R^i\omega_i+\dot{\theta}_{i+1}{}^{i+1}\hat{Z}_{i+1}$</p>
+<p>本章④给出了连杆之间角加速度变换的方程：</p>
+<p>$^{i+1}\dot{\omega}_{i+1}=^{i+1}_iR^i\dot{\omega}_i+^{i+1}_iR^i\omega_i\times\dot{\theta}_{i+1}\hat{Z}_{i+1}+\ddot{\theta}_{i+1}{}^{i+1}\hat{Z}_{i+1}$</p>
+<p>当第$i+1$个关节为移动关节时，上式可简化为：</p>
+<p>$^{i+1}\dot{\omega}_{i+1}=^{i+1}_{i}R^i\dot{\omega}_i$</p>
+<p>本章③可得到每个连杆坐标系原点的线加速度：</p>
+<p>$^{i+1}\dot{v}_{i+1}=^{i+1}_iR[^i\dot{\omega}_i\times^iP_{i+1}+^i\omega_i\times(^i\omega_i\times^iP_{i+1})+^i\dot{v}_i]$</p>
+<p>当第$i+1$个关节为移动关节时，上式变为②：</p>
+<p>$^{i+1}\dot{v}_{i+1}=^{i+1}_iR[^i\dot{\omega}_i\times^iP_{i+1}+^i\omega_i\times(^i\omega_i\times^iP_{i+1})+^i\dot{v}_i]+2^{i+1}\omega_{i+1}\times\dot{d}_{i+1}{}^{i+1}\hat{Z}_{i+1}+\ddot{d}_{i+1}{}^{i+1}\hat{Z}_{i+1}$</p>
+<p>同理用③可得到每个连杆质心的线加速度：</p>
+<p>$^i\dot{v}_{C_i}=^i\dot{\omega}_i\times^iP_{C_i}+^i\omega_i\times(^i\omega_i\times^iP_{C_i})+^i\dot{v}_i$</p>
+<p>其中$\{C_i\}$原点位于连杆质心，姿态与$\{i\}$相同。</p>
+<h3 id="作用在连杆上的力和力矩">作用在连杆上的力和力矩
+</h3><p>计算出每个连杆质心的线加速度和角加速度之后，运用牛顿-欧拉公式可以计算出作用在连杆质心上的惯性力和力矩：</p>
+<p>$F_i=m\dot{v}_{C_i}$</p>
+<p>$N_i=^{C_i}I\dot{\omega}_i+\omega_i\times^{C_i}I\omega_i$</p>
+<h3 id="计算力和力矩的内推法">计算力和力矩的内推法
+</h3><p>计算出每个连杆上的作用力和力矩之后，需要计算这些产生施加在连杆上的力和力矩所对应的关节力矩。</p>
+<p>第五章操作臂的静力一节中定义了：</p>
+<p>$f_i=$连杆$i-1$作用在连杆$i$上的力；</p>
+<p>$n_i=$连杆$i-1$作用在连杆$i$上的力矩。</p>
+<p>则作用在连杆$i$上的合力：</p>
+<p>$^iF_i=^if_i-^i_{i+1}R^{i+1}f_{i+1}$⑤</p>
+<p>作用在连杆质心上的合力矩：</p>
+<p>$^iN_i=^in_i-^in_{i+1}+(-^iP_{C_i})\times^if_i-(^iP_{i+1}-^iP_{C_i})\times^if_{i+1}$</p>
+<p>利用⑤和旋转矩阵变换上式可写成：</p>
+<p>$^iN_i=^in_i-^i_{i+1}R^{i+1}n_{i+1}-^iP_{C_i}\times^iF_i-^iP_{i+1}\times^i_{i+1}R^{i+1}f_{i+1}$</p>
+<p>最后重新排列力和力矩方程形成相邻连杆从高序号向低序号的迭代关系：</p>
+<p>$^if_i=^i_{i+1}R^{i+1}f_{i+1}+^iF_i$</p>
+<p>$^in_i=^iN_i+^i_{i+1}R^{i+1}n_{i+1}+^iP_{C_i}\times^iF_i+^iP_{i+1}\times^i_{i+1}R^{i+1}f_{i+1}$</p>
+<p>应用这些方程从连杆$n$开始向内递推到机器人基座依次求解。</p>
+<p>最终由第五章操作臂的静力一节给出关节驱动力为：</p>
+<p>$\tau_i=^in_i^T{}^i\hat{Z}_i$</p>
+<p>对于移动关节：</p>
+<p>$\tau_i=^if_i^T{}^i\hat{Z}_i$</p>
+<img src="4.png" style="zoom: 50%;" />
+<h3 id="牛顿-欧拉递推动力学算法">牛顿-欧拉递推动力学算法
+</h3><p>由关节运动计算关节力矩的完整算法由两部分组成：第一部分是对每个连杆应用牛顿-欧拉方程从连杆$1$到连杆$n$向外递推计算连杆的速度和加速度；第二部分是从连杆$n$到连杆$1$跌倒计算连杆间的相互作用力和力矩以及关节驱动力矩。对于转动关节，该算法归纳如下：</p>
+<p>外推：</p>
+<p>$^{i+1}\omega_{i+1}=^{i+1}_{i}R^i\omega_i+\dot{\theta}_{i+1}{}^{i+1}\hat{Z}_{i+1}$</p>
+<p>$^{i+1}\dot{\omega}_{i+1}=^{i+1}_iR^i\dot{\omega}_i+^{i+1}_iR^i\omega_i\times\dot{\theta}_{i+1}\hat{Z}_{i+1}+\ddot{\theta}_{i+1}{}^{i+1}\hat{Z}_{i+1}$</p>
+<p>$^{i+1}\dot{v}_{i+1}=^{i+1}_iR[^i\dot{\omega}_i\times^iP_{i+1}+^i\omega_i\times(^i\omega_i\times^iP_{i+1})+^i\dot{v}_i]$</p>
+<p>$^{i+1}\dot{v}_{C_{i+1}}=^{i+1}\dot{\omega}_{i+1}\times^{i+1}P_{C_{i+1}}+^{i+1}\omega_{i+1}\times(^{i+1}\omega_{i+1}\times^{i+1}P_{C_{i+1}})+^{i+1}\dot{v}_{i+1}$</p>
+<p>$F_{i+1}=m\dot{v}_{C_{i+1}}$</p>
+<p>$N_{i+1}=^{C_{i+1}}I\dot{\omega}_{i+1}+\omega_{i+1}\times^{C_{i+1}}I\omega_{i+1}$</p>
+<p>内推：</p>
+<p>$^if_i=^i_{i+1}R^{i+1}f_{i+1}+^iF_i$</p>
+<p>$^in_i=^iN_i+^i_{i+1}R^{i+1}n_{i+1}+^iP_{C_i}\times^iF_i+^iP_{i+1}\times^i_{i+1}R^{i+1}f_{i+1}$</p>
+<p>$\tau_i=^in_i^T{}^i\hat{Z}_i$</p>
+<h3 id="考虑重力的动力学算法">考虑重力的动力学算法
+</h3><p>令$^0\dot{v}_0=G$即可将作用在连杆上的重力因素包括到动力学方程中去，其中$G$与重力矢量等大反向。</p>
+<h2 id="操作臂动力学方程的结构">操作臂动力学方程的结构
+</h2><h3 id="迭代形式与封闭形式">迭代形式与封闭形式
+</h3><p>上述动力学方程主要应用于数值计算（<strong>迭代形式</strong>）或作为分析方法用于符号方程的推导（<strong>封闭形式</strong>）。</p>
+<p>对于数值计算，只要将待求操作臂的惯性张量、连杆质量、连杆质心位置矢量和相邻连杆的旋转矩阵代入这些方程中即可计算出任何运动情况下的关节力矩。</p>
+<p>当需要对方程的结构进行研究，例如重力项的形式、重力和惯性力的影响效果等，就要给出封闭形式的动力学方程。</p>
+<img src="5.png" style="zoom:33%;" />
+<p>一个如图所示的RR操作臂，为简单起见假设每个连杆的质量都集中在连杆的末端，应用上述方程得到的封闭形式的动力学方程如下：</p>
+<p>$\tau_1=m_2l_2^2(\ddot{\theta}_1+\ddot{\theta}_2)+m_2l_1l_2c_2(2\ddot{\theta}_1+\ddot{\theta}_2)+(m_1+m_2)l^2_1\ddot{\theta}_1-m_2l_1l_2s_2\dot{\theta}_2^2-2m_2l_1l_2s_2\dot{\theta}_1\dot{\theta}_2+m_2l_2gc_{12}+(m_1+m_2)l_1gc_1$</p>
+<p>$\tau_2=m_2l_1l_2c_2\ddot{\theta}_1+m_2l_1l_2s_2\dot{\theta}^2_1+m_2l_2gc_{12}+m_2l^2_2(\ddot{\theta}_1+\ddot{\theta}_2)$</p>
+<p>如此复杂的函数表达式描述的只是一个最简单的操作臂，可见一个封闭形式的六自由度操作臂的动力学方程是相当复杂的。</p>
+<h3 id="状态空间方程">状态空间方程
+</h3><p>忽略一个方程中的某些细节而仅显示方程的某些结构可以很方便地表示操作臂的动力学方程。</p>
+<p>用牛顿-欧拉方程对操作臂进行分析时，动力学方程可写成如下形式：</p>
+<p>$\tau=M(\Theta)\ddot{\Theta}+V(\Theta,\dot{\Theta})+G(\Theta)$</p>
+<p>式中$M(\Theta)$为操作臂的$n\times n$<strong>质量矩阵</strong>，$V(\Theta,\dot{\Theta})$为$n\times1$的离心力和科氏力矢量，$G(\Theta)$是$n\times1$重力矢量。上式称为<strong>状态空间方程</strong>，因为矢量$V(\Theta,\dot{\Theta})$取决于位置和速度。</p>
+<p>以上面给出的RR操作臂为例：</p>
+<p>$\tau=\begin{bmatrix}\tau_1\\\tau_2\end{bmatrix},\ddot{\Theta}=\begin{bmatrix}\ddot{\theta}_1\\\ddot{\theta}_2\end{bmatrix}$</p>
+<p>质量矩阵$M(\Theta)$的所有各项均为$\Theta$的函数并与$\ddot{\Theta}$相乘：</p>
+<p>$M(\Theta)=\begin{bmatrix}l^2_2+2l_1l_2m_2c_2+l_1^2(m_1+m_2)&l^2_2m_2+l_1l_2m_2c_2\\l^2_2m_2+l_1l_2m_2c_2&l^2_2m_2\end{bmatrix}$</p>
+<p>速度项$V(\Theta,\dot{\Theta})$包含了所有与关节速度有关的项：</p>
+<p>$V(\Theta,\dot{\Theta})=\begin{bmatrix}-m_2l_1l_2s_2\dot{\theta}^2_2-2m_2l_1l_2s_2\dot{\theta}_1\dot{\theta}_2\\m_2l_1l_2s_2\dot{\theta}^2_1\end{bmatrix}$</p>
+<p>$-m_2l_1l_2s_2\dot{\theta}^2_1$是与离心力有关的项，因为它是关节速度的平方；</p>
+<p>$-2m_2l_1l_2s_2\dot{\theta}_1\dot{\theta}_2$是与科氏力有关的项，因为它总是包含两个不同关节速度的乘积。</p>
+<p>重力项$G(\Theta)$包含了所有与重力加速度$g$有关的项：</p>
+<p>$G(\Theta)=\begin{bmatrix}m_2l_2gc_{12}+(m_1+m_2)l_1gc_1\\m_2l_2gc_{12}\end{bmatrix}$</p>
+<h3 id="位形空间方程">位形空间方程
+</h3><p>将动力学方程中速度项$V(\Theta,\dot{\Theta})$离心力和科氏力拆开来，并提取出关节速度项，写成另外一种形式如下：</p>
+<p>$\tau=M(\Theta)\ddot{\Theta}+B(\Theta)(\dot{\Theta}\dot{\Theta})+C(\Theta)(\dot{\Theta}^2)+G(\Theta)$⑥</p>
+<p>式中$B(\Theta)$为$n\times n(n-1)/2$阶科氏力系数矩阵，$(\dot{\Theta}\dot{\Theta})$是$n(n-1)/2\times1$阶关节速度矢量，即：</p>
+<p>$(\dot{\Theta}\dot{\Theta})=(\dot{\theta}_1\dot{\theta}_2,\dot{\theta}_1\dot{\theta}_3,\cdots,\dot{\theta}_{n-1}\dot{\theta}_n)^T$</p>
+<p>$C(\Theta)$是$n\times n$阶离心力系数矩阵，$(\dot{\Theta}^2)$是$n\times1$阶矢量，即：</p>
+<p>$(\dot{\Theta}^2)=(\dot{\theta}^2_1,\dot{\theta}^2_2,\cdots,\dot{\theta}^2_n)T$</p>
+<p>⑥称为<strong>位形空间方程</strong>，因为它的系数矩阵仅是操作臂位置的函数。</p>
+<p>以上面给出的RR操作臂为例：</p>
+<p>$(\dot{\Theta}\dot{\Theta})=(\dot{\theta}_1\dot{\theta}_2),(\dot{\Theta}^2)=\begin{bmatrix}\dot{\theta}^2_1\\\dot{\theta}^2_2\end{bmatrix}$</p>
+<p>$B(\Theta)=\begin{bmatrix}-2m_2l_1l_2s_2\\0\end{bmatrix}$</p>
+<p>$C(\Theta)=\begin{bmatrix}0&-m_2l_1l_2s_2\\m_2l_1l_2s_2&0\end{bmatrix}$</p>
+<h2 id="操作臂动力学的拉格朗日方程">操作臂动力学的拉格朗日方程
+</h2><p>牛顿-欧拉公式是一种解决动力学问题的力平衡方法，而拉格朗日公式则是一种基于能量的动力学方法。对于同一个操作臂来说，两种方法得到的动力学方程式相同的。</p>
+<p>第$i$个连杆的动能$k_i$可以表示为：</p>
+<p>$k_i=\frac{1}{2}m_iv^T_{C_i}v_{C_i}+\frac{1}{2}{}^i\omega^T_i{}^{C_i}I_i{}^i\omega_i$</p>
+<p>式中第一项是连杆质心线速度动能，第二项是连杆角速度动能。整个操作臂的动能是各个连杆动能之和：</p>
+<p>$k=\Sigma^n_{i=1}k_i$</p>
+<p>式中$v_{C_i}$和$^i\omega_i$是$\Theta$和$\dot{\Theta}$的函数，因此操作臂的动能$k$可描述为关节位置和速度的标量函数：</p>
+<p>$k(\Theta,\dot{\Theta})=\frac{1}{2}\dot{\Theta}^TM(\Theta)\dot{\Theta}$</p>
+<p>这里$M(\Theta)$为状态空间方程中介绍的$n\times n$质量矩阵。</p>
+<p>第$i$个连杆的势能$u_i$可以表示为：</p>
+<p>$u_i=-m_i{}^0g^T{}^0P_{C_i}+u_{ref_i}$</p>
+<p>这里$^0g$是$3\times1$重力矢量，$^0P_{C_i}$是位于第$i$个连杆质心的矢量，$u_{ref_i}$是使$u_i$的最小值为零的常数（即最小取到势能零点，实际上可以相对于任意一个参考零点）。操作臂的总势能为各个连杆势能之和：</p>
+<p>$u=\Sigma^n_{i=1}u_i$</p>
+<p>式中$^0P_{C_i}$是$\Theta$的函数，因此操作臂的势能$u$可以描述为关节位置的标量函数。</p>
+<p>拉格朗日力学公式给出了一种从标量函数推导动力学方程的方法，该标量函数称为<strong>拉格朗日函数</strong>，即一个机械系统的动能和势能的差值：</p>
+<p>$\mathcal{L}(\Theta,\dot{\Theta})=k(\Theta,\dot{\Theta})-u(\Theta)$</p>
+<p>则操作臂的运动方程为：</p>
+<p>$\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial\mathcal{L}}{\partial\dot{\Theta}}-\frac{\partial\mathcal{L}}{\partial\Theta}=\frac{\mathrm{d}}{\mathrm{d}t}\frac{\partial k}{\partial\dot{\Theta}}-\frac{\partial k}{\partial\Theta}+\frac{\partial u}{\partial\Theta}=\tau$</p>
+<h2 id="笛卡尔空间中的操作臂动力学">笛卡尔空间中的操作臂动力学
+</h2><h3 id="笛卡尔状态空间方程">笛卡尔状态空间方程
+</h3><p>已知关节变量建立的状态空间方程为：</p>
+<p>$\tau=M(\Theta)\ddot{\Theta}+V(\Theta,\dot{\Theta})+G(\Theta)$⑦</p>
+<p>在操作臂控制当中，有时我们希望用笛卡尔变量的一般形式建立操作臂动力学方程：</p>
+<p>$\mathcal{F}=M_x(\Theta)\ddot{\chi}+V_x(\Theta,\dot{\Theta})+G_x(\Theta)$</p>
+<p>式中$\mathcal{F}$是作用于机器人末端执行器上的力-力矩矢量，$\chi$是表达末端执行器位置和姿态的笛卡尔矢量。</p>
+<p>与关节空间相对应，$M_x(\Theta)$是笛卡尔质量矩阵，$V_x(\Theta,\dot{\Theta})$是笛卡尔空间中的速度项矢量，$G_x(\Theta)$是笛卡尔空间中的重力项矢量。</p>
+<p>在第五章力域中的雅可比一节中有：</p>
+<p>$\tau=J^T(\Theta)\mathcal{F}$⑧</p>
+<p>其中$J(\Theta)$与$\mathcal{F}$和$\chi$在同一个笛卡尔坐标系下。</p>
+<p>接下来推导关节变量与笛卡尔变量的状态空间方程之间的关系：</p>
+<p>对⑦两边同乘$J^{-T}$并结合⑧得到：</p>
+<p>$J^{-T}\tau=\mathcal{F}=J^{-T}M(\Theta)\ddot{\Theta}+J^{-T}V(\Theta,\dot{\Theta})+J^{-T}G(\Theta)$⑨</p>
+<p>又由雅可比矩阵的定义得：</p>
+<p>$\dot{\chi}=J\dot{\Theta}$</p>
+<p>两边求导：</p>
+<p>$\ddot{\chi}=\dot{J}\dot{\Theta}+J\ddot{\Theta}$</p>
+<p>$\ddot{\Theta}=J^{-1}\ddot{\chi}-J^{-1}\dot{J}\dot{\Theta}$</p>
+<p>将上式代入⑨得：</p>
+<p>$\mathcal{F}=J^{-T}M(\Theta)J^{-1}\ddot{\chi}-J^{-T}M(\Theta)J^{-1}\dot{J}\dot{\Theta}+J^{-T}V(\Theta,\dot{\Theta})+J^{-T}G(\Theta)$</p>
+<p>由此得出笛卡尔空间动力学方程中各项的表达式：</p>
+<p>$M_x(\Theta)=J^{-T}(\Theta)M(\Theta)J^{-1}(\Theta)$</p>
+<p>$V_x(\Theta,\dot{\Theta})=J^{-T}(\Theta)(V(\Theta,\dot{\Theta})-M(\Theta)J^{-1}(\Theta)\dot{J}(\Theta)\dot{\Theta})$</p>
+<p>$G_x(\Theta)=J^{-T}(\Theta)G(\Theta)$</p>
+<h3 id="笛卡尔位形空间中的力矩方程">笛卡尔位形空间中的力矩方程
+</h3><p>用笛卡尔空间动力学方程写出等价的关节力矩：</p>
+<p>$\tau=J^T(\Theta)(M_x(\Theta)\ddot{\chi}+V_x(\Theta,\dot{\Theta})+G_x(\Theta))$</p>
+<p>按与⑥类似的思路将上式改写为位形空间方程得：</p>
+<p>$\tau=J^T(\Theta)M_x(\Theta)\ddot{\chi}+B_x(\Theta)(\dot{\Theta}\dot{\Theta})+C_x(\Theta)(\dot{\Theta}^2)+G(\Theta)$</p>
+<p>式中$B_x(\Theta)$是$n\times n(n-1)/2$阶科氏力系数矩阵，$(\dot{\Theta}\dot{\Theta})$是$n(n-1)/2\times1$阶关节速度矢量，即：</p>
+<p>$(\dot{\Theta}\dot{\Theta})=(\dot{\theta}_1\dot{\theta}_2,\dot{\theta}_1\dot{\theta}_3,\cdots,\dot{\theta}_{n-1}\dot{\theta}_n)^T$</p>
+<p>$C_x(\Theta)$是$n\times n$阶离心力系数矩阵，$(\dot{\Theta}^2)$是$n\times1$阶矢量，即：</p>
+<p>$(\dot{\Theta}^2)=(\dot{\theta}^2_1,\dot{\theta}^2_2,\cdots,\dot{\theta}^2_n)T$</p>
+<p>$G(\Theta)$与关节空间方程中的相同，但一般情况下$B_x(\Theta)\neq B(\Theta),C_x(\Theta)\neq C(\Theta)$。</p>
+<h2 id="考虑非刚体影响">考虑非刚体影响
+</h2><p>我们推导出的动力学方程没有包含摩擦力。</p>
+<p>最简单的摩擦力模型为<strong>粘性摩擦力</strong>，摩擦力矩与关节运动速度成正比：</p>
+<p>$\tau_{friction}=v\dot{\theta}$</p>
+<p>式中$v$是粘性摩擦系数。</p>
+<p>有时应用另一个简单的摩擦力模型，就是库伦摩擦。库伦摩擦是一个常数，它的符号取决于关节速度：</p>
+<p>$\tau_{friction}=c\mathrm{sgn}(\dot{\theta})$</p>
+<p>式中$c$是库伦摩擦系数。当$\dot{\theta}=0$，$c$一般取$1$，称为静摩擦系数；当$\dot{\theta}\neq0$，$c<1$，称为动摩擦系数。</p>
+<p><em>（书中给出的公式及其解释博主未能理解，但根据定义，库伦摩擦即静摩擦定律和滑动摩擦定律的结合）</em></p>
+<p>比较合理的模型是二者兼顾：</p>
+<p>$\tau_{friction}=c\mathrm{sgn}(\dot{\theta})+v\dot{\theta}$</p>
+<p>在许多操作臂关节中，摩擦力也与节点位置有关。主要原因是齿轮不是理想圆，齿轮的偏心会导致摩擦力随关节位置而变化，因此一个比较复杂的摩擦力模型为：</p>
+<p>$\tau_{friction}=f(\theta,\dot{\theta})$</p>
+<p>将其附加到刚体力学模型的动力学方程中得到一个更完整的模型：</p>
+<p>$\tau=M(\Theta)\ddot{\Theta}+V(\Theta,\dot{\Theta})+G(\Theta)+F(\Theta,\dot{\Theta})$</p>
+<p>还有其他一些影响因素，例如连杆弯曲效应引起谐振等，但是这些因素建模十分复杂，暂不讨论。</p>
+<hr>
+<p><strong>本章完</strong></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep5.%E9%9B%85%E5%8F%AF%E6%AF%94%E9%80%9F%E5%BA%A6%E5%92%8C%E9%9D%99%E5%8A%9B/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep5.雅可比：速度和静力</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep4.%E6%93%8D%E4%BD%9C%E8%87%82%E9%80%86%E8%BF%90%E5%8A%A8%E5%AD%A6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep4.操作臂逆运动学</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep3.%E6%93%8D%E4%BD%9C%E8%87%82%E6%AD%A3%E5%90%91%E8%BF%90%E5%8A%A8%E5%AD%A6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep3.操作臂（正向）运动学</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.2.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-2/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep2.2.空间描述和变换-2</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep2.1.空间描述和变换-1</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 一杯为品
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src=https://INKEM.github.io/background/sakura.js></script>
+<style>
+  body {
+    background: url(https://INKEM.github.io/background/Sakura.png) no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+</style>
+<style>
+  @font-face {
+    font-family: '初夏明朝';
+    src: url(https://INKEM.github.io/font/EarlySummerSerif-Bold.ttf) format('truetype');
+  }
+
+  :root {
+    --base-font-family: '初夏明朝';
+    --code-font-family: '初夏明朝';
+  }
+</style>
+
+    </body>
+</html>
