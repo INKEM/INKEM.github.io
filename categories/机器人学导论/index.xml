@@ -1090,12 +1090,16 @@ $=\begin{bmatrix}\hat{X}_A\cdot\hat{X}_B&amp;\hat{X}_A\cdot\hat{Y}_B&amp;\hat{X}
 &lt;p&gt;$R_{\hat{X}_A}(\theta)=\begin{bmatrix}1&amp;0&amp;0\\0&amp;c\theta&amp;-s\theta\\0&amp;s\theta&amp;c\theta\end{bmatrix}$&lt;/p&gt;
 &lt;p&gt;$R_{\hat{Y}_A}(\theta)=\begin{bmatrix}c\theta&amp;0&amp;s\theta\\0&amp;1&amp;0\\-s\theta&amp;0&amp;c\theta\end{bmatrix}$&lt;/p&gt;
 &lt;p&gt;通过接下来的例子我们来理解这类旋转矩阵如何描述刚体转动的状态&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/%e8%bd%ac%e5%8a%a8&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E8%BD%AC%E5%8A%A8.png&#34;
+	width=&#34;660&#34;
+	height=&#34;718&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E8%BD%AC%E5%8A%A8_hu9147311188393409085.png 480w, https://INKEM.github.io/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep2.1.%E7%A9%BA%E9%97%B4%E6%8F%8F%E8%BF%B0%E5%92%8C%E5%8F%98%E6%8D%A2-1/%E8%BD%AC%E5%8A%A8_hu10163355684171711936.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;91&#34;
+		data-flex-basis=&#34;220px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;$^AP=^A(p_x\;p_y\;p_z)^T$对$\hat{X}_A$旋转$\theta$得到$^AP&#39;$，$^AP&#39;=?$&lt;/p&gt;
