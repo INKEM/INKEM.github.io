@@ -294,6 +294,16 @@
     </li>
     <li><a href="#模拟私有属性">模拟“私有”属性</a></li>
     <li><a href="#类属性">类属性</a></li>
+    <li><a href="#继承基类和子类">继承：基类和子类</a></li>
+    <li><a href="#构建继承层次结构引入多态性">构建继承层次结构：引入多态性</a>
+      <ol>
+        <li><a href="#基类commissionemployee佣金员工">基类CommissionEmployee（佣金员工）</a></li>
+        <li><a href="#子类salariedcommissionemployee带薪佣金员工">子类SalariedCommissionEmployee（带薪佣金员工）</a></li>
+        <li><a href="#以多态方式处理commissionemployee和salariedcommissionemployee">以多态方式处理CommissionEmployee和SalariedCommissionEmployee</a></li>
+      </ol>
+    </li>
+    <li><a href="#鸭子类型和多态性">鸭子类型和多态性</a></li>
+    <li><a href="#具名元组">具名元组</a></li>
   </ol>
 </nav>
         </div>
@@ -362,7 +372,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 6 分钟
+                    阅读时长: 10 分钟
                 </time>
             </div>
         
@@ -710,6 +720,424 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>在类定义内部但在所有方法和property外，可以通过赋值定义一个类属性。每个Card对象不需要单独保存这两个列表就可以访问列表中的值。</p>
+<h2 id="继承基类和子类">继承：基类和子类
+</h2><p>一个类的一个对象经常也是另一个类的一个对象，其中一个类是基类，另一个类是子类。基类趋向于表示更一般的事物，而子类趋向于表示更具体的事物，每个子类对象都是其基类的一个对象，一个基类可以有很多子类。以下是一些例子：</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>基类</th>
+          <th>子类</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Student</td>
+          <td>GraduateStudent, UndergraduateStudent</td>
+      </tr>
+      <tr>
+          <td>Shape</td>
+          <td>Circle, Triangle, Rectangle, Sphere, Cube</td>
+      </tr>
+      <tr>
+          <td>Loan</td>
+          <td>CarLoan, HomeImprovementLoan, MortgageLoan</td>
+      </tr>
+      <tr>
+          <td>Employee</td>
+          <td>Faculty, Staff</td>
+      </tr>
+      <tr>
+          <td>BankAccount</td>
+          <td>CheckingAccount, SavingsAccount</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>继承关系形成了树形层次结构，基类与它的子类是一种层次关系。下图展示了一个简单的类层次结构，也被称为<strong>继承层次结构</strong>。对于单继承，一个类从一个基类派生；对于多重继承，一个子类对两个或更多基类进行继承。</p>
+<p><img src="/p/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/1.png"
+	width="1028"
+	height="613"
+	srcset="/p/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/1_hu1862979599332746420.png 480w, /p/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/1_hu3213377819470731995.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="167"
+		data-flex-basis="402px"
+	
+></p>
+<h2 id="构建继承层次结构引入多态性">构建继承层次结构：引入多态性
+</h2><p>在本例，我们给出基类CommissionEmplyee，然后通过继承CommissionEmployee类创建子类SalariedCommissionEmployee。</p>
+<h3 id="基类commissionemployee佣金员工">基类CommissionEmployee（佣金员工）
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">CommissionEmployee</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;An employee who gets paid commission based on gross sales.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">#创建数据属性，含义分别是名、姓、社保号、总销售额、佣金率</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">ssn</span><span class="p">,</span> <span class="n">gross_sales</span><span class="p">,</span> <span class="n">commission_rate</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">_first_name</span> <span class="o">=</span> <span class="n">first_name</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">_last_name</span> <span class="o">=</span> <span class="n">last_name</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">_ssn</span> <span class="o">=</span> <span class="n">ssn</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">gross_sales</span> <span class="o">=</span> <span class="n">gross_sales</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">commission_rate</span> <span class="o">=</span> <span class="n">commission_rate</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">    <span class="c1">#first_name, last_name, ssn三个只读property</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@property</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">first_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_first_name</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nd">@property</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">last_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_last_name</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nd">@property</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">ssn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ssn</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">#gross_sales, commission_rate两个读写property</span>
+</span></span><span class="line"><span class="cl">    <span class="nd">@property</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">gross_sales</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gross_sales</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nd">@gross_sales.setter</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">gross_sales</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sales</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">sales</span> <span class="o">&lt;</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;0.00&#39;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Gross sales must be &gt;= to 0&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">_gross_sales</span> <span class="o">=</span> <span class="n">sales</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nd">@property</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">commission_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_commission_rate</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nd">@commission_rate.setter</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">commission_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rate</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;0.0&#39;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">rate</span> <span class="o">&lt;</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;1.0&#39;</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Interest rate must be greater than 0 and less than 1&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">_commission_rate</span> <span class="o">=</span> <span class="n">rate</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">#earnings方法：计算并返回一个CommissionEmployee对象的收入</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">earnings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gross_sales</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">commission_rate</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">#返回字符串表示</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">(</span><span class="s1">&#39;CommissionEmployee: &#39;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">first_name</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">last_name</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="sa">f</span><span class="s1">&#39;social security number: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ssn</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="sa">f</span><span class="s1">&#39;gross sales: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">gross_sales</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="sa">f</span><span class="s1">&#39;commission rate: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">commission_rate</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="子类salariedcommissionemployee带薪佣金员工">子类SalariedCommissionEmployee（带薪佣金员工）
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">commissionemployee</span> <span class="kn">import</span> <span class="n">CommissionEmployee</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#为了从一个类继承，必须首先在括号内导入该类的定义</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">SalariedCommissionEmployee</span><span class="p">(</span><span class="n">CommissionEmployee</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;An employee who gets paid a salary plus commission based on gross sales.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">#该子类在基类的基础上新增了底薪base_salary属性</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">ssn</span><span class="p">,</span> <span class="n">gross_sales</span><span class="p">,</span> <span class="n">commission_rate</span><span class="p">,</span> <span class="n">base_salary</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#通过内置函数super找到并调用基类的__init__方法用以初始化继承过来的数据属性</span>
+</span></span><span class="line"><span class="cl">        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">first_name</span><span class="p">,</span> <span class="n">last_name</span><span class="p">,</span> <span class="n">ssn</span><span class="p">,</span> <span class="n">gross_sales</span><span class="p">,</span> <span class="n">commission_rate</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">base_salary</span> <span class="o">=</span> <span class="n">base_salary</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nd">@property</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">base_salary</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base_salary</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="nd">@base_salary.setter</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">base_salary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">salary</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">salary</span> <span class="o">&lt;</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;0.00&#39;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Base salary must be &gt;= to 0&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">_base_salary</span> <span class="o">=</span> <span class="n">salary</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">#重写earnings方法</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">earnings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#通过内置函数super调用基类的earnings方法得到销售提成收入，与底薪相加计算出总收入</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">earnings</span><span class="p">()</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_salary</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">#重写__repr__方法</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#通过内置函数super调用基类的__repr__方法并将其返回的字符串与底薪信息拼接</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">(</span><span class="s1">&#39;Salaried&#39;</span> <span class="o">+</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">base salary: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">base_salary</span><span class="mf">.2</span><span class="n">f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="以多态方式处理commissionemployee和salariedcommissionemployee">以多态方式处理CommissionEmployee和SalariedCommissionEmployee
+</h3><p>因为通过继承，子类的每个对象也可以被视为该子类的基类的对象，所以可以将基类对象和基类的子类对象都视为基类对象放在一起遍历，用基类的方法进行一般化处理。以下例子将一个CommissionEmployee对象和一个SalariedCommissionEmployee对象放在一个列表里遍历输出。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">commissionemployee</span> <span class="kn">import</span> <span class="n">CommissionEmployee</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">salariedcommissionemployee</span> <span class="kn">import</span> <span class="n">SalariedCommissionEmployee</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">c</span> <span class="o">=</span> <span class="n">CommissionEmployee</span><span class="p">(</span><span class="s1">&#39;Sue&#39;</span><span class="p">,</span> <span class="s1">&#39;Jones&#39;</span><span class="p">,</span> <span class="s1">&#39;333-33-3333&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">   <span class="o">...</span><span class="p">:</span>     <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;10000.00&#39;</span><span class="p">),</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;0.06&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">s</span> <span class="o">=</span> <span class="n">SalariedCommissionEmployee</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">,</span> <span class="s1">&#39;Lewis&#39;</span><span class="p">,</span> <span class="s1">&#39;444-44-4444&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">   <span class="o">...</span><span class="p">:</span>     <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;5000.00&#39;</span><span class="p">),</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;0.04&#39;</span><span class="p">),</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;300.00&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">employees</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="k">for</span> <span class="n">employee</span> <span class="ow">in</span> <span class="n">employees</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="o">...</span><span class="p">:</span>     <span class="nb">print</span><span class="p">(</span><span class="n">employee</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">   <span class="o">...</span><span class="p">:</span>     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">employee</span><span class="o">.</span><span class="n">earnings</span><span class="p">()</span><span class="si">:</span><span class="s1">,.2f</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">CommissionEmployee</span><span class="p">:</span> <span class="n">Sue</span> <span class="n">Jones</span>
+</span></span><span class="line"><span class="cl"><span class="n">social</span> <span class="n">security</span> <span class="n">number</span><span class="p">:</span> <span class="mi">333</span><span class="o">-</span><span class="mi">33</span><span class="o">-</span><span class="mi">3333</span>
+</span></span><span class="line"><span class="cl"><span class="n">gross</span> <span class="n">sales</span><span class="p">:</span> <span class="mf">20000.00</span>
+</span></span><span class="line"><span class="cl"><span class="n">commission</span> <span class="n">rate</span><span class="p">:</span> <span class="mf">0.10</span>
+</span></span><span class="line"><span class="cl"><span class="mi">2</span><span class="p">,</span><span class="mf">000.00</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">SalariedCommissionEmployee</span><span class="p">:</span> <span class="n">Bob</span> <span class="n">Lewis</span>
+</span></span><span class="line"><span class="cl"><span class="n">social</span> <span class="n">security</span> <span class="n">number</span><span class="p">:</span> <span class="mi">444</span><span class="o">-</span><span class="mi">44</span><span class="o">-</span><span class="mi">4444</span>
+</span></span><span class="line"><span class="cl"><span class="n">gross</span> <span class="n">sales</span><span class="p">:</span> <span class="mf">10000.00</span>
+</span></span><span class="line"><span class="cl"><span class="n">commission</span> <span class="n">rate</span><span class="p">:</span> <span class="mf">0.05</span>
+</span></span><span class="line"><span class="cl"><span class="n">base</span> <span class="n">salary</span><span class="p">:</span> <span class="mf">1000.00</span>
+</span></span><span class="line"><span class="cl"><span class="mi">1</span><span class="p">,</span><span class="mf">500.00</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="鸭子类型和多态性">鸭子类型和多态性
+</h2><p>其他大多数面向对象编程语言，需要通过继承来实现多态。Python更加灵活，借助被称为<strong>鸭子类型</strong>的概念来实现多态。只要不同类的定义包含相同的方法，那么它们的对象就可以放在一起用该相同的方法遍历。</p>
+<blockquote>
+<p>如果它看起来像鸭子，像鸭子一样嘎嘎叫，那么它就是鸭子。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1">#创建一个没有继承CommissionEmployee类但同样拥有__repr__方法和earnings方法的类</span>
+</span></span><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="k">class</span> <span class="nc">WellPaidDuck</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">   <span class="o">...</span><span class="p">:</span>     <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">   <span class="o">...</span><span class="p">:</span>         <span class="k">return</span> <span class="s1">&#39;I am a well-paid duck&#39;</span>
+</span></span><span class="line"><span class="cl">   <span class="o">...</span><span class="p">:</span>     <span class="k">def</span> <span class="nf">earnings</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">   <span class="o">...</span><span class="p">:</span>         <span class="k">return</span> <span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;1_000_000.00&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">9</span><span class="p">]:</span> <span class="n">d</span> <span class="o">=</span> <span class="n">WellPaidDuck</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="n">employees</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">d</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]:</span> <span class="k">for</span> <span class="n">employee</span> <span class="ow">in</span> <span class="n">employees</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span><span class="p">:</span>     <span class="nb">print</span><span class="p">(</span><span class="n">employee</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">...</span><span class="p">:</span>     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">employee</span><span class="o">.</span><span class="n">earnings</span><span class="p">()</span><span class="si">:</span><span class="s1">,.2f</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">CommissionEmployee</span><span class="p">:</span> <span class="n">Sue</span> <span class="n">Jones</span>
+</span></span><span class="line"><span class="cl"><span class="n">social</span> <span class="n">security</span> <span class="n">number</span><span class="p">:</span> <span class="mi">333</span><span class="o">-</span><span class="mi">33</span><span class="o">-</span><span class="mi">3333</span>
+</span></span><span class="line"><span class="cl"><span class="n">gross</span> <span class="n">sales</span><span class="p">:</span> <span class="mf">20000.00</span>
+</span></span><span class="line"><span class="cl"><span class="n">commission</span> <span class="n">rate</span><span class="p">:</span> <span class="mf">0.10</span>
+</span></span><span class="line"><span class="cl"><span class="mi">2</span><span class="p">,</span><span class="mf">000.00</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">SalariedCommissionEmployee</span><span class="p">:</span> <span class="n">Bob</span> <span class="n">Lewis</span>
+</span></span><span class="line"><span class="cl"><span class="n">social</span> <span class="n">security</span> <span class="n">number</span><span class="p">:</span> <span class="mi">444</span><span class="o">-</span><span class="mi">44</span><span class="o">-</span><span class="mi">4444</span>
+</span></span><span class="line"><span class="cl"><span class="n">gross</span> <span class="n">sales</span><span class="p">:</span> <span class="mf">10000.00</span>
+</span></span><span class="line"><span class="cl"><span class="n">commission</span> <span class="n">rate</span><span class="p">:</span> <span class="mf">0.05</span>
+</span></span><span class="line"><span class="cl"><span class="n">base</span> <span class="n">salary</span><span class="p">:</span> <span class="mf">1000.00</span>
+</span></span><span class="line"><span class="cl"><span class="mi">1</span><span class="p">,</span><span class="mf">500.00</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">I</span> <span class="n">am</span> <span class="n">a</span> <span class="n">well</span><span class="o">-</span><span class="n">paid</span> <span class="n">duck</span>
+</span></span><span class="line"><span class="cl"><span class="mi">1</span><span class="p">,</span><span class="mi">000</span><span class="p">,</span><span class="mf">000.00</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="具名元组">具名元组
+</h2><p>我们已经使用元组将多个数据属性聚合到一个对象中。Python标准库的collections模块还提供了具名元组，可以按名字而不是索引号引用元组的成员。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">namedtuple</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#namedtuple函数创建了内置元组类型的一个子类类型</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#第一个参数是新创建的类型的名字，第二个参数是一个字符串列表，用于表示引用新类型成员的标识符</span>
+</span></span><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">Card</span> <span class="o">=</span> <span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Card&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;face&#39;</span><span class="p">,</span> <span class="s1">&#39;suit&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#创建一个Card对象</span>
+</span></span><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">card</span> <span class="o">=</span> <span class="n">Card</span><span class="p">(</span><span class="n">face</span> <span class="o">=</span> <span class="s1">&#39;Ace&#39;</span><span class="p">,</span> <span class="n">suit</span> <span class="o">=</span> <span class="s1">&#39;Spades&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#通过名字访问其成员</span>
+</span></span><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">card</span><span class="o">.</span><span class="n">face</span>
+</span></span><span class="line"><span class="cl"><span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="s1">&#39;Ace&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">card</span><span class="o">.</span><span class="n">suit</span>
+</span></span><span class="line"><span class="cl"><span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="s1">&#39;Spades&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<p><strong>未完待续</strong></p>
 
 </section>
 
@@ -784,6 +1212,19 @@
             
                 
 <article class="">
+    <a href="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【51单片机】程序实验9&amp;10.直流电机-步进电机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep7.%E8%BD%A8%E8%BF%B9%E7%94%9F%E6%88%90/">
         
         
@@ -803,19 +1244,6 @@
 
         <div class="article-details">
             <h2 class="article-title">【51单片机】程序实验7&amp;8.IO扩展-LED点阵</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep6.%E6%93%8D%E4%BD%9C%E8%87%82%E5%8A%A8%E5%8A%9B%E5%AD%A6/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">【机器人学导论】Ep6.操作臂动力学</h2>
         </div>
     </a>
 </article>

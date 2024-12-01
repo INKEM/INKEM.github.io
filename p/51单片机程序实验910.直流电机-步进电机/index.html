@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="程序实验9&amp;10.直流电机-步进电机 直流电机 直流电机介绍 直流电机是指能将直流电能转换成机械能（直流电动机）或将机械能转换成直流电能（直流发电机）的旋转电机。\n直流电机没有正负极之分，在电机两端加上直流电即可工作，不同的正负极接法决定电机的旋转方向。直流电机有额定电压和额定功率，无法长时间超额工作。\n">
+<title>【51单片机】程序实验9&amp;10.直流电机-步进电机</title>
+
+<link rel='canonical' href='https://INKEM.github.io/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【51单片机】程序实验9&10.直流电机-步进电机">
+<meta property='og:description' content="程序实验9&amp;10.直流电机-步进电机 直流电机 直流电机介绍 直流电机是指能将直流电能转换成机械能（直流电动机）或将机械能转换成直流电能（直流发电机）的旋转电机。\n直流电机没有正负极之分，在电机两端加上直流电即可工作，不同的正负极接法决定电机的旋转方向。直流电机有额定电压和额定功率，无法长时间超额工作。\n">
+<meta property='og:url' content='https://INKEM.github.io/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/'>
+<meta property='og:site_name' content='一杯为品'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-12-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-12-01T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="【51单片机】程序实验9&10.直流电机-步进电机">
+<meta name="twitter:description" content="程序实验9&amp;10.直流电机-步进电机 直流电机 直流电机介绍 直流电机是指能将直流电能转换成机械能（直流电动机）或将机械能转换成直流电能（直流发电机）的旋转电机。\n直流电机没有正负极之分，在电机两端加上直流电即可工作，不同的正负极接法决定电机的旋转方向。直流电机有额定电压和额定功率，无法长时间超额工作。\n">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu16835031703737007367.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🐦</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一杯为品</a></h1>
+            <h2 class="site-description">哈工大2023届智能机器人班在读，在努力成为机器人、人工智能、硬件工程多面手的路上</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://blog.csdn.net/mojin2005?spm=1010.2135.3001.5343'
+                        target="_blank"
+                        title="CSDN"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M48 0H0V48H48V0ZM25.9509 14.1922C27.8907 14.578 29.6725 15.5304 31.0711 16.9289C31.8521 17.71 33.1184 17.71 33.8995 16.9289C34.6805 16.1479 34.6805 14.8816 33.8995 14.1005C31.9416 12.1426 29.447 10.8092 26.7313 10.269C24.0155 9.72882 21.2006 10.0061 18.6424 11.0657C16.0843 12.1253 13.8978 13.9197 12.3594 16.222C10.8211 18.5243 10 21.2311 10 24C10 26.7689 10.8211 29.4757 12.3594 31.778C13.8978 34.0803 16.0843 35.8747 18.6424 36.9343C21.2006 37.9939 24.0155 38.2712 26.7313 37.731C29.447 37.1908 31.9416 35.8574 33.8995 33.8995C34.6805 33.1185 34.6805 31.8521 33.8995 31.0711C33.1184 30.29 31.8521 30.29 31.0711 31.0711C29.6725 32.4696 27.8907 33.422 25.9509 33.8079C24.0111 34.1937 22.0004 33.9957 20.1732 33.2388C18.3459 32.4819 16.7841 31.2002 15.6853 29.5557C14.5865 27.9112 14 25.9778 14 24C14 22.0222 14.5865 20.0888 15.6853 18.4443C16.7841 16.7998 18.3459 15.5181 20.1732 14.7612C22.0004 14.0043 24.0111 13.8063 25.9509 14.1922Z" fill="#333333"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/INKEM'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#直流电机">直流电机</a>
+      <ol>
+        <li><a href="#直流电机介绍">直流电机介绍</a></li>
+        <li><a href="#uln2003芯片介绍">ULN2003芯片介绍</a></li>
+        <li><a href="#硬件设计">硬件设计</a></li>
+        <li><a href="#实验9-直流电机">实验9 直流电机</a></li>
+      </ol>
+    </li>
+    <li><a href="#步进电机">步进电机</a>
+      <ol>
+        <li><a href="#步进电机介绍">步进电机介绍</a>
+          <ol>
+            <li><a href="#步进电机的工作原理">步进电机的工作原理</a></li>
+            <li><a href="#步进电机的极性">步进电机的极性</a></li>
+            <li><a href="#步进电机的技术指标">步进电机的技术指标</a></li>
+            <li><a href="#28byj-48步进电机简介">28BYJ-48步进电机简介</a></li>
+          </ol>
+        </li>
+        <li><a href="#硬件设计-1">硬件设计</a></li>
+        <li><a href="#实验10-步进电机">实验10 步进电机</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="background-color: #2a9d8f; color: #fff;">
+                学习笔记
+            </a>
+        
+            <a href="/categories/51%E5%8D%95%E7%89%87%E6%9C%BA/" style="background-color: #FF0000; color: #fff;">
+                51单片机
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/">【51单片机】程序实验9&amp;10.直流电机-步进电机</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Dec 01, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 6 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="程序实验910直流电机-步进电机">程序实验9&amp;10.直流电机-步进电机
+</h1><h2 id="直流电机">直流电机
+</h2><h3 id="直流电机介绍">直流电机介绍
+</h3><p>直流电机是指能将直流电能转换成机械能（直流电动机）或将机械能转换成直流电能（直流发电机）的旋转电机。</p>
+<img src="7.jpg" style="zoom: 25%;" />
+<p><img src="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/1.png"
+	width="1313"
+	height="699"
+	srcset="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/1_hu13663334810186889698.png 480w, /p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/1_hu11627312398013022581.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="187"
+		data-flex-basis="450px"
+	
+></p>
+<img src="2.png" style="zoom:50%;" />
+<p>直流电机没有正负极之分，在电机两端加上直流电即可工作，不同的正负极接法决定电机的旋转方向。直流电机有额定电压和额定功率，无法长时间超额工作。</p>
+<h3 id="uln2003芯片介绍">ULN2003芯片介绍
+</h3><p>ULN2003是一种用于驱动大功率器件的芯片，如果直接用单片机的GPIO管脚驱动大功率器件则芯片会烧坏或无法驱动。</p>
+<img src="3.png" style="zoom: 33%;" />
+<img src="4.jpg" style="zoom:50%;" />
+<p>ULN2003芯片是高耐压、大电流复合晶体管阵列，由七对npn的达林顿管组成，可以驱动电机、继电器、灯等器件。单个独立达林顿管的集电极电流为500mA，在关态时能承受50V的电压，输出可以在高负载电流并行运行。</p>
+<p>ULN2003芯片有七对输入输出引脚，GND脚接地，COM脚接达林顿管的公共端电源。由于ULN2003为漏极开路电路，在没有上拉电阻的情况下输出端处于高阻态无法输出高电平，因此电机需通过一端接在VCC电源，另一端接在低电平输出端实现驱动。如果有上拉电阻则可以通过一端输出高电平一端输出低电平驱动电机。</p>
+<h3 id="硬件设计">硬件设计
+</h3><img src="5.png" style="zoom: 33%;" />
+<p>普中A2-A4开发板中ULN2003芯片前五个输入管脚与单片机连接，一个输出管脚控制蜂鸣器，四个输出管脚和电源管脚通过排针引出，以便于连接电机。电机接线如下：</p>
+<img src="6.jpg" style="zoom:25%;" />
+<h3 id="实验9-直流电机">实验9 直流电机
+</h3><p>实现功能：直流电机工作约5s后停止</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;reg52.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">u8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">u16</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//电机连接哪个输出脚则定义哪个为电机控制口
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">sbit</span> <span class="n">DC_Motor</span> <span class="o">=</span> <span class="n">P1</span><span class="o">^</span><span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//以毫秒为单位的延时函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">delay_ms</span><span class="p">(</span><span class="n">u16</span> <span class="n">ms</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">u16</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">ms</span><span class="p">;</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">--</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">for</span><span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">110</span><span class="p">;</span><span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">--</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//ULN2003芯片内部相当于非门，输入高电平则输出低电平
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DC_Motor</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//延时5秒
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="nf">delay_ms</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//输入低电平，输出高阻态
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">DC_Motor</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>冷启动烧录程序时，先烧录再连接外接设备。</p>
+<h2 id="步进电机">步进电机
+</h2><h3 id="步进电机介绍">步进电机介绍
+</h3><p>步进电机是将电脉冲信号转变为角位移或线位移的开环控制元件，电机的转速和停止位置取决于脉冲信号的频率和脉冲数，一个脉冲信号使步进电机旋转一个步距角。</p>
+<img src="8.jpg" style="zoom:25%;" />
+<img src="9.png" style="zoom: 67%;" />
+<h4 id="步进电机的工作原理">步进电机的工作原理
+</h4><img src="10.png" style="zoom:67%;" />
+<p>步进电机的转子通常为永磁体，当电流流过定子会产生矢量磁场带动转子旋转一定的角度使转子的方向与磁场的方向保持一致，电流的方向决定旋转的方向。</p>
+<h4 id="步进电机的极性">步进电机的极性
+</h4><p><img src="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/11.png"
+	width="1036"
+	height="485"
+	srcset="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/11_hu9557674937414031844.png 480w, /p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/11_hu8731252585042740007.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="213"
+		data-flex-basis="512px"
+	
+></p>
+<p>上图左侧为单极性步进电机，右侧为双极性步进电机。单双极性是指一个步进电机里面有几种电流流向</p>
+<h5 id="双极性步进电机驱动原理">双极性步进电机驱动原理
+</h5><p><img src="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/12.png"
+	width="1479"
+	height="694"
+	srcset="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/12_hu100246173325071010.png 480w, /p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/12_hu11531280584172039107.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="213"
+		data-flex-basis="511px"
+	
+></p>
+<p>上图中，A+A-、B+B-各自控制两个方向的磁极。根据右手螺旋定定则可得，高电平一端为S极，低电平一端为N极。左侧1234通过单相激励（一对磁极工作另一对磁极不工作）实现水平和竖直的四个方向的旋转，右侧1234通过双相激励（两对磁极同时工作）实现四个45°斜方向的旋转。两者结合后可以实现步距角45°的控制。</p>
+<h5 id="单极性步进电机驱动原理">单极性步进电机驱动原理
+</h5><p><img src="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/13.png"
+	width="1482"
+	height="735"
+	srcset="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/13_hu8874575003077573066.png 480w, /p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/13_hu9406948845643193343.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="201"
+		data-flex-basis="483px"
+	
+></p>
+<p>单极性有一个公共端VCC和四根相线，电流方向是固定的。公共端是一直通电的，四根相线对每一根通电都可以得到该方向上的S极磁场。左侧为单向激励，右侧为双向激励，两者结合后可以实现步距角45°的控制。公共端为高电平，对哪一相通电则将哪一相输入低电平，其余相输入高电平。</p>
+<h5 id="细分驱动原理">细分驱动原理
+</h5><p><img src="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/14.png"
+	width="1041"
+	height="260"
+	srcset="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/14_hu17653653249263027008.png 480w, /p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/14_hu16081614469586103741.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="400"
+		data-flex-basis="960px"
+	
+></p>
+<p>如果要进一步缩小步距角，可以在双相激励时分别控制两相的电流大小进而实现磁场的细微变化，哪一相电流更强则转子更偏向哪一相。该方面控制由电机中的一种专门的驱动器执行。</p>
+<h4 id="步进电机的技术指标">步进电机的技术指标
+</h4><p><strong>静态技术指标</strong></p>
+<p>相数：步进电机线圈的组数。</p>
+<p>拍数：完成一个磁场周期变化所需要的脉冲数。</p>
+<p>步距角：一个脉冲信号引起电机旋转的角度。</p>
+<p>定位转矩：电机在不通电状态下转轴的锁定力矩。</p>
+<p>静转矩：电机在额定静态电压工作下不作旋转运动时转轴的锁定力矩。</p>
+<p><strong>动态技术指标</strong></p>
+<p>步距角精度：步距角实际值和理论值之间的误差百分比。</p>
+<p>失步：电机旋转步数小于理论步数，一般由负载过大或频率过快引起。</p>
+<p>失调角：转子磁轴与定子磁轴之间的角度。</p>
+<p>最大空载起动频率：电机在不加负载的条件下能够直接起动的最大频率。</p>
+<p>最大空载运行频率：电机在不加负载的条件下最高的转速频率。</p>
+<p>运行转矩特性：电机运行转矩取决于平均电流而不是静态电流，平均电流越大运行转矩越大。</p>
+<p>电机正反转控制：通过改变线圈通电方向改变电机的正反转。</p>
+<h4 id="28byj-48步进电机简介">28BYJ-48步进电机简介
+</h4><p>本实验用到的步进电机为28BYJ-48步进电机，为五线四相单极性步进电机。</p>
+<p><img src="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/15.png"
+	width="407"
+	height="288"
+	srcset="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/15_hu15739460163640775082.png 480w, /p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/15_hu3844367149827680573.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="141"
+		data-flex-basis="339px"
+	
+></p>
+<p>工作通电顺序（GND即设为低电平）：</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th style="text-align: center">导线颜色</th>
+          <th style="text-align: center">第1步</th>
+          <th style="text-align: center">第2步</th>
+          <th style="text-align: center">第3步</th>
+          <th style="text-align: center">第4步</th>
+          <th style="text-align: center">第5步</th>
+          <th style="text-align: center">第6步</th>
+          <th style="text-align: center">第7步</th>
+          <th style="text-align: center">第8步</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">VCC 红</td>
+          <td style="text-align: center">5V</td>
+          <td style="text-align: center">5V</td>
+          <td style="text-align: center">5V</td>
+          <td style="text-align: center">5V</td>
+          <td style="text-align: center">5V</td>
+          <td style="text-align: center">5V</td>
+          <td style="text-align: center">5V</td>
+          <td style="text-align: center">5V</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">D 橙</td>
+          <td style="text-align: center">GND</td>
+          <td style="text-align: center">GND</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">GND</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">C 黄</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">GND</td>
+          <td style="text-align: center">GND</td>
+          <td style="text-align: center">GND</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td style="text-align: center">B 粉</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">GND</td>
+          <td style="text-align: center">GND</td>
+          <td style="text-align: center">GND</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+      </tr>
+      <tr>
+          <td style="text-align: center">A 蓝</td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center"></td>
+          <td style="text-align: center">GND</td>
+          <td style="text-align: center">GND</td>
+          <td style="text-align: center">GND</td>
+      </tr>
+  </tbody>
+</table></div>
+<p>电机指标：</p>
+<div class="table-wrapper"><table>
+  <thead>
+      <tr>
+          <th>电机型号</th>
+          <th>电压(V)</th>
+          <th>相数</th>
+          <th>相电阻(Ω)</th>
+          <th>步进角度</th>
+          <th>减速比</th>
+          <th>100PPS起动转矩(g·cm)</th>
+          <th>起动频率(PPS)</th>
+          <th>定位转矩(g·cm)</th>
+          <th>绝缘耐压(VAC/s)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>28BYJ48</td>
+          <td>5</td>
+          <td>4</td>
+          <td>300</td>
+          <td>5.625/64</td>
+          <td>1:64</td>
+          <td>≥300</td>
+          <td>≥500</td>
+          <td>≥300</td>
+          <td>600</td>
+      </tr>
+  </tbody>
+</table></div>
+<h3 id="硬件设计-1">硬件设计
+</h3><p>步进电机硬件控制部分与直流电机相同，红线接在VCC针，其余四线接在四个输出针。</p>
+<img src="16.jpg" style="zoom: 25%;" />
+<h3 id="实验10-步进电机">实验10 步进电机
+</h3><p>实现功能：通过ULN2003驱动模块控制28BYJ48步进电机运行方向及速度，当按下KEY1键可调节电机旋转方向，当按下KEY2键电机加速，当按下KEY3键电机减速。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&#34;reg52.h&#34;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">u8</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">u16</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//定义步进电机的四个输入端口
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">sbit</span> <span class="n">IN1_D</span> <span class="o">=</span> <span class="n">P1</span><span class="o">^</span><span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">sbit</span> <span class="n">IN1_C</span> <span class="o">=</span> <span class="n">P1</span><span class="o">^</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">sbit</span> <span class="n">IN1_B</span> <span class="o">=</span> <span class="n">P1</span><span class="o">^</span><span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">sbit</span> <span class="n">IN1_A</span> <span class="o">=</span> <span class="n">P1</span><span class="o">^</span><span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//定义四个独立按键
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">sbit</span> <span class="n">KEY1</span> <span class="o">=</span> <span class="n">P3</span><span class="o">^</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">sbit</span> <span class="n">KEY2</span> <span class="o">=</span> <span class="n">P3</span><span class="o">^</span><span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">sbit</span> <span class="n">KEY3</span> <span class="o">=</span> <span class="n">P3</span><span class="o">^</span><span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">sbit</span> <span class="n">KEY4</span> <span class="o">=</span> <span class="n">P3</span><span class="o">^</span><span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//宏定义步进电机的速度范围（速度实际为脉冲延时长度，故值越大越慢）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="cp">#define STEPMOTOR_MAXSPEED 1
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define STEPMOTOR_MINSPEED 5
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">//毫秒延时函数
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">delay_ms</span><span class="p">(</span><span class="n">u16</span> <span class="n">ms</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="n">u16</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">ms</span><span class="p">;</span><span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">--</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="k">for</span><span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">110</span><span class="p">;</span><span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">--</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//按键扫描函数（见实验3）
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">u8</span> <span class="nf">key_scan</span><span class="p">(</span><span class="n">u8</span> <span class="n">mode</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">static</span> <span class="n">u8</span> <span class="n">key</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="n">key</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">KEY1</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">KEY2</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">KEY3</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">KEY4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">key</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">delay_ms</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span><span class="p">(</span><span class="n">KEY1</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">KEY2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">KEY3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="mi">3</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">KEY4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="mi">4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">KEY1</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">KEY2</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">KEY3</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">KEY4</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">key</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//步进电机脉冲发送函数，第一个参数为步数序号，第二个参数控制旋转方向，1顺时针0逆时针
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">step_motor_28BYJ48_send_pulse</span><span class="p">(</span><span class="n">u8</span> <span class="n">step</span><span class="p">,</span> <span class="n">u8</span> <span class="n">dir</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//存储步数序号的变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">u8</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">step</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">//如果为逆时针则
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span><span class="p">(</span><span class="n">dir</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="n">temp</span> <span class="o">=</span> <span class="mi">7</span> <span class="o">-</span> <span class="n">step</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">//根据步数序号控制相应端口的电平（参照工作通电顺序表），由于ULN芯片非门作用故取反
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">switch</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">case</span> <span class="mi">0</span><span class="o">:</span> <span class="n">IN1_A</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">IN1_B</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">IN1_C</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">IN1_D</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">case</span> <span class="mi">1</span><span class="o">:</span> <span class="n">IN1_A</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">IN1_B</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">IN1_C</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">IN1_D</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">case</span> <span class="mi">2</span><span class="o">:</span> <span class="n">IN1_A</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">IN1_B</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">IN1_C</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">IN1_D</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">case</span> <span class="mi">3</span><span class="o">:</span> <span class="n">IN1_A</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">IN1_B</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">IN1_C</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">IN1_D</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">case</span> <span class="mi">4</span><span class="o">:</span> <span class="n">IN1_A</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">IN1_B</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">IN1_C</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">IN1_D</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">case</span> <span class="mi">5</span><span class="o">:</span> <span class="n">IN1_A</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">IN1_B</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">IN1_C</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">IN1_D</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">case</span> <span class="mi">6</span><span class="o">:</span> <span class="n">IN1_A</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">IN1_B</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">IN1_C</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">IN1_D</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="k">case</span> <span class="mi">7</span><span class="o">:</span> <span class="n">IN1_A</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="n">IN1_B</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">IN1_C</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">IN1_D</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span><span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">main</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">	<span class="n">u8</span> <span class="n">key</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//存储按键值变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">u8</span> <span class="n">dir</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//转动方向控制变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">u8</span> <span class="n">step</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//步数序号控制变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">u8</span> <span class="n">speed</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">//速度控制变量
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="n">key</span> <span class="o">=</span> <span class="nf">key_scan</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">//扫描按键
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="n">dir</span> <span class="o">=</span> <span class="o">!</span><span class="n">dir</span><span class="p">;</span> <span class="c1">//KEY1对转动方向取反
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//KEY2加速
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="k">if</span><span class="p">(</span><span class="n">speed</span> <span class="o">&gt;</span> <span class="n">STEPMOTOR_MAXSPEED</span><span class="p">)</span><span class="n">speed</span><span class="o">--</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">		<span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">key</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//KEY3减速
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>			<span class="k">if</span><span class="p">(</span><span class="n">speed</span> <span class="o">&lt;</span> <span class="n">STEPMOTOR_MINSPEED</span><span class="p">)</span><span class="n">speed</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//输出脉冲信号，step++先传入step参数再对step加一
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nf">step_motor_28BYJ48_send_pulse</span><span class="p">(</span><span class="n">step</span><span class="o">++</span><span class="p">,</span> <span class="n">dir</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//执行一个周期后重置步数序号
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="k">if</span><span class="p">(</span><span class="n">step</span> <span class="o">==</span> <span class="mi">8</span><span class="p">)</span><span class="n">step</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//延时控制转速
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>		<span class="nf">delay_ms</span><span class="p">(</span><span class="n">speed</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<p><strong>本篇完</strong></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C78.io%E6%89%A9%E5%B1%95-led%E7%82%B9%E9%98%B5/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【51单片机】程序实验7&amp;8.IO扩展-LED点阵</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C56.%E7%8B%AC%E7%AB%8B%E6%8C%89%E9%94%AE-%E7%9F%A9%E9%98%B5%E6%8C%89%E9%94%AE/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【51单片机】程序实验5&amp;6.独立按键-矩阵按键</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C2~4.%E8%9C%82%E9%B8%A3%E5%99%A8-%E9%9D%99%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1-%E5%8A%A8%E6%80%81%E6%95%B0%E7%A0%81%E7%AE%A1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【51单片机】程序实验2~4.蜂鸣器-静态数码管-动态数码管</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8Cep1.%E7%82%B9%E4%BA%AEled/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【51单片机】程序实验Ep1.点亮LED</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep7.%E8%BD%A8%E8%BF%B9%E7%94%9F%E6%88%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep7.轨迹生成</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 一杯为品
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src=https://INKEM.github.io/background/sakura.js></script>
+<style>
+  body {
+    background: url(https://INKEM.github.io/background/Sakura.png) no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+</style>
+<style>
+  @font-face {
+    font-family: '初夏明朝';
+    src: url(https://INKEM.github.io/font/EarlySummerSerif-VF.ttf) format('truetype');
+  }
+
+  :root {
+    --base-font-family: '初夏明朝';
+    --code-font-family: '初夏明朝';
+  }
+</style>
+
+    </body>
+</html>
