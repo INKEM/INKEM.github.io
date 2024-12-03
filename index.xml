@@ -7,7 +7,477 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>一杯为品</copyright>
-        <lastBuildDate>Sun, 01 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://INKEM.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 03 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://INKEM.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【信号与系统】Ep1.信号与系统</title>
+        <link>https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/</link>
+        <pubDate>Tue, 03 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/</guid>
+        <description>&lt;h1 id=&#34;信号与系统&#34;&gt;信号与系统
+&lt;/h1&gt;&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/0.png&#34;
+	width=&#34;1366&#34;
+	height=&#34;997&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/0_hu17738395265966347256.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/0_hu9849526590327026114.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;137&#34;
+		data-flex-basis=&#34;328px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;连续时间信号和离散时间信号&#34;&gt;连续时间信号和离散时间信号
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;信号&lt;/strong&gt;可以描述范围极为广泛的一类物理现象，在所有的情况下，信号所包含的信息总是寄寓在某种变化形式的波形之中。&lt;/p&gt;
+&lt;p&gt;在数学上，信号可以表示为一个或多个变量的函数。&lt;strong&gt;连续时间信号&lt;/strong&gt;的自变量是连续可变的，用$x(t)$表示；&lt;strong&gt;离散时间信号&lt;/strong&gt;的自变量仅取在一组离散值上，用$x[n]$表示，也称为&lt;strong&gt;离散时间序列&lt;/strong&gt;。这里的“时间”背后可以是任意因变量，例如坐标，命名只是为了方便。&lt;/p&gt;
+&lt;h3 id=&#34;信号能量与功率&#34;&gt;信号能量与功率
+&lt;/h3&gt;&lt;p&gt;根据实际应用，一个电阻的瞬时功率与其外加电压的关系为$\displaystyle p(t)=\frac{v^2(t)}{R}$，汽车由于摩擦耗散的瞬时功率与速度的关系为$p(t)=bv^2(t)$，我们定义信号的&lt;strong&gt;能量&lt;/strong&gt;与&lt;strong&gt;平均功率&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;连续时间信号：$\displaystyle E=\int_{t_1}^{t_2}|x(t)|^2\mathrm dt$，$\displaystyle P=\frac{E}{t_2-t_1}$&lt;/p&gt;
+&lt;p&gt;离散时间信号：$\displaystyle E=\sum_{n=n_1}^{n_2}|x[n]|^2$，$\displaystyle P=\frac{E}{n_2-n_1}$&lt;/p&gt;
+&lt;p&gt;当考虑无穷区间时：&lt;/p&gt;
+&lt;p&gt;连续时间信号：$\displaystyle E_\infty=\int_{-\infty}^{+\infty}|x(t)|^2\mathrm dt$，$\displaystyle P_\infty=\lim_{T\rightarrow\infty}\frac{1}{2T}\int_{-T}^{T}|x(t)|^2\mathrm dt$&lt;/p&gt;
+&lt;p&gt;离散时间信号：$\displaystyle E_\infty=\sum_{n=-\infty}^{+\infty}|x[n]|^2$，$\displaystyle P_\infty=\lim_{N\rightarrow\infty}\frac{1}{2N+1}\sum^{+N}_{N=-N}|x[n]|^2$&lt;/p&gt;
+&lt;p&gt;根据这些定义我们把信号分为三类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;能量信号&lt;/strong&gt;：信号具有有限的总能量，$E_\infty&lt;\infty$，$P_\infty=0$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;功率信号&lt;/strong&gt;：信号有无限的总能量，但平均功率有限，$E_\infty=\infty$，$P_\infty&lt;\infty$&lt;/li&gt;
+&lt;li&gt;信号的总能量和平均功率都是有限的，$E_\infty&lt;\infty$，$P_\infty&lt;\infty$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;自变量的变换&#34;&gt;自变量的变换
+&lt;/h2&gt;&lt;p&gt;本节关注很有限但很重要的几种最基本的信号变换。&lt;/p&gt;
+&lt;h3 id=&#34;自变量的变换举例&#34;&gt;自变量的变换举例
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;时移&lt;/strong&gt;：形状上相同，位置上有一个移位。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/1.png&#34;
+	width=&#34;1415&#34;
+	height=&#34;432&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/1_hu16517258872985648281.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/1_hu329724531115947024.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;327&#34;
+		data-flex-basis=&#34;786px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/2.png&#34;
+	width=&#34;1486&#34;
+	height=&#34;335&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/2_hu13565896191554560661.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/2_hu12398243854157957645.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;443&#34;
+		data-flex-basis=&#34;1064px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;时间反转&lt;/strong&gt;：将信号以一个时值为轴反转。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/3.png&#34;
+	width=&#34;1336&#34;
+	height=&#34;371&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/3_hu18117050650032281089.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/3_hu11280623316681868966.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;360&#34;
+		data-flex-basis=&#34;864px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/4.png&#34;
+	width=&#34;1343&#34;
+	height=&#34;370&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/4_hu11154384002778039971.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/4_hu12157838965061639945.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;362&#34;
+		data-flex-basis=&#34;871px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;时间尺度变换&lt;/strong&gt;：将信号在线性尺度上缩放。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/5.png&#34;
+	width=&#34;1461&#34;
+	height=&#34;254&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/5_hu16352219901431222732.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/5_hu5826146637923813731.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;575&#34;
+		data-flex-basis=&#34;1380px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;周期信号&#34;&gt;周期信号
+&lt;/h3&gt;&lt;p&gt;当一个连续时间信号时移$T$后其值不变则称其为&lt;strong&gt;周期信号&lt;/strong&gt;，&lt;strong&gt;周期&lt;/strong&gt;为$T$，$T$的最小正值为其&lt;strong&gt;基波周期&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;$x(t)=x(t+T)$&lt;/p&gt;
+&lt;p&gt;当一个离散时间信号时移$N$后其值不变则为&lt;strong&gt;周期信号&lt;/strong&gt;，&lt;strong&gt;周期&lt;/strong&gt;为$N$，$N$的最小正值为其&lt;strong&gt;基波周期&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;$x[n]=x[n+N]$&lt;/p&gt;
+&lt;p&gt;一个信号不是周期的就称为&lt;strong&gt;非周期&lt;/strong&gt;信号。&lt;/p&gt;
+&lt;h3 id=&#34;偶信号与奇信号&#34;&gt;偶信号与奇信号
+&lt;/h3&gt;&lt;p&gt;如果一个信号以原点为轴反转后不变则称其为&lt;strong&gt;偶信号&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;$x(-t)=x(t)$&lt;/p&gt;
+&lt;p&gt;$x[-n]=x[n]$&lt;/p&gt;
+&lt;p&gt;如果一个信号以原点为中心旋转$180^\circ$后不变则称其为&lt;strong&gt;奇信号&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;$x(-t)=-x(t)$&lt;/p&gt;
+&lt;p&gt;$x[-n]=-x[n]$&lt;/p&gt;
+&lt;p&gt;任何信号都能分解为一个偶信号和一个奇信号之和：&lt;/p&gt;
+&lt;p&gt;$\displaystyle \mathcal{Ev}\{x(t)\}=\frac12[x(t)+x(-t)]$&lt;/p&gt;
+&lt;p&gt;$\displaystyle \mathcal{Od}\{x(t)\}=\frac12[x(t)-x(-t)]$&lt;/p&gt;
+&lt;p&gt;$\mathcal{Ev}\{x(t)\}$和$\mathcal{Od}\{x(t)\}$分别称为$x(t)$的&lt;strong&gt;偶部&lt;/strong&gt;和&lt;strong&gt;奇部&lt;/strong&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;指数信号与正弦信号&#34;&gt;指数信号与正弦信号
+&lt;/h2&gt;&lt;h3 id=&#34;连续时间复指数信号与正弦信号&#34;&gt;连续时间复指数信号与正弦信号
+&lt;/h3&gt;&lt;p&gt;连续时间&lt;strong&gt;复指数信号&lt;/strong&gt;具有如下形式：&lt;/p&gt;
+&lt;p&gt;$x(t)=Ce^{at}$&lt;/p&gt;
+&lt;p&gt;其中$C$和$a$一般为复数。根据这些参数值的不同，复指数信号有几种不同的特征。&lt;/p&gt;
+&lt;h4 id=&#34;实指数信号&#34;&gt;实指数信号
+&lt;/h4&gt;&lt;p&gt;若$C$和$a$都是实数，则$x(t)$称为&lt;strong&gt;实指数信号&lt;/strong&gt;。若$a$是正实数，则$x(t)$随$t$的增加呈指数增长；若$a$是负实数，则则$x(t)$随$t$的增加呈指数衰减。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/6.png&#34;
+	width=&#34;1545&#34;
+	height=&#34;415&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/6_hu10279464169031845975.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/6_hu4039705576987279436.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;372&#34;
+		data-flex-basis=&#34;893px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;周期复指数和正弦信号&#34;&gt;周期复指数和正弦信号
+&lt;/h4&gt;&lt;p&gt;若$a$为纯虚数，例如如下信号：&lt;/p&gt;
+&lt;p&gt;$x(t)=e^{j\omega_0t}$&lt;/p&gt;
+&lt;p&gt;该信号是周期信号，且基波周期$\displaystyle T_0=\frac{2\pi}{|\omega_0|}$&lt;/p&gt;
+&lt;p&gt;与周期复指数信号密切相关的一种信号是&lt;strong&gt;正弦信号&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;$x(t)=A\cos(\omega_0t+\phi)$&lt;/p&gt;
+&lt;p&gt;可知基波周期$T_0$与$\omega_0$成反比，也称$\omega_0$为&lt;strong&gt;基波频率&lt;/strong&gt;，基波频率越大，振荡速率越快。&lt;/p&gt;
+&lt;img src=&#34;7.png&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;p&gt;利用欧拉公式，复指数信号可以用相同基波周期的正弦信号来表示：&lt;/p&gt;
+&lt;p&gt;$e^{j\omega_0t}=\cos\omega_0t+j\sin\omega_0t$&lt;/p&gt;
+&lt;p&gt;反之正弦信号可以用相同基波周期的复指数信号来表示：&lt;/p&gt;
+&lt;p&gt;$\displaystyle A\cos(\omega_0t+\phi)=\frac A2e^{j\phi}e^{j\omega_0t}+\frac A2e^{-j\phi}e^{-j\omega_0t}$&lt;/p&gt;
+&lt;p&gt;也可用复指数信号的实部和虚部来表示：&lt;/p&gt;
+&lt;p&gt;$A\cos(\omega_0t+\phi)=A\mathcal{Re}\{e^{j(\omega_0t+\phi)}\}$&lt;/p&gt;
+&lt;p&gt;$A\sin(\omega_0t+\phi)=A\mathcal{Im}\{e^{j(\omega_0t+\phi)}\}$&lt;/p&gt;
+&lt;p&gt;周期信号是功率信号，以$x(t)=e^{j\omega_0t}$为例在一个周期内计算该信号的总能量和平均功率：&lt;/p&gt;
+&lt;p&gt;$\displaystyle E_{period}=\int^{T_0}_0|e^{j\omega_0t}|^2\mathrm dt=\int^{T_0}_01\cdot\mathrm dt=T_0$&lt;/p&gt;
+&lt;p&gt;$\displaystyle P_{period}=\frac1{T_0}E_{period}=1$&lt;/p&gt;
+&lt;p&gt;故在无穷多个周期下该信号的总能量是无限大，平均功率依然为$1$。&lt;/p&gt;
+&lt;p&gt;具有一个公共周期$T_0$的一组复指数信号成&lt;strong&gt;谐波关系&lt;/strong&gt;，可表示为：&lt;/p&gt;
+&lt;p&gt;$\phi_k(t)=e^{jk\omega_0t},k=0,\pm1,\pm2,\cdots$&lt;/p&gt;
+&lt;p&gt;则其基波频率为$|k|\omega_0$，基波周期为$\displaystyle\frac{2\pi}{|k|\omega_0}=\frac{T_0}{|k|}$&lt;/p&gt;
+&lt;p&gt;在第三章中将看到，利用一组成谐波关系的信号作为基本构造单元可以构成各种各样的周期信号。&lt;/p&gt;
+&lt;h4 id=&#34;一般复指数信号&#34;&gt;一般复指数信号
+&lt;/h4&gt;&lt;p&gt;最一般情况下的复指数信号可借实指数信号和周期复指数信号来表示。考虑某一复指数$Ce^{ai}$，将$C$用极坐标，$a$用笛卡尔坐标表示，分别有：&lt;/p&gt;
+&lt;p&gt;$C=|C|e^{j\theta},a=r+j\omega_0$&lt;/p&gt;
+&lt;p&gt;那么：&lt;/p&gt;
+&lt;p&gt;$Ce^{at}=|C|e^{j\theta}e^{(r+j\omega_0)t}=|C|e^{rt}e^{j(\omega_0t+\theta)}$&lt;/p&gt;
+&lt;p&gt;利用欧拉公式进一步展开为：&lt;/p&gt;
+&lt;p&gt;$Ce^{at}=|C|e^{rt}\cos(\omega_0t+\theta)+j|C|e^{rt}\sin(\omega_0t+\theta)$&lt;/p&gt;
+&lt;p&gt;由此可见，若$r=0$，则复指数信号的实部和虚部都是正弦的；若$r&gt;0$，则其实部和虚部是一个振幅呈指数增长的正弦信号；若$r&lt;0$则为振幅呈指数衰减的正弦信号。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/8.png&#34;
+	width=&#34;1511&#34;
+	height=&#34;470&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/8_hu15164499195584862313.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/8_hu11489295874260121132.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;321&#34;
+		data-flex-basis=&#34;771px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;具有指数衰减振幅的正弦信号常称为&lt;strong&gt;阻尼正弦振荡&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;离散时间复指数信号与正弦信号&#34;&gt;离散时间复指数信号与正弦信号
+&lt;/h3&gt;&lt;p&gt;离散时间信号的&lt;strong&gt;复指数信号&lt;/strong&gt;定义为：&lt;/p&gt;
+&lt;p&gt;$x[n]=C\alpha^n$①&lt;/p&gt;
+&lt;p&gt;若令$\alpha=e^\beta$，则另一种表示形式为：&lt;/p&gt;
+&lt;p&gt;$x[n]=Ce^\beta n$②&lt;/p&gt;
+&lt;p&gt;在离散时间情况下，往往写成①更为方便实用。&lt;/p&gt;
+&lt;h4 id=&#34;实指数信号-1&#34;&gt;实指数信号
+&lt;/h4&gt;&lt;p&gt;若$C$和$\alpha$都是实数，那么有如下特性：若$|\alpha|&gt;1$，则$x[n]$随$n$呈指数增长；若$|\alpha|&lt;1$，则$x[n]$随$n$呈指数衰减；若$|\alpha|=1$，则$|x[n]|=|C|$。另外，若$\alpha$是正值，则$x[n]$的所有值符号相同；若$\alpha$为负值，则$x[n]$的符号交替变化。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/9.png&#34;
+	width=&#34;1490&#34;
+	height=&#34;716&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/9_hu462054955938556466.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/9_hu6314669124500258849.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;208&#34;
+		data-flex-basis=&#34;499px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h4 id=&#34;正弦信号&#34;&gt;正弦信号
+&lt;/h4&gt;&lt;p&gt;若②中的$\beta$为纯虚数，即$|\alpha|=1$，则得到复指数序列：&lt;/p&gt;
+&lt;p&gt;$x[n]=e^{j\omega_0n}$&lt;/p&gt;
+&lt;p&gt;该信号与正弦信号密切相关，即：&lt;/p&gt;
+&lt;p&gt;$x[n]=A\cos(\omega_0n+\phi)$&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/10.png&#34;
+	width=&#34;1513&#34;
+	height=&#34;780&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/10_hu10133300870613276419.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/10_hu6760603424009140749.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;193&#34;
+		data-flex-basis=&#34;465px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;利用欧拉公式将复指数和正弦序列联系起来：&lt;/p&gt;
+&lt;p&gt;$e^{j\omega_0n}=\cos\omega_0t+j\sin\omega_0n$&lt;/p&gt;
+&lt;p&gt;$\displaystyle A\cos(\omega_0n+\phi)=\frac A2e^{j\phi}e^{j\omega_0n}+\frac A2e^{-j\phi}e^{-j\omega_0n}$&lt;/p&gt;
+&lt;h4 id=&#34;一般复指数信号-1&#34;&gt;一般复指数信号
+&lt;/h4&gt;&lt;p&gt;一般离散时间复指数信号可以用实指数和正弦信号来表示。将$C$和$\alpha$均以极坐标形式给出：&lt;/p&gt;
+&lt;p&gt;$C=|C|e^{j\theta},\alpha=|\alpha|e^{j\omega_0}$&lt;/p&gt;
+&lt;p&gt;那么：&lt;/p&gt;
+&lt;p&gt;$C\alpha^n=|C||\alpha|^n\cos(\omega_0n+\theta)+j|C||\alpha|^n\sin(\omega_0n+\theta)$&lt;/p&gt;
+&lt;p&gt;若$|\alpha|=1$，则复指数信号的实部和虚部都是正弦序列；若$|\alpha|&gt;1$，则其实部和虚部是正弦序列乘以一个呈指数增长的序列；若$|\alpha|&lt;1$则乘以一个呈指数衰减的序列。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/11.png&#34;
+	width=&#34;1510&#34;
+	height=&#34;490&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/11_hu3673968065264722812.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/11_hu7806144556437263022.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;308&#34;
+		data-flex-basis=&#34;739px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;离散时间复指数序列的周期性质&#34;&gt;离散时间复指数序列的周期性质
+&lt;/h3&gt;&lt;p&gt;离散时间指数信号$e^{j\omega_0n}$与其对应的连续时间信号$e^{j\omega_0t}$存在一些重要的差别，其关乎$e^{j\omega_0t}$的两个性质：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\omega_0$越大，信号振荡的速率越高。&lt;/li&gt;
+&lt;li&gt;$e^{j\omega_0t}$对任何$\omega_0$值都是周期的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对第一个性质，研究频率为$\omega_0+2\pi$的离散时间复指数信号：&lt;/p&gt;
+&lt;p&gt;$e^{j(\omega_0+2\pi)n}=e^{j2\pi n}e^{j\omega_0n}=e^{j\omega_0n}$&lt;/p&gt;
+&lt;p&gt;可知离散时间情况下频率为$\omega_0$的复指数信号与频率为$\omega_0\pm k\pi,k=2,4,\cdots$的复指数信号相同。当$\omega_0$从$0$开始增加，其振荡频率越来越快，直到$\omega_0=\pi$之后，其振荡频率开始下降，直到$\omega_0=2\pi$得到与$\omega_0=0$相同的结果。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/12.jpg&#34;
+	width=&#34;1000&#34;
+	height=&#34;1318&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/12_hu7630657090053961252.jpg 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/12_hu14047733443265151132.jpg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;75&#34;
+		data-flex-basis=&#34;182px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;对第二个性质，假设$e^{j\omega_0n}$以$N$为周期，则：&lt;/p&gt;
+&lt;p&gt;$e^{j\omega_0(n+N)}=e^{j\omega_0n}$&lt;/p&gt;
+&lt;p&gt;$e^{j\omega_0N}=1$&lt;/p&gt;
+&lt;p&gt;$\omega_0N=2\pi m,m\in\Z$&lt;/p&gt;
+&lt;p&gt;$\displaystyle\frac{\omega_0}{2\pi}=\frac mN$&lt;/p&gt;
+&lt;p&gt;当且仅当$\displaystyle\frac{\omega_0}{2\pi}$为有理数，$m$和$N$才能都取整数，$e^{j\omega_0n}$是周期的。这一结论对离散时间正弦信号也成立。此时，其基波周期为$\displaystyle m\frac{2\pi}{\omega_0}$，基波频率为$\displaystyle\frac{2\pi}N=\frac{\omega_0}m$，$m$和$N$无公因子。&lt;/p&gt;
+&lt;p&gt;一组成谐波关系的周期离散时间复指数信号的频率为基波频率$2\pi/N$的整数倍，为：&lt;/p&gt;
+&lt;p&gt;$\phi_k[n]=e^{jk(2\pi/N)n},k=0,\pm1,\pm2,\cdots$③&lt;/p&gt;
+&lt;p&gt;在连续时间情况下，成谐波关系的信号互不相同。而在离散时间情况下：&lt;/p&gt;
+&lt;p&gt;$\phi_{k+N}[n]=e^{j(k+N)(2\pi/N)n}=e^{jk(2\pi/N)n}e^{j2\pi/N}=\phi_k[n]$&lt;/p&gt;
+&lt;p&gt;这意味着③给出的一组信号中仅有$N$个互不相同的周期复指数信号。&lt;/p&gt;
+&lt;h2 id=&#34;单位冲激函数与单位阶跃函数&#34;&gt;单位冲激函数与单位阶跃函数
+&lt;/h2&gt;&lt;h3 id=&#34;离散时间单位脉冲序列和单位阶跃序列&#34;&gt;离散时间单位脉冲序列和单位阶跃序列
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;单位脉冲&lt;/strong&gt;是最简单的离散时间信号，定义为：&lt;/p&gt;
+&lt;p&gt;$\delta[n]=\left\{\begin{matrix}0,n\ne0\\1,n=0\end{matrix}\right.$&lt;/p&gt;
+&lt;p&gt;第二个基本的离散时间信号是离散时间&lt;strong&gt;单位阶跃&lt;/strong&gt;，定义为：&lt;/p&gt;
+&lt;p&gt;$u[n]=\left\{\begin{matrix}0,n&lt;0\\1,n\geqslant0\end{matrix}\right.$&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/13.png&#34;
+	width=&#34;1526&#34;
+	height=&#34;229&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/13_hu12200806749201032313.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/13_hu479399167411844174.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;666&#34;
+		data-flex-basis=&#34;1599px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;离散时间单位脉冲是离散时间单位阶跃的&lt;strong&gt;一次差分&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;$\delta[n]=u[n]-u[n-1]$&lt;/p&gt;
+&lt;p&gt;离散时间单位阶跃是离散时间单位脉冲的&lt;strong&gt;求和函数&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;$\displaystyle u[n]=\sum_{m=-\infty}^n\delta[m]$&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/14.png&#34;
+	width=&#34;1458&#34;
+	height=&#34;346&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/14_hu16936397261488023250.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/14_hu7563782066652338447.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;421&#34;
+		data-flex-basis=&#34;1011px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;令$k=n-m$得：&lt;/p&gt;
+&lt;p&gt;$\displaystyle u[n]=\sum_{k=-\infty}^n\delta[n-k]=\sum_{k=0}^n\delta[n-k]$&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/15.png&#34;
+	width=&#34;1451&#34;
+	height=&#34;334&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/15_hu2622575123020430958.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/15_hu18220909284205850753.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;434&#34;
+		data-flex-basis=&#34;1042px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;对上式的一种解释是把$u[n]$看作是一系列延迟脉冲的叠加，即$n=0$时发生的$\delta[n]$，$n=1$时发生的$\delta[n-1]\cdots$等的和。&lt;/p&gt;
+&lt;p&gt;单位脉冲序列可用于一个信号在$n=0$时的采样，因为$\delta[n]$仅在$n=0$时为非零值，所以有：&lt;/p&gt;
+&lt;p&gt;$x[n]\delta[n]=x[0]\delta[n]$&lt;/p&gt;
+&lt;p&gt;若更一般地考虑在$n=n_0$时的采样，则乘以发生在该处的单位脉冲：&lt;/p&gt;
+&lt;p&gt;$x[n]\delta[n-n_0]=x[n_0]\delta[n-n_0]$&lt;/p&gt;
+&lt;p&gt;采样将在第七章具体讨论。&lt;/p&gt;
+&lt;h3 id=&#34;连续时间单位阶跃函数和单位冲激函数&#34;&gt;连续时间单位阶跃函数和单位冲激函数
+&lt;/h3&gt;&lt;p&gt;连续时间&lt;strong&gt;单位阶跃函数&lt;/strong&gt;定义为：&lt;/p&gt;
+&lt;p&gt;$u(t)=\left\{\begin{matrix}0,t&lt;0\\1,t&gt;0\end{matrix}\right.$&lt;/p&gt;
+&lt;p&gt;单位阶跃在$t=0$不连续。&lt;/p&gt;
+&lt;p&gt;连续时间&lt;strong&gt;单位冲激函数&lt;/strong&gt;$\delta(t)$与单位阶跃的关系和离散时间情况下类似，即连续时间单位阶跃是单位冲激的&lt;strong&gt;积分函数&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;$\displaystyle u(t)=\int_{-\infty}^t\delta(\tau)\mathrm d\tau$&lt;/p&gt;
+&lt;p&gt;连续时间单位冲激可看成连续时间单位阶跃的&lt;strong&gt;一次微分&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;$\displaystyle\delta(t)=\frac{\mathrm du(t)}{\mathrm dt}$&lt;/p&gt;
+&lt;p&gt;但正规来$t=0$时$u(t)$不可微。我们考虑将$u(t)$解释成下图$u_\Delta(t)$的一种近似，$u_\Delta(t)$从$0$升到$1$在一个较短的时间间隔$\Delta$内完成：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/16.png&#34;
+	width=&#34;1552&#34;
+	height=&#34;369&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/16_hu7048083849916718713.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/16_hu12809445139059627647.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;420&#34;
+		data-flex-basis=&#34;1009px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;则$u_\Delta(t)$的微分$\delta_\Delta(t)$是一个持续期为$\Delta$的短脉冲，且对任何$\Delta$值其面积都为$1$。当$\Delta\rightarrow0$，$\delta_\Delta(t)$越来越窄、越来越高，但始终保持单位面积，其极限形式为：&lt;/p&gt;
+&lt;p&gt;$\displaystyle \delta(t)=\lim_{\Delta\rightarrow0}\delta_\Delta(t)$&lt;/p&gt;
+&lt;p&gt;由此，$\delta(t)$没有持续期，但有面积，于是我们用一个箭头来刻画，其高度表示该冲激的面积：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/17.png&#34;
+	width=&#34;1518&#34;
+	height=&#34;293&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/17_hu187706490376457160.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/17_hu16209709551292916055.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;518&#34;
+		data-flex-basis=&#34;1243px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;对冲激函数的进一步认识将在第二章讨论。&lt;/p&gt;
+&lt;p&gt;与离散时间情况一样，将积分函数的积分变量$\tau$置换为$\sigma=t-\tau$，得到连续时间单位阶跃和单位冲激函数之间关系的另一种形式：&lt;/p&gt;
+&lt;p&gt;$\displaystyle u(t)=\int_{-\infty}^t\delta(\tau)\mathrm d\tau=\int_{\infty}^0\delta(t-\sigma)(-\mathrm d\sigma)=\int^{\infty}_0\delta(t-\sigma)\mathrm d\sigma$&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/18.png&#34;
+	width=&#34;1326&#34;
+	height=&#34;800&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/18_hu1078143803033044122.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/18_hu3249099913336665516.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;165&#34;
+		data-flex-basis=&#34;397px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;与离散时间情况一样，连续时间冲激函数也具有一个很重要的采样性质：&lt;/p&gt;
+&lt;p&gt;$x(t)\delta(t-t_0)=x(t_0)\delta(t-t_0)$&lt;/p&gt;
+&lt;h2 id=&#34;连续时间系统和离散时间系统&#34;&gt;连续时间系统和离散时间系统
+&lt;/h2&gt;&lt;p&gt;一个系统可以看成一个过程，输入鑫海在过程中被变换，或者说系统以某种方式对信号作出相应。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;连续时间系统&lt;/strong&gt;的输入输出信号都是连续时间信号：&lt;/p&gt;
+&lt;p&gt;$x(t)\rightarrow y(t)$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;离散时间系统&lt;/strong&gt;的输入输出信号都是离散时间信号：&lt;/p&gt;
+&lt;p&gt;$x[n]\rightarrow y[n]$&lt;/p&gt;
+&lt;p&gt;系统用&lt;strong&gt;方框图&lt;/strong&gt;表示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/19.png&#34;
+	width=&#34;1530&#34;
+	height=&#34;259&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/19_hu14009581278018673747.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/19_hu10726892689197717914.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;590&#34;
+		data-flex-basis=&#34;1417px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;系统的互联&#34;&gt;系统的互联
+&lt;/h3&gt;&lt;p&gt;两个系统&lt;strong&gt;级联&lt;/strong&gt;时，信号先由系统1处理，再由系统2处理；两个系统&lt;strong&gt;并联&lt;/strong&gt;时，信号分别由系统1、2处理再求和，如下图所示（其中$\bigoplus$表示相加）：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/20.png&#34;
+	width=&#34;1476&#34;
+	height=&#34;630&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/20_hu9025722102036549716.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/20_hu4838177867438972281.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;234&#34;
+		data-flex-basis=&#34;562px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;两个系统的&lt;strong&gt;反馈互联&lt;/strong&gt;时，系统1的输出是系统2的输入，系统2的输出反馈回来与外加的输入信号组成系统1的真正输入，如下图所示：&lt;/p&gt;
+&lt;img src=&#34;21.png&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;p&gt;下图是一个RC并联电路的反馈互联系统的例子：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/22.png&#34;
+	width=&#34;1528&#34;
+	height=&#34;426&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/22_hu1577074176914867027.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/22_hu8611805481733240488.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;358&#34;
+		data-flex-basis=&#34;860px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;基本系统性质&#34;&gt;基本系统性质
+&lt;/h2&gt;&lt;h3 id=&#34;有记忆系统与无记忆系统&#34;&gt;有记忆系统与无记忆系统
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;无记忆系统&lt;/strong&gt;的输出仅仅取决于该时刻的输入，例如：&lt;/p&gt;
+&lt;p&gt;$y[n]=(2x[n]-x^2[n])^2$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;恒等系统&lt;/strong&gt;是一种特别简单的无记忆系统：&lt;/p&gt;
+&lt;p&gt;$y(t)=x(t)$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;有记忆系统&lt;/strong&gt;的输出还取决于过去或将来的输入输出值，一个例子是&lt;strong&gt;累加器&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;$\displaystyle y[n]=\sum^n_{k=-\infty}x[k]$&lt;/p&gt;
+&lt;p&gt;另一个例子是&lt;strong&gt;延迟单元&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;$y[n]=x[n-1]$&lt;/p&gt;
+&lt;h3 id=&#34;可逆性与可逆系统&#34;&gt;可逆性与可逆系统
+&lt;/h3&gt;&lt;p&gt;一个系统若在不同的输入下导致不同的输出，则称该系统是&lt;strong&gt;可逆的&lt;/strong&gt;，且有一个&lt;strong&gt;逆系统&lt;/strong&gt;存在。当该逆系统与原系统级联后就会得到一个恒等系统。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/23.png&#34;
+	width=&#34;1529&#34;
+	height=&#34;378&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/23_hu13957159262857494843.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/23_hu4233534747795244063.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;404&#34;
+		data-flex-basis=&#34;970px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;因果性&#34;&gt;因果性
+&lt;/h3&gt;&lt;p&gt;若一个系统在任何时刻的输出只取决于现在的输入及过去的输入，该系统就称为&lt;strong&gt;因果系统&lt;/strong&gt;，也称为不可预测的系统，因为无法根据系统的输出预测未来的输入。&lt;/p&gt;
+&lt;p&gt;所有无记忆系统都是因果的，一些数据处理系统如语音、图像等往往是非因果系统。&lt;/p&gt;
+&lt;h3 id=&#34;稳定性&#34;&gt;稳定性
+&lt;/h3&gt;&lt;p&gt;若一个系统在输入有界的情况下输出也有界，则该系统具有&lt;strong&gt;稳定性&lt;/strong&gt;。例如单摆是一个稳定系统，而累加器是一个非稳定系统。&lt;/p&gt;
+&lt;h3 id=&#34;时不变性&#34;&gt;时不变性
+&lt;/h3&gt;&lt;p&gt;若一个系统的特性和行为不随时间而变，该系统就是&lt;strong&gt;时不变&lt;/strong&gt;的。例如$y(t)=sin[x(t)]$是一个时不变系统，而$y(t)=x(t)sint$是一个时变系统。&lt;/p&gt;
+&lt;h3 id=&#34;线性&#34;&gt;线性
+&lt;/h3&gt;&lt;p&gt;令$y_1(t)$是一个连续时间系统对输入$x_1(t)$的响应，$y_2(t)$是其对应于输入$x_2(t)$的响应，那么一个线性系统应有如下性质：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;可加性&lt;/strong&gt;：$y_1(t)+y_2(t)$是对$x_1(t)+x_2(t)$的响应。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;比例性/齐次性&lt;/strong&gt;：$ay_1(t)$是对$ax_1(t)$的响应，$a$为任意复常数。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;将定义一个线性系统的两个性质结合在一起可写成&lt;strong&gt;叠加性质&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;$\displaystyle\sum_ka_kx_k(t)\rightarrow\sum_ka_ky_k(t)$&lt;/p&gt;
+&lt;p&gt;该性质对离散时间线性系统也成立。&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;本章完&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>【51单片机】程序实验9&amp;10.直流电机-步进电机</title>
         <link>https://INKEM.github.io/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/</link>
         <pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>

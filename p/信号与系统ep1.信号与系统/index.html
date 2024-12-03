@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="连续时间信号与离散时间信号；指数信号与正弦信号；单位阶跃与单位冲激；连续时间系统与离散时间系统；系统的性质">
+<title>【信号与系统】Ep1.信号与系统</title>
+
+<link rel='canonical' href='https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【信号与系统】Ep1.信号与系统">
+<meta property='og:description' content="连续时间信号与离散时间信号；指数信号与正弦信号；单位阶跃与单位冲激；连续时间系统与离散时间系统；系统的性质">
+<meta property='og:url' content='https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/'>
+<meta property='og:site_name' content='一杯为品'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-12-03T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-12-03T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="【信号与系统】Ep1.信号与系统">
+<meta name="twitter:description" content="连续时间信号与离散时间信号；指数信号与正弦信号；单位阶跃与单位冲激；连续时间系统与离散时间系统；系统的性质">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu16835031703737007367.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🐦</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一杯为品</a></h1>
+            <h2 class="site-description">哈工大2023届智能机器人班在读，在努力成为机器人、人工智能、硬件工程多面手的路上</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://blog.csdn.net/mojin2005?spm=1010.2135.3001.5343'
+                        target="_blank"
+                        title="CSDN"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M48 0H0V48H48V0ZM25.9509 14.1922C27.8907 14.578 29.6725 15.5304 31.0711 16.9289C31.8521 17.71 33.1184 17.71 33.8995 16.9289C34.6805 16.1479 34.6805 14.8816 33.8995 14.1005C31.9416 12.1426 29.447 10.8092 26.7313 10.269C24.0155 9.72882 21.2006 10.0061 18.6424 11.0657C16.0843 12.1253 13.8978 13.9197 12.3594 16.222C10.8211 18.5243 10 21.2311 10 24C10 26.7689 10.8211 29.4757 12.3594 31.778C13.8978 34.0803 16.0843 35.8747 18.6424 36.9343C21.2006 37.9939 24.0155 38.2712 26.7313 37.731C29.447 37.1908 31.9416 35.8574 33.8995 33.8995C34.6805 33.1185 34.6805 31.8521 33.8995 31.0711C33.1184 30.29 31.8521 30.29 31.0711 31.0711C29.6725 32.4696 27.8907 33.422 25.9509 33.8079C24.0111 34.1937 22.0004 33.9957 20.1732 33.2388C18.3459 32.4819 16.7841 31.2002 15.6853 29.5557C14.5865 27.9112 14 25.9778 14 24C14 22.0222 14.5865 20.0888 15.6853 18.4443C16.7841 16.7998 18.3459 15.5181 20.1732 14.7612C22.0004 14.0043 24.0111 13.8063 25.9509 14.1922Z" fill="#333333"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/INKEM'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#连续时间信号和离散时间信号">连续时间信号和离散时间信号</a>
+      <ol>
+        <li><a href="#信号能量与功率">信号能量与功率</a></li>
+      </ol>
+    </li>
+    <li><a href="#自变量的变换">自变量的变换</a>
+      <ol>
+        <li><a href="#自变量的变换举例">自变量的变换举例</a></li>
+        <li><a href="#周期信号">周期信号</a></li>
+        <li><a href="#偶信号与奇信号">偶信号与奇信号</a></li>
+      </ol>
+    </li>
+    <li><a href="#指数信号与正弦信号">指数信号与正弦信号</a>
+      <ol>
+        <li><a href="#连续时间复指数信号与正弦信号">连续时间复指数信号与正弦信号</a>
+          <ol>
+            <li><a href="#实指数信号">实指数信号</a></li>
+            <li><a href="#周期复指数和正弦信号">周期复指数和正弦信号</a></li>
+            <li><a href="#一般复指数信号">一般复指数信号</a></li>
+          </ol>
+        </li>
+        <li><a href="#离散时间复指数信号与正弦信号">离散时间复指数信号与正弦信号</a>
+          <ol>
+            <li><a href="#实指数信号-1">实指数信号</a></li>
+            <li><a href="#正弦信号">正弦信号</a></li>
+            <li><a href="#一般复指数信号-1">一般复指数信号</a></li>
+          </ol>
+        </li>
+        <li><a href="#离散时间复指数序列的周期性质">离散时间复指数序列的周期性质</a></li>
+      </ol>
+    </li>
+    <li><a href="#单位冲激函数与单位阶跃函数">单位冲激函数与单位阶跃函数</a>
+      <ol>
+        <li><a href="#离散时间单位脉冲序列和单位阶跃序列">离散时间单位脉冲序列和单位阶跃序列</a></li>
+        <li><a href="#连续时间单位阶跃函数和单位冲激函数">连续时间单位阶跃函数和单位冲激函数</a></li>
+      </ol>
+    </li>
+    <li><a href="#连续时间系统和离散时间系统">连续时间系统和离散时间系统</a>
+      <ol>
+        <li><a href="#系统的互联">系统的互联</a></li>
+      </ol>
+    </li>
+    <li><a href="#基本系统性质">基本系统性质</a>
+      <ol>
+        <li><a href="#有记忆系统与无记忆系统">有记忆系统与无记忆系统</a></li>
+        <li><a href="#可逆性与可逆系统">可逆性与可逆系统</a></li>
+        <li><a href="#因果性">因果性</a></li>
+        <li><a href="#稳定性">稳定性</a></li>
+        <li><a href="#时不变性">时不变性</a></li>
+        <li><a href="#线性">线性</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="background-color: #2a9d8f; color: #fff;">
+                学习笔记
+            </a>
+        
+            <a href="/categories/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/" >
+                信号与系统
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/">【信号与系统】Ep1.信号与系统</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            连续时间信号与离散时间信号；指数信号与正弦信号；单位阶跃与单位冲激；连续时间系统与离散时间系统；系统的性质
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Dec 03, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 11 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="信号与系统">信号与系统
+</h1><p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/0.png"
+	width="1366"
+	height="997"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/0_hu17738395265966347256.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/0_hu9849526590327026114.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="137"
+		data-flex-basis="328px"
+	
+></p>
+<h2 id="连续时间信号和离散时间信号">连续时间信号和离散时间信号
+</h2><p><strong>信号</strong>可以描述范围极为广泛的一类物理现象，在所有的情况下，信号所包含的信息总是寄寓在某种变化形式的波形之中。</p>
+<p>在数学上，信号可以表示为一个或多个变量的函数。<strong>连续时间信号</strong>的自变量是连续可变的，用$x(t)$表示；<strong>离散时间信号</strong>的自变量仅取在一组离散值上，用$x[n]$表示，也称为<strong>离散时间序列</strong>。这里的“时间”背后可以是任意因变量，例如坐标，命名只是为了方便。</p>
+<h3 id="信号能量与功率">信号能量与功率
+</h3><p>根据实际应用，一个电阻的瞬时功率与其外加电压的关系为$\displaystyle p(t)=\frac{v^2(t)}{R}$，汽车由于摩擦耗散的瞬时功率与速度的关系为$p(t)=bv^2(t)$，我们定义信号的<strong>能量</strong>与<strong>平均功率</strong>：</p>
+<p>连续时间信号：$\displaystyle E=\int_{t_1}^{t_2}|x(t)|^2\mathrm dt$，$\displaystyle P=\frac{E}{t_2-t_1}$</p>
+<p>离散时间信号：$\displaystyle E=\sum_{n=n_1}^{n_2}|x[n]|^2$，$\displaystyle P=\frac{E}{n_2-n_1}$</p>
+<p>当考虑无穷区间时：</p>
+<p>连续时间信号：$\displaystyle E_\infty=\int_{-\infty}^{+\infty}|x(t)|^2\mathrm dt$，$\displaystyle P_\infty=\lim_{T\rightarrow\infty}\frac{1}{2T}\int_{-T}^{T}|x(t)|^2\mathrm dt$</p>
+<p>离散时间信号：$\displaystyle E_\infty=\sum_{n=-\infty}^{+\infty}|x[n]|^2$，$\displaystyle P_\infty=\lim_{N\rightarrow\infty}\frac{1}{2N+1}\sum^{+N}_{N=-N}|x[n]|^2$</p>
+<p>根据这些定义我们把信号分为三类：</p>
+<ul>
+<li><strong>能量信号</strong>：信号具有有限的总能量，$E_\infty<\infty$，$P_\infty=0$</li>
+<li><strong>功率信号</strong>：信号有无限的总能量，但平均功率有限，$E_\infty=\infty$，$P_\infty<\infty$</li>
+<li>信号的总能量和平均功率都是有限的，$E_\infty<\infty$，$P_\infty<\infty$</li>
+</ul>
+<h2 id="自变量的变换">自变量的变换
+</h2><p>本节关注很有限但很重要的几种最基本的信号变换。</p>
+<h3 id="自变量的变换举例">自变量的变换举例
+</h3><p><strong>时移</strong>：形状上相同，位置上有一个移位。</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/1.png"
+	width="1415"
+	height="432"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/1_hu16517258872985648281.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/1_hu329724531115947024.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="327"
+		data-flex-basis="786px"
+	
+></p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/2.png"
+	width="1486"
+	height="335"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/2_hu13565896191554560661.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/2_hu12398243854157957645.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="443"
+		data-flex-basis="1064px"
+	
+></p>
+<p><strong>时间反转</strong>：将信号以一个时值为轴反转。</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/3.png"
+	width="1336"
+	height="371"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/3_hu18117050650032281089.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/3_hu11280623316681868966.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="360"
+		data-flex-basis="864px"
+	
+></p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/4.png"
+	width="1343"
+	height="370"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/4_hu11154384002778039971.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/4_hu12157838965061639945.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="362"
+		data-flex-basis="871px"
+	
+></p>
+<p><strong>时间尺度变换</strong>：将信号在线性尺度上缩放。</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/5.png"
+	width="1461"
+	height="254"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/5_hu16352219901431222732.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/5_hu5826146637923813731.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="575"
+		data-flex-basis="1380px"
+	
+></p>
+<h3 id="周期信号">周期信号
+</h3><p>当一个连续时间信号时移$T$后其值不变则称其为<strong>周期信号</strong>，<strong>周期</strong>为$T$，$T$的最小正值为其<strong>基波周期</strong>：</p>
+<p>$x(t)=x(t+T)$</p>
+<p>当一个离散时间信号时移$N$后其值不变则为<strong>周期信号</strong>，<strong>周期</strong>为$N$，$N$的最小正值为其<strong>基波周期</strong>：</p>
+<p>$x[n]=x[n+N]$</p>
+<p>一个信号不是周期的就称为<strong>非周期</strong>信号。</p>
+<h3 id="偶信号与奇信号">偶信号与奇信号
+</h3><p>如果一个信号以原点为轴反转后不变则称其为<strong>偶信号</strong>：</p>
+<p>$x(-t)=x(t)$</p>
+<p>$x[-n]=x[n]$</p>
+<p>如果一个信号以原点为中心旋转$180^\circ$后不变则称其为<strong>奇信号</strong>：</p>
+<p>$x(-t)=-x(t)$</p>
+<p>$x[-n]=-x[n]$</p>
+<p>任何信号都能分解为一个偶信号和一个奇信号之和：</p>
+<p>$\displaystyle \mathcal{Ev}\{x(t)\}=\frac12[x(t)+x(-t)]$</p>
+<p>$\displaystyle \mathcal{Od}\{x(t)\}=\frac12[x(t)-x(-t)]$</p>
+<p>$\mathcal{Ev}\{x(t)\}$和$\mathcal{Od}\{x(t)\}$分别称为$x(t)$的<strong>偶部</strong>和<strong>奇部</strong>。</p>
+<h2 id="指数信号与正弦信号">指数信号与正弦信号
+</h2><h3 id="连续时间复指数信号与正弦信号">连续时间复指数信号与正弦信号
+</h3><p>连续时间<strong>复指数信号</strong>具有如下形式：</p>
+<p>$x(t)=Ce^{at}$</p>
+<p>其中$C$和$a$一般为复数。根据这些参数值的不同，复指数信号有几种不同的特征。</p>
+<h4 id="实指数信号">实指数信号
+</h4><p>若$C$和$a$都是实数，则$x(t)$称为<strong>实指数信号</strong>。若$a$是正实数，则$x(t)$随$t$的增加呈指数增长；若$a$是负实数，则则$x(t)$随$t$的增加呈指数衰减。</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/6.png"
+	width="1545"
+	height="415"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/6_hu10279464169031845975.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/6_hu4039705576987279436.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="372"
+		data-flex-basis="893px"
+	
+></p>
+<h4 id="周期复指数和正弦信号">周期复指数和正弦信号
+</h4><p>若$a$为纯虚数，例如如下信号：</p>
+<p>$x(t)=e^{j\omega_0t}$</p>
+<p>该信号是周期信号，且基波周期$\displaystyle T_0=\frac{2\pi}{|\omega_0|}$</p>
+<p>与周期复指数信号密切相关的一种信号是<strong>正弦信号</strong>：</p>
+<p>$x(t)=A\cos(\omega_0t+\phi)$</p>
+<p>可知基波周期$T_0$与$\omega_0$成反比，也称$\omega_0$为<strong>基波频率</strong>，基波频率越大，振荡速率越快。</p>
+<img src="7.png" style="zoom:50%;" />
+<p>利用欧拉公式，复指数信号可以用相同基波周期的正弦信号来表示：</p>
+<p>$e^{j\omega_0t}=\cos\omega_0t+j\sin\omega_0t$</p>
+<p>反之正弦信号可以用相同基波周期的复指数信号来表示：</p>
+<p>$\displaystyle A\cos(\omega_0t+\phi)=\frac A2e^{j\phi}e^{j\omega_0t}+\frac A2e^{-j\phi}e^{-j\omega_0t}$</p>
+<p>也可用复指数信号的实部和虚部来表示：</p>
+<p>$A\cos(\omega_0t+\phi)=A\mathcal{Re}\{e^{j(\omega_0t+\phi)}\}$</p>
+<p>$A\sin(\omega_0t+\phi)=A\mathcal{Im}\{e^{j(\omega_0t+\phi)}\}$</p>
+<p>周期信号是功率信号，以$x(t)=e^{j\omega_0t}$为例在一个周期内计算该信号的总能量和平均功率：</p>
+<p>$\displaystyle E_{period}=\int^{T_0}_0|e^{j\omega_0t}|^2\mathrm dt=\int^{T_0}_01\cdot\mathrm dt=T_0$</p>
+<p>$\displaystyle P_{period}=\frac1{T_0}E_{period}=1$</p>
+<p>故在无穷多个周期下该信号的总能量是无限大，平均功率依然为$1$。</p>
+<p>具有一个公共周期$T_0$的一组复指数信号成<strong>谐波关系</strong>，可表示为：</p>
+<p>$\phi_k(t)=e^{jk\omega_0t},k=0,\pm1,\pm2,\cdots$</p>
+<p>则其基波频率为$|k|\omega_0$，基波周期为$\displaystyle\frac{2\pi}{|k|\omega_0}=\frac{T_0}{|k|}$</p>
+<p>在第三章中将看到，利用一组成谐波关系的信号作为基本构造单元可以构成各种各样的周期信号。</p>
+<h4 id="一般复指数信号">一般复指数信号
+</h4><p>最一般情况下的复指数信号可借实指数信号和周期复指数信号来表示。考虑某一复指数$Ce^{ai}$，将$C$用极坐标，$a$用笛卡尔坐标表示，分别有：</p>
+<p>$C=|C|e^{j\theta},a=r+j\omega_0$</p>
+<p>那么：</p>
+<p>$Ce^{at}=|C|e^{j\theta}e^{(r+j\omega_0)t}=|C|e^{rt}e^{j(\omega_0t+\theta)}$</p>
+<p>利用欧拉公式进一步展开为：</p>
+<p>$Ce^{at}=|C|e^{rt}\cos(\omega_0t+\theta)+j|C|e^{rt}\sin(\omega_0t+\theta)$</p>
+<p>由此可见，若$r=0$，则复指数信号的实部和虚部都是正弦的；若$r>0$，则其实部和虚部是一个振幅呈指数增长的正弦信号；若$r<0$则为振幅呈指数衰减的正弦信号。</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/8.png"
+	width="1511"
+	height="470"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/8_hu15164499195584862313.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/8_hu11489295874260121132.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="321"
+		data-flex-basis="771px"
+	
+></p>
+<p>具有指数衰减振幅的正弦信号常称为<strong>阻尼正弦振荡</strong>。</p>
+<h3 id="离散时间复指数信号与正弦信号">离散时间复指数信号与正弦信号
+</h3><p>离散时间信号的<strong>复指数信号</strong>定义为：</p>
+<p>$x[n]=C\alpha^n$①</p>
+<p>若令$\alpha=e^\beta$，则另一种表示形式为：</p>
+<p>$x[n]=Ce^\beta n$②</p>
+<p>在离散时间情况下，往往写成①更为方便实用。</p>
+<h4 id="实指数信号-1">实指数信号
+</h4><p>若$C$和$\alpha$都是实数，那么有如下特性：若$|\alpha|>1$，则$x[n]$随$n$呈指数增长；若$|\alpha|<1$，则$x[n]$随$n$呈指数衰减；若$|\alpha|=1$，则$|x[n]|=|C|$。另外，若$\alpha$是正值，则$x[n]$的所有值符号相同；若$\alpha$为负值，则$x[n]$的符号交替变化。</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/9.png"
+	width="1490"
+	height="716"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/9_hu462054955938556466.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/9_hu6314669124500258849.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="208"
+		data-flex-basis="499px"
+	
+></p>
+<h4 id="正弦信号">正弦信号
+</h4><p>若②中的$\beta$为纯虚数，即$|\alpha|=1$，则得到复指数序列：</p>
+<p>$x[n]=e^{j\omega_0n}$</p>
+<p>该信号与正弦信号密切相关，即：</p>
+<p>$x[n]=A\cos(\omega_0n+\phi)$</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/10.png"
+	width="1513"
+	height="780"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/10_hu10133300870613276419.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/10_hu6760603424009140749.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="193"
+		data-flex-basis="465px"
+	
+></p>
+<p>利用欧拉公式将复指数和正弦序列联系起来：</p>
+<p>$e^{j\omega_0n}=\cos\omega_0t+j\sin\omega_0n$</p>
+<p>$\displaystyle A\cos(\omega_0n+\phi)=\frac A2e^{j\phi}e^{j\omega_0n}+\frac A2e^{-j\phi}e^{-j\omega_0n}$</p>
+<h4 id="一般复指数信号-1">一般复指数信号
+</h4><p>一般离散时间复指数信号可以用实指数和正弦信号来表示。将$C$和$\alpha$均以极坐标形式给出：</p>
+<p>$C=|C|e^{j\theta},\alpha=|\alpha|e^{j\omega_0}$</p>
+<p>那么：</p>
+<p>$C\alpha^n=|C||\alpha|^n\cos(\omega_0n+\theta)+j|C||\alpha|^n\sin(\omega_0n+\theta)$</p>
+<p>若$|\alpha|=1$，则复指数信号的实部和虚部都是正弦序列；若$|\alpha|>1$，则其实部和虚部是正弦序列乘以一个呈指数增长的序列；若$|\alpha|<1$则乘以一个呈指数衰减的序列。</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/11.png"
+	width="1510"
+	height="490"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/11_hu3673968065264722812.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/11_hu7806144556437263022.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="308"
+		data-flex-basis="739px"
+	
+></p>
+<h3 id="离散时间复指数序列的周期性质">离散时间复指数序列的周期性质
+</h3><p>离散时间指数信号$e^{j\omega_0n}$与其对应的连续时间信号$e^{j\omega_0t}$存在一些重要的差别，其关乎$e^{j\omega_0t}$的两个性质：</p>
+<ul>
+<li>$\omega_0$越大，信号振荡的速率越高。</li>
+<li>$e^{j\omega_0t}$对任何$\omega_0$值都是周期的。</li>
+</ul>
+<p>对第一个性质，研究频率为$\omega_0+2\pi$的离散时间复指数信号：</p>
+<p>$e^{j(\omega_0+2\pi)n}=e^{j2\pi n}e^{j\omega_0n}=e^{j\omega_0n}$</p>
+<p>可知离散时间情况下频率为$\omega_0$的复指数信号与频率为$\omega_0\pm k\pi,k=2,4,\cdots$的复指数信号相同。当$\omega_0$从$0$开始增加，其振荡频率越来越快，直到$\omega_0=\pi$之后，其振荡频率开始下降，直到$\omega_0=2\pi$得到与$\omega_0=0$相同的结果。</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/12.jpg"
+	width="1000"
+	height="1318"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/12_hu7630657090053961252.jpg 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/12_hu14047733443265151132.jpg 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="75"
+		data-flex-basis="182px"
+	
+></p>
+<p>对第二个性质，假设$e^{j\omega_0n}$以$N$为周期，则：</p>
+<p>$e^{j\omega_0(n+N)}=e^{j\omega_0n}$</p>
+<p>$e^{j\omega_0N}=1$</p>
+<p>$\omega_0N=2\pi m,m\in\Z$</p>
+<p>$\displaystyle\frac{\omega_0}{2\pi}=\frac mN$</p>
+<p>当且仅当$\displaystyle\frac{\omega_0}{2\pi}$为有理数，$m$和$N$才能都取整数，$e^{j\omega_0n}$是周期的。这一结论对离散时间正弦信号也成立。此时，其基波周期为$\displaystyle m\frac{2\pi}{\omega_0}$，基波频率为$\displaystyle\frac{2\pi}N=\frac{\omega_0}m$，$m$和$N$无公因子。</p>
+<p>一组成谐波关系的周期离散时间复指数信号的频率为基波频率$2\pi/N$的整数倍，为：</p>
+<p>$\phi_k[n]=e^{jk(2\pi/N)n},k=0,\pm1,\pm2,\cdots$③</p>
+<p>在连续时间情况下，成谐波关系的信号互不相同。而在离散时间情况下：</p>
+<p>$\phi_{k+N}[n]=e^{j(k+N)(2\pi/N)n}=e^{jk(2\pi/N)n}e^{j2\pi/N}=\phi_k[n]$</p>
+<p>这意味着③给出的一组信号中仅有$N$个互不相同的周期复指数信号。</p>
+<h2 id="单位冲激函数与单位阶跃函数">单位冲激函数与单位阶跃函数
+</h2><h3 id="离散时间单位脉冲序列和单位阶跃序列">离散时间单位脉冲序列和单位阶跃序列
+</h3><p><strong>单位脉冲</strong>是最简单的离散时间信号，定义为：</p>
+<p>$\delta[n]=\left\{\begin{matrix}0,n\ne0\\1,n=0\end{matrix}\right.$</p>
+<p>第二个基本的离散时间信号是离散时间<strong>单位阶跃</strong>，定义为：</p>
+<p>$u[n]=\left\{\begin{matrix}0,n<0\\1,n\geqslant0\end{matrix}\right.$</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/13.png"
+	width="1526"
+	height="229"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/13_hu12200806749201032313.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/13_hu479399167411844174.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="666"
+		data-flex-basis="1599px"
+	
+></p>
+<p>离散时间单位脉冲是离散时间单位阶跃的<strong>一次差分</strong>：</p>
+<p>$\delta[n]=u[n]-u[n-1]$</p>
+<p>离散时间单位阶跃是离散时间单位脉冲的<strong>求和函数</strong>：</p>
+<p>$\displaystyle u[n]=\sum_{m=-\infty}^n\delta[m]$</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/14.png"
+	width="1458"
+	height="346"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/14_hu16936397261488023250.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/14_hu7563782066652338447.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="421"
+		data-flex-basis="1011px"
+	
+></p>
+<p>令$k=n-m$得：</p>
+<p>$\displaystyle u[n]=\sum_{k=-\infty}^n\delta[n-k]=\sum_{k=0}^n\delta[n-k]$</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/15.png"
+	width="1451"
+	height="334"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/15_hu2622575123020430958.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/15_hu18220909284205850753.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="434"
+		data-flex-basis="1042px"
+	
+></p>
+<p>对上式的一种解释是把$u[n]$看作是一系列延迟脉冲的叠加，即$n=0$时发生的$\delta[n]$，$n=1$时发生的$\delta[n-1]\cdots$等的和。</p>
+<p>单位脉冲序列可用于一个信号在$n=0$时的采样，因为$\delta[n]$仅在$n=0$时为非零值，所以有：</p>
+<p>$x[n]\delta[n]=x[0]\delta[n]$</p>
+<p>若更一般地考虑在$n=n_0$时的采样，则乘以发生在该处的单位脉冲：</p>
+<p>$x[n]\delta[n-n_0]=x[n_0]\delta[n-n_0]$</p>
+<p>采样将在第七章具体讨论。</p>
+<h3 id="连续时间单位阶跃函数和单位冲激函数">连续时间单位阶跃函数和单位冲激函数
+</h3><p>连续时间<strong>单位阶跃函数</strong>定义为：</p>
+<p>$u(t)=\left\{\begin{matrix}0,t<0\\1,t>0\end{matrix}\right.$</p>
+<p>单位阶跃在$t=0$不连续。</p>
+<p>连续时间<strong>单位冲激函数</strong>$\delta(t)$与单位阶跃的关系和离散时间情况下类似，即连续时间单位阶跃是单位冲激的<strong>积分函数</strong>：</p>
+<p>$\displaystyle u(t)=\int_{-\infty}^t\delta(\tau)\mathrm d\tau$</p>
+<p>连续时间单位冲激可看成连续时间单位阶跃的<strong>一次微分</strong>：</p>
+<p>$\displaystyle\delta(t)=\frac{\mathrm du(t)}{\mathrm dt}$</p>
+<p>但正规来$t=0$时$u(t)$不可微。我们考虑将$u(t)$解释成下图$u_\Delta(t)$的一种近似，$u_\Delta(t)$从$0$升到$1$在一个较短的时间间隔$\Delta$内完成：</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/16.png"
+	width="1552"
+	height="369"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/16_hu7048083849916718713.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/16_hu12809445139059627647.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="420"
+		data-flex-basis="1009px"
+	
+></p>
+<p>则$u_\Delta(t)$的微分$\delta_\Delta(t)$是一个持续期为$\Delta$的短脉冲，且对任何$\Delta$值其面积都为$1$。当$\Delta\rightarrow0$，$\delta_\Delta(t)$越来越窄、越来越高，但始终保持单位面积，其极限形式为：</p>
+<p>$\displaystyle \delta(t)=\lim_{\Delta\rightarrow0}\delta_\Delta(t)$</p>
+<p>由此，$\delta(t)$没有持续期，但有面积，于是我们用一个箭头来刻画，其高度表示该冲激的面积：</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/17.png"
+	width="1518"
+	height="293"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/17_hu187706490376457160.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/17_hu16209709551292916055.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="518"
+		data-flex-basis="1243px"
+	
+></p>
+<p>对冲激函数的进一步认识将在第二章讨论。</p>
+<p>与离散时间情况一样，将积分函数的积分变量$\tau$置换为$\sigma=t-\tau$，得到连续时间单位阶跃和单位冲激函数之间关系的另一种形式：</p>
+<p>$\displaystyle u(t)=\int_{-\infty}^t\delta(\tau)\mathrm d\tau=\int_{\infty}^0\delta(t-\sigma)(-\mathrm d\sigma)=\int^{\infty}_0\delta(t-\sigma)\mathrm d\sigma$</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/18.png"
+	width="1326"
+	height="800"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/18_hu1078143803033044122.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/18_hu3249099913336665516.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="165"
+		data-flex-basis="397px"
+	
+></p>
+<p>与离散时间情况一样，连续时间冲激函数也具有一个很重要的采样性质：</p>
+<p>$x(t)\delta(t-t_0)=x(t_0)\delta(t-t_0)$</p>
+<h2 id="连续时间系统和离散时间系统">连续时间系统和离散时间系统
+</h2><p>一个系统可以看成一个过程，输入鑫海在过程中被变换，或者说系统以某种方式对信号作出相应。</p>
+<p><strong>连续时间系统</strong>的输入输出信号都是连续时间信号：</p>
+<p>$x(t)\rightarrow y(t)$</p>
+<p><strong>离散时间系统</strong>的输入输出信号都是离散时间信号：</p>
+<p>$x[n]\rightarrow y[n]$</p>
+<p>系统用<strong>方框图</strong>表示：</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/19.png"
+	width="1530"
+	height="259"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/19_hu14009581278018673747.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/19_hu10726892689197717914.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="590"
+		data-flex-basis="1417px"
+	
+></p>
+<h3 id="系统的互联">系统的互联
+</h3><p>两个系统<strong>级联</strong>时，信号先由系统1处理，再由系统2处理；两个系统<strong>并联</strong>时，信号分别由系统1、2处理再求和，如下图所示（其中$\bigoplus$表示相加）：</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/20.png"
+	width="1476"
+	height="630"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/20_hu9025722102036549716.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/20_hu4838177867438972281.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="234"
+		data-flex-basis="562px"
+	
+></p>
+<p>两个系统的<strong>反馈互联</strong>时，系统1的输出是系统2的输入，系统2的输出反馈回来与外加的输入信号组成系统1的真正输入，如下图所示：</p>
+<img src="21.png" style="zoom:50%;" />
+<p>下图是一个RC并联电路的反馈互联系统的例子：</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/22.png"
+	width="1528"
+	height="426"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/22_hu1577074176914867027.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/22_hu8611805481733240488.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="358"
+		data-flex-basis="860px"
+	
+></p>
+<h2 id="基本系统性质">基本系统性质
+</h2><h3 id="有记忆系统与无记忆系统">有记忆系统与无记忆系统
+</h3><p><strong>无记忆系统</strong>的输出仅仅取决于该时刻的输入，例如：</p>
+<p>$y[n]=(2x[n]-x^2[n])^2$</p>
+<p><strong>恒等系统</strong>是一种特别简单的无记忆系统：</p>
+<p>$y(t)=x(t)$</p>
+<p><strong>有记忆系统</strong>的输出还取决于过去或将来的输入输出值，一个例子是<strong>累加器</strong>：</p>
+<p>$\displaystyle y[n]=\sum^n_{k=-\infty}x[k]$</p>
+<p>另一个例子是<strong>延迟单元</strong>：</p>
+<p>$y[n]=x[n-1]$</p>
+<h3 id="可逆性与可逆系统">可逆性与可逆系统
+</h3><p>一个系统若在不同的输入下导致不同的输出，则称该系统是<strong>可逆的</strong>，且有一个<strong>逆系统</strong>存在。当该逆系统与原系统级联后就会得到一个恒等系统。</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/23.png"
+	width="1529"
+	height="378"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/23_hu13957159262857494843.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/23_hu4233534747795244063.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="404"
+		data-flex-basis="970px"
+	
+></p>
+<h3 id="因果性">因果性
+</h3><p>若一个系统在任何时刻的输出只取决于现在的输入及过去的输入，该系统就称为<strong>因果系统</strong>，也称为不可预测的系统，因为无法根据系统的输出预测未来的输入。</p>
+<p>所有无记忆系统都是因果的，一些数据处理系统如语音、图像等往往是非因果系统。</p>
+<h3 id="稳定性">稳定性
+</h3><p>若一个系统在输入有界的情况下输出也有界，则该系统具有<strong>稳定性</strong>。例如单摆是一个稳定系统，而累加器是一个非稳定系统。</p>
+<h3 id="时不变性">时不变性
+</h3><p>若一个系统的特性和行为不随时间而变，该系统就是<strong>时不变</strong>的。例如$y(t)=sin[x(t)]$是一个时不变系统，而$y(t)=x(t)sint$是一个时变系统。</p>
+<h3 id="线性">线性
+</h3><p>令$y_1(t)$是一个连续时间系统对输入$x_1(t)$的响应，$y_2(t)$是其对应于输入$x_2(t)$的响应，那么一个线性系统应有如下性质：</p>
+<ul>
+<li><strong>可加性</strong>：$y_1(t)+y_2(t)$是对$x_1(t)+x_2(t)$的响应。</li>
+<li><strong>比例性/齐次性</strong>：$ay_1(t)$是对$ax_1(t)$的响应，$a$为任意复常数。</li>
+</ul>
+<p>将定义一个线性系统的两个性质结合在一起可写成<strong>叠加性质</strong>：</p>
+<p>$\displaystyle\sum_ka_kx_k(t)\rightarrow\sum_ka_ky_k(t)$</p>
+<p>该性质对离散时间线性系统也成立。</p>
+<hr>
+<p><strong>本章完</strong></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【51单片机】程序实验9&amp;10.直流电机-步进电机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep7.%E8%BD%A8%E8%BF%B9%E7%94%9F%E6%88%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep7.轨迹生成</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C78.io%E6%89%A9%E5%B1%95-led%E7%82%B9%E9%98%B5/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【51单片机】程序实验7&amp;8.IO扩展-LED点阵</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/python%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【Python】面向对象编程</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep6.%E6%93%8D%E4%BD%9C%E8%87%82%E5%8A%A8%E5%8A%9B%E5%AD%A6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep6.操作臂动力学</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 一杯为品
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src=https://INKEM.github.io/background/sakura.js></script>
+<style>
+  body {
+    background: url(https://INKEM.github.io/background/Sakura.png) no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+</style>
+<style>
+  @font-face {
+    font-family: '初夏明朝';
+    src: url(https://INKEM.github.io/font/EarlySummerSerif-VF.ttf) format('truetype');
+  }
+
+  :root {
+    --base-font-family: '初夏明朝';
+    --code-font-family: '初夏明朝';
+  }
+</style>
+
+    </body>
+</html>
