@@ -386,7 +386,7 @@
 &lt;p&gt;与离散时间情况一样，连续时间冲激函数也具有一个很重要的采样性质：&lt;/p&gt;
 &lt;p&gt;$x(t)\delta(t-t_0)=x(t_0)\delta(t-t_0)$&lt;/p&gt;
 &lt;h2 id=&#34;连续时间系统和离散时间系统&#34;&gt;连续时间系统和离散时间系统
-&lt;/h2&gt;&lt;p&gt;一个系统可以看成一个过程，输入鑫海在过程中被变换，或者说系统以某种方式对信号作出相应。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;一个系统可以看成一个过程，输入信号在过程中被变换，或者说系统以某种方式对信号作出相应。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;连续时间系统&lt;/strong&gt;的输入输出信号都是连续时间信号：&lt;/p&gt;
 &lt;p&gt;$x(t)\rightarrow y(t)$&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;离散时间系统&lt;/strong&gt;的输入输出信号都是离散时间信号：&lt;/p&gt;
@@ -463,7 +463,7 @@
 &lt;h3 id=&#34;稳定性&#34;&gt;稳定性
 &lt;/h3&gt;&lt;p&gt;若一个系统在输入有界的情况下输出也有界，则该系统具有&lt;strong&gt;稳定性&lt;/strong&gt;。例如单摆是一个稳定系统，而累加器是一个非稳定系统。&lt;/p&gt;
 &lt;h3 id=&#34;时不变性&#34;&gt;时不变性
-&lt;/h3&gt;&lt;p&gt;若一个系统的特性和行为不随时间而变，该系统就是&lt;strong&gt;时不变&lt;/strong&gt;的。例如$y(t)=sin[x(t)]$是一个时不变系统，而$y(t)=x(t)sint$是一个时变系统。&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;若一个系统的特性和行为不随时间而变，该系统就是&lt;strong&gt;时不变&lt;/strong&gt;的。例如$y(t)=\sin[x(t)]$是一个时不变系统，而$y(t)=x(t)\sin t$是一个时变系统。&lt;/p&gt;
 &lt;h3 id=&#34;线性&#34;&gt;线性
 &lt;/h3&gt;&lt;p&gt;令$y_1(t)$是一个连续时间系统对输入$x_1(t)$的响应，$y_2(t)$是其对应于输入$x_2(t)$的响应，那么一个线性系统应有如下性质：&lt;/p&gt;
 &lt;ul&gt;

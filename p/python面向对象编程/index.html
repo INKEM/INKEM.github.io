@@ -304,6 +304,19 @@
     </li>
     <li><a href="#鸭子类型和多态性">鸭子类型和多态性</a></li>
     <li><a href="#具名元组">具名元组</a></li>
+    <li><a href="#运算符重载">运算符重载</a>
+      <ol>
+        <li><a href="#试用complex类">试用Complex类</a></li>
+        <li><a href="#complex类的定义">Complex类的定义</a></li>
+      </ol>
+    </li>
+    <li><a href="#异常类层次结构和自定义异常">异常类层次结构和自定义异常</a></li>
+    <li><a href="#数据类简介">数据类简介</a>
+      <ol>
+        <li><a href="#创建card数据类">创建Card数据类</a></li>
+        <li><a href="#数据类相对于传统类的优势">数据类相对于传统类的优势</a></li>
+      </ol>
+    </li>
   </ol>
 </nav>
         </div>
@@ -372,7 +385,7 @@
 
 
                 <time class="article-time--reading">
-                    阅读时长: 10 分钟
+                    阅读时长: 14 分钟
                 </time>
             </div>
         
@@ -719,7 +732,7 @@
 </span></span><span class="line"><span class="cl">    <span class="n">SUITS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Hearts&#39;</span><span class="p">,</span> <span class="s1">&#39;Diamonds&#39;</span><span class="p">,</span> <span class="s1">&#39;Clubs&#39;</span><span class="p">,</span> <span class="s1">&#39;Spades&#39;</span><span class="p">]</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>在类定义内部但在所有方法和property外，可以通过赋值定义一个类属性。每个Card对象不需要单独保存这两个列表就可以访问列表中的值。</p>
+</div><p>在类定义内部但在所有方法和property外，可以通过赋值定义一个类属性。每个Card对象不需要单独保存这两个列表就可以通过类名（Card.FACES和Card.SUITS）访问列表中的值。</p>
 <h2 id="继承基类和子类">继承：基类和子类
 </h2><p>一个类的一个对象经常也是另一个类的一个对象，其中一个类是基类，另一个类是子类。基类趋向于表示更一般的事物，而子类趋向于表示更具体的事物，每个子类对象都是其基类的一个对象，一个基类可以有很多子类。以下是一些例子：</p>
 <div class="table-wrapper"><table>
@@ -1136,8 +1149,210 @@
 </span></span><span class="line"><span class="cl"><span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="s1">&#39;Spades&#39;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><hr>
-<p><strong>未完待续</strong></p>
+</div><h2 id="运算符重载">运算符重载
+</h2><p>运算符重载用来重定义Python的运算符，使这些运算符能够支持自定义类型的对象的运算。对于每一个可重载的运算符，object类都定义了一个内置方法，如__add__对应加法运算符、__mul__对应乘法运算符。</p>
+<p>运算符重载限制：</p>
+<ul>
+<li>无法更改运算符的优先级。</li>
+<li>无法更改运算符的左结合性或右结合性。</li>
+<li>无法更改运算符的操作数个数。</li>
+<li>无法创建新的运算符，只能重载已有运算符。</li>
+<li>无法更改运算符处理内置类型对象的方法。</li>
+<li>重载的运算符至少有一个操作数应该是自定义类的对象。</li>
+</ul>
+<h3 id="试用complex类">试用Complex类
+</h3><p>以用来表示复数的Complex类演示运算符重载。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">from</span> <span class="nn">complexnumber</span> <span class="kn">import</span> <span class="n">Complex</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#Complex对象的参数包括实部和虚部</span>
+</span></span><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">2</span><span class="p">]:</span> <span class="n">x</span> <span class="o">=</span> <span class="n">Complex</span><span class="p">(</span><span class="n">real</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">imaginary</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="n">x</span>
+</span></span><span class="line"><span class="cl"><span class="n">Out</span><span class="p">[</span><span class="mi">3</span><span class="p">]:</span> <span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">y</span> <span class="o">=</span> <span class="n">Complex</span><span class="p">(</span><span class="n">real</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">imaginary</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">y</span>
+</span></span><span class="line"><span class="cl"><span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="p">(</span><span class="mi">5</span> <span class="o">-</span> <span class="mi">1</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</span></span><span class="line"><span class="cl"><span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="p">(</span><span class="mi">7</span> <span class="o">+</span> <span class="mi">3</span><span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">x</span> <span class="o">+=</span> <span class="n">y</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="n">x</span>
+</span></span><span class="line"><span class="cl"><span class="n">Out</span><span class="p">[</span><span class="mi">8</span><span class="p">]:</span> <span class="p">(</span><span class="mi">7</span> <span class="o">+</span> <span class="mi">3</span><span class="n">i</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="complex类的定义">Complex类的定义
+</h3><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Complex</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;Complex class that represents a complex number with real and imaginary parts.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">real</span><span class="p">,</span> <span class="n">imaginary</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">real</span> <span class="o">=</span> <span class="n">real</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">imaginary</span> <span class="o">=</span> <span class="n">imaginary</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">#重载+运算符，self对应左操作数，right对应右操作数</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#返回参数分别为实部相加和虚部相加的Complex对象</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">Complex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">real</span> <span class="o">+</span> <span class="n">right</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">imaginary</span> <span class="o">+</span> <span class="n">right</span><span class="o">.</span><span class="n">imaginary</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">#重载+=增强赋值运算符</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__iadd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">#将self的实部和虚部分别增强赋值后返回</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">real</span> <span class="o">+=</span> <span class="n">right</span><span class="o">.</span><span class="n">real</span>
+</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">imaginary</span> <span class="o">+=</span> <span class="n">right</span><span class="o">.</span><span class="n">imaginary</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">#Complex对象的字符串表示</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">real</span><span class="si">}</span><span class="s1">&#39;</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="p">(</span><span class="s1">&#39;+&#39;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">imaginary</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl">                <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">imaginary</span><span class="p">)</span><span class="si">}</span><span class="s1">i)&#39;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="异常类层次结构和自定义异常">异常类层次结构和自定义异常
+</h2><p>每个异常都是Python异常类层次结构中某个类的对象或者是已有异常类的派生类的对象。异常类都是以BaseException作为基类、通过直接或间接继承它而得到，它们在exceptions模块中定义。</p>
+<p>Python定义了四个重要的BaseException子类：</p>
+<ul>
+<li>SystemExit：终止程序执行（或终止一个交互式会话）时发生，未被捕获时不会像其他异常类型一样产生回溯信息。</li>
+<li>KeyboardInterrupt：用户在大多数系统中键入中断命令Ctrl+C时发生。</li>
+<li>GeneratorExit：生成器关闭（通常是生成器完成生成值的操作或其close方法被显示调用）时发生。</li>
+<li>Exception：大多数异常的基类，例如ZeroDivisionError、NameError、ValueError等。</li>
+</ul>
+<p>异常类层次结构的一个优点是异常处理程序可以捕获特定类型的异常，或者可以使用基类类型来捕获基类异常和所有相关的子类异常。</p>
+<p>从代码中引发异常时通常应该使用Python标准库中的现有异常类，使用继承从Exception类直接或间接派生也可以创建自己的自定义异常类，仅当需要以不同于其他已有异常类型的方式捕获和处理异常时才定义新的异常类，而这种情况是很少见的。</p>
+<h2 id="数据类简介">数据类简介
+</h2><p>具名元组允许通过名字引用其成员，但它们仍只是元组而不是类。通过Python标准库的dataclasses模块可以使用兼具了具名元组优点以及传统Python类功能的数据类。</p>
+<p>数据类能够自动生成数据属性以及__init__和__repr__方法，也会自动生成__eq__方法用于重载==运算符，该方法也隐式支持!=运算符。</p>
+<h3 id="创建card数据类">创建Card数据类
+</h3><p>以表示扑克牌的Card类为例创建数据类：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">ClassVar</span><span class="p">,</span> <span class="n">List</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用$\texttt{@dataclass}$装饰器将类指定为数据类，其后加括号并指定包含的参数可以帮助数据类确定要自动生成的方法，例如$\texttt{@dataclass(order=True)}$将使数据类为&lt;、&lt;=、&gt;和&gt;=自动生成比较运算符的重载方法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="nd">@dataclass</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Card</span><span class="p">:</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>数据类在类中但在类的方法之外通过<strong>变量注释</strong>声明类属性和数据属性，下方代码块中$\texttt{: ClassVar[List[str]]}$指定$\texttt{FACES}$和$\texttt{SUITS}$是一个引用字符串列表（$\texttt{List[str]}$）的类属性（$\texttt{ClassVar}$），$\texttt{:str}$表示每一个数据属性都应该引用一个字符串对象。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">    <span class="n">FACES</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Ace&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;6&#39;</span><span class="p">,</span> <span class="s1">&#39;7&#39;</span><span class="p">,</span> <span class="s1">&#39;8&#39;</span><span class="p">,</span> <span class="s1">&#39;9&#39;</span><span class="p">,</span> <span class="s1">&#39;10&#39;</span><span class="p">,</span> <span class="s1">&#39;Jack&#39;</span><span class="p">,</span> <span class="s1">&#39;Queen&#39;</span><span class="p">,</span> <span class="s1">&#39;King&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">SUITS</span><span class="p">:</span> <span class="n">ClassVar</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Hearts&#39;</span><span class="p">,</span> <span class="s1">&#39;Diamonds&#39;</span><span class="p">,</span> <span class="s1">&#39;Clubs&#39;</span><span class="p">,</span> <span class="s1">&#39;Spades&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">face</span><span class="p">:</span> <span class="nb">str</span>
+</span></span><span class="line"><span class="cl">    <span class="n">suit</span><span class="p">:</span> <span class="nb">str</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>数据类property和其他方法的定义与传统类相同。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl">	<span class="nd">@property</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#返回扑克牌的png文件名</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">image_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.png&#39;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">#返回&#39;face of suit&#39;格式的字符串</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">face</span><span class="si">}</span><span class="s1"> of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">suit</span><span class="si">}</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">#__format__方法在Card对象被格式化为字符串时被调用</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__format__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">format</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">:{</span><span class="nb">format</span><span class="si">}}</span><span class="s1">&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="数据类相对于传统类的优势">数据类相对于传统类的优势
+</h3><ul>
+<li>能自动生成__init__、__repr__等方法，节省开发时间。</li>
+<li>能自动生成用于重载&lt;、&lt;=、&gt;和&gt;=这些比较运算符的特殊方法。</li>
+<li>当更改数据类中定义的数据属性，然后在脚本或交互式会话中使用它时，自动生成的代码会自动更新，需要维护和调试的代码量会更少。</li>
+<li>通过类属性和数据属性所需的变量注释，可以更好地利用静态代码分析工具，在代码被执行前根据静态分析结果消除一些错误。</li>
+</ul>
+<hr>
+<p><strong>本章完</strong></p>
 
 </section>
 
