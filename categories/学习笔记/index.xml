@@ -7,7 +7,323 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>一杯为品</copyright>
-        <lastBuildDate>Wed, 04 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://INKEM.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 05 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://INKEM.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【信号与系统】Ep2.线性时不变系统</title>
+        <link>https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/</link>
+        <pubDate>Thu, 05 Dec 2024 00:00:00 +0000</pubDate>
+        
+        <guid>https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/</guid>
+        <description>&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/1.png&#34;
+	width=&#34;1437&#34;
+	height=&#34;778&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/1_hu8666928650310572133.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/1_hu15603652413371621839.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;184&#34;
+		data-flex-basis=&#34;443px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;线性和时不变性在系统分析中是最主要的，因为很多物理过程都具有这个性质，且可以对线性时不变系统进行详细的分析。以后对线性时不变系统简称LTI系统（Linear Time-Invariant Systems）。&lt;/p&gt;
+&lt;p&gt;研究信号与系统的一个基本方法是把连续时间信号或离散时间信号分解成一组基本信号。其中把信号表示成延时脉冲的线性组合为&lt;strong&gt;卷积&lt;/strong&gt;，复指数信号的线性组合为&lt;strong&gt;傅里叶分析&lt;/strong&gt;。本章主要围绕前者展开。&lt;/p&gt;
+&lt;h2 id=&#34;离散时间lti系统卷积和&#34;&gt;离散时间LTI系统：卷积和
+&lt;/h2&gt;&lt;h3 id=&#34;用脉冲表示离散时间信号&#34;&gt;用脉冲表示离散时间信号
+&lt;/h3&gt;&lt;p&gt;上一章我们提出了离散时间信号在$n=n_0$时的采样：&lt;/p&gt;
+&lt;p&gt;$x[n]\delta[n-n_0]=x[n_0]\delta[n-n_0]=x[n_0]$&lt;/p&gt;
+&lt;p&gt;对所有采样求和，我们得到的依旧是一个$x[n]$的表达式：&lt;/p&gt;
+&lt;p&gt;$\displaystyle x[n]=\sum_{k=-\infty}^{+\infty}x[k]\delta[n-k]$&lt;/p&gt;
+&lt;p&gt;这是因为只有对于$k=n$，单位脉冲$\delta[n-k]=\delta[0]=1$，其余情况下$\delta[n-k]=0$，这被称为离散时间单位脉冲序列的&lt;strong&gt;筛选性质&lt;/strong&gt;。我们可以将其解释为把任意一个序列表示成一串移位的单位脉冲序列$\delta[n-k]$的线性组合，加权因子就是$x[k]$。&lt;/p&gt;
+&lt;h3 id=&#34;离散时间lti的单位脉冲响应及卷积和表示&#34;&gt;离散时间LTI的单位脉冲响应及卷积和表示
+&lt;/h3&gt;&lt;p&gt;现考虑一LTI系统，其对单位脉冲序列$\delta[n]$的响应为$h_0[n]$，而对移位后的单位脉冲序列$\delta[n-k]$的响应记为$h_k[n]=h_0[n-k]$，因为系统是时不变的，所以对移位信号的响应也是原信号响应的单纯移位。&lt;/p&gt;
+&lt;p&gt;又根据线性系统的叠加性质，前面我们将$x[n]$表示为了移位单位脉冲$\delta[n-k]$的加权线性组合，那么该系统对$x[n]$的响应也是$h_k[n]$的加权线性组合，且加权因子仍为$x[n]$，则输出$y[n]$可以表示为：&lt;/p&gt;
+&lt;p&gt;$\displaystyle y[n]=\sum_{k=-\infty}^{+\infty}x[k]h_k[n]$&lt;/p&gt;
+&lt;p&gt;为了简化符号，我们将$h_k[n]$的下标符号除掉，从而定义系统&lt;strong&gt;单位脉冲序列响应&lt;/strong&gt;为：&lt;/p&gt;
+&lt;p&gt;$h[n]=h_0[n]$&lt;/p&gt;
+&lt;p&gt;那么输出$y[n]$的表达式改写为：&lt;/p&gt;
+&lt;p&gt;$\displaystyle y[n]=\sum_{k=-\infty}^{+\infty}x[k]h[n-k]$&lt;/p&gt;
+&lt;p&gt;这个结果称为&lt;strong&gt;卷积和&lt;/strong&gt;或&lt;strong&gt;叠加和&lt;/strong&gt;，并且上式等号右侧的运算称为$x[n]$和$h[n]$的卷积，用符号记为：&lt;/p&gt;
+&lt;p&gt;$y[n]=x[n]*h[n]$&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/2.png&#34;
+	width=&#34;1847&#34;
+	height=&#34;755&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/2_hu2861789126656579390.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/2_hu2222004969031320592.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;244&#34;
+		data-flex-basis=&#34;587px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;连续时间lti系统卷积积分&#34;&gt;连续时间LTI系统：卷积积分
+&lt;/h2&gt;&lt;h3 id=&#34;用冲激表示连续时间信号&#34;&gt;用冲激表示连续时间信号
+&lt;/h3&gt;&lt;p&gt;与离散时间情况一样，我们建立连续时间情况下的筛选性质。&lt;/p&gt;
+&lt;p&gt;定义$\delta(t)$的近似：&lt;/p&gt;
+&lt;p&gt;$\displaystyle\delta_\Delta(t)=\begin{cases}\frac1\Delta,0\leqslant t&lt;\Delta\\0,其他\end{cases}$&lt;/p&gt;
+&lt;p&gt;则$x(t)$的近似：&lt;/p&gt;
+&lt;p&gt;$\displaystyle\hat x(t)=\sum_{k=-\infty}^{+\infty}x(k\Delta)\delta_\Delta(t-k\Delta)\Delta$&lt;/p&gt;
+&lt;p&gt;当$\Delta\rightarrow0$时，$\hat x(t)\rightarrow x(t)$，同时得到积分的定义：&lt;/p&gt;
+&lt;p&gt;$\displaystyle x(t)=\lim_\Delta\rightarrow0\sum^{+\infty}_{k=-\infty}x(k\Delta)\hat \delta_\Delta(t-k\Delta)\Delta=\int^{+\infty}_{-\infty}x(\tau)\delta(t-\tau)\mathrm d\tau$&lt;/p&gt;
+&lt;p&gt;此为连续时间冲激函数的&lt;strong&gt;筛选性质&lt;/strong&gt;。&lt;/p&gt;
+&lt;h3 id=&#34;连续时间lti系统的单位冲激响应及卷积积分表示&#34;&gt;连续时间LTI系统的单位冲激响应及卷积积分表示
+&lt;/h3&gt;&lt;p&gt;和离散时间情况一样，上一节我们将任意一个连续时间信号表示成加权和移位脉冲的叠加，那么令$\hat h_{k\Delta}(t)$为一个线性时不变系统对输入$\delta_\Delta(t-k\Delta)$的响应，根据叠加性质就有：&lt;/p&gt;
+&lt;p&gt;$\displaystyle\hat y(t)=\sum^{+\infty}_{k=-\infty}x(k\Delta)\hat h_{k\Delta}(t)\Delta$&lt;/p&gt;
+&lt;p&gt;当$\Delta\rightarrow0$时，$\hat y(t)\rightarrow y(t)$，同时得到积分的定义：&lt;/p&gt;
+&lt;p&gt;$\displaystyle y(t)=\lim_\Delta\rightarrow0\sum^{+\infty}_{k=-\infty}x(k\Delta)\hat h_{k\Delta}(t-k\Delta)\Delta=\int^{+\infty}_{-\infty}x(\tau)h(t-\tau)\mathrm d\tau$&lt;/p&gt;
+&lt;p&gt;上式称为&lt;strong&gt;卷积积分&lt;/strong&gt;或&lt;strong&gt;叠加积分&lt;/strong&gt;，相应地，$x(t)$和$h(t)$的卷积记为：&lt;/p&gt;
+&lt;p&gt;$y(t)=x(t)*h(t)$&lt;/p&gt;
+&lt;h2 id=&#34;lti系统的性质&#34;&gt;LTI系统的性质
+&lt;/h2&gt;&lt;p&gt;由LTI系统具有卷积和与卷积积分的表示形式入手可以得到一些其他系统不具备的性质。&lt;/p&gt;
+&lt;h3 id=&#34;交换律性质&#34;&gt;交换律性质
+&lt;/h3&gt;&lt;p&gt;离散时间情况：$\displaystyle x[n]*h[n]=h[n]*x[n]=\sum^{+\infty}_{k=-\infty}h[k]x[n-k]$&lt;/p&gt;
+&lt;p&gt;连续时间情况：$\displaystyle x(t)*h(t)=h(t)*x(t)=\int^{+\infty}_{-\infty}h(\tau)x(t-\tau)\mathrm d\tau$&lt;/p&gt;
+&lt;p&gt;令$r=n-k$即可证明离散时间情况下卷积和的交换律，连续时间情况同理。&lt;/p&gt;
+&lt;h3 id=&#34;分配律性质&#34;&gt;分配律性质
+&lt;/h3&gt;&lt;p&gt;离散时间情况：$x[n]*(h_1[n]+h_2[n])=x[n]*h_1[n]+x[n]*h_2[n]$&lt;/p&gt;
+&lt;p&gt;连续时间情况：$x(t)*[h_1(t)+h_2(t)]=x(t)*h_1(t)+x(t)*h_2(t)$&lt;/p&gt;
+&lt;p&gt;可用系统并联来表示，下图两个系统是等效的：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/3.png&#34;
+	width=&#34;1816&#34;
+	height=&#34;427&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/3_hu6731081440883332455.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/3_hu5502955563399806320.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;425&#34;
+		data-flex-basis=&#34;1020px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;结合律性质&#34;&gt;结合律性质
+&lt;/h3&gt;&lt;p&gt;离散时间情况：$x[n]*(h_1[n]*h_2[n])=(x[n]*h_1[n])*h_2[n]$&lt;/p&gt;
+&lt;p&gt;连续时间情况：$x(t)*[h_1(t)*h_2(t)]=[x(t)*h_1(t)]*h_2(t)$&lt;/p&gt;
+&lt;p&gt;可用系统级联来表示，同时利用交换律，下图四个系统是等效的：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/4.png&#34;
+	width=&#34;1832&#34;
+	height=&#34;421&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/4_hu8789347545589473574.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/4_hu17581247031070630639.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;435&#34;
+		data-flex-basis=&#34;1044px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;有记忆和无记忆lti系统&#34;&gt;有记忆和无记忆LTI系统
+&lt;/h3&gt;&lt;p&gt;上一章指出，若一个系统在任何时刻的输入只和同一时刻的输入有关，它就是无记忆的。对于一个离散时间LTI系统，这就说明其单位冲激响应也是同一时刻的冲激：&lt;/p&gt;
+&lt;p&gt;$h[n]=K\delta[n]$&lt;/p&gt;
+&lt;p&gt;其中$K=h[0]$为常数。&lt;/p&gt;
+&lt;p&gt;则其卷积和：&lt;/p&gt;
+&lt;p&gt;$y[n]=Kx[n]$&lt;/p&gt;
+&lt;p&gt;相应地，在连续时间情况下有：&lt;/p&gt;
+&lt;p&gt;$h(t)=K\delta(t)$&lt;/p&gt;
+&lt;p&gt;$y(t)=Kx(t)$&lt;/p&gt;
+&lt;h3 id=&#34;lti系统的可逆性&#34;&gt;LTI系统的可逆性
+&lt;/h3&gt;&lt;p&gt;在离散时间情况下，对于一可逆的LTI系统，其冲激响应为$h[n]$，逆系统冲激响应$h_1[n]$，原系统与逆系统级联的效果与恒等系统（冲激响应为$\delta(t)$）一样，则有：&lt;/p&gt;
+&lt;p&gt;$h[n]*h_1[n]=\delta[n]$&lt;/p&gt;
+&lt;p&gt;同理在连续时间情况下一个冲激响应为$h(t)$的LTI系统的逆系统的冲激响应$h_1(t)$满足：&lt;/p&gt;
+&lt;p&gt;$h(t)*h_1(t)=\delta(t)$&lt;/p&gt;
+&lt;h3 id=&#34;lti系统的因果性&#34;&gt;LTI系统的因果性
+&lt;/h3&gt;&lt;p&gt;一个因果系统的输出只取决于现在和过去的输入值，这意味着因果LTI系统的卷积和或卷积积分的上限只需取到当前时刻而不是$+\infty$：&lt;/p&gt;
+&lt;p&gt;$\displaystyle y[n]=\sum^n_{k=-\infty}x[k]h[h-k]$&lt;/p&gt;
+&lt;p&gt;$\displaystyle y(t)=\int^t_{-\infty}x(\tau)h(t-\tau)\mathrm d\tau$&lt;/p&gt;
+&lt;p&gt;一个线性系统的因果性就是&lt;strong&gt;初始松弛&lt;/strong&gt;条件，即如果该系统的输入在某个时刻点以前是零，则其输出在那个时刻以前也必须是零：&lt;/p&gt;
+&lt;p&gt;离散时间情况下，若$n&lt;n_0$时$x[n]=0$，则$n&lt;n_0$时$y[n]=0$。&lt;/p&gt;
+&lt;p&gt;连续时间情况下，若$t&lt;t_0$时$x(t)=0$，则$t&lt;t_0$时$y(t)=0$。&lt;/p&gt;
+&lt;h3 id=&#34;lti系统的稳定性&#34;&gt;LTI系统的稳定性
+&lt;/h3&gt;&lt;p&gt;一个稳定系统的输入有界则输出有界。对一个稳定的离散时间LTI系统，设输入$x[n]$有界：&lt;/p&gt;
+&lt;p&gt;$|x[n]|&lt;B$，对所有的$n$&lt;/p&gt;
+&lt;p&gt;则响应输出的绝对值为：&lt;/p&gt;
+&lt;p&gt;$\displaystyle|y[n]|=\left |\sum^{+\infty}_{k=-\infty}x[k]h[n-k]\right |=\left |\sum^{+\infty}_{k=-\infty}h[k]x[n-k]\right |$&lt;/p&gt;
+&lt;p&gt;由乘积的绝对值不大于绝对值的乘积有：&lt;/p&gt;
+&lt;p&gt;$\displaystyle |y[n]|\leqslant\sum^{+\infty}_{k=-\infty}|h[k]||x[h-k]|$&lt;/p&gt;
+&lt;p&gt;又根据$x[n]$的有界条件有：&lt;/p&gt;
+&lt;p&gt;$\displaystyle|y[n]|\leqslant B\sum^{+\infty}_{k=-\infty}|h[k]|$&lt;/p&gt;
+&lt;p&gt;因此，一个离散时间LTI系统稳定的条件为单位脉冲响应是&lt;strong&gt;绝对可和&lt;/strong&gt;的：&lt;/p&gt;
+&lt;p&gt;$\displaystyle\sum^{+\infty}_{k=-\infty}|h[k]|&lt;\infty$&lt;/p&gt;
+&lt;p&gt;同理，一个连续时间LTI系统稳定的条件为单位冲激响应是&lt;strong&gt;绝对可积&lt;/strong&gt;的：&lt;/p&gt;
+&lt;p&gt;$\displaystyle\int^{+\infty}_{-\infty}|h(\tau)|\mathrm d\tau&lt;\infty$&lt;/p&gt;
+&lt;h3 id=&#34;lti系统的单位阶跃响应&#34;&gt;LTI系统的单位阶跃响应
+&lt;/h3&gt;&lt;p&gt;单位冲激响应$h[n]$或$h(t)$完全确定了一个LTI系统的特性。除此之外，&lt;strong&gt;单位阶跃响应&lt;/strong&gt;$s[n]$或$s(t)$也常用来描述一个LTI系统的特性。一个离散LTI系统的单位阶跃响应就是单位阶跃序列与单位脉冲响应的卷积：&lt;/p&gt;
+&lt;p&gt;$\displaystyle s[n]=u[n]*h[n]=h[n]*u[n]=\sum^{+\infty}_{k=-\infty}h[k]u[n-k]$&lt;/p&gt;
+&lt;p&gt;又$u[n-k]=\begin{cases}1,k\leqslant n\\0,k&gt;n\end{cases}$，所以卷积和上限可取$n$：&lt;/p&gt;
+&lt;p&gt;$\displaystyle s[n]=\sum^n_{k=-\infty}h[k]$&lt;/p&gt;
+&lt;p&gt;$h[n]=s[n]-s[n-1]$&lt;/p&gt;
+&lt;p&gt;由此一个离散时间LTI系统的单位阶跃响应是单位脉冲响应的求和函数，反过来单位脉冲响应是单位阶跃响应的一次差分。&lt;/p&gt;
+&lt;p&gt;同理在连续时间情况下有：&lt;/p&gt;
+&lt;p&gt;$\displaystyle s(t)=\int^t_{-\infty}h(\tau)\mathrm d\tau$&lt;/p&gt;
+&lt;p&gt;$\displaystyle h(t)=\frac{\mathrm ds(t)}{\mathrm dt}=s&#39;(t)$&lt;/p&gt;
+&lt;h2 id=&#34;用微分方程和差分方程描述的因果lti系统&#34;&gt;用微分方程和差分方程描述的因果LTI系统
+&lt;/h2&gt;&lt;p&gt;一类重要的连续时间系统是其输入-输出关系用&lt;strong&gt;线性常系数微分方程&lt;/strong&gt;描述的系统，该形式方程可以描述广泛的系统和物理现象；一类重要的离散时间系统是其输入-输出关系用&lt;strong&gt;线性常系数差分方程&lt;/strong&gt;描述的系统，该形式方程可以描述许多不同过程的序列行为。&lt;/p&gt;
+&lt;h3 id=&#34;线性常系数微分方程&#34;&gt;线性常系数微分方程
+&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;考虑一个一阶微分方程：&lt;/p&gt;
+&lt;p&gt;$\displaystyle\frac{\mathrm dy(t)}{\mathrm dt}+2y(t)=x(t)$①&lt;/p&gt;
+&lt;p&gt;假设输入信号为：&lt;/p&gt;
+&lt;p&gt;$x(t)=Ke^{3t}u(t)$&lt;/p&gt;
+&lt;p&gt;其中$K$为某一实数。&lt;/p&gt;
+&lt;p&gt;该式的完全解由一个&lt;strong&gt;特解&lt;/strong&gt;$y_p(t)$和一个&lt;strong&gt;齐次解&lt;/strong&gt;$y_h(t)$组成：&lt;/p&gt;
+&lt;p&gt;$y(t)=y_p(t)+y_h(t)$&lt;/p&gt;
+&lt;p&gt;其中特解是用微分方程表示系统时非零输入对应的解，又称为&lt;strong&gt;受迫响应&lt;/strong&gt;；齐次解是用微分方程表示系统时零输入对应的解，又称为&lt;strong&gt;自然响应&lt;/strong&gt;。即特解满足式①，而齐次解是以下齐次微分方程的一个解：&lt;/p&gt;
+&lt;p&gt;$\displaystyle\frac{\mathrm dy(t)}{\mathrm dt}+2y(t)=0$&lt;/p&gt;
+&lt;p&gt;对于该指数输入信号，当$t&gt;0$时，特解的形式为$y_p(t)=Ye^{3t}$，齐次解的形式为$y_h(t)=Ae^{st}$&lt;/p&gt;
+&lt;p&gt;将特解代入方程：&lt;/p&gt;
+&lt;p&gt;$3Ye^{3t}+2Ye^{3t}=Ke^{3t}$&lt;/p&gt;
+&lt;p&gt;解得$\displaystyle Y=\frac K5$，$\displaystyle y_p(t)=\frac K5e^{3t}$&lt;/p&gt;
+&lt;p&gt;将齐次解代入方程：&lt;/p&gt;
+&lt;p&gt;$Ase^{st}+2Ae^{st}=0$&lt;/p&gt;
+&lt;p&gt;解得$s=-2$，$y_h(t)=Ae^{-2t}$&lt;/p&gt;
+&lt;p&gt;原微分方程式的解为：&lt;/p&gt;
+&lt;p&gt;$\displaystyle y(t)=Ae^{-2t}+\frac K5e^{3t}$，$t&gt;0$&lt;/p&gt;
+&lt;p&gt;为了确定$A$的值，还需要一个附加条件。本课绝大部分关注用微分方程和差分方程描述因果线性时不变系统，因此取初始松弛条件，在这里即代入$y(0)=0$：&lt;/p&gt;
+&lt;p&gt;$\displaystyle0=A+\frac K5$&lt;/p&gt;
+&lt;p&gt;$\displaystyle A=-\frac K5$&lt;/p&gt;
+&lt;p&gt;据此利用单位阶跃函数将零之前和零之后的情况结合起来可得完全解为：&lt;/p&gt;
+&lt;p&gt;$\displaystyle y(t)=\frac K5[e^{3t}-e^{-2t}]u(t)$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;根据以上过程，我们总结关于线性常系数微分方程及其表示的系统的一些要点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;对某个输入$x(t)$的响应一般都是由一个特解和一个齐次解组成的。&lt;/li&gt;
+&lt;li&gt;为了完全确定由微分方程式所描述的系统输入和输出之间的关系，就必须给出附加条件，对于线性因果系统即初始松弛条件。初始松弛条件中零初始条件的时刻即是输入信号变成非零前一刻的时刻，以使在输入变成非零之前，响应一直为零。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;相同的概念可以推广到由高阶微分方程描述的系统中，考虑$N$阶线性常系数微分方程：&lt;/p&gt;
+&lt;p&gt;$\displaystyle\sum^N_{k=0}a_k\frac{\mathrm d^ky(t)}{\mathrm dt^k}=\sum^M_{k=0}b_k\frac{\mathrm d^kx(t)}{\mathrm dt^k}$&lt;/p&gt;
+&lt;p&gt;则$y(t)$的解由上式的一个特解和如下齐次微分方程的齐次解组成：&lt;/p&gt;
+&lt;p&gt;$\displaystyle\sum^N_{k=0}a_k\frac{\mathrm d^ky(t)}{\mathrm dt^k}=0$&lt;/p&gt;
+&lt;p&gt;如果$t\leqslant t_0$时$x(t)=0$，对$t&gt;t_0$的初始松弛条件为：&lt;/p&gt;
+&lt;p&gt;$\displaystyle y(t_0)=\frac{\mathrm dy(t_0)}{\mathrm dt}=\cdots=\frac{\mathrm d^{N-1}y(t_0)}{\mathrm dt^{N-1}}=0$&lt;/p&gt;
+&lt;h3 id=&#34;线性常系数差分方程&#34;&gt;线性常系数差分方程
+&lt;/h3&gt;&lt;p&gt;相应地，在离散时间情况下，考虑$N$阶线性常系数差分方程：&lt;/p&gt;
+&lt;p&gt;$\displaystyle\sum^N_{k=0}a_ky[n-k]=\sum^M_{k=0}b_kx[n-k]$&lt;/p&gt;
+&lt;p&gt;按照微分方程的类似解法求解，$y[n]$的解由上式的一个特解和如下齐次方程的齐次解组成：&lt;/p&gt;
+&lt;p&gt;$\displaystyle\sum^N_{k=0}a_ky[n-k]=0$&lt;/p&gt;
+&lt;p&gt;但与微分方程不同的是，离散时间情况提供了另一种途径，即直接将差分方程写成：&lt;/p&gt;
+&lt;p&gt;$\displaystyle y[n]=\frac1{a_0}\left\{\sum^M_{k=0}b_kx[n-k]-\sum^N_{k=1}a_ky[n-k]\right\}$&lt;/p&gt;
+&lt;p&gt;只要知道关于$y[n-1],\cdots,y[n-N]$的附加条件，就能根据上式求出$y[n]$，这样形式的方程称为&lt;strong&gt;递归方程&lt;/strong&gt;。而当$N=0$时：&lt;/p&gt;
+&lt;p&gt;$\displaystyle y[n]=\sum^M_{k=0}\left(\frac{b_k}{a_0}\right)x[n-k]$&lt;/p&gt;
+&lt;p&gt;上式没有利用之前的输出值来计算当前的输出值，称为&lt;strong&gt;非递归方程&lt;/strong&gt;，无需给出附加条件来确定$y[n]$，可以直接计算出其单位脉冲响应为：&lt;/p&gt;
+&lt;p&gt;$h[n]=\begin{cases}\displaystyle\frac{b_n}{a_0},~0\leqslant n\leqslant M\\0,~其他\end{cases}$&lt;/p&gt;
+&lt;p&gt;该系统的单位脉冲响应是有限长的，这类系统被称为&lt;strong&gt;有限脉冲响应&lt;/strong&gt;（finite impulse response，FIR）系统。&lt;/p&gt;
+&lt;h3 id=&#34;用微分方程和差分方程描述的一阶系统的方框图表示&#34;&gt;用微分方程和差分方程描述的一阶系统的方框图表示
+&lt;/h3&gt;&lt;p&gt;由线性常系数差分方程和微分方程描述的系统的一个重要特点是能够以很简单而且很自然的方式用若干基本运算的方框图互联来表示。&lt;/p&gt;
+&lt;p&gt;由离散时间情况入手，考虑一阶差分方程：&lt;/p&gt;
+&lt;p&gt;$y[n]+ay[n-1]=bx[n]$&lt;/p&gt;
+&lt;p&gt;上式的求值涉及三种基本运算：相加、系数相乘和单位延迟，分别用来定义以下三种基本网络单元：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/5.png&#34;
+	width=&#34;1643&#34;
+	height=&#34;323&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/5_hu14060198546265015813.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/5_hu15947967755032316452.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;508&#34;
+		data-flex-basis=&#34;1220px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;为了便于用这些基本单元来表示，我们将上式重写为递归的形式：&lt;/p&gt;
+&lt;p&gt;$y[n]=-ay[n-1]+bx[n]$&lt;/p&gt;
+&lt;p&gt;其方框图为：&lt;/p&gt;
+&lt;img src=&#34;6.png&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;p&gt;接下来考虑由一阶微分方程描述的因果连续时间系统：&lt;/p&gt;
+&lt;p&gt;$\displaystyle\frac{\mathrm dy(t)}{\mathrm dt}+ay(t)=bx(t)$&lt;/p&gt;
+&lt;p&gt;并改写为：&lt;/p&gt;
+&lt;p&gt;$\displaystyle y(t)=-\frac1a\frac{\mathrm dy(t)}{\mathrm dt}+\frac bax(t)$&lt;/p&gt;
+&lt;p&gt;该方程涉及三种基本运算：相加、系数相乘和微分，分别用来定义以下三种基本网络单元：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/7.png&#34;
+	width=&#34;1603&#34;
+	height=&#34;376&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/7_hu10584135342449411391.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/7_hu2060062810571831468.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;426&#34;
+		data-flex-basis=&#34;1023px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;则其方框图为：&lt;/p&gt;
+&lt;img src=&#34;8.png&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;p&gt;由于微分器难以实现且对误差和噪声极为灵敏，因此更广泛的应用是其积分形式：&lt;/p&gt;
+&lt;p&gt;$\displaystyle y(t)=\int^t_{-\infty}[bx(\tau)-ay(\tau)]\mathrm d\tau$&lt;/p&gt;
+&lt;p&gt;积分器和该方程的方框图如下图所示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/9.png&#34;
+	width=&#34;1592&#34;
+	height=&#34;353&#34;
+	srcset=&#34;https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/9_hu4682420212471570080.png 480w, https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/9_hu1438592827686815501.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;450&#34;
+		data-flex-basis=&#34;1082px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;奇异函数&#34;&gt;奇异函数
+&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;奇异函数&lt;/strong&gt;是一类函数本身或其导数或积分有不连续点的一类函数，许多理想化信号都是奇异函数，并借助与其它信号的卷积来定义。&lt;/p&gt;
+&lt;h3 id=&#34;作为理想化短脉冲的单位冲激&#34;&gt;作为理想化短脉冲的单位冲激
+&lt;/h3&gt;&lt;p&gt;单位冲激$\delta(t)$是恒等系统的单位冲激响应：&lt;/p&gt;
+&lt;p&gt;$x(t)=x(t)*\delta(t)$&lt;/p&gt;
+&lt;p&gt;如果取$x(t)=\delta(t)$，就有：&lt;/p&gt;
+&lt;p&gt;$\delta(t)=\delta(t)*\delta(t)$&lt;/p&gt;
+&lt;p&gt;这是单位冲激的一个基本性质。如果从近似的视角来看，将$\delta(t)$看成一个矩形脉冲$\delta_\Delta(t)$的极限形式，并设：&lt;/p&gt;
+&lt;p&gt;$r_\Delta(t)=\delta_\Delta(t)*\delta_\Delta(t)$&lt;/p&gt;
+&lt;p&gt;则可知$r_\Delta(t)$是一个三角脉冲，且其$\Delta\rightarrow0$的极限形式也为单位冲激：&lt;/p&gt;
+&lt;img src=&#34;10.png&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;p&gt;同理可证$r_\Delta(t)*r_\Delta(t)$、$r_\Delta(t)*\delta_\Delta(t)$等在$\Delta\rightarrow0$的极限都是单位冲激，尽管它们在$\Delta$较大的情况下明显不同，但$\Delta$足够小时本质都一样。&lt;/p&gt;
+&lt;h3 id=&#34;通过卷积定义单位冲激&#34;&gt;通过卷积定义单位冲激
+&lt;/h3&gt;&lt;p&gt;上一节得出，有无限多看起来不同的信号的极限形式作用于一个LTI系统时期其表现都像是冲激，因此我们借助一个LTI系统对信号的响应来定义单位冲激，即定义$\delta(t)$为一个信号，其对任何$x(t)$有：&lt;/p&gt;
+&lt;p&gt;$x(t)=x(t)*\delta(t)$&lt;/p&gt;
+&lt;p&gt;该定义方法为&lt;strong&gt;运算定义&lt;/strong&gt;。由此，我们不难得到单位冲激的其他性质：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\displaystyle\int^{+\infty}_{-\infty}\delta(\tau)\mathrm d\tau=1$&lt;/li&gt;
+&lt;li&gt;$\displaystyle f(0)=\int^{+\infty}_{-\infty}f(\tau)\delta(\tau)\mathrm d\tau$&lt;/li&gt;
+&lt;li&gt;$f(t)\delta(t)=f(0)\delta(t)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;单位冲激偶和其他奇异函数&#34;&gt;单位冲激偶和其他奇异函数
+&lt;/h3&gt;&lt;p&gt;考虑输出是输入的导数的LTI系统：&lt;/p&gt;
+&lt;p&gt;$\displaystyle y(t)=\frac{\mathrm dx(t)}{\mathrm dt}$&lt;/p&gt;
+&lt;p&gt;其单位冲激响应是单位冲激的导数，称为&lt;strong&gt;单位冲激偶&lt;/strong&gt;$u_1(t)$，对任何信号$x(t)$应有：&lt;/p&gt;
+&lt;p&gt;$\displaystyle\frac{\mathrm dx(t)}{\mathrm dt}=x(t)*u_1(t)$&lt;/p&gt;
+&lt;p&gt;上式为$u_1(t)$的运算定义。同理$\delta(t)$的二阶导数$u_2(t)$的运算定义为：&lt;/p&gt;
+&lt;p&gt;$\displaystyle\frac{\mathrm d^2x(t)}{\mathrm dt^2}=x(t)*u_2(t)$&lt;/p&gt;
+&lt;p&gt;并且对$u_1(t)$求导有：&lt;/p&gt;
+&lt;p&gt;$u_2(t)=u_1(t)*u_1(t)$&lt;/p&gt;
+&lt;p&gt;故一个对输入求$k$次导数系统的单位冲激响应为：&lt;/p&gt;
+&lt;p&gt;$u_k(t)=\underset{\displaystyle k次}{\underbrace{u_1(t)*u_1(t)*\cdots*u_1(t)}}$&lt;/p&gt;
+&lt;p&gt;根据运算定义，我们也能给出这些奇异函数的性质，以单位冲激偶为例：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\displaystyle\int^{+\infty}_{-\infty}u_1(\tau)\mathrm d\tau$&lt;/li&gt;
+&lt;li&gt;$\displaystyle-f&#39;(0)=\int^{+\infty}_{\infty}f(\tau)u_1(\tau)\mathrm d\tau$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;和单位冲激一样，这些奇异函数中的每一个都可以与一个短脉冲相联系。例如矩形脉冲$\delta_\Delta(t)$的导数是一个$t=0$处向上的单位冲激和$t=\Delta$处向下的单位冲激，其极限形式即为单位冲激偶。&lt;/p&gt;
+&lt;img src=&#34;11.png&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;p&gt;再考虑一个积分器系统：&lt;/p&gt;
+&lt;p&gt;$\displaystyle y(t)=\int^t_{-\infty}x(\tau)\mathrm d\tau$&lt;/p&gt;
+&lt;p&gt;其单位冲激响应为单位阶跃：&lt;/p&gt;
+&lt;p&gt;$\displaystyle u(t)=\int^t_{-\infty}\delta(\tau)\mathrm d\tau$&lt;/p&gt;
+&lt;p&gt;于是单位阶跃的运算定义为：&lt;/p&gt;
+&lt;p&gt;$\displaystyle x(t)*u(t)=\int^t_{-\infty}x(\tau)\mathrm d\tau$&lt;/p&gt;
+&lt;p&gt;同理，对于两个积分器级联组成的系统的单位冲激响应：&lt;/p&gt;
+&lt;p&gt;$\displaystyle u_{-2}(t)=u(t)*u(t)=\int^t_{-\infty}u(\tau)\mathrm d\tau=u_{-2}(t)=tu(t)$&lt;/p&gt;
+&lt;p&gt;该信号称为&lt;strong&gt;单位斜坡函数&lt;/strong&gt;，其图像为：&lt;/p&gt;
+&lt;img src=&#34;12.png&#34; style=&#34;zoom:50%;&#34; /&gt;
+&lt;p&gt;其运算定义为：&lt;/p&gt;
+&lt;p&gt;$\displaystyle x(t)*u_{-2}(t)=\int^t_{-\infty}\left(\int^\tau_{-\infty}x(\sigma)\mathrm d\sigma\right)\mathrm d\tau$&lt;/p&gt;
+&lt;p&gt;同理可将$\delta(t)$的高阶积分定义为多个积分器级联的单位冲激响应：&lt;/p&gt;
+&lt;p&gt;$u_{-k}(t)=\underset{\displaystyle k次}{\underbrace{u_1(t)*u_1(t)*\cdots*u_1(t)}}=\displaystyle\frac{t^{k-1}}{(k-1)!}u(t)$&lt;/p&gt;
+&lt;p&gt;将$\delta(t)$与$u(t)$用更统一的符号表示：&lt;/p&gt;
+&lt;p&gt;$\delta(t)=u_0(t)$&lt;/p&gt;
+&lt;p&gt;$u(t)=u_{-1}(t)$&lt;/p&gt;
+&lt;p&gt;则将积分和导数的情况结合得到更一般的关系：&lt;/p&gt;
+&lt;p&gt;$u_k(t)*u_r(t)=u_{k+r}(t)$&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;本章完&lt;/strong&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>【51单片机】程序实验11&amp;12.外部中断-定时器中断</title>
         <link>https://INKEM.github.io/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C1112.%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD-%E5%AE%9A%E6%97%B6%E5%99%A8%E4%B8%AD%E6%96%AD/</link>
         <pubDate>Wed, 04 Dec 2024 00:00:00 +0000</pubDate>

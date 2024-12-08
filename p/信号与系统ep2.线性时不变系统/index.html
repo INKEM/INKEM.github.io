@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="卷积；LTI系统的性质；因果LTI系统的微分方程和差分方程描述；奇异函数">
+<title>【信号与系统】Ep2.线性时不变系统</title>
+
+<link rel='canonical' href='https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/'>
+
+<link rel="stylesheet" href="/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="【信号与系统】Ep2.线性时不变系统">
+<meta property='og:description' content="卷积；LTI系统的性质；因果LTI系统的微分方程和差分方程描述；奇异函数">
+<meta property='og:url' content='https://INKEM.github.io/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/'>
+<meta property='og:site_name' content='一杯为品'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-12-05T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2024-12-05T00:00:00&#43;00:00'/>
+<meta name="twitter:title" content="【信号与系统】Ep2.线性时不变系统">
+<meta name="twitter:description" content="卷积；LTI系统的性质；因果LTI系统的微分方程和差分方程描述；奇异函数">
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "dark");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hu16835031703737007367.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🐦</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">一杯为品</a></h1>
+            <h2 class="site-description">哈工大2023届智能机器人班在读，在努力成为机器人、人工智能、硬件工程多面手的路上</h2>
+        </div>
+    </header><ol class="menu-social">
+            
+                <li>
+                    <a 
+                        href='https://blog.csdn.net/mojin2005?spm=1010.2135.3001.5343'
+                        target="_blank"
+                        title="CSDN"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M48 0H0V48H48V0ZM25.9509 14.1922C27.8907 14.578 29.6725 15.5304 31.0711 16.9289C31.8521 17.71 33.1184 17.71 33.8995 16.9289C34.6805 16.1479 34.6805 14.8816 33.8995 14.1005C31.9416 12.1426 29.447 10.8092 26.7313 10.269C24.0155 9.72882 21.2006 10.0061 18.6424 11.0657C16.0843 12.1253 13.8978 13.9197 12.3594 16.222C10.8211 18.5243 10 21.2311 10 24C10 26.7689 10.8211 29.4757 12.3594 31.778C13.8978 34.0803 16.0843 35.8747 18.6424 36.9343C21.2006 37.9939 24.0155 38.2712 26.7313 37.731C29.447 37.1908 31.9416 35.8574 33.8995 33.8995C34.6805 33.1185 34.6805 31.8521 33.8995 31.0711C33.1184 30.29 31.8521 30.29 31.0711 31.0711C29.6725 32.4696 27.8907 33.422 25.9509 33.8079C24.0111 34.1937 22.0004 33.9957 20.1732 33.2388C18.3459 32.4819 16.7841 31.2002 15.6853 29.5557C14.5865 27.9112 14 25.9778 14 24C14 22.0222 14.5865 20.0888 15.6853 18.4443C16.7841 16.7998 18.3459 15.5181 20.1732 14.7612C22.0004 14.0043 24.0111 13.8063 25.9509 14.1922Z" fill="#333333"/>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/INKEM'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%8F%8B%E6%83%85%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>友情链接</span>
+            </a>
+        </li>
+        
+        <li class="menu-bottom-section">
+            <ol class="menu">
+
+                
+                    <li id="dark-mode-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                        <span>暗色模式</span>
+                    </li>
+                
+            </ol>
+        </li>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#离散时间lti系统卷积和">离散时间LTI系统：卷积和</a>
+      <ol>
+        <li><a href="#用脉冲表示离散时间信号">用脉冲表示离散时间信号</a></li>
+        <li><a href="#离散时间lti的单位脉冲响应及卷积和表示">离散时间LTI的单位脉冲响应及卷积和表示</a></li>
+      </ol>
+    </li>
+    <li><a href="#连续时间lti系统卷积积分">连续时间LTI系统：卷积积分</a>
+      <ol>
+        <li><a href="#用冲激表示连续时间信号">用冲激表示连续时间信号</a></li>
+        <li><a href="#连续时间lti系统的单位冲激响应及卷积积分表示">连续时间LTI系统的单位冲激响应及卷积积分表示</a></li>
+      </ol>
+    </li>
+    <li><a href="#lti系统的性质">LTI系统的性质</a>
+      <ol>
+        <li><a href="#交换律性质">交换律性质</a></li>
+        <li><a href="#分配律性质">分配律性质</a></li>
+        <li><a href="#结合律性质">结合律性质</a></li>
+        <li><a href="#有记忆和无记忆lti系统">有记忆和无记忆LTI系统</a></li>
+        <li><a href="#lti系统的可逆性">LTI系统的可逆性</a></li>
+        <li><a href="#lti系统的因果性">LTI系统的因果性</a></li>
+        <li><a href="#lti系统的稳定性">LTI系统的稳定性</a></li>
+        <li><a href="#lti系统的单位阶跃响应">LTI系统的单位阶跃响应</a></li>
+      </ol>
+    </li>
+    <li><a href="#用微分方程和差分方程描述的因果lti系统">用微分方程和差分方程描述的因果LTI系统</a>
+      <ol>
+        <li><a href="#线性常系数微分方程">线性常系数微分方程</a></li>
+        <li><a href="#线性常系数差分方程">线性常系数差分方程</a></li>
+        <li><a href="#用微分方程和差分方程描述的一阶系统的方框图表示">用微分方程和差分方程描述的一阶系统的方框图表示</a></li>
+      </ol>
+    </li>
+    <li><a href="#奇异函数">奇异函数</a>
+      <ol>
+        <li><a href="#作为理想化短脉冲的单位冲激">作为理想化短脉冲的单位冲激</a></li>
+        <li><a href="#通过卷积定义单位冲激">通过卷积定义单位冲激</a></li>
+        <li><a href="#单位冲激偶和其他奇异函数">单位冲激偶和其他奇异函数</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="background-color: #2a9d8f; color: #fff;">
+                学习笔记
+            </a>
+        
+            <a href="/categories/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/" >
+                信号与系统
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/">【信号与系统】Ep2.线性时不变系统</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            卷积；LTI系统的性质；因果LTI系统的微分方程和差分方程描述；奇异函数
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Dec 05, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 5 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/1.png"
+	width="1437"
+	height="778"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/1_hu8666928650310572133.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/1_hu15603652413371621839.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="184"
+		data-flex-basis="443px"
+	
+></p>
+<p>线性和时不变性在系统分析中是最主要的，因为很多物理过程都具有这个性质，且可以对线性时不变系统进行详细的分析。以后对线性时不变系统简称LTI系统（Linear Time-Invariant Systems）。</p>
+<p>研究信号与系统的一个基本方法是把连续时间信号或离散时间信号分解成一组基本信号。其中把信号表示成延时脉冲的线性组合为<strong>卷积</strong>，复指数信号的线性组合为<strong>傅里叶分析</strong>。本章主要围绕前者展开。</p>
+<h2 id="离散时间lti系统卷积和">离散时间LTI系统：卷积和
+</h2><h3 id="用脉冲表示离散时间信号">用脉冲表示离散时间信号
+</h3><p>上一章我们提出了离散时间信号在$n=n_0$时的采样：</p>
+<p>$x[n]\delta[n-n_0]=x[n_0]\delta[n-n_0]=x[n_0]$</p>
+<p>对所有采样求和，我们得到的依旧是一个$x[n]$的表达式：</p>
+<p>$\displaystyle x[n]=\sum_{k=-\infty}^{+\infty}x[k]\delta[n-k]$</p>
+<p>这是因为只有对于$k=n$，单位脉冲$\delta[n-k]=\delta[0]=1$，其余情况下$\delta[n-k]=0$，这被称为离散时间单位脉冲序列的<strong>筛选性质</strong>。我们可以将其解释为把任意一个序列表示成一串移位的单位脉冲序列$\delta[n-k]$的线性组合，加权因子就是$x[k]$。</p>
+<h3 id="离散时间lti的单位脉冲响应及卷积和表示">离散时间LTI的单位脉冲响应及卷积和表示
+</h3><p>现考虑一LTI系统，其对单位脉冲序列$\delta[n]$的响应为$h_0[n]$，而对移位后的单位脉冲序列$\delta[n-k]$的响应记为$h_k[n]=h_0[n-k]$，因为系统是时不变的，所以对移位信号的响应也是原信号响应的单纯移位。</p>
+<p>又根据线性系统的叠加性质，前面我们将$x[n]$表示为了移位单位脉冲$\delta[n-k]$的加权线性组合，那么该系统对$x[n]$的响应也是$h_k[n]$的加权线性组合，且加权因子仍为$x[n]$，则输出$y[n]$可以表示为：</p>
+<p>$\displaystyle y[n]=\sum_{k=-\infty}^{+\infty}x[k]h_k[n]$</p>
+<p>为了简化符号，我们将$h_k[n]$的下标符号除掉，从而定义系统<strong>单位脉冲序列响应</strong>为：</p>
+<p>$h[n]=h_0[n]$</p>
+<p>那么输出$y[n]$的表达式改写为：</p>
+<p>$\displaystyle y[n]=\sum_{k=-\infty}^{+\infty}x[k]h[n-k]$</p>
+<p>这个结果称为<strong>卷积和</strong>或<strong>叠加和</strong>，并且上式等号右侧的运算称为$x[n]$和$h[n]$的卷积，用符号记为：</p>
+<p>$y[n]=x[n]*h[n]$</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/2.png"
+	width="1847"
+	height="755"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/2_hu2861789126656579390.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/2_hu2222004969031320592.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="244"
+		data-flex-basis="587px"
+	
+></p>
+<h2 id="连续时间lti系统卷积积分">连续时间LTI系统：卷积积分
+</h2><h3 id="用冲激表示连续时间信号">用冲激表示连续时间信号
+</h3><p>与离散时间情况一样，我们建立连续时间情况下的筛选性质。</p>
+<p>定义$\delta(t)$的近似：</p>
+<p>$\displaystyle\delta_\Delta(t)=\begin{cases}\frac1\Delta,0\leqslant t<\Delta\\0,其他\end{cases}$</p>
+<p>则$x(t)$的近似：</p>
+<p>$\displaystyle\hat x(t)=\sum_{k=-\infty}^{+\infty}x(k\Delta)\delta_\Delta(t-k\Delta)\Delta$</p>
+<p>当$\Delta\rightarrow0$时，$\hat x(t)\rightarrow x(t)$，同时得到积分的定义：</p>
+<p>$\displaystyle x(t)=\lim_\Delta\rightarrow0\sum^{+\infty}_{k=-\infty}x(k\Delta)\hat \delta_\Delta(t-k\Delta)\Delta=\int^{+\infty}_{-\infty}x(\tau)\delta(t-\tau)\mathrm d\tau$</p>
+<p>此为连续时间冲激函数的<strong>筛选性质</strong>。</p>
+<h3 id="连续时间lti系统的单位冲激响应及卷积积分表示">连续时间LTI系统的单位冲激响应及卷积积分表示
+</h3><p>和离散时间情况一样，上一节我们将任意一个连续时间信号表示成加权和移位脉冲的叠加，那么令$\hat h_{k\Delta}(t)$为一个线性时不变系统对输入$\delta_\Delta(t-k\Delta)$的响应，根据叠加性质就有：</p>
+<p>$\displaystyle\hat y(t)=\sum^{+\infty}_{k=-\infty}x(k\Delta)\hat h_{k\Delta}(t)\Delta$</p>
+<p>当$\Delta\rightarrow0$时，$\hat y(t)\rightarrow y(t)$，同时得到积分的定义：</p>
+<p>$\displaystyle y(t)=\lim_\Delta\rightarrow0\sum^{+\infty}_{k=-\infty}x(k\Delta)\hat h_{k\Delta}(t-k\Delta)\Delta=\int^{+\infty}_{-\infty}x(\tau)h(t-\tau)\mathrm d\tau$</p>
+<p>上式称为<strong>卷积积分</strong>或<strong>叠加积分</strong>，相应地，$x(t)$和$h(t)$的卷积记为：</p>
+<p>$y(t)=x(t)*h(t)$</p>
+<h2 id="lti系统的性质">LTI系统的性质
+</h2><p>由LTI系统具有卷积和与卷积积分的表示形式入手可以得到一些其他系统不具备的性质。</p>
+<h3 id="交换律性质">交换律性质
+</h3><p>离散时间情况：$\displaystyle x[n]*h[n]=h[n]*x[n]=\sum^{+\infty}_{k=-\infty}h[k]x[n-k]$</p>
+<p>连续时间情况：$\displaystyle x(t)*h(t)=h(t)*x(t)=\int^{+\infty}_{-\infty}h(\tau)x(t-\tau)\mathrm d\tau$</p>
+<p>令$r=n-k$即可证明离散时间情况下卷积和的交换律，连续时间情况同理。</p>
+<h3 id="分配律性质">分配律性质
+</h3><p>离散时间情况：$x[n]*(h_1[n]+h_2[n])=x[n]*h_1[n]+x[n]*h_2[n]$</p>
+<p>连续时间情况：$x(t)*[h_1(t)+h_2(t)]=x(t)*h_1(t)+x(t)*h_2(t)$</p>
+<p>可用系统并联来表示，下图两个系统是等效的：</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/3.png"
+	width="1816"
+	height="427"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/3_hu6731081440883332455.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/3_hu5502955563399806320.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="425"
+		data-flex-basis="1020px"
+	
+></p>
+<h3 id="结合律性质">结合律性质
+</h3><p>离散时间情况：$x[n]*(h_1[n]*h_2[n])=(x[n]*h_1[n])*h_2[n]$</p>
+<p>连续时间情况：$x(t)*[h_1(t)*h_2(t)]=[x(t)*h_1(t)]*h_2(t)$</p>
+<p>可用系统级联来表示，同时利用交换律，下图四个系统是等效的：</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/4.png"
+	width="1832"
+	height="421"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/4_hu8789347545589473574.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/4_hu17581247031070630639.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="435"
+		data-flex-basis="1044px"
+	
+></p>
+<h3 id="有记忆和无记忆lti系统">有记忆和无记忆LTI系统
+</h3><p>上一章指出，若一个系统在任何时刻的输入只和同一时刻的输入有关，它就是无记忆的。对于一个离散时间LTI系统，这就说明其单位冲激响应也是同一时刻的冲激：</p>
+<p>$h[n]=K\delta[n]$</p>
+<p>其中$K=h[0]$为常数。</p>
+<p>则其卷积和：</p>
+<p>$y[n]=Kx[n]$</p>
+<p>相应地，在连续时间情况下有：</p>
+<p>$h(t)=K\delta(t)$</p>
+<p>$y(t)=Kx(t)$</p>
+<h3 id="lti系统的可逆性">LTI系统的可逆性
+</h3><p>在离散时间情况下，对于一可逆的LTI系统，其冲激响应为$h[n]$，逆系统冲激响应$h_1[n]$，原系统与逆系统级联的效果与恒等系统（冲激响应为$\delta(t)$）一样，则有：</p>
+<p>$h[n]*h_1[n]=\delta[n]$</p>
+<p>同理在连续时间情况下一个冲激响应为$h(t)$的LTI系统的逆系统的冲激响应$h_1(t)$满足：</p>
+<p>$h(t)*h_1(t)=\delta(t)$</p>
+<h3 id="lti系统的因果性">LTI系统的因果性
+</h3><p>一个因果系统的输出只取决于现在和过去的输入值，这意味着因果LTI系统的卷积和或卷积积分的上限只需取到当前时刻而不是$+\infty$：</p>
+<p>$\displaystyle y[n]=\sum^n_{k=-\infty}x[k]h[h-k]$</p>
+<p>$\displaystyle y(t)=\int^t_{-\infty}x(\tau)h(t-\tau)\mathrm d\tau$</p>
+<p>一个线性系统的因果性就是<strong>初始松弛</strong>条件，即如果该系统的输入在某个时刻点以前是零，则其输出在那个时刻以前也必须是零：</p>
+<p>离散时间情况下，若$n<n_0$时$x[n]=0$，则$n<n_0$时$y[n]=0$。</p>
+<p>连续时间情况下，若$t<t_0$时$x(t)=0$，则$t<t_0$时$y(t)=0$。</p>
+<h3 id="lti系统的稳定性">LTI系统的稳定性
+</h3><p>一个稳定系统的输入有界则输出有界。对一个稳定的离散时间LTI系统，设输入$x[n]$有界：</p>
+<p>$|x[n]|<B$，对所有的$n$</p>
+<p>则响应输出的绝对值为：</p>
+<p>$\displaystyle|y[n]|=\left |\sum^{+\infty}_{k=-\infty}x[k]h[n-k]\right |=\left |\sum^{+\infty}_{k=-\infty}h[k]x[n-k]\right |$</p>
+<p>由乘积的绝对值不大于绝对值的乘积有：</p>
+<p>$\displaystyle |y[n]|\leqslant\sum^{+\infty}_{k=-\infty}|h[k]||x[h-k]|$</p>
+<p>又根据$x[n]$的有界条件有：</p>
+<p>$\displaystyle|y[n]|\leqslant B\sum^{+\infty}_{k=-\infty}|h[k]|$</p>
+<p>因此，一个离散时间LTI系统稳定的条件为单位脉冲响应是<strong>绝对可和</strong>的：</p>
+<p>$\displaystyle\sum^{+\infty}_{k=-\infty}|h[k]|<\infty$</p>
+<p>同理，一个连续时间LTI系统稳定的条件为单位冲激响应是<strong>绝对可积</strong>的：</p>
+<p>$\displaystyle\int^{+\infty}_{-\infty}|h(\tau)|\mathrm d\tau<\infty$</p>
+<h3 id="lti系统的单位阶跃响应">LTI系统的单位阶跃响应
+</h3><p>单位冲激响应$h[n]$或$h(t)$完全确定了一个LTI系统的特性。除此之外，<strong>单位阶跃响应</strong>$s[n]$或$s(t)$也常用来描述一个LTI系统的特性。一个离散LTI系统的单位阶跃响应就是单位阶跃序列与单位脉冲响应的卷积：</p>
+<p>$\displaystyle s[n]=u[n]*h[n]=h[n]*u[n]=\sum^{+\infty}_{k=-\infty}h[k]u[n-k]$</p>
+<p>又$u[n-k]=\begin{cases}1,k\leqslant n\\0,k>n\end{cases}$，所以卷积和上限可取$n$：</p>
+<p>$\displaystyle s[n]=\sum^n_{k=-\infty}h[k]$</p>
+<p>$h[n]=s[n]-s[n-1]$</p>
+<p>由此一个离散时间LTI系统的单位阶跃响应是单位脉冲响应的求和函数，反过来单位脉冲响应是单位阶跃响应的一次差分。</p>
+<p>同理在连续时间情况下有：</p>
+<p>$\displaystyle s(t)=\int^t_{-\infty}h(\tau)\mathrm d\tau$</p>
+<p>$\displaystyle h(t)=\frac{\mathrm ds(t)}{\mathrm dt}=s'(t)$</p>
+<h2 id="用微分方程和差分方程描述的因果lti系统">用微分方程和差分方程描述的因果LTI系统
+</h2><p>一类重要的连续时间系统是其输入-输出关系用<strong>线性常系数微分方程</strong>描述的系统，该形式方程可以描述广泛的系统和物理现象；一类重要的离散时间系统是其输入-输出关系用<strong>线性常系数差分方程</strong>描述的系统，该形式方程可以描述许多不同过程的序列行为。</p>
+<h3 id="线性常系数微分方程">线性常系数微分方程
+</h3><blockquote>
+<p>考虑一个一阶微分方程：</p>
+<p>$\displaystyle\frac{\mathrm dy(t)}{\mathrm dt}+2y(t)=x(t)$①</p>
+<p>假设输入信号为：</p>
+<p>$x(t)=Ke^{3t}u(t)$</p>
+<p>其中$K$为某一实数。</p>
+<p>该式的完全解由一个<strong>特解</strong>$y_p(t)$和一个<strong>齐次解</strong>$y_h(t)$组成：</p>
+<p>$y(t)=y_p(t)+y_h(t)$</p>
+<p>其中特解是用微分方程表示系统时非零输入对应的解，又称为<strong>受迫响应</strong>；齐次解是用微分方程表示系统时零输入对应的解，又称为<strong>自然响应</strong>。即特解满足式①，而齐次解是以下齐次微分方程的一个解：</p>
+<p>$\displaystyle\frac{\mathrm dy(t)}{\mathrm dt}+2y(t)=0$</p>
+<p>对于该指数输入信号，当$t>0$时，特解的形式为$y_p(t)=Ye^{3t}$，齐次解的形式为$y_h(t)=Ae^{st}$</p>
+<p>将特解代入方程：</p>
+<p>$3Ye^{3t}+2Ye^{3t}=Ke^{3t}$</p>
+<p>解得$\displaystyle Y=\frac K5$，$\displaystyle y_p(t)=\frac K5e^{3t}$</p>
+<p>将齐次解代入方程：</p>
+<p>$Ase^{st}+2Ae^{st}=0$</p>
+<p>解得$s=-2$，$y_h(t)=Ae^{-2t}$</p>
+<p>原微分方程式的解为：</p>
+<p>$\displaystyle y(t)=Ae^{-2t}+\frac K5e^{3t}$，$t>0$</p>
+<p>为了确定$A$的值，还需要一个附加条件。本课绝大部分关注用微分方程和差分方程描述因果线性时不变系统，因此取初始松弛条件，在这里即代入$y(0)=0$：</p>
+<p>$\displaystyle0=A+\frac K5$</p>
+<p>$\displaystyle A=-\frac K5$</p>
+<p>据此利用单位阶跃函数将零之前和零之后的情况结合起来可得完全解为：</p>
+<p>$\displaystyle y(t)=\frac K5[e^{3t}-e^{-2t}]u(t)$</p>
+</blockquote>
+<p>根据以上过程，我们总结关于线性常系数微分方程及其表示的系统的一些要点：</p>
+<ul>
+<li>对某个输入$x(t)$的响应一般都是由一个特解和一个齐次解组成的。</li>
+<li>为了完全确定由微分方程式所描述的系统输入和输出之间的关系，就必须给出附加条件，对于线性因果系统即初始松弛条件。初始松弛条件中零初始条件的时刻即是输入信号变成非零前一刻的时刻，以使在输入变成非零之前，响应一直为零。</li>
+</ul>
+<p>相同的概念可以推广到由高阶微分方程描述的系统中，考虑$N$阶线性常系数微分方程：</p>
+<p>$\displaystyle\sum^N_{k=0}a_k\frac{\mathrm d^ky(t)}{\mathrm dt^k}=\sum^M_{k=0}b_k\frac{\mathrm d^kx(t)}{\mathrm dt^k}$</p>
+<p>则$y(t)$的解由上式的一个特解和如下齐次微分方程的齐次解组成：</p>
+<p>$\displaystyle\sum^N_{k=0}a_k\frac{\mathrm d^ky(t)}{\mathrm dt^k}=0$</p>
+<p>如果$t\leqslant t_0$时$x(t)=0$，对$t>t_0$的初始松弛条件为：</p>
+<p>$\displaystyle y(t_0)=\frac{\mathrm dy(t_0)}{\mathrm dt}=\cdots=\frac{\mathrm d^{N-1}y(t_0)}{\mathrm dt^{N-1}}=0$</p>
+<h3 id="线性常系数差分方程">线性常系数差分方程
+</h3><p>相应地，在离散时间情况下，考虑$N$阶线性常系数差分方程：</p>
+<p>$\displaystyle\sum^N_{k=0}a_ky[n-k]=\sum^M_{k=0}b_kx[n-k]$</p>
+<p>按照微分方程的类似解法求解，$y[n]$的解由上式的一个特解和如下齐次方程的齐次解组成：</p>
+<p>$\displaystyle\sum^N_{k=0}a_ky[n-k]=0$</p>
+<p>但与微分方程不同的是，离散时间情况提供了另一种途径，即直接将差分方程写成：</p>
+<p>$\displaystyle y[n]=\frac1{a_0}\left\{\sum^M_{k=0}b_kx[n-k]-\sum^N_{k=1}a_ky[n-k]\right\}$</p>
+<p>只要知道关于$y[n-1],\cdots,y[n-N]$的附加条件，就能根据上式求出$y[n]$，这样形式的方程称为<strong>递归方程</strong>。而当$N=0$时：</p>
+<p>$\displaystyle y[n]=\sum^M_{k=0}\left(\frac{b_k}{a_0}\right)x[n-k]$</p>
+<p>上式没有利用之前的输出值来计算当前的输出值，称为<strong>非递归方程</strong>，无需给出附加条件来确定$y[n]$，可以直接计算出其单位脉冲响应为：</p>
+<p>$h[n]=\begin{cases}\displaystyle\frac{b_n}{a_0},~0\leqslant n\leqslant M\\0,~其他\end{cases}$</p>
+<p>该系统的单位脉冲响应是有限长的，这类系统被称为<strong>有限脉冲响应</strong>（finite impulse response，FIR）系统。</p>
+<h3 id="用微分方程和差分方程描述的一阶系统的方框图表示">用微分方程和差分方程描述的一阶系统的方框图表示
+</h3><p>由线性常系数差分方程和微分方程描述的系统的一个重要特点是能够以很简单而且很自然的方式用若干基本运算的方框图互联来表示。</p>
+<p>由离散时间情况入手，考虑一阶差分方程：</p>
+<p>$y[n]+ay[n-1]=bx[n]$</p>
+<p>上式的求值涉及三种基本运算：相加、系数相乘和单位延迟，分别用来定义以下三种基本网络单元：</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/5.png"
+	width="1643"
+	height="323"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/5_hu14060198546265015813.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/5_hu15947967755032316452.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="508"
+		data-flex-basis="1220px"
+	
+></p>
+<p>为了便于用这些基本单元来表示，我们将上式重写为递归的形式：</p>
+<p>$y[n]=-ay[n-1]+bx[n]$</p>
+<p>其方框图为：</p>
+<img src="6.png" style="zoom:50%;" />
+<p>接下来考虑由一阶微分方程描述的因果连续时间系统：</p>
+<p>$\displaystyle\frac{\mathrm dy(t)}{\mathrm dt}+ay(t)=bx(t)$</p>
+<p>并改写为：</p>
+<p>$\displaystyle y(t)=-\frac1a\frac{\mathrm dy(t)}{\mathrm dt}+\frac bax(t)$</p>
+<p>该方程涉及三种基本运算：相加、系数相乘和微分，分别用来定义以下三种基本网络单元：</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/7.png"
+	width="1603"
+	height="376"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/7_hu10584135342449411391.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/7_hu2060062810571831468.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="426"
+		data-flex-basis="1023px"
+	
+></p>
+<p>则其方框图为：</p>
+<img src="8.png" style="zoom:50%;" />
+<p>由于微分器难以实现且对误差和噪声极为灵敏，因此更广泛的应用是其积分形式：</p>
+<p>$\displaystyle y(t)=\int^t_{-\infty}[bx(\tau)-ay(\tau)]\mathrm d\tau$</p>
+<p>积分器和该方程的方框图如下图所示：</p>
+<p><img src="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/9.png"
+	width="1592"
+	height="353"
+	srcset="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/9_hu4682420212471570080.png 480w, /p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep2.%E7%BA%BF%E6%80%A7%E6%97%B6%E4%B8%8D%E5%8F%98%E7%B3%BB%E7%BB%9F/9_hu1438592827686815501.png 1024w"
+	loading="lazy"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="450"
+		data-flex-basis="1082px"
+	
+></p>
+<h2 id="奇异函数">奇异函数
+</h2><p><strong>奇异函数</strong>是一类函数本身或其导数或积分有不连续点的一类函数，许多理想化信号都是奇异函数，并借助与其它信号的卷积来定义。</p>
+<h3 id="作为理想化短脉冲的单位冲激">作为理想化短脉冲的单位冲激
+</h3><p>单位冲激$\delta(t)$是恒等系统的单位冲激响应：</p>
+<p>$x(t)=x(t)*\delta(t)$</p>
+<p>如果取$x(t)=\delta(t)$，就有：</p>
+<p>$\delta(t)=\delta(t)*\delta(t)$</p>
+<p>这是单位冲激的一个基本性质。如果从近似的视角来看，将$\delta(t)$看成一个矩形脉冲$\delta_\Delta(t)$的极限形式，并设：</p>
+<p>$r_\Delta(t)=\delta_\Delta(t)*\delta_\Delta(t)$</p>
+<p>则可知$r_\Delta(t)$是一个三角脉冲，且其$\Delta\rightarrow0$的极限形式也为单位冲激：</p>
+<img src="10.png" style="zoom:50%;" />
+<p>同理可证$r_\Delta(t)*r_\Delta(t)$、$r_\Delta(t)*\delta_\Delta(t)$等在$\Delta\rightarrow0$的极限都是单位冲激，尽管它们在$\Delta$较大的情况下明显不同，但$\Delta$足够小时本质都一样。</p>
+<h3 id="通过卷积定义单位冲激">通过卷积定义单位冲激
+</h3><p>上一节得出，有无限多看起来不同的信号的极限形式作用于一个LTI系统时期其表现都像是冲激，因此我们借助一个LTI系统对信号的响应来定义单位冲激，即定义$\delta(t)$为一个信号，其对任何$x(t)$有：</p>
+<p>$x(t)=x(t)*\delta(t)$</p>
+<p>该定义方法为<strong>运算定义</strong>。由此，我们不难得到单位冲激的其他性质：</p>
+<ul>
+<li>$\displaystyle\int^{+\infty}_{-\infty}\delta(\tau)\mathrm d\tau=1$</li>
+<li>$\displaystyle f(0)=\int^{+\infty}_{-\infty}f(\tau)\delta(\tau)\mathrm d\tau$</li>
+<li>$f(t)\delta(t)=f(0)\delta(t)$</li>
+</ul>
+<h3 id="单位冲激偶和其他奇异函数">单位冲激偶和其他奇异函数
+</h3><p>考虑输出是输入的导数的LTI系统：</p>
+<p>$\displaystyle y(t)=\frac{\mathrm dx(t)}{\mathrm dt}$</p>
+<p>其单位冲激响应是单位冲激的导数，称为<strong>单位冲激偶</strong>$u_1(t)$，对任何信号$x(t)$应有：</p>
+<p>$\displaystyle\frac{\mathrm dx(t)}{\mathrm dt}=x(t)*u_1(t)$</p>
+<p>上式为$u_1(t)$的运算定义。同理$\delta(t)$的二阶导数$u_2(t)$的运算定义为：</p>
+<p>$\displaystyle\frac{\mathrm d^2x(t)}{\mathrm dt^2}=x(t)*u_2(t)$</p>
+<p>并且对$u_1(t)$求导有：</p>
+<p>$u_2(t)=u_1(t)*u_1(t)$</p>
+<p>故一个对输入求$k$次导数系统的单位冲激响应为：</p>
+<p>$u_k(t)=\underset{\displaystyle k次}{\underbrace{u_1(t)*u_1(t)*\cdots*u_1(t)}}$</p>
+<p>根据运算定义，我们也能给出这些奇异函数的性质，以单位冲激偶为例：</p>
+<ul>
+<li>$\displaystyle\int^{+\infty}_{-\infty}u_1(\tau)\mathrm d\tau$</li>
+<li>$\displaystyle-f'(0)=\int^{+\infty}_{\infty}f(\tau)u_1(\tau)\mathrm d\tau$</li>
+</ul>
+<p>和单位冲激一样，这些奇异函数中的每一个都可以与一个短脉冲相联系。例如矩形脉冲$\delta_\Delta(t)$的导数是一个$t=0$处向上的单位冲激和$t=\Delta$处向下的单位冲激，其极限形式即为单位冲激偶。</p>
+<img src="11.png" style="zoom:50%;" />
+<p>再考虑一个积分器系统：</p>
+<p>$\displaystyle y(t)=\int^t_{-\infty}x(\tau)\mathrm d\tau$</p>
+<p>其单位冲激响应为单位阶跃：</p>
+<p>$\displaystyle u(t)=\int^t_{-\infty}\delta(\tau)\mathrm d\tau$</p>
+<p>于是单位阶跃的运算定义为：</p>
+<p>$\displaystyle x(t)*u(t)=\int^t_{-\infty}x(\tau)\mathrm d\tau$</p>
+<p>同理，对于两个积分器级联组成的系统的单位冲激响应：</p>
+<p>$\displaystyle u_{-2}(t)=u(t)*u(t)=\int^t_{-\infty}u(\tau)\mathrm d\tau=u_{-2}(t)=tu(t)$</p>
+<p>该信号称为<strong>单位斜坡函数</strong>，其图像为：</p>
+<img src="12.png" style="zoom:50%;" />
+<p>其运算定义为：</p>
+<p>$\displaystyle x(t)*u_{-2}(t)=\int^t_{-\infty}\left(\int^\tau_{-\infty}x(\sigma)\mathrm d\sigma\right)\mathrm d\tau$</p>
+<p>同理可将$\delta(t)$的高阶积分定义为多个积分器级联的单位冲激响应：</p>
+<p>$u_{-k}(t)=\underset{\displaystyle k次}{\underbrace{u_1(t)*u_1(t)*\cdots*u_1(t)}}=\displaystyle\frac{t^{k-1}}{(k-1)!}u(t)$</p>
+<p>将$\delta(t)$与$u(t)$用更统一的符号表示：</p>
+<p>$\delta(t)=u_0(t)$</p>
+<p>$u(t)=u_{-1}(t)$</p>
+<p>则将积分和导数的情况结合得到更一般的关系：</p>
+<p>$u_k(t)*u_r(t)=u_{k+r}(t)$</p>
+<hr>
+<p><strong>本章完</strong></p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9Fep1.%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【信号与系统】Ep1.信号与系统</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C1112.%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD-%E5%AE%9A%E6%97%B6%E5%99%A8%E4%B8%AD%E6%96%AD/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【51单片机】程序实验11&amp;12.外部中断-定时器中断</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C910.%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA-%E6%AD%A5%E8%BF%9B%E7%94%B5%E6%9C%BA/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【51单片机】程序实验9&amp;10.直流电机-步进电机</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E5%AF%BC%E8%AE%BAep7.%E8%BD%A8%E8%BF%B9%E7%94%9F%E6%88%90/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【机器人学导论】Ep7.轨迹生成</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/p/51%E5%8D%95%E7%89%87%E6%9C%BA%E7%A8%8B%E5%BA%8F%E5%AE%9E%E9%AA%8C78.io%E6%89%A9%E5%B1%95-led%E7%82%B9%E9%98%B5/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【51单片机】程序实验7&amp;8.IO扩展-LED点阵</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 一杯为品
+    </section>
+    
+    <section class="powerby">
+        使用 <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 构建 <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.29.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+<script src=https://INKEM.github.io/background/sakura.js></script>
+<style>
+  body {
+    background: url(https://INKEM.github.io/background/Sakura.png) no-repeat center top;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+</style>
+<style>
+  @font-face {
+    font-family: '初夏明朝';
+    src: url(https://INKEM.github.io/font/EarlySummerSerif-VF.ttf) format('truetype');
+  }
+
+  :root {
+    --base-font-family: '初夏明朝';
+    --code-font-family: '初夏明朝';
+  }
+</style>
+
+    </body>
+</html>
